@@ -3,22 +3,30 @@ require 'nokogiri'
 def wrap_content(page_content)
 	html_doc = Nokogiri::HTML::DocumentFragment.parse(page_content)
 
-	# level1 = html_doc.css('h4').wrap("<div class='level1'></div>")
-	# level1.each do | node |
-	# 	node.parent.xpath("following-sibling::div[@class='level1'][1]/preceding-sibling::*[preceding-sibling::div[@id='" + node['id'] +"']]").each do | sib |
+	#wrap each header h1,h2,h3,h4 tags with a div of the same level 
+	level1 = html_doc.css("h1[@id]").wrap("<div class='level-1'></div>")
+	level2 = html_doc.css("h2[@id]").wrap("<div class='level-2'></div>")
+	level3 = html_doc.css("h3[@id]").wrap("<div class='level-3'></div>")
+	level4 = html_doc.css("h4[@id]").wrap("<div class='level-4'></div>")
 
-	#grouping level 4s into 1 div for styling
-	# level4 = html_doc.css('h4').wrap("<div class='level4'></div>")
-	# level4.each_with_index do | node, index |
-	# 	if index != level4.size - 1
-	# 		node.parent['id'] = node['id']
-	# 		puts node.parent.xpath("following-sibling::h3[1]/preceding-sibling::div[@class='level4'][last()]/following-sibling::div[@class='level4']")
-	# 		puts " "
-	# 		node.parent.xpath("following-sibling::div[@class='level4'][1]/preceding-sibling::p[preceding-sibling::div[@id='" + node['id'] +"']]").each do | sib |
-	# 			sib.parent = node.parent
-	# 		end
-	# 	end
-	# end
+	#iterate through the nodes to add as child to the pre-processed nodes above
+	[level4, level3, level2].each do | level_nodeset |
+		level_nodeset.each do | node |
+			level = node.parent['class']
+			next_node = node.parent.next_element
+
+			while next_node and next_node['class'] != level
+
+				#check for end of level
+				if next_node['class'] and next_node['class'][-1] < level[-1]
+					break
+				end
+
+				next_node.parent = node.parent
+				next_node = next_node.parent.next_element
+			end
+		end
+	end
 	html_doc
 end
 
