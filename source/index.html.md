@@ -19,7 +19,6 @@ includes:
   - scenarios
   - questions
   - notifications
-  - kittens
 
 search: true
 ---
