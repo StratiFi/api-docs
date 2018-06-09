@@ -29,12 +29,11 @@ Now that Slate is all set up on your machine, you'll probably want to learn more
 If you'd prefer to use Docker, instructions are available [in the wiki](https://github.com/lord/slate/wiki/Docker).
 
 ### Deployment
-This deploys your changes to [http://stratifi.github.io/slate](http://stratifi.github.io/slate).
+This deploys your changes to [http://stratifi.github.io/slate](http://stratifi.github.io/slate), **no matter which branch you are on locally**. 
 
 ```
 # run this in the root of the project
 ./deploy.sh
-
 ```
 
 ### Note on JavaScript Runtime
