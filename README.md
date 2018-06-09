@@ -22,11 +22,20 @@ bundle install
 bundle exec middleman server
 ```
 
-You can now see the docs at http://localhost:4567. Whoa! That was fast!
+You can now see the docs at http://localhost:4567.
 
-Now that Slate is all set up on your machine, you'll probably want to learn more about [editing Slate markdown](https://github.com/lord/slate/wiki/Markdown-Syntax), or [how to publish your docs](https://github.com/lord/slate/wiki/Deploying-Slate).
+Now that Slate is all set up on your machine, you'll probably want to learn more about [editing Slate markdown](https://github.com/lord/slate/wiki/Markdown-Syntax).
 
 If you'd prefer to use Docker, instructions are available [in the wiki](https://github.com/lord/slate/wiki/Docker).
+
+### Deployment
+This deploys your changes to [http://stratifi.github.io/slate](http://stratifi.github.io/slate).
+
+```
+# run this in the root of the project
+./deploy.sh
+
+```
 
 ### Note on JavaScript Runtime
 
@@ -36,9 +45,9 @@ For those who don't have JavaScript runtime or are experiencing JavaScript runti
 
 The original slate was a flat structure. A new file wrap_content.rb was added in the lib directory to group items under the same hierarchiral level and wrap them in divs. 
 
-'-request-type: ' and '-request-url: ' are used in the markdown which will be checked for and replaced by wrap_content. Look at source \> includes \> \_scores.md
+'-request-type: ' and '-request-url: ' are used in the markdown which will be checked for and replaced by wrap_content. Look at source \> includes \> \_scores.md for examples.
 
-**The code for wrap_content can definitely be improved.**
+**\*The code for wrap_content can definitely be improved.\***
 
 ### Additional Notes During Development
 
