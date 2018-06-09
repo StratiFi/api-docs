@@ -3,37 +3,37 @@
 > To authorize, use this code:
 
 ```ruby
-require 'kittn'
+require 'prism'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+api = Prism::APIClient.authorize!('stratifi-token')
 ```
 
 ```python
-import kittn
+import prism
 
-api = kittn.authorize('meowmeowmeow')
+api = prism.authorize('stratifi-token')
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: stratifi-token"
 ```
 
 ```javascript
-const kittn = require('kittn');
+const prism = require('prism');
 
-let api = kittn.authorize('meowmeowmeow');
+let api = prism.authorize('stratifi-token');
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `stratifi-token` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+StratiFi's PRISM API uses API keys to allow access to the API. You can register a new API key at our [developer portal](http://example.com/developers).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+StratiFi expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: stratifi-token`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>stratifi-token</code> with your personal API key.
 </aside>
