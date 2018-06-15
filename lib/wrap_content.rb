@@ -33,7 +33,7 @@ def wrap_content(page_content)
 	end
 
 	#some additional grouping within level-4 section
-	html_doc.css("div[@class='level-4']").each do | node |
+	html_doc.css("div[@class='level-4']", "div[@class='level-3']").each do | node |
 		children = node.children
 		side = Nokogiri::XML::Node.new("div", html_doc)
 		main = Nokogiri::XML::Node.new("div", html_doc)
