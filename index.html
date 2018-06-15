@@ -525,33 +525,913 @@ Kittn expects for the API key to be included in all API requests to the server i
 <h2 id="risks">Risks</h2>
 <p>The Risks Scores describes the susceptibility of your portfolio to the various events. </p>
 <div class="level-3">
-<div class="side"></div>
+<div class="side">
+<blockquote class="blockquote">
+<p>To send request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi/com/v1/scores/risks/current"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+          "ticker": "CASH",
+          "value": 4.3
+        },
+        {
+          "ticker": "ISFCX",
+          "value": 42.22
+        },
+        {
+          "ticker": "LCEVX",
+          "value": 46.83
+        },
+        {
+          "ticker": "AHHYX",
+          "value": 6.65
+        }
+      ]
+    }'</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"custom"</span>: <span class="o">{</span>
+    <span class="s2">"risk_scores"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"score_list"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"relative_non_stock_weights"</span>: <span class="o">{</span>
+                <span class="s2">"SHY"</span>: 0.3926940639269407,
+                <span class="s2">"AHHYX"</span>: 0.6073059360730594
+              <span class="o">}</span>,
+              <span class="s2">"relative_stock_weights"</span>: <span class="o">{}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"short_vol_fraction"</span>: 1,
+              <span class="s2">"long_vol_beta"</span>: 0,
+              <span class="s2">"short_vol_beta"</span>: 0.121,
+              <span class="s2">"long_vol_fraction"</span>: 0,
+              <span class="s2">"classifications"</span>: <span class="o">{</span>
+                <span class="s2">"2"</span>: 0.3926940639269407,
+                <span class="s2">"3"</span>: 0.6073059360730594
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 7
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"correlation_benchmarks_min"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.784534212372259,
+                <span class="s2">"VIX"</span>: -0.8687271960279799,
+                <span class="s2">"GLD"</span>: -0.3178823355791606,
+                <span class="s2">"VNQ"</span>: 0.3370350133054418,
+                <span class="s2">"BND"</span>: -0.532085308483456
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_mean"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.903699964659445,
+                <span class="s2">"VIX"</span>: -0.7613946015955493,
+                <span class="s2">"GLD"</span>: -0.01502059350126294,
+                <span class="s2">"VNQ"</span>: 0.739743313878686,
+                <span class="s2">"BND"</span>: -0.2714347101681557
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_max"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.9594761534205081,
+                <span class="s2">"VIX"</span>: -0.544979575853418,
+                <span class="s2">"GLD"</span>: 0.4365016929243542,
+                <span class="s2">"VNQ"</span>: 0.9189512211782341,
+                <span class="s2">"BND"</span>: 0.4577926372323846
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 5
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"median_portfolio_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.010323714748607247
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.03469457586165013
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.06395665996187737
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.09702327861823168
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.13740675311485964
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.16545972838662798
+                <span class="o">]</span>
+              <span class="o">]</span>,
+              <span class="s2">"worst_market_move"</span>: -0.19632559765788316,
+              <span class="s2">"median_market_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.007029375671891979
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.026639321998952213
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.047340701224977355
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.06882447034676904
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.0845268156918576
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.13221290755649556
+                <span class="o">]</span>
+              <span class="o">]</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8
+          <span class="o">}</span>
+        <span class="o">]</span>,
+        <span class="s2">"overall_score"</span>: 6.2,
+        <span class="s2">"overlay"</span>: <span class="o">{</span>
+          <span class="s2">"tail"</span>: 0,
+          <span class="s2">"rr"</span>: 0,
+          <span class="s2">"rerr"</span>: 0
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"end_date"</span>: <span class="s2">"2018-06-13"</span>,
+    <span class="s2">"start_date"</span>: <span class="s2">"2005-01-01"</span>
+  <span class="o">}</span>,
+  <span class="s2">"Global Financial Crisis"</span>: <span class="o">{</span>
+    <span class="s2">"risk_scores"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"score_list"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"relative_non_stock_weights"</span>: <span class="o">{</span>
+                <span class="s2">"SHY"</span>: 0.3926940639269407,
+                <span class="s2">"AHHYX"</span>: 0.6073059360730594
+              <span class="o">}</span>,
+              <span class="s2">"relative_stock_weights"</span>: <span class="o">{}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"short_vol_fraction"</span>: 1,
+              <span class="s2">"long_vol_beta"</span>: 0,
+              <span class="s2">"short_vol_beta"</span>: 0.447,
+              <span class="s2">"long_vol_fraction"</span>: 0,
+              <span class="s2">"classifications"</span>: <span class="o">{</span>
+                <span class="s2">"2"</span>: 0.3926940639269407,
+                <span class="s2">"3"</span>: 0.6073059360730594
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 10
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"correlation_benchmarks_min"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.8040191954022479,
+                <span class="s2">"VIX"</span>: -0.8224199336746263,
+                <span class="s2">"GLD"</span>: -0.3518502137972266,
+                <span class="s2">"VNQ"</span>: 0.6936785607451148,
+                <span class="s2">"BND"</span>: -0.43326913277166523
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_mean"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.8739492150626034,
+                <span class="s2">"VIX"</span>: -0.7424093306617923,
+                <span class="s2">"GLD"</span>: -0.16786406609401608,
+                <span class="s2">"VNQ"</span>: 0.7696572456535902,
+                <span class="s2">"BND"</span>: -0.35731980488183585
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_max"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.9106268489222078,
+                <span class="s2">"VIX"</span>: -0.6564780069618203,
+                <span class="s2">"GLD"</span>: 0.2633188611077413,
+                <span class="s2">"VNQ"</span>: 0.8057288330998789,
+                <span class="s2">"BND"</span>: 0.3876913885621447
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 8
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"median_portfolio_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.010323714748607247
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.03469457586165013
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.06395665996187737
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.09702327861823168
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.13740675311485964
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.16545972838662798
+                <span class="o">]</span>
+              <span class="o">]</span>,
+              <span class="s2">"worst_market_move"</span>: -0.19632559765788316,
+              <span class="s2">"median_market_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.007029375671891979
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.026639321998952213
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.047340701224977355
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.06882447034676904
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.0845268156918576
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.13221290755649556
+                <span class="o">]</span>
+              <span class="o">]</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8
+          <span class="o">}</span>
+        <span class="o">]</span>,
+        <span class="s2">"overall_score"</span>: 8.1,
+        <span class="s2">"overlay"</span>: <span class="o">{</span>
+          <span class="s2">"tail"</span>: 0,
+          <span class="s2">"rr"</span>: 0,
+          <span class="s2">"rerr"</span>: 0
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"end_date"</span>: <span class="s2">"2009-02-01"</span>,
+    <span class="s2">"start_date"</span>: <span class="s2">"2007-02-01"</span>
+  <span class="o">}</span>,
+  <span class="s2">"2011 Euro Credit Crisis"</span>: <span class="o">{</span>
+    <span class="s2">"risk_scores"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"score_list"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"relative_non_stock_weights"</span>: <span class="o">{</span>
+                <span class="s2">"SHY"</span>: 0.3926940639269407,
+                <span class="s2">"AHHYX"</span>: 0.6073059360730594
+              <span class="o">}</span>,
+              <span class="s2">"relative_stock_weights"</span>: <span class="o">{}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"short_vol_fraction"</span>: 1,
+              <span class="s2">"long_vol_beta"</span>: 0,
+              <span class="s2">"short_vol_beta"</span>: 0.223,
+              <span class="s2">"long_vol_fraction"</span>: 0,
+              <span class="s2">"classifications"</span>: <span class="o">{</span>
+                <span class="s2">"2"</span>: 0.3926940639269407,
+                <span class="s2">"3"</span>: 0.6073059360730594
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 10
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"correlation_benchmarks_min"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.9126101464862375,
+                <span class="s2">"VIX"</span>: -0.88346831944512,
+                <span class="s2">"GLD"</span>: -0.21131277046807145,
+                <span class="s2">"VNQ"</span>: 0.6848646607755302,
+                <span class="s2">"BND"</span>: -0.5384094830469406
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_mean"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.9454990986614913,
+                <span class="s2">"VIX"</span>: -0.8155743584982533,
+                <span class="s2">"GLD"</span>: 0.1887208735236684,
+                <span class="s2">"VNQ"</span>: 0.8721734474453802,
+                <span class="s2">"BND"</span>: -0.39681779748695867
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_max"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.9624274816287923,
+                <span class="s2">"VIX"</span>: -0.7464369587833878,
+                <span class="s2">"GLD"</span>: 0.29904917370031925,
+                <span class="s2">"VNQ"</span>: 0.9222907174105153,
+                <span class="s2">"BND"</span>: -0.030822833865099087
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 5
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"median_portfolio_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.010323714748607247
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.03469457586165013
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.06395665996187737
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.09702327861823168
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.13740675311485964
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.16545972838662798
+                <span class="o">]</span>
+              <span class="o">]</span>,
+              <span class="s2">"worst_market_move"</span>: -0.19632559765788316,
+              <span class="s2">"median_market_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.007029375671891979
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.026639321998952213
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.047340701224977355
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.06882447034676904
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.0845268156918576
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.13221290755649556
+                <span class="o">]</span>
+              <span class="o">]</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8
+          <span class="o">}</span>
+        <span class="o">]</span>,
+        <span class="s2">"overall_score"</span>: 7.8,
+        <span class="s2">"overlay"</span>: <span class="o">{</span>
+          <span class="s2">"tail"</span>: 0,
+          <span class="s2">"rr"</span>: 0,
+          <span class="s2">"rerr"</span>: 0
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"end_date"</span>: <span class="s2">"2012-01-01"</span>,
+    <span class="s2">"start_date"</span>: <span class="s2">"2010-01-01"</span>
+  <span class="o">}</span>,
+  <span class="s2">"2013 Taper Tantrum"</span>: <span class="o">{</span>
+    <span class="s2">"risk_scores"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"score_list"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"relative_non_stock_weights"</span>: <span class="o">{</span>
+                <span class="s2">"SHY"</span>: 0.3926940639269407,
+                <span class="s2">"AHHYX"</span>: 0.6073059360730594
+              <span class="o">}</span>,
+              <span class="s2">"relative_stock_weights"</span>: <span class="o">{}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"short_vol_fraction"</span>: 1,
+              <span class="s2">"long_vol_beta"</span>: 0,
+              <span class="s2">"short_vol_beta"</span>: 0.083,
+              <span class="s2">"long_vol_fraction"</span>: 0,
+              <span class="s2">"classifications"</span>: <span class="o">{</span>
+                <span class="s2">"2"</span>: 0.3926940639269407,
+                <span class="s2">"3"</span>: 0.6073059360730594
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 4
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"correlation_benchmarks_min"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.8778896629164408,
+                <span class="s2">"VIX"</span>: -0.7788247398695489,
+                <span class="s2">"GLD"</span>: -0.11212171439904768,
+                <span class="s2">"VNQ"</span>: 0.5205970621992217,
+                <span class="s2">"BND"</span>: -0.475864461642886
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_mean"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.9163375995351724,
+                <span class="s2">"VIX"</span>: -0.7352099948355328,
+                <span class="s2">"GLD"</span>: 0.18744513297480425,
+                <span class="s2">"VNQ"</span>: 0.7479702048811675,
+                <span class="s2">"BND"</span>: 0.03671817282404967
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_max"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.9410145571862646,
+                <span class="s2">"VIX"</span>: -0.6707412649698621,
+                <span class="s2">"GLD"</span>: 0.4094360097812404,
+                <span class="s2">"VNQ"</span>: 0.8066761635518418,
+                <span class="s2">"BND"</span>: 0.5685313224881158
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 5
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"median_portfolio_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.010323714748607247
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.03469457586165013
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.06395665996187737
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.09702327861823168
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.13740675311485964
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.16545972838662798
+                <span class="o">]</span>
+              <span class="o">]</span>,
+              <span class="s2">"worst_market_move"</span>: -0.19632559765788316,
+              <span class="s2">"median_market_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.007029375671891979
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.026639321998952213
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.047340701224977355
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.06882447034676904
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.0845268156918576
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.13221290755649556
+                <span class="o">]</span>
+              <span class="o">]</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8
+          <span class="o">}</span>
+        <span class="o">]</span>,
+        <span class="s2">"overall_score"</span>: 5.6,
+        <span class="s2">"overlay"</span>: <span class="o">{</span>
+          <span class="s2">"tail"</span>: 0,
+          <span class="s2">"rr"</span>: 0,
+          <span class="s2">"rerr"</span>: 0
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"end_date"</span>: <span class="s2">"2014-06-01"</span>,
+    <span class="s2">"start_date"</span>: <span class="s2">"2012-06-01"</span>
+  <span class="o">}</span>,
+  <span class="s2">"2015-16 Market Selloff"</span>: <span class="o">{</span>
+    <span class="s2">"risk_scores"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"score_list"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"relative_non_stock_weights"</span>: <span class="o">{</span>
+                <span class="s2">"SHY"</span>: 0.3926940639269407,
+                <span class="s2">"AHHYX"</span>: 0.6073059360730594
+              <span class="o">}</span>,
+              <span class="s2">"relative_stock_weights"</span>: <span class="o">{}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"short_vol_fraction"</span>: 1,
+              <span class="s2">"long_vol_beta"</span>: 0,
+              <span class="s2">"short_vol_beta"</span>: 0.075,
+              <span class="s2">"long_vol_fraction"</span>: 0,
+              <span class="s2">"classifications"</span>: <span class="o">{</span>
+                <span class="s2">"2"</span>: 0.3926940639269407,
+                <span class="s2">"3"</span>: 0.6073059360730594
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 4
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"correlation_benchmarks_min"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.8607878300743297,
+                <span class="s2">"VIX"</span>: -0.8219714459889602,
+                <span class="s2">"GLD"</span>: -0.32939261367825007,
+                <span class="s2">"VNQ"</span>: 0.3626705874719546,
+                <span class="s2">"BND"</span>: -0.37698478888984743
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_mean"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.8929681920946492,
+                <span class="s2">"VIX"</span>: -0.7648684461757917,
+                <span class="s2">"GLD"</span>: -0.16712301160873475,
+                <span class="s2">"VNQ"</span>: 0.6299886347524906,
+                <span class="s2">"BND"</span>: -0.25750214700604157
+              <span class="o">}</span>,
+              <span class="s2">"correlation_benchmarks_max"</span>: <span class="o">{</span>
+                <span class="s2">"SPY"</span>: 0.9482720310312953,
+                <span class="s2">"VIX"</span>: -0.7180707701830622,
+                <span class="s2">"GLD"</span>: 0.19880664282939325,
+                <span class="s2">"VNQ"</span>: 0.7098215321852273,
+                <span class="s2">"BND"</span>: 0.15705280827936896
+              <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 8
+          <span class="o">}</span>,
+          <span class="o">{</span>
+            <span class="s2">"data"</span>: <span class="o">{</span>
+              <span class="s2">"median_portfolio_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.010323714748607247
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.03469457586165013
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.06395665996187737
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.09702327861823168
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.13740675311485964
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.16545972838662798
+                <span class="o">]</span>
+              <span class="o">]</span>,
+              <span class="s2">"worst_market_move"</span>: -0.19632559765788316,
+              <span class="s2">"median_market_move"</span>: <span class="o">[</span>
+                <span class="o">[</span>
+                  <span class="s2">"[-0% -2%]"</span>,
+                  -0.007029375671891979
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-2% -4%]"</span>,
+                  -0.026639321998952213
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-4% -6%]"</span>,
+                  -0.047340701224977355
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-6% -8%]"</span>,
+                  -0.06882447034676904
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-8% -10%]"</span>,
+                  -0.0845268156918576
+                <span class="o">]</span>,
+                <span class="o">[</span>
+                  <span class="s2">"[-10%+]"</span>,
+                  -0.13221290755649556
+                <span class="o">]</span>
+              <span class="o">]</span>
+            <span class="o">}</span>,
+            <span class="s2">"name"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8
+          <span class="o">}</span>
+        <span class="o">]</span>,
+        <span class="s2">"overall_score"</span>: 6.6,
+        <span class="s2">"overlay"</span>: <span class="o">{</span>
+          <span class="s2">"tail"</span>: 0,
+          <span class="s2">"rr"</span>: 0,
+          <span class="s2">"rerr"</span>: 0
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"end_date"</span>: <span class="s2">"2017-01-01"</span>,
+    <span class="s2">"start_date"</span>: <span class="s2">"2015-01-01"</span>
+  <span class="o">}</span>,
+  <span class="s2">"ignored_tickers"</span>: <span class="o">[]</span>
+<span class="o">}</span>
+</code></pre>
+</div>
 <div class="main">
 <h3 id="current">Current</h3>
 <p>This API computes the Risks Scores of your current portfolio</p>
+<p class="request-type">POST</p>
+<p class="request-url">/scores/risks/current</p>
+<p><strong>Request Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
+<td>String</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>custom</td>
+<td>Object</td>
+<td>Object containing risks scores, start date and end date</td>
+</tr>
+<tr>
+<td>Global Financial Crisis</td>
+<td>Object</td>
+<td>Object containing the simulated risk score of the portfolio during the Global Financial Crisis</td>
+</tr>
+<tr>
+<td>2011 Euro Credit Crisis</td>
+<td>Object</td>
+<td>Object containing the simulated risk score of the portfolio during the 2011 Euro Credit Crisis</td>
+</tr>
+<tr>
+<td>2013 Taper Tantrum</td>
+<td>Object</td>
+<td>Object containing the simulated risk score of the portfolio during the 2013 Taper Tantrum</td>
+</tr>
+<tr>
+<td>2015-16 Market Selloff</td>
+<td>Object</td>
+<td>Object containing the simulated risk score of the portfolio during the 2015-16 Market Selloff</td>
+</tr>
+<tr>
+<td>ignored tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+</tbody>
+</table>
+<p><code>custom, Global Financial Crisis, 2011 Euro Credit Crisis, 2013 Taper Tantrum, 2015-16 Market Selloff</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>risk_scores</td>
+<td>Object</td>
+<td>Contains the score_list object</td>
+</tr>
+</tbody>
+</table>
+<p><code>risk_scores</code> object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score_list</td>
+<td>Object</td>
+<td>Object containing various data</td>
+</tr>
+</tbody>
+</table>
+<p><code>score_list</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Object containing various data</td>
+</tr>
+<tr>
+<td>overall _score</td>
+<td>float</td>
+<td>The overall score of the portfolio</td>
+</tr>
+<tr>
+<td>overlay</td>
+<td>Object</td>
+<td>Object containing score of portfolio with corresponding overlays</td>
+</tr>
+</tbody>
+</table>
+<p><code>overlay</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tail</td>
+<td>float</td>
+<td>Score of portfolio with a tail overlay</td>
+</tr>
+<tr>
+<td>rr</td>
+<td>float</td>
+<td>Score of portfolio with a risk reduction overlay</td>
+</tr>
+<tr>
+<td>rerr</td>
+<td>float</td>
+<td>Score of portfolio with a return enhancement risk reduction overlay</td>
+</tr>
+</tbody>
+</table>
 <div class="level-4">
 <div class="side">
 <blockquote class="blockquote">
-<p>To compute, use this code: </p>
+<p>To send request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/overall"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+          "ticker": "CASH",
+          "value": 4.3
+        },
+        {
+          "ticker": "ISFCX",
+          "value": 42.22
+        },
+        {
+          "ticker": "LCEVX",
+          "value": 46.83
+        },
+        {
+          "ticker": "AHHYX",
+          "value": 6.65
+        }
+      ]
+    }'</span>
 </code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/current/overall"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/current/overall"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<blockquote class="blockquote">
+<p>Response Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"ignored_tickers"</span>: <span class="o">[]</span>,
+    <span class="s2">"scores"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"overall_score"</span>,
+            <span class="s2">"value"</span>: 8.1,
+            <span class="s2">"scenario"</span>: <span class="s2">"Global Financial Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"overall_score"</span>,
+            <span class="s2">"value"</span>: 7.8,
+            <span class="s2">"scenario"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"overall_score"</span>,
+            <span class="s2">"value"</span>: 5.6,
+            <span class="s2">"scenario"</span>: <span class="s2">"2013 Taper Tantrum"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"overall_score"</span>,
+            <span class="s2">"value"</span>: 6.6,
+            <span class="s2">"scenario"</span>: <span class="s2">"2015-16 Market Selloff"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"overall_score"</span>,
+            <span class="s2">"value"</span>: 6.2,
+            <span class="s2">"scenario"</span>: <span class="s2">"custom"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 <div class="main">
@@ -560,22 +1440,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/current/overall</p>
 <p><strong>Description</strong></p>
 <p>Computes the overall risk score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -604,22 +1553,61 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/volatility"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/current/volatility"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/current/volatility"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<blockquote class="blockquote">
+<p>Response Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"ignored_tickers"</span>: <span class="o">[]</span>,
+    <span class="s2">"scores"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 10,
+            <span class="s2">"scenario"</span>: <span class="s2">"Global Financial Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 10,
+            <span class="s2">"scenario"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 4,
+            <span class="s2">"scenario"</span>: <span class="s2">"2013 Taper Tantrum"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 4,
+            <span class="s2">"scenario"</span>: <span class="s2">"2015-16 Market Selloff"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 7,
+            <span class="s2">"scenario"</span>: <span class="s2">"custom"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 <div class="main">
@@ -628,22 +1616,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/current/volatility</p>
 <p><strong>Description</strong></p>
 <p>Computes the volatility risk score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -672,22 +1729,61 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/tail"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/current/tail"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/current/tail"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<blockquote class="blockquote">
+<p>Response Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"ignored_tickers"</span>: <span class="o">[]</span>,
+    <span class="s2">"scores"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8,
+            <span class="s2">"scenario"</span>: <span class="s2">"Global Financial Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8,
+            <span class="s2">"scenario"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8,
+            <span class="s2">"scenario"</span>: <span class="s2">"2013 Taper Tantrum"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8,
+            <span class="s2">"scenario"</span>: <span class="s2">"2015-16 Market Selloff"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"tail_score"</span>,
+            <span class="s2">"value"</span>: 8,
+            <span class="s2">"scenario"</span>: <span class="s2">"custom"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 <div class="main">
@@ -696,22 +1792,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/current/tail</p>
 <p><strong>Description</strong></p>
 <p>Computes the tail risk score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -740,22 +1905,61 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/concentrated"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/current/concentrated"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/current/concentrated"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<blockquote class="blockquote">
+<p>Response Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"ignored_tickers"</span>: <span class="o">[]</span>,
+    <span class="s2">"scores"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1,
+            <span class="s2">"scenario"</span>: <span class="s2">"Global Financial Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1,
+            <span class="s2">"scenario"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1,
+            <span class="s2">"scenario"</span>: <span class="s2">"2013 Taper Tantrum"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1,
+            <span class="s2">"scenario"</span>: <span class="s2">"2015-16 Market Selloff"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"concentrated_score"</span>,
+            <span class="s2">"value"</span>: 1,
+            <span class="s2">"scenario"</span>: <span class="s2">"custom"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 <div class="main">
@@ -764,22 +1968,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/current/concentrated</p>
 <p><strong>Description</strong></p>
 <p>Computes the concentrated stock risk score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -808,22 +2081,61 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/correlation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/current/correlation"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/current/correlation"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<blockquote class="blockquote">
+<p>Response Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"ignored_tickers"</span>: <span class="o">[]</span>,
+    <span class="s2">"scores"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 8,
+            <span class="s2">"scenario"</span>: <span class="s2">"Global Financial Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 5,
+            <span class="s2">"scenario"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 5,
+            <span class="s2">"scenario"</span>: <span class="s2">"2013 Taper Tantrum"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 8,
+            <span class="s2">"scenario"</span>: <span class="s2">"2015-16 Market Selloff"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"correlation_score"</span>,
+            <span class="s2">"value"</span>: 5,
+            <span class="s2">"scenario"</span>: <span class="s2">"custom"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 <div class="main">
@@ -832,22 +2144,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/current/correlation</p>
 <p><strong>Description</strong></p>
 <p>Computes the correlation risk score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -883,22 +2264,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/overall"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/target/overall"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/target/overall"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -907,22 +2293,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/target/overall</p>
 <p><strong>Description</strong></p>
 <p>Computes the overall risk score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -951,22 +2406,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/volatility"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/target/volatility"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/target/volatility"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -975,22 +2435,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/target/overall/volatility</p>
 <p><strong>Description</strong></p>
 <p>Computes the volatility risk score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1019,22 +2548,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/tail"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/target/tail"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/target/tail"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1043,22 +2577,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/target/tail</p>
 <p><strong>Description</strong></p>
 <p>Computes the tail risk score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1087,22 +2690,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/concentrated"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/target/concentrated"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/target/concentrated"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1111,22 +2719,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/target/concentrated</p>
 <p><strong>Description</strong></p>
 <p>Computes the concentrated stock risk score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1155,22 +2832,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/correlation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/risks/target/correlation"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/target/correlation"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1179,22 +2861,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/risks/target/correlation</p>
 <p><strong>Description</strong></p>
 <p>Computes the correlation risk score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1219,6 +2970,172 @@ Kittn expects for the API key to be included in all API requests to the server i
 </div>
 </div>
 </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1439,22 +3356,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/overall"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/current/overall"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/current/overall"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1463,22 +3385,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/current/overall</p>
 <p><strong>Description</strong></p>
 <p>Computes the overall returns score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1507,22 +3498,61 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/volatility"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/current/volatility"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/current/volatility"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<blockquote class="blockquote">
+<p>Response Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"ignored_tickers"</span>: <span class="o">[]</span>,
+    <span class="s2">"scores"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 10,
+            <span class="s2">"scenario"</span>: <span class="s2">"Global Financial Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 10,
+            <span class="s2">"scenario"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 4,
+            <span class="s2">"scenario"</span>: <span class="s2">"2013 Taper Tantrum"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 4,
+            <span class="s2">"scenario"</span>: <span class="s2">"2015-16 Market Selloff"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"score"</span>: <span class="s2">"volatility_score"</span>,
+            <span class="s2">"value"</span>: 7,
+            <span class="s2">"scenario"</span>: <span class="s2">"custom"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1531,22 +3561,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/current/volatility</p>
 <p><strong>Description</strong></p>
 <p>Computes the volatility returns score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1575,22 +3674,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/tail"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/current/tail"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/risks/returns/tail"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1599,22 +3703,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/current/tail</p>
 <p><strong>Description</strong></p>
 <p>Computes the tail returns score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1643,22 +3816,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/concentrated"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/current/concentrated"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/current/concentrated"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1667,22 +3845,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/current/concentrated</p>
 <p><strong>Description</strong></p>
 <p>Computes the concentrated stock returns score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1711,22 +3958,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/correlation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/current/correlation"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/current/correlation"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1735,22 +3987,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/current/correlation</p>
 <p><strong>Description</strong></p>
 <p>Computes the correlation returns score of your current portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1786,22 +4107,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/overall"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/target/overall"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/target/overall"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1810,22 +4136,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/target/overall</p>
 <p><strong>Description</strong></p>
 <p>Computes the overall returns score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1854,22 +4249,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/volatility"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/target/volatility"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/target/volatility"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1878,22 +4278,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/target/overall/volatility</p>
 <p><strong>Description</strong></p>
 <p>Computes the volatility returns score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1922,22 +4391,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/tail"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/target/tail"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/target/tail"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -1946,22 +4420,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/target/tail</p>
 <p><strong>Description</strong></p>
 <p>Computes the tail returns score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -1990,22 +4533,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/concentrated"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/target/concentrated"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/target/concentrated"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -2014,22 +4562,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/target/concentrated</p>
 <p><strong>Description</strong></p>
 <p>Computes the concentrated stock returns score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -2058,22 +4675,27 @@ Kittn expects for the API key to be included in all API requests to the server i
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/correlation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">"api.stratifi.com/v1/scores/returns/target/correlation"</span><span class="p">,</span> 
-                      <span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"stratifi-token"</span><span class="p">},</span> 
-                      <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">"Some para"</span><span class="p">:</span> <span class="s">"para"</span><span class="p">})</span>
-</code></pre>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="kr">const</span> <span class="nx">uri</span> <span class="o">=</span> <span class="s2">"api.stratifi.com/v1/scores/returns/target/correlation"</span>
-<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"Some para"</span><span class="p">:</span> <span class="s2">"para"</span>
-<span class="p">}</span>
-
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="nx">uri</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"Content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
-<span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+      "positions": [
+        {
+            "ticker": "CASH",
+            "value": 4.3
+          },
+          {
+            "ticker": "ISFCX",
+            "value": 42.22
+          },
+          {
+            "ticker": "LCEVX",
+            "value": 46.83
+          },
+          {
+            "ticker": "AHHYX",
+            "value": 6.65
+          }
+        ]
+      }'</span>
 </code></pre>
 </div>
 <div class="main">
@@ -2082,22 +4704,91 @@ Kittn expects for the API key to be included in all API requests to the server i
 <p class="request-url">/scores/returns/target/correlation</p>
 <p><strong>Description</strong></p>
 <p>Computes the correlation returns score of your target portfolio</p>
-<p><strong>Request Data</strong></p>
+<p><strong>Request Parameters</strong></p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Some para</td>
+<td>positions</td>
+<td>Object</td>
+<td>Positions of the portfolio</td>
+</tr>
+</tbody>
+</table>
+<p><code>positions</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
 <td>String</td>
-<td>para</td>
-<td>This is the description to the parameter</td>
+<td>The ticker symbol of the security</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>The value of the position for the security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ignored_tickers</td>
+<td>Object</td>
+<td>List of ignored tickers</td>
+</tr>
+<tr>
+<td>scores</td>
+<td>Object</td>
+<td>The overall score of various scenarios</td>
+</tr>
+</tbody>
+</table>
+<p><code>scores</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>score</td>
+<td>String</td>
+<td>Score type</td>
+</tr>
+<tr>
+<td>value</td>
+<td>float</td>
+<td>Score of portfolio for corresponding scenario</td>
+</tr>
+<tr>
+<td>scenario</td>
+<td>String</td>
+<td>A particular scenario</td>
 </tr>
 </tbody>
 </table>
@@ -2122,6 +4813,128 @@ Kittn expects for the API key to be included in all API requests to the server i
 </div>
 </div>
 </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
