@@ -127,17 +127,17 @@ Return object:
 
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+#```shell
+## With shell, you can just pass the correct header with each request
+#curl "api_endpoint_here"
+#  -H "Authorization: meowmeowmeow"
+#```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
+#```javascript
+#const kittn = require('kittn');
+#
+#let api = kittn.authorize('meowmeowmeow');
+#```
 
 > Make sure to replace `meowmeowmeow` with your API key.
 
