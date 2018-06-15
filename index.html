@@ -202,7 +202,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,6 +211,11 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -221,21 +226,6 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#accounts" class="toc-h1 toc-link" data-title="accounts">Accounts</a>
-          </li>
-          <li>
-            <a href="#authorization-meowmeowmeow" class="toc-h1 toc-link" data-title="code-authorization-meowmeowmeow-code"><code>Authorization: meowmeowmeow</code></a>
-          </li>
-          <li>
-            <a href="#e326e80c49" class="toc-h1 toc-link" data-title="aside-class-notice-aside"><aside class="notice"></aside></a>
-          </li>
-          <li>
-            <a href="#you-must-replace-meowmeowmeow-with-your-personal-api-key" class="toc-h1 toc-link" data-title="you-must-replace-code-meowmeowmeow-code-with-your-personal-api-key">You must replace <code>meowmeowmeow</code> with your personal API key.</a>
-          </li>
-          <li>
-            <a href="#4420c3f377" class="toc-h1 toc-link" data-title=""></a>
           </li>
           <li>
             <a href="#score" class="toc-h1 toc-link" data-title="score">Score</a>
@@ -345,6 +335,10 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
+        <ul class="toc-footer">
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -383,150 +377,7 @@ curl <span class="s2">"api_endpoint_here"</span>
 <aside class="notice">
 You must replace <code>stratifi-token</code> with your personal API key.
 </aside>
-<div class="level-1-wrapper"><div class="level-1"><h1 id="accounts">Accounts</h1></div></div>
-<blockquote class="blockquote">
-<p>Create new account:</p>
-</blockquote>
-<pre class="highlight python tab-python"><code>
-<span class="n">Endpoint</span><span class="p">:</span>
-<span class="n">api</span><span class="o">.</span><span class="n">stratifi</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">accounts</span><span class="o">/</span>
-
-<span class="n">Method</span> <span class="ow">and</span> <span class="n">Payload</span><span class="p">:</span>
-<span class="n">POST</span><span class="p">:</span>    
-<span class="p">{</span>
-<span class="s">"name"</span><span class="p">:</span> <span class="s">"New Account One"</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="n">Return</span> <span class="nb">object</span><span class="p">:</span>
-
-<span class="p">{</span>
-    <span class="s">"id"</span><span class="p">:</span> <span class="mi">13280</span><span class="p">,</span>
-    <span class="s">"provider"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">"name"</span><span class="p">:</span> <span class="s">"New Account One"</span><span class="p">,</span>
-    <span class="s">"value"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">"data"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"non_taxable"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s">"portfolio_margin"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s">"status"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">"updated_at"</span><span class="p">:</span> <span class="s">"2018-06-13T15:11:38.520870"</span><span class="p">,</span>
-    <span class="s">"created_at"</span><span class="p">:</span> <span class="s">"2018-06-13T15:11:38.520944"</span><span class="p">,</span>
-    <span class="s">"type"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"doc_type"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"number"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"performance_validated"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s">"pending_overlay_changes"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s">"investor"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"advisor_account"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"owner"</span><span class="p">:</span> <span class="mi">3591</span><span class="p">,</span>
-    <span class="s">"execution_client"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"strategies"</span><span class="p">:</span> <span class="p">[]</span>
-<span class="p">}</span>
-
-
-<span class="n">Endpoint</span><span class="p">:</span>
-<span class="n">api</span><span class="o">.</span><span class="n">stratifi</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">accounts</span><span class="o">/</span><span class="p">:</span><span class="n">ID</span>
-
-<span class="n">Method</span><span class="p">:</span>
-<span class="n">GET</span><span class="p">:</span>
-
-<span class="n">Return</span> <span class="nb">object</span><span class="p">:</span>
-
-<span class="p">{</span>
-    <span class="s">"id"</span><span class="p">:</span> <span class="mi">13280</span><span class="p">,</span>
-    <span class="s">"provider"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">"name"</span><span class="p">:</span> <span class="s">"New Account One"</span><span class="p">,</span>
-    <span class="s">"value"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s">"data"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"non_taxable"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s">"portfolio_margin"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s">"status"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s">"updated_at"</span><span class="p">:</span> <span class="s">"2018-06-13T15:11:38.520870"</span><span class="p">,</span>
-    <span class="s">"created_at"</span><span class="p">:</span> <span class="s">"2018-06-13T15:11:38.520944"</span><span class="p">,</span>
-    <span class="s">"type"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"doc_type"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"number"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"performance_validated"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s">"pending_overlay_changes"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s">"investor"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"advisor_account"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"owner"</span><span class="p">:</span> <span class="mi">3591</span><span class="p">,</span>
-    <span class="s">"execution_client"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s">"strategies"</span><span class="p">:</span> <span class="p">[]</span>
-<span class="p">}</span>
-
-
-<span class="n">Endpoint</span><span class="p">:</span>
-<span class="n">api</span><span class="o">.</span><span class="n">stratifi</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">accounts</span><span class="o">/</span><span class="p">:</span><span class="n">ID</span>
-
-<span class="n">Method</span> <span class="ow">and</span> <span class="n">Payload</span><span class="p">:</span>
-<span class="n">PUT</span><span class="p">:</span>
-
-<span class="p">{</span>
-    <span class="s">"name"</span><span class="p">:</span> <span class="s">"testing account post 8"</span><span class="p">,</span>
-    <span class="s">"positions"</span><span class="p">:</span> <span class="p">[</span>
-     <span class="p">{</span>
-        <span class="s">"value"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"CUR:US"</span><span class="p">,</span>
-        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"U S Dollar"</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s">"value"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"SPY"</span><span class="p">,</span>
-        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"SPDR S&amp;P 500"</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s">"value"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"IVV"</span><span class="p">,</span>
-        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"iShares Core S&amp;P 500"</span>
-    <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-
-
-<span class="n">Return</span> <span class="nb">object</span><span class="p">:</span>
-
-<span class="p">{</span>
-    <span class="s">"name"</span><span class="p">:</span> <span class="s">"testing account post 8"</span><span class="p">,</span>
-    <span class="s">"positions"</span><span class="p">:</span> <span class="p">[</span>
-     <span class="p">{</span>
-        <span class="s">"value"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"CUR:US"</span><span class="p">,</span>
-        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"U S Dollar"</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s">"value"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"SPY"</span><span class="p">,</span>
-        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"SPDR S&amp;P 500"</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="s">"value"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"IVV"</span><span class="p">,</span>
-        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"iShares Core S&amp;P 500"</span>
-    <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-
-
-
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Account endpoint allows creating new account and update it with positions.<br> </p>
-
-<p>Create account is done using POST method to https://api.stratifi.com/v1/accounts/<br></p>
-
-<p>After adding the account GET method can be used to return details of the account using method GET to https://api.stratifi.com/v1/accounts/:id</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-<div class="level-1-wrapper"><div class="level-1"><h1 id="authorization-meowmeowmeow"><code>Authorization: meowmeowmeow</code></h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="e326e80c49"><aside class="notice"></aside></h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="you-must-replace-meowmeowmeow-with-your-personal-api-key">You must replace <code>meowmeowmeow</code> with your personal API key.</h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="4420c3f377"></h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="score">Score</h1></div></div>
+<div class="level-1-wrapper"><div class="level-1"><h1 id="score">Score</h1></div></div>
 <p>The PRISM API allows you to compute two types of scores. Risks and Returns.</p>
 <div class="level-2-wrapper"><div class="level-2">
 <h2 id="risks">Risks</h2>
@@ -2382,6 +2233,11 @@ curl <span class="s2">"api_endpoint_here"</span>
 
       </div>
       <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+          </div>
       </div>
     </div>
   </body>
