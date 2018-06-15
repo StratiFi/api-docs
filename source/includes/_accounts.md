@@ -127,19 +127,20 @@ Return object:
 
 ```
 
-#```shell
-## With shell, you can just pass the correct header with each request
-#curl "api_endpoint_here"
-#  -H "Authorization: meowmeowmeow"
-#```
+```shell
+# With shell, you can just pass the correct header with each request
+curl "api_endpoint_here"
+  -H "Authorization: meowmeowmeow"
+```
 
-#```javascript
-#const kittn = require('kittn');
-#
-#let api = kittn.authorize('meowmeowmeow');
-#```
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+
 
 > Make sure to replace `meowmeowmeow` with your API key.
+```
 
 Account endpoint allows creating new account and update it with positions.<br/> 
 
@@ -148,6 +149,8 @@ Create account is done using POST method to https://api.stratifi.com/v1/accounts
 After adding the account GET method can be used to return details of the account using method GET to https://api.stratifi.com/v1/accounts/:id
 
 
+```
+
 Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
 #`Authorization: meowmeowmeow`
@@ -155,3 +158,4 @@ Kittn expects for the API key to be included in all API requests to the server i
 #<aside class="notice">
 #You must replace <code>meowmeowmeow</code> with your personal API key.
 #</aside>
+```
