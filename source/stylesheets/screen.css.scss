@@ -433,6 +433,10 @@ html, body {
       padding: 5px 10px;
       border-bottom: 1px solid #ccc;
       vertical-align: bottom;
+
+      &:last-of-type {
+        width: 100%;
+      }
     }
 
     td {
@@ -534,6 +538,7 @@ html, body {
     border-radius: 10px;
     font-weight: bold;
     color: white;
+    margin-left: 28px;
   }
 
   .request-url {
@@ -541,6 +546,8 @@ html, body {
     font-weight: bold;
     padding: 0 8px;
     background: rgba(33, 33, 33, 0.1);
+    position: absolute;
+    margin-top: 3px;
   }
 
   .side {
@@ -563,6 +570,9 @@ html, body {
     h1 {
       padding-left: 25px;
     }
+    table {
+      width: 100%;
+    }
   }
 
   .level-1-wrapper, .level-2-wrapper {
@@ -582,6 +592,16 @@ html, body {
 
     table {
       margin-bottom: 50px;
+      width: 100%;
+    }
+
+    .request-type {
+      margin-left: unset;
+    }
+
+    .request-url {
+      margin-top: unset;
+      position: unset;
     }
   }
 
