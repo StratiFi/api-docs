@@ -224,23 +224,6 @@
           </li>
           <li>
             <a href="#accounts" class="toc-h1 toc-link" data-title="accounts">Accounts</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-all-accounts" class="toc-h2 toc-link" data-title="get-all-accounts">Get All Accounts</a>
-                  </li>
-                  <li>
-                    <a href="#get-account-by-name" class="toc-h2 toc-link" data-title="get-account-by-name">Get Account By Name</a>
-                  </li>
-                  <li>
-                    <a href="#get-account-by-id" class="toc-h2 toc-link" data-title="get-account-by-id">Get Account By ID</a>
-                  </li>
-                  <li>
-                    <a href="#update-positions" class="toc-h2 toc-link" data-title="update-positions">Update Positions</a>
-                  </li>
-                  <li>
-                    <a href="#list-all-prism-scores" class="toc-h2 toc-link" data-title="list-all-prism-scores">List All PRISM Scores</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#scores" class="toc-h1 toc-link" data-title="scores">Scores</a>
@@ -379,287 +362,166 @@ curl <span class="s2">"api_endpoint_here"</span>
 <p>Make sure to replace <code>stratifi-token</code> with your API key.</p>
 </blockquote>
 
-<p>StratiFi's PRISM API uses API keys to allow access to the API. You can register a new API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>StratiFi's PRISM API uses API keys to allow access to the API endpoints. Current Authentication method is Bearer token, provided by StratiFi Team.</p>
 
 <p>StratiFi expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code>Authorization: stratifi-token</code></p>
+<p><code>Authorization: Bearer stratifi-token</code></p>
 
 <aside class="notice">
 You must replace <code>stratifi-token</code> with your personal API key.
 </aside>
 <div class="level-1-wrapper"><div class="level-1"><h1 id="accounts">Accounts</h1></div></div>
-<p>All accounts related endpoints</p>
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
 <blockquote class="blockquote">
-<p>To send request:</p>
+<p>Create new account:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/accounts"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight python tab-python"><code>
+<span class="n">Endpoint</span><span class="p">:</span>
+<span class="n">api</span><span class="o">.</span><span class="n">stratifi</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">accounts</span><span class="o">/</span>
+
+<span class="n">Method</span> <span class="ow">and</span> <span class="n">Payload</span><span class="p">:</span>
+<span class="n">POST</span><span class="p">:</span>    
+<span class="p">{</span>
+<span class="s">"name"</span><span class="p">:</span> <span class="s">"New Account One"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">Return</span> <span class="nb">object</span><span class="p">:</span>
+
+<span class="p">{</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">13280</span><span class="p">,</span>
+    <span class="s">"provider"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"New Account One"</span><span class="p">,</span>
+    <span class="s">"value"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"data"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"non_taxable"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"portfolio_margin"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"status"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"updated_at"</span><span class="p">:</span> <span class="s">"2018-06-13T15:11:38.520870"</span><span class="p">,</span>
+    <span class="s">"created_at"</span><span class="p">:</span> <span class="s">"2018-06-13T15:11:38.520944"</span><span class="p">,</span>
+    <span class="s">"type"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"doc_type"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"number"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"performance_validated"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"pending_overlay_changes"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"investor"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"advisor_account"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"owner"</span><span class="p">:</span> <span class="mi">3591</span><span class="p">,</span>
+    <span class="s">"execution_client"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"strategies"</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+
+
+<span class="n">Endpoint</span><span class="p">:</span>
+<span class="n">api</span><span class="o">.</span><span class="n">stratifi</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">accounts</span><span class="o">/</span><span class="p">:</span><span class="n">ID</span>
+
+<span class="n">Method</span><span class="p">:</span>
+<span class="n">GET</span><span class="p">:</span>
+
+<span class="n">Return</span> <span class="nb">object</span><span class="p">:</span>
+
+<span class="p">{</span>
+    <span class="s">"id"</span><span class="p">:</span> <span class="mi">13280</span><span class="p">,</span>
+    <span class="s">"provider"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"New Account One"</span><span class="p">,</span>
+    <span class="s">"value"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s">"data"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"non_taxable"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"portfolio_margin"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"status"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">"updated_at"</span><span class="p">:</span> <span class="s">"2018-06-13T15:11:38.520870"</span><span class="p">,</span>
+    <span class="s">"created_at"</span><span class="p">:</span> <span class="s">"2018-06-13T15:11:38.520944"</span><span class="p">,</span>
+    <span class="s">"type"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"doc_type"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"number"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"performance_validated"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"pending_overlay_changes"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">"investor"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"advisor_account"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"owner"</span><span class="p">:</span> <span class="mi">3591</span><span class="p">,</span>
+    <span class="s">"execution_client"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"strategies"</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+
+
+<span class="n">Endpoint</span><span class="p">:</span>
+<span class="n">api</span><span class="o">.</span><span class="n">stratifi</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">accounts</span><span class="o">/</span><span class="p">:</span><span class="n">ID</span>
+
+<span class="n">Method</span> <span class="ow">and</span> <span class="n">Payload</span><span class="p">:</span>
+<span class="n">PUT</span><span class="p">:</span>
+
+<span class="p">{</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"testing account post 8"</span><span class="p">,</span>
+    <span class="s">"positions"</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+        <span class="s">"value"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"CUR:US"</span><span class="p">,</span>
+        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"U S Dollar"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">"value"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"SPY"</span><span class="p">,</span>
+        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"SPDR S&amp;P 500"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">"value"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"IVV"</span><span class="p">,</span>
+        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"iShares Core S&amp;P 500"</span>
+    <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+
+<span class="n">Return</span> <span class="nb">object</span><span class="p">:</span>
+
+<span class="p">{</span>
+    <span class="s">"name"</span><span class="p">:</span> <span class="s">"testing account post 8"</span><span class="p">,</span>
+    <span class="s">"positions"</span><span class="p">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+        <span class="s">"value"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"CUR:US"</span><span class="p">,</span>
+        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"U S Dollar"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">"value"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"SPY"</span><span class="p">,</span>
+        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"SPDR S&amp;P 500"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">"value"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="s">"ticker"</span><span class="p">:</span> <span class="s">"IVV"</span><span class="p">,</span>
+        <span class="s">"ticker_name"</span><span class="p">:</span> <span class="s">"iShares Core S&amp;P 500"</span>
+    <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+
+
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+
+
+<span class="o">&gt;</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">replace</span> <span class="s2">`meowmeowmeow`</span> <span class="kd">with</span> <span class="nx">your</span> <span class="nx">API</span> <span class="nx">key</span><span class="p">.</span>
 </code></pre>
-<blockquote class="blockquote">
-<p>Reponse Body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-    <span class="s2">"count"</span>: 9,
-    <span class="s2">"next"</span>: null,
-    <span class="s2">"previous"</span>: null,
-    <span class="s2">"results"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"id"</span>: 13272,
-            <span class="s2">"provider"</span>: 0,
-            <span class="s2">"name"</span>: <span class="s2">"testing account post2"</span>,
-            <span class="s2">"value"</span>: 1100,
-            <span class="s2">"data"</span>: null,
-            <span class="s2">"non_taxable"</span>: <span class="nb">false</span>,
-            <span class="s2">"portfolio_margin"</span>: <span class="nb">false</span>,
-            <span class="s2">"status"</span>: 1,
-            <span class="s2">"updated_at"</span>: <span class="s2">"2018-06-07T12:04:09.780358"</span>,
-            <span class="s2">"created_at"</span>: <span class="s2">"2018-06-06T15:57:38.716544"</span>,
-            <span class="s2">"type"</span>: null,
-            <span class="s2">"doc_type"</span>: null,
-            <span class="s2">"number"</span>: null,
-            <span class="s2">"performance_validated"</span>: <span class="nb">false</span>,
-            <span class="s2">"pending_overlay_changes"</span>: <span class="nb">false</span>,
-            <span class="s2">"investor"</span>: null,
-            <span class="s2">"advisor_account"</span>: null,
-            <span class="s2">"owner"</span>: 3591,
-            <span class="s2">"execution_client"</span>: null,
-            <span class="s2">"strategies"</span>: <span class="o">[]</span>
-        <span class="o">}</span>, … <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-all-accounts">Get All Accounts</h2>
-<p>Gets all accounts</p>
-<p class="request-type">GET</p>
-<p class="request-url">/accounts</p>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>count</td>
-<td>int</td>
-<td>Number of accounts</td>
-</tr>
-<tr>
-<td>next</td>
-<td>String</td>
-<td>Link to next page of accounts</td>
-</tr>
-<tr>
-<td>previous</td>
-<td>String</td>
-<td>Link to previous page of accounts</td>
-</tr>
-<tr>
-<td>results</td>
-<td>Object</td>
-<td>List of Account objects</td>
-</tr>
-</tbody>
-</table>
-<p><code>results</code> Object</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of account in StratiFi's system</td>
-</tr>
-<tr>
-<td>provider</td>
-<td>int</td>
-<td>ID of data provider recorded in StratiFi's system</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Name of account</td>
-</tr>
-<tr>
-<td>value</td>
-<td>float</td>
-<td>Portfolio value of account</td>
-</tr>
-<tr>
-<td>data</td>
-<td>Object</td>
-<td>Object representing the Account object</td>
-</tr>
-<tr>
-<td>non_taxable</td>
-<td>boolean</td>
-<td>True if account is taxable</td>
-</tr>
-<tr>
-<td>portfolio_margin</td>
-<td>boolean</td>
-<td>True if portfolio margin policy was applied to account</td>
-</tr>
-<tr>
-<td>status</td>
-<td>int</td>
-<td>ID of account status</td>
-</tr>
-<tr>
-<td>updated_at</td>
-<td>Timestamp</td>
-<td>Last updated timestamp</td>
-</tr>
-<tr>
-<td>created_at</td>
-<td>Timestamp</td>
-<td>Created at timestamp</td>
-</tr>
-<tr>
-<td>type</td>
-<td>I don't remember what is this</td>
-<td>I don't remember what is this</td>
-</tr>
-<tr>
-<td>doc_type</td>
-<td>String</td>
-<td>Document type signed for creation of this account</td>
-</tr>
-<tr>
-<td>number</td>
-<td>int</td>
-<td>Finfolio Account Number</td>
-</tr>
-<tr>
-<td>performance validated</td>
-<td>boolean</td>
-<td>True if performance has been validated by StratiFi's strict autonamous script</td>
-</tr>
-<tr>
-<td>pending_overlay_changes</td>
-<td>boolean</td>
-<td>True if there are pending overlay changes to the account</td>
-</tr>
-<tr>
-<td>investor</td>
-<td>Object</td>
-<td>Object describing the investor whom the account belongs to</td>
-</tr>
-<tr>
-<td>advisor_account</td>
-<td>Object</td>
-<td>Object describing the advisor of this account</td>
-</tr>
-<tr>
-<td>owner</td>
-<td>I don't remember this</td>
-<td>I don't remember this</td>
-</tr>
-<tr>
-<td>execution_client</td>
-<td>Object</td>
-<td>Object describing the execution client at custodian</td>
-</tr>
-<tr>
-<td>strategies</td>
-<td>Object</td>
-<td>List of strategies the account is subscribed to</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
+<p>Account endpoint allows creating new account and update it with positions.<br> </p>
 
+<p>Create account is done using POST method to /accounts/<br></p>
 
+<p>After adding the account GET method can be used to return details of the account using method GET to /accounts/:id</p>
+<pre class="highlight plaintext"><code>
+Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
+#`Authorization: meowmeowmeow`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="get-account-by-name">Get Account By Name</h2>
-<p>Get account by name</p>
-<p class="request-type">POST</p>
-<p class="request-url">/accounts</p>
-</div>
-</div></div>
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="get-account-by-id">Get Account By ID</h2>
-<p>Get account by ID</p>
-<p class="request-type">POST</p>
-<p class="request-url">/accounts/:ID</p>
-</div>
-</div></div>
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="update-positions">Update Positions</h2>
-<p>Update account with new positions</p>
-<p class="request-type">PUT</p>
-<p class="request-url">/accounts/:ID</p>
-</div>
-</div></div>
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="list-all-prism-scores">List All PRISM Scores</h2>
-<p>List all PRISM Scores of all accounts</p>
-<p class="request-type">GET</p>
-<p class="request-url">/accounts/prism-scores</p>
-</div>
-</div></div>
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="scores">Scores</h1></div></div>
+#&lt;aside class="notice"&gt;
+#You must replace &lt;code&gt;meowmeowmeow&lt;/code&gt; with your personal API key.
+#&lt;/aside&gt;
+</code></pre><div class="level-1-wrapper"><div class="level-1"><h1 id="scores">Scores</h1></div></div>
 <p>The PRISM API allows you to compute two types of scores. Risks and Returns.</p>
 <div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
 <h2 id="risks">Risks</h2>
 <p>The Risks Scores describes the susceptibility of your portfolio to the various events. </p>
 <div class="level-3">
@@ -667,7 +529,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To send request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/current"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi/com/v1/scores/risks/current"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -1513,7 +1375,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To send request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/current/overall"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/overall"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -1689,7 +1551,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/current/volatility"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/volatility"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -1865,7 +1727,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/current/tail"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/tail"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -2041,7 +1903,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/current/concentrated"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/concentrated"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -2217,7 +2079,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/current/correlation"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/current/correlation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -2400,7 +2262,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/target/overall"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/overall"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -2542,7 +2404,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/target/volatility"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/volatility"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -2684,7 +2546,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/target/tail"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/tail"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -2826,7 +2688,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/target/concentrated"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/concentrated"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -2968,7 +2830,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/risks/target/correlation"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/risks/target/correlation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -3103,7 +2965,6 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
@@ -3481,8 +3342,6 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 <div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
 <h2 id="returns">Returns</h2>
 <p>The Returns Scores describes the potentials returns your portfolio could reap from the various events. </p>
 <div class="level-3">
@@ -3495,7 +3354,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/current/overall"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/overall"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -3637,7 +3496,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/current/volatility"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/volatility"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -3813,7 +3672,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/current/tail"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/tail"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -3955,7 +3814,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/current/concentrated"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/concentrated"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -4097,7 +3956,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/current/correlation"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/current/correlation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -4246,7 +4105,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/target/overall"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/overall"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -4388,7 +4247,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/target/volatility"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/volatility"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -4530,7 +4389,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/target/tail"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/tail"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -4672,7 +4531,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/target/concentrated"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/concentrated"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -4814,7 +4673,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To compute, use this code: </p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scores/returns/target/correlation"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/scores/returns/target/correlation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
@@ -4949,7 +4808,6 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
@@ -5282,148 +5140,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 
-<div class="level-1-wrapper"><div class="level-1"><h1 id="scenarios">Scenarios</h1></div></div>
-<p>Get details of various scenarios used in PRISM</p>
-
-<blockquote class="blockquote">
-<p>To send request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/prism/scenarios"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Reponse Body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"overlay_coverage"</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">"tail"</span>: 0,
-                <span class="s2">"rr"</span>: 0,
-                <span class="s2">"rerr"</span>: 0
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
-        <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
-        <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"overlay_coverage"</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">"tail"</span>: 0,
-                <span class="s2">"rr"</span>: 0,
-                <span class="s2">"rerr"</span>: 0
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
-        <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
-        <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"overlay_coverage"</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">"tail"</span>: 0,
-                <span class="s2">"rr"</span>: 0,
-                <span class="s2">"rerr"</span>: 0
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
-        <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
-        <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"overlay_coverage"</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">"tail"</span>: 0,
-                <span class="s2">"rr"</span>: 0,
-                <span class="s2">"rerr"</span>: 0
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
-        <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
-        <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"overlay_coverage"</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">"tail"</span>: 0,
-                <span class="s2">"rr"</span>: 0,
-                <span class="s2">"rerr"</span>: 0
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">"name"</span>: <span class="s2">"custom"</span>,
-        <span class="s2">"end_date"</span>: <span class="s2">"2018-06-13"</span>,
-        <span class="s2">"start_date"</span>: <span class="s2">"2005-1-1"</span>
-    <span class="o">}</span>
-<span class="o">]</span>
-</code></pre>
-<p class="request-type">GET</p>
-
-<p class="request-url">/scenarios</p>
-
-<p><strong>Response Fields</strong></p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>overlay_coverage</td>
-<td>Object</td>
-<td>The overlay coverage of this scenario</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Scenario name</td>
-</tr>
-<tr>
-<td>end_date</td>
-<td>String</td>
-<td>Start date of scenario</td>
-</tr>
-<tr>
-<td>start_Date</td>
-<td>String</td>
-<td>End date of scenario</td>
-</tr>
-</tbody>
-</table>
-
-<p><code>overlay_coverage</code> Object</p>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>tail</td>
-<td>float</td>
-<td>Tail overlay value</td>
-</tr>
-<tr>
-<td>rr</td>
-<td>float</td>
-<td>Risk reduction overlay value</td>
-</tr>
-<tr>
-<td>rerr</td>
-<td>float</td>
-<td>Return enhancement risk reduction overlay value</td>
-</tr>
-</tbody>
-</table>
-<div class="level-1-wrapper"><div class="level-1"><h1 id="questions">Questions</h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="notifications">Notifications</h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="errors">Errors</h1></div></div>
+<div class="level-1-wrapper"><div class="level-1"><h1 id="scenarios">Scenarios</h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="questions">Questions</h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="notifications">Notifications</h1></div></div><div class="level-1-wrapper"><div class="level-1"><h1 id="errors">Errors</h1></div></div>
 <p>The StratiFi PRISM API uses the following error codes:</p>
 
 <table>
