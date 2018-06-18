@@ -1,161 +1,119 @@
 # Accounts
 
-> Create new account:
+All accounts related endpoints
 
+## Get All Accounts
 
-```python
+Gets all accounts
 
-Endpoint:
-api.stratifi.com/v1/accounts/
-
-Method and Payload:
-POST:    
-{
-"name": "New Account One",
-}
-
-Return object:
-
-{
-    "id": 13280,
-    "provider": 0,
-    "name": "New Account One",
-    "value": 0,
-    "data": null,
-    "non_taxable": false,
-    "portfolio_margin": false,
-    "status": 1,
-    "updated_at": "2018-06-13T15:11:38.520870",
-    "created_at": "2018-06-13T15:11:38.520944",
-    "type": null,
-    "doc_type": null,
-    "number": null,
-    "performance_validated": false,
-    "pending_overlay_changes": false,
-    "investor": null,
-    "advisor_account": null,
-    "owner": 3591,
-    "execution_client": null,
-    "strategies": []
-}
-
-
-Endpoint:
-api.stratifi.com/v1/accounts/:ID
-
-Method:
-GET:
-
-Return object:
-
-{
-    "id": 13280,
-    "provider": 0,
-    "name": "New Account One",
-    "value": 0,
-    "data": null,
-    "non_taxable": false,
-    "portfolio_margin": false,
-    "status": 1,
-    "updated_at": "2018-06-13T15:11:38.520870",
-    "created_at": "2018-06-13T15:11:38.520944",
-    "type": null,
-    "doc_type": null,
-    "number": null,
-    "performance_validated": false,
-    "pending_overlay_changes": false,
-    "investor": null,
-    "advisor_account": null,
-    "owner": 3591,
-    "execution_client": null,
-    "strategies": []
-}
-
-
-Endpoint:
-api.stratifi.com/v1/accounts/:ID
-
-Method and Payload:
-PUT:
-
-{
-    "name": "testing account post 8",
-    "positions": [
-     {
-        "value": 1000,
-        "ticker": "CUR:US",
-        "ticker_name": "U S Dollar"
-    },
-    {
-        "value": 10000,
-        "ticker": "SPY",
-        "ticker_name": "SPDR S&P 500"
-    },
-    {
-        "value": 10000,
-        "ticker": "IVV",
-        "ticker_name": "iShares Core S&P 500"
-    }
-    ]
-}
-
-
-Return object:
-
-{
-    "name": "testing account post 8",
-    "positions": [
-     {
-        "value": 1000,
-        "ticker": "CUR:US",
-        "ticker_name": "U S Dollar"
-    },
-    {
-        "value": 10000,
-        "ticker": "SPY",
-        "ticker_name": "SPDR S&P 500"
-    },
-    {
-        "value": 10000,
-        "ticker": "IVV",
-        "ticker_name": "iShares Core S&P 500"
-    }
-    ]
-}
-
-
-
-```
+> To send request:
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "api.stratifi.com/v1/accounts"
+  -H "Authorization: stratifi-token"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Reponse Body
 
-let api = kittn.authorize('meowmeowmeow');
-
-
-> Make sure to replace `meowmeowmeow` with your API key.
+```shell
+{
+    "count": 9,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 13272,
+            "provider": 0,
+            "name": "testing account post2",
+            "value": 1100,
+            "data": null,
+            "non_taxable": false,
+            "portfolio_margin": false,
+            "status": 1,
+            "updated_at": "2018-06-07T12:04:09.780358",
+            "created_at": "2018-06-06T15:57:38.716544",
+            "type": null,
+            "doc_type": null,
+            "number": null,
+            "performance_validated": false,
+            "pending_overlay_changes": false,
+            "investor": null,
+            "advisor_account": null,
+            "owner": 3591,
+            "execution_client": null,
+            "strategies": []
+        }, … ]
+}
 ```
 
-Account endpoint allows creating new account and update it with positions.<br/> 
+-request-type: GET
 
-Create account is done using POST method to /accounts/<br/>
+-request-url: /accounts
 
-After adding the account GET method can be used to return details of the account using method GET to /accounts/:id
+**Response Fields**
+
+Name | Type | Description
+-----|------|------------
+count | int | Number of accounts
+next | String | Link to next page of accounts
+previous | String | Link to previous page of accounts
+results | Object | List of Account objects
+
+`results` Object
+
+Name | Type | Description
+-----|------|------------
+id | int | ID of account in StratiFi's system
+provider | int | ID of data provider recorded in StratiFi's system
+name | String | Name of account
+value | float | Portfolio value of account
+data | Object | Object representing the Account object
+non_taxable | boolean | True if account is taxable
+portfolio_margin | boolean | True if portfolio margin policy was applied to account
+status | int | ID of account status
+updated_at | Timestamp | Last updated timestamp
+created_at | Timestamp | Created at timestamp
+type | I don't remember what is this | I don't remember what is this
+doc_type | String | Document type signed for creation of this account
+number | int | Finfolio Account Number
+performance validated | boolean | True if performance has been validated by StratiFi's strict autonamous script 
+pending_overlay_changes | boolean | True if there are pending overlay changes to the account
+investor | Object | Object describing the investor whom the account belongs to
+advisor_account | Object | Object describing the advisor of this account
+owner | I don't remember this | I don't remember this
+execution_client | Object | Object describing the execution client at custodian
+strategies | Object | List of strategies the account is subscribed to
+
+## Get Account By Name
+
+Get account by name
+
+-request-type: POST
+
+-request-url: /accounts
+
+## Get Account By ID
+
+Get account by ID
+
+-request-type: POST
+
+-request-url: /accounts/:ID
+
+## Update Positions
+
+Update account with new positions
 
 
-```
+-request-type: PUT
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+-request-url: /accounts/:ID
 
-#`Authorization: meowmeowmeow`
+## List All PRISM Scores
 
-#<aside class="notice">
-#You must replace <code>meowmeowmeow</code> with your personal API key.
-#</aside>
-```
+List all PRISM Scores of all accounts
+
+-request-type: GET
+
+-request-url: /accounts/prism-scores
+

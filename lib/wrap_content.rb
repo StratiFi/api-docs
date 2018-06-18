@@ -33,7 +33,7 @@ def wrap_content(page_content)
 	end
 
 	#some additional grouping within level-4 section
-	html_doc.css("div[@class='level-4']", "div[@class='level-3']").each do | node |
+	html_doc.css("div[@class='level-4']", "div[@class='level-3']",  "div[@class='level-2']").each do | node |
 		children = node.children
 		side = Nokogiri::XML::Node.new("div", html_doc)
 		main = Nokogiri::XML::Node.new("div", html_doc)
@@ -63,6 +63,19 @@ def wrap_content(page_content)
 
 	html_doc.css("[@class='level-1']").wrap("<div class='level-1-wrapper'></div>")
 	html_doc.css("[@class='level-2']").wrap("<div class='level-2-wrapper'></div>")
+
+
+	html_doc.children.each do | child |
+		if child.to_s.include? '-request-type:'
+			child.content = child.content.sub! '-request-type: ', ''
+			child['class'] = 'request-type'
+		end
+		if child.to_s.include? '-request-url:'
+			child.content = child.content.sub! '-request-url: ', ''
+			child['class'] = 'request-url'
+		end
+	end
+
 	html_doc
 end
 

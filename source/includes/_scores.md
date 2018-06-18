@@ -1,4 +1,4 @@
-# Score
+# Scores
 The PRISM API allows you to compute two types of scores. Risks and Returns.
 
 ## Risks
@@ -9,7 +9,7 @@ This API computes the Risks Scores of your current portfolio
 > To send request:
 
 ```shell
-curl "api.stratifi/com/v1/scores/risks/current"
+curl "api.stratifi.com/v1/prism/scores/risks/current"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -742,7 +742,7 @@ rerr | float | Score of portfolio with a return enhancement risk reduction overl
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/current/overall"
+curl "api.stratifi.com/v1/prism/scores/risks/current/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -850,7 +850,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/current/volatility"
+curl "api.stratifi.com/v1/prism/scores/risks/current/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -958,7 +958,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/current/tail"
+curl "api.stratifi.com/v1/prism/scores/risks/current/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1066,7 +1066,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/current/concentrated"
+curl "api.stratifi.com/v1/prism/scores/risks/current/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1174,7 +1174,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/current/correlation"
+curl "api.stratifi.com/v1/prism/scores/risks/current/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1284,7 +1284,7 @@ This API computes the Risks Scores of your target portfolio
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/target/overall"
+curl "api.stratifi.com/v1/prism/scores/risks/target/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1357,7 +1357,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/target/volatility"
+curl "api.stratifi.com/v1/prism/scores/risks/target/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1430,7 +1430,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/target/tail"
+curl "api.stratifi.com/v1/prism/scores/risks/target/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1503,7 +1503,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/target/concentrated"
+curl "api.stratifi.com/v1/prism/scores/risks/target/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1576,7 +1576,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/risks/target/correlation"
+curl "api.stratifi.com/v1/prism/scores/risks/target/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1654,7 +1654,7 @@ This API computes the Returns Scores of your current portfolio
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/current/overall"
+curl "api.stratifi.com/v1/prism/scores/returns/current/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1727,7 +1727,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/current/volatility"
+curl "api.stratifi.com/v1/prism/scores/returns/current/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1835,7 +1835,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/current/tail"
+curl "api.stratifi.com/v1/prism/scores/returns/current/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1908,7 +1908,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/current/concentrated"
+curl "api.stratifi.com/v1/prism/scores/returns/current/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1981,7 +1981,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/current/correlation"
+curl "api.stratifi.com/v1/prism/scores/returns/current/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2056,7 +2056,7 @@ This API computes the Returns Scores of your target portfolio
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/target/overall"
+curl "api.stratifi.com/v1/prism/scores/returns/target/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2129,7 +2129,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/target/volatility"
+curl "api.stratifi.com/v1/prism/scores/returns/target/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2202,7 +2202,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/target/tail"
+curl "api.stratifi.com/v1/prism/scores/returns/target/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2275,7 +2275,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/target/concentrated"
+curl "api.stratifi.com/v1/prism/scores/returns/target/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2348,7 +2348,7 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 > To compute, use this code: 
 
 ```shell
-curl "api.stratifi.com/v1/scores/returns/target/correlation"
+curl "api.stratifi.com/v1/prism/scores/returns/target/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
