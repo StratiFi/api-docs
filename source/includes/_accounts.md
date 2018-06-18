@@ -144,9 +144,9 @@ let api = kittn.authorize('meowmeowmeow');
 
 Account endpoint allows creating new account and update it with positions.<br/> 
 
-Create account is done using POST method to https://api.stratifi.com/v1/accounts/<br/>
+Create account is done using POST method to /accounts/<br/>
 
-After adding the account GET method can be used to return details of the account using method GET to https://api.stratifi.com/v1/accounts/:id
+After adding the account GET method can be used to return details of the account using method GET to /accounts/:id
 
 
 ```
