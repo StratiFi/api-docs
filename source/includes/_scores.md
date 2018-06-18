@@ -1,4 +1,4 @@
-# Scores
+# Score
 The PRISM API allows you to compute two types of scores. Risks and Returns.
 
 ## Risks
