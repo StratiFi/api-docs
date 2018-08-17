@@ -45,9 +45,9 @@ curl "api.stratifi.com/v1/households/"
 
 Name | Type | Description
 -----|------|------------
-count | int | Number of investors
-next | String | Link to next page of investors
-previous | String | Link to previous page of investors
+count | int | Number of households
+next | String | Link to next page of households
+previous | String | Link to previous page of households
 results | Object | List of Investor objects
 
 `results` Object
@@ -64,7 +64,7 @@ advisor | int |  ID of the advisor
 
 -request-type: POST
 
--request-url: /investors
+-request-url: /households
 
 ```shell
 curl -X POST "api.stratifi.com/v1/households/"
