@@ -100,7 +100,7 @@ name | String | Name of household
 
 Name | Type | Description
 -----|------|------------
-id | int | ID of investor in StratiFi's system
+id | int | ID of households in StratiFi's system
 name | String | Household name
 owner | int | ID of the user who created the object
 advisor | int | ID of the Advisor object
@@ -145,7 +145,7 @@ name | String | Household name
 
 Name | Type | Description
 -----|------|------------
-id | int | ID of investor in StratiFi's system
+id | int | ID of households in StratiFi's system
 name | String | Household name
 owner | int | ID of the user who created the object
 advisor | int | ID of the Advisor object
