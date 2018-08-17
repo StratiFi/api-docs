@@ -1,4 +1,4 @@
-# Household
+# Households
 
 All household related endpoints
 
