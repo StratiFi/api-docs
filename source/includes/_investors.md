@@ -131,7 +131,7 @@ data | Object | Object describing the payload
 status | int | ID of investor status
 user | int |  ID of the user object
 advisor | int |  ID of the advisor
-owner | int | Object creator's user ID
+owner | int | ID of the user who created the object
 address | String | Investor address
 household |int | ID of Household object
 updated_at | Timestamp | Last updated timestamp
