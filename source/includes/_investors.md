@@ -2,7 +2,12 @@
 
 All investors related endpoints
 
+
 ## Get All Investors
+
+-request-type: GET
+
+-request-url: /investors
 
 > To send request:
 
@@ -40,10 +45,6 @@ curl "api.stratifi.com/v1/investors/"
 }
 ```
 
--request-type: GET
-
--request-url: /investors
-
 **Response Fields**
 
 Name | Type | Description
@@ -64,7 +65,8 @@ household |int | ID of Household object
 updated_at | Timestamp | Last updated timestamp
 created_at | Timestamp | Created at timestamp
 
-## Create investor
+
+## Create Investor
 
 -request-type: POST
 
@@ -137,6 +139,7 @@ household |int | ID of Household object
 updated_at | Timestamp | Last updated timestamp
 created_at | Timestamp | Created at timestamp
 
+
 ## Get Investor By ID
 
 Get investor by ID
@@ -158,7 +161,7 @@ updated_at | Timestamp | Last updated timestamp
 created_at | Timestamp | Created at timestamp
 
 
-## Update investor
+## Update Investor
 
 Update investor household
 
