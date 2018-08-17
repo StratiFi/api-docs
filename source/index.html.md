@@ -11,6 +11,8 @@ includes:
   - introduction
   - authentication
   - accounts
+  - investors
+  - household
   - scores
   - scenarios
   - questions
