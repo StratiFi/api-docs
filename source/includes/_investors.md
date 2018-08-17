@@ -175,3 +175,38 @@ Update investor household
 Parameter | Type | Description
 ----------|------|------------
 household | int | ID of Household object
+
+
+## Investor Prism Aggregation
+
+-request-type: GET
+
+-request-url: /investors/:ID/prism_aggregation
+
+> To send request:
+
+```shell
+curl "api.stratifi.com/v1/investors/<investor id>/prism_aggregation"
+  -H "Authorization: stratifi-token"
+```
+
+> Reponse Body
+
+```shell
+{
+  "no_overlay_concentrated": 4.785445142005072,
+  "no_overlay_correlation": 6.049895392953136,
+  "no_overlay_overall": 8.214532798503825,
+  "no_overlay_tail": 8.674759220001045,
+  "no_overlay_volatility": 9.224755263382502
+}
+```
+
+**Response Fields**
+
+Name | Type | Description
+-----|------|------------
+no_overlay_concentrated | float | The value of the concentration
+no_overlay_correlation | float | The value of the correlation
+no_overlay_overall | float | Overall value
+no_overlay_volatility | float | The value of the volatility
