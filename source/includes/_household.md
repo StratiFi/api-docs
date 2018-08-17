@@ -48,7 +48,7 @@ Name | Type | Description
 count | int | Number of households
 next | String | Link to next page of households
 previous | String | Link to previous page of households
-results | Object | List of Investor objects
+results | Object | List of household objects
 
 `results` Object
 
