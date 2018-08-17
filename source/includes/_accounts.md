@@ -76,11 +76,11 @@ created_at | Timestamp | Created at timestamp
 type | I don't remember what is this | I don't remember what is this
 doc_type | String | Document type signed for creation of this account
 number | int | Finfolio Account Number
-performance validated | boolean | True if performance has been validated by StratiFi's strict autonamous script 
+performance validated | boolean | True if performance has been validated by StratiFi's strict autonamous script
 pending_overlay_changes | boolean | True if there are pending overlay changes to the account
 investor | Object | Object describing the investor whom the account belongs to
 advisor_account | Object | Object describing the advisor of this account
-owner | I don't remember this | I don't remember this
+owner | int | ID of the user who created the object
 execution_client | Object | Object describing the execution client at custodian
 strategies | Object | List of strategies the account is subscribed to
 
