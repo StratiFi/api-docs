@@ -117,3 +117,47 @@ List all PRISM Scores of all accounts
 
 -request-url: /accounts/prism-scores
 
+## Batch Update Accounts PRISM Score
+
+Update PRISM Score of accounts in batch
+
+-request-type: POST
+
+-request-url: /accounts/update_prism_scores/
+
+> To send request:
+
+```shell
+curl -X POST "api.stratifi.com/accounts/update_prism_scores/"
+  -H "Authorization: stratifi-token"
+  -H 'Content-Type: application/json'
+  -d '{"account_ids": [1, 2, 3, 4]}'
+```
+
+> Reponse Body
+
+```shell
+{
+    "version":"1",
+    "data": {
+        "task_id": "da9df77e-1234-4957-5678-3caa77a501d2"
+    }
+}
+```
+
+
+**Response Fields**
+
+Name | Type | Description
+-----|------|------------
+task_id | int | The async task ID
+
+
+## Update PRISM Score
+
+Update account PRISM Score
+
+
+-request-type: POST
+
+-request-url: /accounts/:ID/update_prism_score/
