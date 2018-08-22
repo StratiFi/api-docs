@@ -240,6 +240,12 @@
                   <li>
                     <a href="#list-all-prism-scores" class="toc-h2 toc-link" data-title="list-all-prism-scores">List All PRISM Scores</a>
                   </li>
+                  <li>
+                    <a href="#batch-update-accounts-prism-score" class="toc-h2 toc-link" data-title="batch-update-accounts-prism-score">Batch Update Accounts PRISM Score</a>
+                  </li>
+                  <li>
+                    <a href="#update-prism-score" class="toc-h2 toc-link" data-title="update-prism-score">Update PRISM Score</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -688,6 +694,78 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <p>List all PRISM Scores of all accounts</p>
 <p class="request-type">GET</p>
 <p class="request-url">/accounts/prism-scores</p>
+</div>
+</div></div>
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>To send request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/accounts/update_prism_scores/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+  -d <span class="s1">'{"account_ids": [1, 2, 3, 4]}'</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"version"</span>:<span class="s2">"1"</span>,
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"task_id"</span>: <span class="s2">"da9df77e-1234-4957-5678-3caa77a501d2"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<div class="main">
+<h2 id="batch-update-accounts-prism-score">Batch Update Accounts PRISM Score</h2>
+<p>Update PRISM Score of accounts in batch</p>
+<p class="request-type">POST</p>
+<p class="request-url">/accounts/update_prism_scores/</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>task_id</td>
+<td>int</td>
+<td>The async task ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="update-prism-score">Update PRISM Score</h2>
+<p>Update account PRISM Score</p>
+<p class="request-type">POST</p>
+<p class="request-url">/accounts/:ID/update_prism_score/</p>
 </div>
 </div></div>
 
