@@ -9,7 +9,7 @@ Gets all accounts
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/accounts"
+curl "api.stratifi.com/v1/accounts/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -73,10 +73,10 @@ portfolio_margin | boolean | True if portfolio margin policy was applied to acco
 status | int | ID of account status
 updated_at | Timestamp | Last updated timestamp
 created_at | Timestamp | Created at timestamp
-type | I don't remember what is this | I don't remember what is this
-doc_type | String | Document type signed for creation of this account
+type | int | Account type
+doc_type | int | Document type signed for creation of this account
 number | int | Finfolio Account Number
-performance validated | boolean | True if performance has been validated by StratiFi's strict autonamous script
+performance_validated | boolean | True if performance has been validated by StratiFi's strict autonamous script
 pending_overlay_changes | boolean | True if there are pending overlay changes to the account
 investor | Object | Object describing the investor whom the account belongs to
 advisor_account | Object | Object describing the advisor of this account
@@ -84,30 +84,116 @@ owner | int | ID of the user who created the object
 execution_client | Object | Object describing the execution client at custodian
 strategies | Object | List of strategies the account is subscribed to
 
-## Get Account By Name
+## Get Account By ID
 
-Get account by name
+Get account by ID
+
+-request-type: GET
+
+-request-url: /accounts/:ID
+
+## Create Account
+
+Create an account
 
 -request-type: POST
 
 -request-url: /accounts
 
-## Get Account By ID
+> To send request:
 
-Get account by ID
+```shell
+curl -X POST "api.stratifi.com/v1/accounts/"
+  -H "Authorization: stratifi-token"
+  -H "Content-Type: application/json"
+  -d '{"name": "new_account"}'
+```
 
--request-type: POST
+> Reponse Body
 
--request-url: /accounts/:ID
+```shell
+{
+    "id": 15098,
+    "provider": 0,
+    "name": "new_account",
+    "value": 0.0,
+    "data": null,
+    "non_taxable": false,
+    "portfolio_margin": false,
+    "status": 1,
+    "updated_at": "2018-08-27T12:42:15.478899",
+    "created_at": "2018-08-27T12:42:15.478913",
+    "type": null,
+    "doc_type": null,
+    "number": null,
+    "investor": null,
+    "advisor_account": null,
+    "owner": 357,
+    "execution_client": null,
+    "strategies": []
+}
+```
 
-## Update Positions
+**Request Parameters**
 
-Update account with new positions
+Parameter | Type | Description
+----------|------|------------
+name | String | Name of account
+provider | int | (optional) ID of data provider recorded in StratiFi's system
+non_taxable | boolean | (optional) True if account is taxable
+portfolio_margin | boolean | (optional) True if portfolio margin policy was applied to account
+status | int | (optional) ID of account status
+type | int | (optional) Account type
+doc_type | int | (optional) Document type signed for creation of this account
+number | int | (optional) Finfolio Account Number
+investor | int | (optional) ID of investor whom the account belongs to
+advisor_account | int | (optional) ID of advisor of this account
+execution_client | int | (optional) ID of the execution client at custodian
 
+**Valid Account Types**
+
+Value | Description
+----------|------
+100 | Individual
+101 | Joint
+200 | Revocable Living Trust
+201 | Irrevocable Living Trust
+300 | Limited Liability Company
+304 | Limited Liability Limited Partnership
+301 | S Corporation
+302 | C Corporation
+303 | Sole Proprietorship
+400 | Traditional IRA
+402 | Simplified Employee Pension IRA
+402 | Savings Incentive Match Plan for Employees IRA
+403 | Roth IRA
+404 | Rollover IRA
+500 | Household Account
+
+
+## Update Account
+
+Update account information
 
 -request-type: PUT
 
 -request-url: /accounts/:ID
+
+**Parameters**
+
+Parameter | Type | Description
+----------|------|------------
+name | String | Name of account
+provider | int | ID of data provider recorded in StratiFi's system
+non_taxable | boolean | True if account is taxable
+portfolio_margin | boolean | True if portfolio margin policy was applied to account
+status | int | ID of account status
+type | int | Account type
+doc_type | int | Document type signed for creation of this account
+number | int | Finfolio Account Number
+investor | int | ID of investor whom the account belongs to
+advisor_account | int | ID of advisor of this account
+execution_client | int | ID of the execution client at custodian
 
 ## List All PRISM Scores
 

@@ -102,7 +102,6 @@ Name | Type | Description
 -----|------|------------
 id | int | ID of households in StratiFi's system
 name | String | Household name
-owner | int | ID of the user who created the object
 advisor | int | ID of the Advisor object
 
 
@@ -147,7 +146,6 @@ Name | Type | Description
 -----|------|------------
 id | int | ID of households in StratiFi's system
 name | String | Household name
-owner | int | ID of the user who created the object
 advisor | int | ID of the Advisor object
 
 
