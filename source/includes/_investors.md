@@ -110,8 +110,8 @@ curl -X POST "api.stratifi.com/v1/investors/"
 
 Parameter | Type | Description
 ----------|------|------------
-household | int | ID of Household object
 user | Object | User data
+household | int | (optional) ID of Household object
 
 
 `user` Object
