@@ -229,13 +229,13 @@
                     <a href="#get-all-accounts" class="toc-h2 toc-link" data-title="get-all-accounts">Get All Accounts</a>
                   </li>
                   <li>
-                    <a href="#get-account-by-name" class="toc-h2 toc-link" data-title="get-account-by-name">Get Account By Name</a>
-                  </li>
-                  <li>
                     <a href="#get-account-by-id" class="toc-h2 toc-link" data-title="get-account-by-id">Get Account By ID</a>
                   </li>
                   <li>
-                    <a href="#update-positions" class="toc-h2 toc-link" data-title="update-positions">Update Positions</a>
+                    <a href="#create-account" class="toc-h2 toc-link" data-title="create-account">Create Account</a>
+                  </li>
+                  <li>
+                    <a href="#update-account" class="toc-h2 toc-link" data-title="update-account">Update Account</a>
                   </li>
                   <li>
                     <a href="#list-all-prism-scores" class="toc-h2 toc-link" data-title="list-all-prism-scores">List All PRISM Scores</a>
@@ -441,7 +441,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To send request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/accounts"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/accounts/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
@@ -576,12 +576,12 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </tr>
 <tr>
 <td>type</td>
-<td>I don't remember what is this</td>
-<td>I don't remember what is this</td>
+<td>int</td>
+<td>Account type</td>
 </tr>
 <tr>
 <td>doc_type</td>
-<td>String</td>
+<td>int</td>
 <td>Document type signed for creation of this account</td>
 </tr>
 <tr>
@@ -590,7 +590,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <td>Finfolio Account Number</td>
 </tr>
 <tr>
-<td>performance validated</td>
+<td>performance_validated</td>
 <td>boolean</td>
 <td>True if performance has been validated by StratiFi's strict autonamous script</td>
 </tr>
@@ -648,23 +648,9 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side"></div>
 <div class="main">
-<h2 id="get-account-by-name">Get Account By Name</h2>
-<p>Get account by name</p>
-<p class="request-type">POST</p>
-<p class="request-url">/accounts</p>
-</div>
-</div></div>
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
 <h2 id="get-account-by-id">Get Account By ID</h2>
 <p>Get account by ID</p>
-<p class="request-type">POST</p>
+<p class="request-type">GET</p>
 <p class="request-url">/accounts/:ID</p>
 </div>
 </div></div>
@@ -674,14 +660,282 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 <div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
+<div class="side">
+<blockquote class="blockquote">
+<p>To send request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/accounts/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{"name": "new_account"}'</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 15098,
+    <span class="s2">"provider"</span>: 0,
+    <span class="s2">"name"</span>: <span class="s2">"new_account"</span>,
+    <span class="s2">"value"</span>: 0.0,
+    <span class="s2">"data"</span>: null,
+    <span class="s2">"non_taxable"</span>: <span class="nb">false</span>,
+    <span class="s2">"portfolio_margin"</span>: <span class="nb">false</span>,
+    <span class="s2">"status"</span>: 1,
+    <span class="s2">"updated_at"</span>: <span class="s2">"2018-08-27T12:42:15.478899"</span>,
+    <span class="s2">"created_at"</span>: <span class="s2">"2018-08-27T12:42:15.478913"</span>,
+    <span class="s2">"type"</span>: null,
+    <span class="s2">"doc_type"</span>: null,
+    <span class="s2">"number"</span>: null,
+    <span class="s2">"investor"</span>: null,
+    <span class="s2">"advisor_account"</span>: null,
+    <span class="s2">"owner"</span>: 357,
+    <span class="s2">"execution_client"</span>: null,
+    <span class="s2">"strategies"</span>: <span class="o">[]</span>
+<span class="o">}</span>
+</code></pre>
+</div>
 <div class="main">
-<h2 id="update-positions">Update Positions</h2>
-<p>Update account with new positions</p>
-<p class="request-type">PUT</p>
-<p class="request-url">/accounts/:ID</p>
+<h2 id="create-account">Create Account</h2>
+<p>Create an account</p>
+<p class="request-type">POST</p>
+<p class="request-url">/accounts</p>
+<p><strong>Request Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of account</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>int</td>
+<td>(optional) ID of data provider recorded in StratiFi's system</td>
+</tr>
+<tr>
+<td>non_taxable</td>
+<td>boolean</td>
+<td>(optional) True if account is taxable</td>
+</tr>
+<tr>
+<td>portfolio_margin</td>
+<td>boolean</td>
+<td>(optional) True if portfolio margin policy was applied to account</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>(optional) ID of account status</td>
+</tr>
+<tr>
+<td>type</td>
+<td>int</td>
+<td>(optional) Account type</td>
+</tr>
+<tr>
+<td>doc_type</td>
+<td>int</td>
+<td>(optional) Document type signed for creation of this account</td>
+</tr>
+<tr>
+<td>number</td>
+<td>int</td>
+<td>(optional) Finfolio Account Number</td>
+</tr>
+<tr>
+<td>investor</td>
+<td>int</td>
+<td>(optional) ID of investor whom the account belongs to</td>
+</tr>
+<tr>
+<td>advisor_account</td>
+<td>int</td>
+<td>(optional) ID of advisor of this account</td>
+</tr>
+<tr>
+<td>execution_client</td>
+<td>int</td>
+<td>(optional) ID of the execution client at custodian</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Valid Account Types</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Joint</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Revocable Living Trust</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Irrevocable Living Trust</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Limited Liability Company</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Limited Liability Limited Partnership</td>
+</tr>
+<tr>
+<td>301</td>
+<td>S Corporation</td>
+</tr>
+<tr>
+<td>302</td>
+<td>C Corporation</td>
+</tr>
+<tr>
+<td>303</td>
+<td>Sole Proprietorship</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Traditional IRA</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Simplified Employee Pension IRA</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Savings Incentive Match Plan for Employees IRA</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Roth IRA</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Rollover IRA</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Household Account</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="update-account">Update Account</h2>
+<p>Update account information</p>
+<p class="request-type">PUT</p>
+<p class="request-url">/accounts/:ID</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of account</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>int</td>
+<td>ID of data provider recorded in StratiFi's system</td>
+</tr>
+<tr>
+<td>non_taxable</td>
+<td>boolean</td>
+<td>True if account is taxable</td>
+</tr>
+<tr>
+<td>portfolio_margin</td>
+<td>boolean</td>
+<td>True if portfolio margin policy was applied to account</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>ID of account status</td>
+</tr>
+<tr>
+<td>type</td>
+<td>int</td>
+<td>Account type</td>
+</tr>
+<tr>
+<td>doc_type</td>
+<td>int</td>
+<td>Document type signed for creation of this account</td>
+</tr>
+<tr>
+<td>number</td>
+<td>int</td>
+<td>Finfolio Account Number</td>
+</tr>
+<tr>
+<td>investor</td>
+<td>int</td>
+<td>ID of investor whom the account belongs to</td>
+</tr>
+<tr>
+<td>advisor_account</td>
+<td>int</td>
+<td>ID of advisor of this account</td>
+</tr>
+<tr>
+<td>execution_client</td>
+<td>int</td>
+<td>ID of the execution client at custodian</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
 
 
 
@@ -956,14 +1210,14 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </thead>
 <tbody>
 <tr>
-<td>household</td>
-<td>int</td>
-<td>ID of Household object</td>
-</tr>
-<tr>
 <td>user</td>
 <td>Object</td>
 <td>User data</td>
+</tr>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>(optional) ID of Household object</td>
 </tr>
 </tbody>
 </table>
@@ -1438,11 +1692,6 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <td>Household name</td>
 </tr>
 <tr>
-<td>owner</td>
-<td>int</td>
-<td>ID of the user who created the object</td>
-</tr>
-<tr>
 <td>advisor</td>
 <td>int</td>
 <td>ID of the Advisor object</td>
@@ -1562,11 +1811,6 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <td>name</td>
 <td>String</td>
 <td>Household name</td>
-</tr>
-<tr>
-<td>owner</td>
-<td>int</td>
-<td>ID of the user who created the object</td>
 </tr>
 <tr>
 <td>advisor</td>
