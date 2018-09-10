@@ -13,6 +13,7 @@ includes:
   - accounts
   - investors
   - household
+  - companies
   - scores
   - scenarios
   - questions
