@@ -1,18 +1,18 @@
-# Investors
+# Advisors
 
-All investors related endpoints
+All advisors related endpoints
 
 
-## Get All Investors
+## Get All Advisors
 
 -request-type: GET
 
--request-url: /investors
+-request-url: /advisors
 
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/investors/"
+curl "api.stratifi.com/v1/advisors/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -31,8 +31,8 @@ curl "api.stratifi.com/v1/investors/"
            "last_name":"Wick",
            "email":"john.wick@example.com"
         },
-        "advisor": 1,
-        "household": 1,
+        "title": "Co-founder",
+        "company": 1,
         "phone": "5555555555"
     },
     {
@@ -42,8 +42,8 @@ curl "api.stratifi.com/v1/investors/"
            "last_name":"Spencer",
            "email":"mspencer@example.com"
         },
-        "advisor": 1,
-        "household": 2,
+        "company": 1,
+        "title": "Mr.",
         "phone": "5555555555"
     }, … ]
   ]
@@ -54,35 +54,35 @@ curl "api.stratifi.com/v1/investors/"
 
 Name | Type | Description
 -----|------|------------
-count | int | Number of investors
-next | String | Link to next page of investors
-previous | String | Link to previous page of investors
-results | Object | List of Investor objects
+count | int | Number of advisors
+next | String | Link to next page of advisors
+previous | String | Link to previous page of advisors
+results | Object | List of Advisor objects
 
 `results` Object
 
 Name | Type | Description
 -----|------|------------
-id | int | ID of investor in StratiFi's system
-advisor |int | ID of Advisor object in StratiFi's system
-household |int | ID of Household object in StratiFi's system
-phone |string | Phone of the investor
+id | int | ID of advisor in StratiFi's system
+company |int | ID of Company object in StratiFi's system
+phone |string | Phone of the advisor
+title |string | Title of the advisor
 user | Object | User object
 
 
-## Create Investor
+## Create Advisor
 
 -request-type: POST
 
--request-url: /investors
+-request-url: /advisors
 
 ```shell
-curl -X POST "api.stratifi.com/v1/investors/"
+curl -X POST "api.stratifi.com/v1/advisors/"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
-    "household": <household id>,
-    "advisor": <advisor id>,
+    "title": <household id>,
+    "company": <advisor id>,
     "phone": "5555555555",
     "user": {
       "first_name": "John",
@@ -103,8 +103,8 @@ curl -X POST "api.stratifi.com/v1/investors/"
     "last_name": "Spencer",
     "email": "mspencer@example.com"
   },
-  "household": 200,
-  "advisor": 101
+  "title": 200,
+  "company": 101
 }
 
 ```
@@ -113,8 +113,8 @@ curl -X POST "api.stratifi.com/v1/investors/"
 
 Parameter | Type | Description
 ----------|------|------------
-advisor | int | ID of Advisor object in StratiFi's system
-household | int | (optional) ID of Household object in StratiFi's system
+company | int | ID of Company object in StratiFi's system
+title | string | Title of the advisor
 user | Object | User data
 
 
@@ -122,90 +122,90 @@ user | Object | User data
 
 Name | Type | Description
 -----|------|------------
-email | String | Investor email
-first_name | String | Investor first name
-last_name | String | Investor last name
+email | String | Advisor email
+first_name | String | Advisor first name
+last_name | String | Advisor last name
 
 
 **Response Fields**
 
 Name | Type | Description
 -----|------|------------
-id | int | ID of investor in StratiFi's system
-advisor |int | ID of Advisor object in StratiFi's system
-household |int | ID of Household object in StratiFi's system
-phone |string | Phone of the investor
+id | int | ID of advisor in StratiFi's system
+company |int | ID of Company object in StratiFi's system
+phone |string | Phone of the advisor
+title |string | Title of the advisor
 user | Object | User object
 
 
-## Get Investor By ID
+## Get Advisor By ID
 
-Get investor by ID
+Get advisor by ID
 
 -request-type: GET
 
--request-url: /investors/:ID
+-request-url: /advisors/:ID
 
 
 **Response Fields**
 
 Name | Type | Description
 -----|------|------------
-id | int | ID of investor in StratiFi's system
-advisor |int | ID of Advisor object in StratiFi's system
-household |int | ID of Household object in StratiFi's system
-phone |string | Phone of the investor
+id | int | ID of advisor in StratiFi's system
+company |int | ID of Company object in StratiFi's system
+phone |string | Phone of the advisor
+title |string | Title of the advisor
 user | Object | User object
 
 
-## Update Investor
+## Update Advisor
 
-Update investor information
+Update advisor information
 
 -request-type: PUT/PATCH
 
--request-url: /investors/:ID
+-request-url: /advisors/:ID
 
 
 **Request Parameters**
 
 Parameter | Type | Description
 ----------|------|------------
-advisor |int | ID of Advisor object in StratiFi's system
-household | int | (optional) ID of Household object in StratiFi's system
-phone |string | Phone of the investor
+company |int | ID of Company object in StratiFi's system
+phone |string | Phone of the advisor
+title | string | Title of the advisor
 user | Object | User object
 
 `user` Object
 
 Name | Type | Description
 -----|------|------------
-email | String | Investor email
-first_name | String | Investor first name
-last_name | String | Investor last name
+email | String | Advisor email
+first_name | String | Advisor first name
+last_name | String | Advisor last name
 
 
 **Response Fields**
 
 Name | Type | Description
 -----|------|------------
-id | int | ID of investor in StratiFi's system
-advisor | int | ID of Advisor object in StratiFi's system
-household | int | ID of Household object in StratiFi's system
-phone | string | Phone of the investor
+id | int | ID of advisor in StratiFi's system
+company | int | ID of Company object in StratiFi's system
+phone | string | Phone of the advisor
+title | string | title of the advisor
 user | Object | User object
 
 
-## Investor Prism Aggregation
+## Advisor Prism Aggregation
 
 -request-type: GET
 
--request-url: /investors/:ID/prism_aggregation
+-request-url: /advisors/:ID/prism_aggregation
 
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/investors/<investor id>/prism_aggregation"
+curl "api.stratifi.com/v1/advisors/<advisor id>/prism_aggregation"
   -H "Authorization: stratifi-token"
 ```
 

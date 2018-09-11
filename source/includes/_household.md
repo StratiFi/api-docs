@@ -26,14 +26,12 @@ curl "api.stratifi.com/v1/households/"
   "results": [
     {
       "id": 1,
-      "owner": 1000,
-      "name": "first house",
+      "name": "Household A",
       "advisor": 71
     },
     {
       "id": 2,
-      "owner": 1000,
-      "name": "second house",
+      "name": "Household B",
       "advisor": 71
     }
   ]
@@ -55,9 +53,8 @@ results | Object | List of household objects
 Name | Type | Description
 -----|------|------------
 id | int | ID of household in StratiFi's system
-name | String | Household name
-owner | int | ID of the user who created the object
 advisor | int |  ID of the advisor
+name | String | Household name
 
 
 ## Create Household
@@ -71,8 +68,8 @@ curl -X POST "api.stratifi.com/v1/households/"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
+    "name": "Household C"
     "advisor": <advisor id>,
-    "name": "new house"
     }'
 ```
 
@@ -81,8 +78,7 @@ curl -X POST "api.stratifi.com/v1/households/"
 ```shell
 {
     "id": 2,
-    "name": "new house",
-    "owner": 1000,
+    "name": "Household C",
     "advisor": <advisor id>
 }
 
@@ -92,8 +88,8 @@ curl -X POST "api.stratifi.com/v1/households/"
 
 Parameter | Type | Description
 ----------|------|------------
-advisor | int | ID of the Advisor object
-name | String | Name of household
+advisor | int | ID of the Advisor object that owns this Household
+name | String | Name of the household
 
 
 **Response Fields**
@@ -101,8 +97,8 @@ name | String | Name of household
 Name | Type | Description
 -----|------|------------
 id | int | ID of households in StratiFi's system
+advisor | int | ID of the Advisor object that owns this Household
 name | String | Household name
-advisor | int | ID of the Advisor object
 
 
 ## Get Household By ID
@@ -118,16 +114,15 @@ Get household by ID
 Name | Type | Description
 -----|------|------------
 id | int | ID of household in StratiFi's system
+advisor | int | ID of the Advisor object that owns this Household
 name | String | Household name
-owner | int | ID of the user who created the object
-advisor | int | ID of the advisor
 
 
 ## Update Household
 
 Update household
 
--request-type: PUT
+-request-type: PUT/PATCH
 
 -request-url: /households/:ID
 
@@ -136,7 +131,7 @@ Update household
 
 Parameter | Type | Description
 ----------|------|------------
-advisor | int | ID of the advisor
+advisor | int | ID of the Advisor object that owns this Household
 name | String | Household name
 
 
@@ -145,8 +140,8 @@ name | String | Household name
 Name | Type | Description
 -----|------|------------
 id | int | ID of households in StratiFi's system
+advisor | int | ID of the Advisor object that owns this Household
 name | String | Household name
-advisor | int | ID of the Advisor object
 
 
 ## Household Prism Aggregation
@@ -166,9 +161,9 @@ curl "api.stratifi.com/v1/households/<household id>/prism_aggregation"
 
 ```shell
 {
+    "no_overlay_overall": 5.1045410298932925,
     "no_overlay_concentrated": 4.205588959868668,
     "no_overlay_correlation": 4.999999999999999,
-    "no_overlay_overall": 5.1045410298932925,
     "no_overlay_tail": 5.804890339885084,
     "no_overlay_volatility": 4.205588959868668
 }
@@ -178,7 +173,8 @@ curl "api.stratifi.com/v1/households/<household id>/prism_aggregation"
 
 Name | Type | Description
 -----|------|------------
-no_overlay_concentrated | float | The value of the concentration
-no_overlay_correlation | float | The value of the correlation
-no_overlay_overall | float | Overall value
-no_overlay_volatility | float | The value of the volatility
+no_overlay_overall | float | Overall score
+no_overlay_concentrated | float | Concentration score
+no_overlay_correlation | float | Correlation score
+no_overlay_tail | float | Tail score
+no_overlay_volatility | float | Volatility score
