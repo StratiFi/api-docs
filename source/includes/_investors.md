@@ -20,26 +20,31 @@ curl "api.stratifi.com/v1/investors/"
 
 ```shell
 {
-  "count": 100,
+  "count": 10,
   "next": null,
   "previous": null,
   "results": [
     {
-        "id": 4321,
-        "accounts": []
+        "id": 1,
         "user": {
-           "id":100,
-           "username":"username",
            "first_name":"John",
            "last_name":"Wick",
-           "email":"john.wick@example.com",
-           "is_active":true,
-           "date_joined":"2018-03-12T09:34:09.988563",
-           "groups":[]
+           "email":"john.wick@example.com"
         },
-        "household": null,
-        "updated_at": "2018-06-04T11:00:08.859179",
-        "created_at": "2018-06-04T11:00:08.859212",
+        "advisor": 1,
+        "household": 1,
+        "phone": "5555555555"
+    },
+    {
+        "id": 2,
+        "user": {
+           "first_name":"Mike",
+           "last_name":"Spencer",
+           "email":"mspencer@example.com"
+        },
+        "advisor": 1,
+        "household": 2,
+        "phone": "5555555555"
     }, … ]
   ]
 }
@@ -59,11 +64,10 @@ results | Object | List of Investor objects
 Name | Type | Description
 -----|------|------------
 id | int | ID of investor in StratiFi's system
-accounts | Object | List of accounts
+advisor |int | ID of Advisor object in StratiFi's system
+household |int | ID of Household object in StratiFi's system
+phone |string | Phone of the investor
 user | Object | User object
-household |int | ID of Household object
-updated_at | Timestamp | Last updated timestamp
-created_at | Timestamp | Created at timestamp
 
 
 ## Create Investor
@@ -78,6 +82,8 @@ curl -X POST "api.stratifi.com/v1/investors/"
   -H "Content-Type: application/json"
   -d '{
     "household": <household id>,
+    "advisor": <advisor id>,
+    "phone": "5555555555",
     "user": {
       "first_name": "John",
       "last_name": "Wick",
@@ -92,16 +98,13 @@ curl -X POST "api.stratifi.com/v1/investors/"
 {
   "id": 150,
   "phone": "754-3010",
-  "image": 'image/path',
-  "data": null,
-  "updated_at": "2018-06-13T13:36:26.927660",
-  "created_at": "2018-06-13T13:36:26.927680",
-  "status": 1,
-  "user": 100,
+  "user": {
+    "first_name": "Mike",
+    "last_name": "Spencer",
+    "email": "mspencer@example.com"
+  },
   "household": 200,
-  "advisor": 101,
-  "owner": 201,
-  "address": 1000
+  "advisor": 101
 }
 
 ```
@@ -110,34 +113,29 @@ curl -X POST "api.stratifi.com/v1/investors/"
 
 Parameter | Type | Description
 ----------|------|------------
+advisor | int | ID of Advisor object in StratiFi's system
+household | int | (optional) ID of Household object in StratiFi's system
 user | Object | User data
-household | int | (optional) ID of Household object
 
 
 `user` Object
 
 Name | Type | Description
 -----|------|------------
+email | String | Investor email
 first_name | String | Investor first name
 last_name | String | Investor last name
-email | String | Investor email
+
 
 **Response Fields**
 
 Name | Type | Description
 -----|------|------------
 id | int | ID of investor in StratiFi's system
-phone | String | Investor phone number
-image | String | Investor image
-data | Object | Object describing the payload
-status | int | ID of investor status
-user | int |  ID of the user object
-advisor | int |  ID of the advisor
-owner | int | ID of the user who created the object
-address | String | Investor address
-household |int | ID of Household object
-updated_at | Timestamp | Last updated timestamp
-created_at | Timestamp | Created at timestamp
+advisor |int | ID of Advisor object in StratiFi's system
+household |int | ID of Household object in StratiFi's system
+phone |string | Phone of the investor
+user | Object | User object
 
 
 ## Get Investor By ID
@@ -154,18 +152,17 @@ Get investor by ID
 Name | Type | Description
 -----|------|------------
 id | int | ID of investor in StratiFi's system
-accounts | Object | List of accounts
+advisor |int | ID of Advisor object in StratiFi's system
+household |int | ID of Household object in StratiFi's system
+phone |string | Phone of the investor
 user | Object | User object
-household |int | ID of Household object
-updated_at | Timestamp | Last updated timestamp
-created_at | Timestamp | Created at timestamp
 
 
 ## Update Investor
 
-Update investor household
+Update investor information
 
--request-type: PUT
+-request-type: PUT/PATCH
 
 -request-url: /investors/:ID
 
@@ -174,7 +171,29 @@ Update investor household
 
 Parameter | Type | Description
 ----------|------|------------
-household | int | ID of Household object
+advisor |int | ID of Advisor object in StratiFi's system
+household | int | (optional) ID of Household object in StratiFi's system
+phone |string | Phone of the investor
+user | Object | User object
+
+`user` Object
+
+Name | Type | Description
+-----|------|------------
+email | String | Investor email
+first_name | String | Investor first name
+last_name | String | Investor last name
+
+
+**Response Fields**
+
+Name | Type | Description
+-----|------|------------
+id | int | ID of investor in StratiFi's system
+advisor | int | ID of Advisor object in StratiFi's system
+household | int | ID of Household object in StratiFi's system
+phone | string | Phone of the investor
+user | Object | User object
 
 
 ## Investor Prism Aggregation
@@ -206,7 +225,8 @@ curl "api.stratifi.com/v1/investors/<investor id>/prism_aggregation"
 
 Name | Type | Description
 -----|------|------------
-no_overlay_concentrated | float | The value of the concentration
-no_overlay_correlation | float | The value of the correlation
-no_overlay_overall | float | Overall value
-no_overlay_volatility | float | The value of the volatility
+no_overlay_overall | float | Overall score
+no_overlay_concentrated | float | Concentration score
+no_overlay_correlation | float | Correlation score
+no_overlay_tail | float | Tail score
+no_overlay_volatility | float | Volatility score
