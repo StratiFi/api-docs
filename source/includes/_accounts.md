@@ -121,9 +121,7 @@ curl -X POST "api.stratifi.com/v1/accounts/"
 
 **Request Parameters**
 
-The Account object to be created (without ID).
-
-Only the account name is required.
+The Account object to be created (without ID). Only the account name is required.
 
 If the list of `positions` is included, the account value will be the Sum of the position's values.
 
@@ -144,7 +142,7 @@ Get account by ID
 
 **Response Fields**
 
-Returns the account object, if exists.
+Returns the account object.
 
 > To Get an Account by ID, use this code:
 
@@ -156,7 +154,7 @@ curl "api.stratifi.com/v1/accounts/1/"
 
 ## Update Account
 
-Update investor information
+Update the account information.
 
 -request-type: PUT/PATCH
 
@@ -167,7 +165,7 @@ Update investor information
 
 You can use a `PUT` request and send an entire account object, or a `PATCH` request and send only the fields you want to update.
 
-Notice that the if the `positions` field in included, all the existing positions for the updated account will be replaced.
+Notice that the if the `positions` field in included, the existing positions of the account will be replaced.
 
 
 **Response Fields**
