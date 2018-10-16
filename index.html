@@ -745,15 +745,12 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <p class="request-type">POST</p>
 <p class="request-url">/accounts</p>
 <p><strong>Request Parameters</strong></p>
-<p>The Account object to be created (without ID).</p>
-<p>Only the account name is required.</p>
+<p>The Account object to be created (without ID). Only the account name is required.</p>
 <p>If the list of <code>positions</code> is included, the account value will be the Sum of the position's values.</p>
 <p><strong>Response Fields</strong></p>
 <p>The Account object with a valid account ID.</p>
 </div>
 </div></div>
-
-
 
 
 
@@ -784,7 +781,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <p class="request-type">GET</p>
 <p class="request-url">/accounts/:ID</p>
 <p><strong>Response Fields</strong></p>
-<p>Returns the account object, if exists.</p>
+<p>Returns the account object.</p>
 </div>
 </div></div>
 
@@ -811,12 +808,12 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </div>
 <div class="main">
 <h2 id="update-account">Update Account</h2>
-<p>Update investor information</p>
+<p>Update the account information.</p>
 <p class="request-type">PUT/PATCH</p>
 <p class="request-url">/accounts/:ID</p>
 <p><strong>Request Parameters</strong></p>
 <p>You can use a <code>PUT</code> request and send an entire account object, or a <code>PATCH</code> request and send only the fields you want to update.</p>
-<p>Notice that the if the <code>positions</code> field in included, all the existing positions for the updated account will be replaced.</p>
+<p>Notice that the if the <code>positions</code> field in included, the existing positions of the account will be replaced.</p>
 <p><strong>Response Fields</strong></p>
 <p>Returns the account object.</p>
 </div>
