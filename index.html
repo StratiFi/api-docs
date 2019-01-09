@@ -1860,7 +1860,8 @@ You must replace <code>stratifi-token</code> with your personal API key.
         <span class="o">}</span>,
         <span class="s2">"title"</span>: <span class="s2">"Co-founder"</span>,
         <span class="s2">"company"</span>: 1,
-        <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>
+        <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
+        <span class="s2">"default_investor"</span>: 101
     <span class="o">}</span>,
     <span class="o">{</span>
         <span class="s2">"id"</span>: 2,
@@ -1871,7 +1872,8 @@ You must replace <code>stratifi-token</code> with your personal API key.
         <span class="o">}</span>,
         <span class="s2">"company"</span>: 1,
         <span class="s2">"title"</span>: <span class="s2">"Mr."</span>,
-        <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>
+        <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
+        <span class="s2">"default_investor"</span>: 102
     <span class="o">}</span>, … <span class="o">]</span>
   <span class="o">]</span>
 <span class="o">}</span>
@@ -1948,6 +1950,11 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <td>Object</td>
 <td>User object</td>
 </tr>
+<tr>
+<td>default_investor</td>
+<td>int</td>
+<td>ID of the default investor of this advisor. You can use it to create accounts if you don't have the investor information.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1989,6 +1996,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 150,
   <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
+  <span class="s2">"default_investor"</span>: 101,
   <span class="s2">"user"</span>: <span class="o">{</span>
     <span class="s2">"first_name"</span>: <span class="s2">"Mike"</span>,
     <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
