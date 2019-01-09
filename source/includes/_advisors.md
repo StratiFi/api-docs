@@ -33,7 +33,8 @@ curl "api.stratifi.com/v1/advisors/"
         },
         "title": "Co-founder",
         "company": 1,
-        "phone": "5555555555"
+        "phone": "5555555555",
+        "default_investor": 101
     },
     {
         "id": 2,
@@ -44,7 +45,8 @@ curl "api.stratifi.com/v1/advisors/"
         },
         "company": 1,
         "title": "Mr.",
-        "phone": "5555555555"
+        "phone": "5555555555",
+        "default_investor": 102
     }, … ]
   ]
 }
@@ -68,6 +70,7 @@ company |int | ID of Company object in StratiFi's system
 phone |string | Phone of the advisor
 title |string | Title of the advisor
 user | Object | User object
+default_investor | int | ID of the default investor of this advisor. You can use it to create accounts if you don't have the investor information.
 
 
 ## Create Advisor
@@ -98,6 +101,7 @@ curl -X POST "api.stratifi.com/v1/advisors/"
 {
   "id": 150,
   "phone": "754-3010",
+  "default_investor": 101,
   "user": {
     "first_name": "Mike",
     "last_name": "Spencer",
