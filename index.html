@@ -485,6 +485,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
+  <span class="s2">"advisor"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
@@ -542,6 +543,11 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <td>investor</td>
 <td>int</td>
 <td>ID of Investor object in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of Advisor object in StratiFi's system. Ideally, you would provide the investor ID. However, if you don't have that information but you do know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</td>
 </tr>
 <tr>
 <td>positions</td>
