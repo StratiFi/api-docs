@@ -12,6 +12,7 @@ value |string | Account value
 type |string | Account type
 number |string | Account number
 investor |int | ID of Investor object in StratiFi's system
+advisor |int | ID of Advisor object in StratiFi's system. Ideally, you would provide the investor ID. However, if you don't have that information but you do know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the `default_investor` of the selected advisor.
 positions | Array | Positions array
 
 `position` Object
@@ -32,6 +33,7 @@ value |string | Value
   "type": "100",
   "number": "987654321",
   "investor": 1,
+  "advisor": 1,
   "positions": [
     {
       "ticker": "SPY",
