@@ -15,10 +15,6 @@ includes:
   - household
   - advisors
   - companies
-  - scores
-  - scenarios
-  - questions
-  - notifications
   - errors
 
 search: true
