@@ -1,6 +1,6 @@
 # Model Portfolios
 
-All modelportfolios related endpoints
+All model portfolios related endpoints
 
 ## Model Portfolio Object
 
@@ -51,7 +51,7 @@ value |string | Value
 
 -request-type: GET
 
--request-url: /modelportfolios
+-request-url: /models
 
 > To Get all the Model Portfolios, use this code:
 
@@ -75,9 +75,9 @@ curl "api.stratifi.com/v1/models/"
 
 Name | Type | Description
 -----|------|------------
-count | int | Number of modelportfolios
-next | String | Link to next page of modelportfolios
-previous | String | Link to previous page of modelportfolios
+count | int | Number of model portfolios
+next | String | Link to next page of model portfolios
+previous | String | Link to previous page of model portfolios
 results | Object | List of Model Portfolio objects
 
 
@@ -85,7 +85,7 @@ results | Object | List of Model Portfolio objects
 
 -request-type: POST
 
--request-url: /modelportfolios
+-request-url: /models
 
 > To Create an Model Portfolio, use this code:
 
