@@ -2630,7 +2630,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 <div class="level-1-wrapper"><div class="level-1"><h1 id="model-portfolios">Model Portfolios</h1></div></div>
-<p>All modelportfolios related endpoints</p>
+<p>All model portfolios related endpoints</p>
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
@@ -2760,7 +2760,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="main">
 <h2 id="get-all-model-portfolios">Get All Model Portfolios</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/modelportfolios</p>
+<p class="request-url">/models</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -2774,17 +2774,17 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>count</td>
 <td>int</td>
-<td>Number of modelportfolios</td>
+<td>Number of model portfolios</td>
 </tr>
 <tr>
 <td>next</td>
 <td>String</td>
-<td>Link to next page of modelportfolios</td>
+<td>Link to next page of model portfolios</td>
 </tr>
 <tr>
 <td>previous</td>
 <td>String</td>
-<td>Link to previous page of modelportfolios</td>
+<td>Link to previous page of model portfolios</td>
 </tr>
 <tr>
 <td>results</td>
@@ -2820,7 +2820,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="main">
 <h2 id="create-model-portfolio">Create Model Portfolio</h2>
 <p class="request-type">POST</p>
-<p class="request-url">/modelportfolios</p>
+<p class="request-url">/models</p>
 <p><strong>Request Parameters</strong></p>
 <p>The Model Portfolio object to be created (without ID). Only the mode portfolio name is required.</p>
 <p>If the list of <code>positions</code> is included, the mode portfolio value will be the Sum of the position's values.</p>
