@@ -2638,20 +2638,20 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 1,
-  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
-  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"Aggresive 60/40"</span>,
+  <span class="s2">"value"</span>: <span class="s2">"100.0"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
       <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P 500"</span>,
-      <span class="s2">"value"</span>: <span class="s2">"823045.26"</span>
+      <span class="s2">"value"</span>: <span class="s2">"60"</span>
     <span class="o">}</span>,
     <span class="o">{</span>
       <span class="s2">"ticker"</span>: <span class="s2">"IBM"</span>,
       <span class="s2">"ticker_name"</span>: <span class="s2">"IBM"</span>,
-      <span class="s2">"value"</span>: <span class="s2">"411522.63"</span>
+      <span class="s2">"value"</span>: <span class="s2">"40"</span>
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -2725,7 +2725,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>value</td>
 <td>string</td>
-<td>Value</td>
+<td>Weight of the position in percentage.</td>
 </tr>
 </tbody>
 </table>
