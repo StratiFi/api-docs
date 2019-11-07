@@ -326,6 +326,29 @@
               </ul>
           </li>
           <li>
+            <a href="#model-portfolios" class="toc-h1 toc-link" data-title="model-portfolios">Model Portfolios</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#model-portfolio-object" class="toc-h2 toc-link" data-title="model-portfolio-object">Model Portfolio Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-model-portfolios" class="toc-h2 toc-link" data-title="get-all-model-portfolios">Get All Model Portfolios</a>
+                  </li>
+                  <li>
+                    <a href="#create-model-portfolio" class="toc-h2 toc-link" data-title="create-model-portfolio">Create Model Portfolio</a>
+                  </li>
+                  <li>
+                    <a href="#get-model-portfolio-by-id" class="toc-h2 toc-link" data-title="get-model-portfolio-by-id">Get Model Portfolio By ID</a>
+                  </li>
+                  <li>
+                    <a href="#update-model-portfolio" class="toc-h2 toc-link" data-title="update-model-portfolio">Update Model Portfolio</a>
+                  </li>
+                  <li>
+                    <a href="#model-portfolio-prism-score" class="toc-h2 toc-link" data-title="model-portfolio-prism-score">Model Portfolio Prism Score</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
@@ -2556,6 +2579,363 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <h2 id="company-prism-aggregation">Company Prism Aggregation</h2>
 <p class="request-type">GET</p>
 <p class="request-url">/companies/:ID/prism_aggregation</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no_overlay_overall</td>
+<td>float</td>
+<td>Overall score</td>
+</tr>
+<tr>
+<td>no_overlay_concentrated</td>
+<td>float</td>
+<td>Concentration score</td>
+</tr>
+<tr>
+<td>no_overlay_correlation</td>
+<td>float</td>
+<td>Correlation score</td>
+</tr>
+<tr>
+<td>no_overlay_tail</td>
+<td>float</td>
+<td>Tail score</td>
+</tr>
+<tr>
+<td>no_overlay_volatility</td>
+<td>float</td>
+<td>Volatility score</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-1-wrapper"><div class="level-1"><h1 id="model-portfolios">Model Portfolios</h1></div></div>
+<p>All modelportfolios related endpoints</p>
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>Model Portfolio Object Description:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
+  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
+  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"company"</span>: 1,
+  <span class="s2">"positions"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
+      <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P 500"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"823045.26"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"ticker"</span>: <span class="s2">"IBM"</span>,
+      <span class="s2">"ticker_name"</span>: <span class="s2">"IBM"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"411522.63"</span>
+    <span class="o">}</span>,
+    …
+  <span class="o">]</span>
+<span class="o">}</span>
+
+</code></pre>
+</div>
+<div class="main">
+<h2 id="model-portfolio-object">Model Portfolio Object</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of Model Portfolio in StratiFi's system</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Model Portfolio name</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>Model Portfolio value</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Model Portfolio type</td>
+</tr>
+<tr>
+<td>company</td>
+<td>int</td>
+<td>ID of Company object in StratiFi's system</td>
+</tr>
+<tr>
+<td>positions</td>
+<td>Array</td>
+<td>Positions array</td>
+</tr>
+</tbody>
+</table>
+<p><code>position</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ticker</td>
+<td>string</td>
+<td>Ticker label</td>
+</tr>
+<tr>
+<td>ticker_name</td>
+<td>string</td>
+<td>Ticker description</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>Value</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>To Get all the Model Portfolios, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/models/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"count"</span>: 10,
+  <span class="s2">"next"</span>: null,
+  <span class="s2">"previous"</span>: null,
+  <span class="s2">"results"</span>: <span class="o">[</span> … <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+<div class="main">
+<h2 id="get-all-model-portfolios">Get All Model Portfolios</h2>
+<p class="request-type">GET</p>
+<p class="request-url">/modelportfolios</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>Number of modelportfolios</td>
+</tr>
+<tr>
+<td>next</td>
+<td>String</td>
+<td>Link to next page of modelportfolios</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>String</td>
+<td>Link to previous page of modelportfolios</td>
+</tr>
+<tr>
+<td>results</td>
+<td>Object</td>
+<td>List of Model Portfolio objects</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>To Create an Model Portfolio, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/models/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{ … }'</span>
+</code></pre>
+</div>
+<div class="main">
+<h2 id="create-model-portfolio">Create Model Portfolio</h2>
+<p class="request-type">POST</p>
+<p class="request-url">/modelportfolios</p>
+<p><strong>Request Parameters</strong></p>
+<p>The Model Portfolio object to be created (without ID). Only the mode portfolio name is required.</p>
+<p>If the list of <code>positions</code> is included, the mode portfolio value will be the Sum of the position's values.</p>
+<p><strong>Response Fields</strong></p>
+<p>The Model Portfolio object with a valid mode portfolio ID.</p>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>To Get an Model Portfolio by ID, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/models/1/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+</code></pre>
+</div>
+<div class="main">
+<h2 id="get-model-portfolio-by-id">Get Model Portfolio By ID</h2>
+<p>Get mode portfolio by ID</p>
+<p class="request-type">GET</p>
+<p class="request-url">/models/:ID</p>
+<p><strong>Response Fields</strong></p>
+<p>Returns the mode portfolio object.</p>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>To Update an Model Portfolio, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="s2">"api.stratifi.com/v1/models/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{ … }'</span>
+</code></pre>
+</div>
+<div class="main">
+<h2 id="update-model-portfolio">Update Model Portfolio</h2>
+<p>Update the mode portfolio information.</p>
+<p class="request-type">PUT/PATCH</p>
+<p class="request-url">/models/:ID</p>
+<p><strong>Request Parameters</strong></p>
+<p>You can use a <code>PUT</code> request and send an entire mode portfolio object, or a <code>PATCH</code> request and send only the fields you want to update.</p>
+<p>Notice that the if the <code>positions</code> field in included, the existing positions of the mode portfolio will be replaced.</p>
+<p><strong>Response Fields</strong></p>
+<p>Returns the mode portfolio object.</p>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>To get the Model Portfolio Prism Score, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/models/:ID/prism_score"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
+  <span class="s2">"no_overlay_correlation"</span>: 6.049895392953136,
+  <span class="s2">"no_overlay_overall"</span>: 8.214532798503825,
+  <span class="s2">"no_overlay_tail"</span>: 8.674759220001045,
+  <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
+<span class="o">}</span>
+</code></pre>
+</div>
+<div class="main">
+<h2 id="model-portfolio-prism-score">Model Portfolio Prism Score</h2>
+<p class="request-type">GET</p>
+<p class="request-url">/models/:ID/prism_score</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
