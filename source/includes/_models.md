@@ -26,7 +26,7 @@ value |string | Value
 ```shell
 {
   "id": 1,
-  "name": "John Doe Trust",
+  "name": "Aggresive 60/40",
   "value": "1234567.89",
   "type": "100",
   "company": 1,
