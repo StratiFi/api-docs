@@ -15,6 +15,7 @@ includes:
   - household
   - advisors
   - companies
+  - models
   - errors
 
 search: true
