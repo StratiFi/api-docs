@@ -19,7 +19,7 @@ Name | Type | Description
 -----|------|------------
 ticker |string | Ticker label
 ticker_name |string | Ticker description
-value |string | Value
+value |string | Weight of the position in percentage.
 
 > Model Portfolio Object Description:
 
@@ -27,19 +27,19 @@ value |string | Value
 {
   "id": 1,
   "name": "Aggresive 60/40",
-  "value": "1234567.89",
+  "value": "100.0",
   "type": "100",
   "company": 1,
   "positions": [
     {
       "ticker": "SPY",
       "ticker_name": "SPDR S&P 500",
-      "value": "823045.26"
+      "value": "60"
     },
     {
       "ticker": "IBM",
       "ticker_name": "IBM",
-      "value": "411522.63"
+      "value": "40"
     },
     …
   ]
