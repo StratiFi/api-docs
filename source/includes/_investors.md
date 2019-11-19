@@ -3,7 +3,7 @@
 All investors related endpoints
 
 
-## Get All Investors
+## List Investors
 
 -request-type: GET
 

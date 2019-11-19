@@ -47,7 +47,7 @@ value |string | Weight of the position in percentage.
 
 ```
 
-## Get All Model Portfolios
+## List Model Portfolios
 
 -request-type: GET
 

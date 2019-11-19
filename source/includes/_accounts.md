@@ -72,7 +72,7 @@ Value | Description
 500 | Household Account
 
 
-## Get All Accounts
+## List Accounts
 
 -request-type: GET
 

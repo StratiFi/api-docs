@@ -3,7 +3,7 @@
 All household related endpoints
 
 
-## Get All Households
+## List Households
 
 -request-type: GET
 

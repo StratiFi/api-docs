@@ -3,7 +3,7 @@
 All advisors related endpoints
 
 
-## Get All Advisors
+## List Advisors
 
 -request-type: GET
 

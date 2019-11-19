@@ -23,30 +23,3 @@ We use API keys to allow access to the API endpoints. The current Authentication
 <aside class="notice">
 You must replace <code>stratifi-token</code> with your API key.
 </aside>
-
-## Responses
-
-All requests return a JSON object with the data requested.
-
-The `list` operations are paginated and have the form:
-
-> Reponse Body
-
-```shell
-{
-    "count": 10,
-    "next": "https://backend.stratifi.com/api/v1/.../?page=3",
-    "previous": "https://backend.stratifi.com/api/v1/.../?page=1",
-    "results": [ ... ]
-}
-```
-
-**Response Fields**
-
-Name | Type | Description
------|------|------------
-count | int | Total number of objects
-next | String | Link to next page of objects
-previous | String | Link to previous page of objects
-results | Object | List of objects
-
