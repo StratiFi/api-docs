@@ -12,7 +12,7 @@ All companies related endpoints
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/companies/"
+curl "https://backend.stratifi.com/v1/companies/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -134,7 +134,7 @@ name | String | Name of company
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/companies/<company id>/prism_aggregation"
+curl "https://backend.stratifi.com/v1/companies/<company id>/prism_aggregation"
   -H "Authorization: stratifi-token"
 ```
 

@@ -1,6 +1,6 @@
 # Errors
 
-The StratiFi PRISM API uses the following error codes:
+The StratiFi API uses the following error codes:
 
 
 Error Code | Meaning

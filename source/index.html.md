@@ -1,5 +1,5 @@
 ---
-title: StratiFI PRISM API Reference
+title: StratiFI API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
 
@@ -9,13 +9,12 @@ toc_footers:
 
 includes:
   - introduction
-  - authentication
-  - accounts
-  - investors
-  - household
-  - advisors
   - companies
   - models
+  - advisors
+  - household
+  - investors
+  - accounts
   - errors
 
 search: true

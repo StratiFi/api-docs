@@ -12,7 +12,7 @@ All investors related endpoints
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/investors/"
+curl "https://backend.stratifi.com/v1/investors/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -205,7 +205,7 @@ user | Object | User object
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/investors/<investor id>/prism_aggregation"
+curl "https://backend.stratifi.com/v1/investors/<investor id>/prism_aggregation"
   -H "Authorization: stratifi-token"
 ```
 

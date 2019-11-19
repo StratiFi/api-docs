@@ -12,7 +12,7 @@ All household related endpoints
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/households/"
+curl "https://backend.stratifi.com/v1/households/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -153,7 +153,7 @@ name | String | Household name
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/households/<household id>/prism_aggregation"
+curl "https://backend.stratifi.com/v1/households/<household id>/prism_aggregation"
   -H "Authorization: stratifi-token"
 ```
 

@@ -1,15 +1,15 @@
 # Scores
-The PRISM API allows you to compute two types of scores. Risks and Returns.
+The API allows you to compute two types of scores. Risks and Returns.
 
 ## Risks
-The Risks Scores describes the susceptibility of your portfolio to the various events. 
+The Risks Scores describes the susceptibility of your portfolio to the various events.
 ### Current
 This API computes the Risks Scores of your current portfolio
 
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/current"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/current"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -742,7 +742,7 @@ rerr | float | Score of portfolio with a return enhancement risk reduction overl
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/current/overall"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/current/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -840,17 +840,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Volatility
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/current/volatility"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/current/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -948,17 +948,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Tail
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/current/tail"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/current/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1056,17 +1056,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Concentrated
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/current/concentrated"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/current/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1164,17 +1164,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Correlation
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/current/correlation"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/current/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1272,7 +1272,7 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
@@ -1281,10 +1281,10 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 ### Target
 This API computes the Risks Scores of your target portfolio
 #### Overall
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/target/overall"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/target/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1347,17 +1347,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Volatility
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/target/volatility"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/target/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1420,17 +1420,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Tail
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/target/tail"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/target/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1493,17 +1493,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Concentrated
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/target/concentrated"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/target/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1566,17 +1566,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Correlation
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/risks/target/correlation"
+curl "https://backend.stratifi.com/v1/prism/scores/risks/target/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1639,7 +1639,7 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
@@ -1647,14 +1647,14 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 
 
 ## Returns
-The Returns Scores describes the potentials returns your portfolio could reap from the various events. 
+The Returns Scores describes the potentials returns your portfolio could reap from the various events.
 ### Current
 This API computes the Returns Scores of your current portfolio
 #### Overall
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/current/overall"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/current/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1717,17 +1717,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Volatility
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/current/volatility"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/current/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1825,17 +1825,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Tail
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/current/tail"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/current/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1898,17 +1898,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Concentrated
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/current/concentrated"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/current/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1971,17 +1971,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Correlation
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/current/correlation"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/current/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2044,7 +2044,7 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
@@ -2053,10 +2053,10 @@ Error Code | Standard meaning -- followed by explanation in layman terms
 ### Target
 This API computes the Returns Scores of your target portfolio
 #### Overall
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/target/overall"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/target/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2119,17 +2119,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Volatility
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/target/volatility"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/target/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2192,17 +2192,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Tail
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/target/tail"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/target/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2265,17 +2265,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Concentrated
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/target/concentrated"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/target/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2338,17 +2338,17 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------
 Error Code | Standard meaning -- followed by explanation in layman terms
 
 #### Correlation
-> To compute, use this code: 
+> To compute, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/prism/scores/returns/target/correlation"
+curl "https://backend.stratifi.com/v1/prism/scores/returns/target/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2411,7 +2411,7 @@ scenario | String | A particular scenario
 
 **Error**
 
-This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section 
+This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
 Code | Meaning
 -----------|--------

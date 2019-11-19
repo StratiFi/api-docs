@@ -81,7 +81,7 @@ Value | Description
 > To Get all the Accounts, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/accounts/"
+curl "https://backend.stratifi.com/v1/accounts/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -149,7 +149,7 @@ Returns the account object.
 > To Get an Account by ID, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/accounts/1/"
+curl "https://backend.stratifi.com/v1/accounts/1/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -192,7 +192,7 @@ curl -X PUT "api.stratifi.com/v1/accounts/"
 > To get the Account Prism Score, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/accounts/:ID/prism_score"
+curl "https://backend.stratifi.com/v1/accounts/:ID/prism_score"
   -H "Authorization: stratifi-token"
 ```
 

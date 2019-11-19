@@ -56,7 +56,7 @@ value |string | Weight of the position in percentage.
 > To Get all the Model Portfolios, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/models/"
+curl "https://backend.stratifi.com/v1/models/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -124,7 +124,7 @@ Returns the mode portfolio object.
 > To Get an Model Portfolio by ID, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/models/1/"
+curl "https://backend.stratifi.com/v1/models/1/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -167,7 +167,7 @@ curl -X PUT "api.stratifi.com/v1/models/"
 > To get the Model Portfolio Prism Score, use this code:
 
 ```shell
-curl "api.stratifi.com/v1/models/:ID/prism_score"
+curl "https://backend.stratifi.com/v1/models/:ID/prism_score"
   -H "Authorization: stratifi-token"
 ```
 

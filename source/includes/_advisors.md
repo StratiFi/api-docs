@@ -12,7 +12,7 @@ All advisors related endpoints
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/advisors/"
+curl "https://backend.stratifi.com/v1/advisors/"
   -H "Authorization: stratifi-token"
 ```
 
@@ -209,7 +209,7 @@ user | Object | User object
 > To send request:
 
 ```shell
-curl "api.stratifi.com/v1/advisors/<advisor id>/prism_aggregation"
+curl "https://backend.stratifi.com/v1/advisors/<advisor id>/prism_aggregation"
   -H "Authorization: stratifi-token"
 ```
 
