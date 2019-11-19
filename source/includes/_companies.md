@@ -1,146 +1,131 @@
 # Companies
 
-All companies related endpoints
+## Company Object Definition
 
-
-## Get All Companies
-
--request-type: GET
-
--request-url: /companies
-
-> To send request:
-
-```shell
-curl "https://backend.stratifi.com/v1/companies/"
-  -H "Authorization: stratifi-token"
-```
-
-> Reponse Body
+| Name | Type   | Description         |
+| ---- | ------ | ------------------- |
+| id   | int    | ID of the company   |
+| name | String | Name of the company |
 
 ```shell
 {
-    "count": 2,
-    "next": null,
+  "id": 1,
+  "name": "Company A, LLC"
+}
+
+```
+
+## List Companies
+
+-request-type: GET
+
+-request-url: `/companies/`
+
+```shell
+curl "https://backend.stratifi.com/v1/companies/" \
+  -H "Authorization: stratifi-token"
+
+{
+    "count": 10,
+    "next": "https://backend.stratifi.com/v1/companies/?page=2",
     "previous": null,
     "results": [
          {
             "id": 1,
             "name": "Companny A, LLC"
         },
-        {
-            "id": 2,
-            "name": "Companny B, LLC"
-        }
+        ...
     ]
 }
 ```
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-count | int | Number of companies
-next | String | Link to next page of companies
-previous | String | Link to previous page of companies
-results | Object | List of Company objects
+| Name     | Type   | Description                                           |
+| -------- | ------ | ----------------------------------------------------- |
+| count    | int    | Total number of companies                             |
+| next     | String | Link to next page of companies                        |
+| previous | String | Link to previous page of companies                    |
+| results  | Object | List of [company objects](#company-object-definition) |
 
-`results` Object
+## Get Company
 
-Name | Type | Description
------|------|------------
-id | int | ID of company in StratiFi's system
-name | String | Name of company
+-request-type: GET
 
+-request-url: `/companies/<id>/`
+
+**Request Parameters**: None.
+
+**Response:** The [company object](#company-object-definition) of the company requested.
+
+```shell
+curl "https://backend.stratifi.com/v1/companies/1/" \
+  -H "Authorization: stratifi-token"
+
+{
+  "id": 1,
+  "name": "Companny A, LLC"
+}
+```
 
 ## Create Company
 
 -request-type: POST
 
--request-url: /companies
+-request-url: `/companies/`
 
 ```shell
-curl -X POST "api.stratifi.com/v1/companies/"
-  -H "Authorization: stratifi-token"
-  -H "Content-Type: application/json"
-  -d '{
-    "name": "Company C, LLC",
-  }'
-```
+curl -X POST "https://backend.stratifi.com/v1/companies/" \
+  -H "Authorization: stratifi-token" \
+  -d '{"name": "Company Z, LLC"}'
 
-> Reponse Body
-
-```shell
 {
-  "id": 3,
-  "name": "Companny C, LLC"
+  "id": 11,
+  "name": "Companny Z, LLC"
 }
-
 ```
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-name | String | Name of company
+| Parameter | Type   | Required |
+| --------- | ------ | -------- |
+| name      | String | Yes      |
 
-
-**Response Fields**
-
-Name | Type | Description
------|------|------------
-id | int | ID of company in StratiFi's system
-name | String | Name of company
-
-
-## Get Company By ID
-
-Get company by ID
-
--request-type: GET
-
--request-url: /companies/:ID
-
-
-**Response Fields**
-
-Name | Type | Description
------|------|------------
-id | int | ID of company in StratiFi's system
-name | String | Name of company
+**Response:** The [company object](#company-object-definition) of the new company.
 
 ## Update Company
 
-Update company household
-
 -request-type: PUT/PATCH
 
--request-url: /companies/:ID
-
+-request-url: `/companies/<id>/`
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-name | String | Name of company
+| Parameter | Type   | Description         |
+| --------- | ------ | ------------------- |
+| name      | String | Name of the company |
 
+```shell
+curl -X PUT "https://backend.stratifi.com/v1/companies/11/"
+  -H "Authorization: stratifi-token" \
+  -d '{"name": "Company W, LLC"}'
+
+{
+  "id": 11,
+  "name": "Companny W, LLC"
+}
+```
 
 ## Company Prism Aggregation
 
 -request-type: GET
 
--request-url: /companies/:ID/prism_aggregation
-
-> To send request:
+-request-url: `/companies/<id>/prism_aggregation/`
 
 ```shell
-curl "https://backend.stratifi.com/v1/companies/<company id>/prism_aggregation"
+curl "https://backend.stratifi.com/v1/companies/11/prism_aggregation" \
   -H "Authorization: stratifi-token"
-```
 
-> Reponse Body
-
-```shell
 {
   "no_overlay_concentrated": 4.785445142005072,
   "no_overlay_correlation": 6.049895392953136,
@@ -152,10 +137,10 @@ curl "https://backend.stratifi.com/v1/companies/<company id>/prism_aggregation"
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-no_overlay_overall | float | Overall score
-no_overlay_concentrated | float | Concentration score
-no_overlay_correlation | float | Correlation score
-no_overlay_tail | float | Tail score
-no_overlay_volatility | float | Volatility score
+| Name                    | Type  | Description         |
+| ----------------------- | ----- | ------------------- |
+| no_overlay_overall      | float | Overall score       |
+| no_overlay_concentrated | float | Concentration score |
+| no_overlay_correlation  | float | Correlation score   |
+| no_overlay_tail         | float | Tail score          |
+| no_overlay_volatility   | float | Volatility score    |
