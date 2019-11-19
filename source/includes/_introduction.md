@@ -11,9 +11,10 @@ StratiFi's API follows an architecture, where HTTP methods define the action to 
 All requests should use the Hypertext Transfer Protocol Secure (HTTPS).
 
 StratiFi's API domain name is: `backend.stratifi.com`.
+
 You can also start testing using our sandbox hosted in `sandbox.stratifi.com`
 
-### Authentication
+## Authentication
 
 We use API keys to allow access to the API endpoints. The current Authentication method is Bearer token, provided by StratiFi Team. StratiFi expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
