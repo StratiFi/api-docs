@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>StratiFI PRISM API Reference</title>
+    <title>StratiFI API Reference</title>
     <link rel="icon" href="https://s3.amazonaws.com/stratifi-marketing/img/icons/stratifi_favicon.ico" type="image/x-icon">
 
     <style>
@@ -218,90 +218,14 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#accounts" class="toc-h1 toc-link" data-title="accounts">Accounts</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#account-object" class="toc-h2 toc-link" data-title="account-object">Account Object</a>
-                  </li>
-                  <li>
-                    <a href="#get-all-accounts" class="toc-h2 toc-link" data-title="get-all-accounts">Get All Accounts</a>
-                  </li>
-                  <li>
-                    <a href="#create-account" class="toc-h2 toc-link" data-title="create-account">Create Account</a>
-                  </li>
-                  <li>
-                    <a href="#get-account-by-id" class="toc-h2 toc-link" data-title="get-account-by-id">Get Account By ID</a>
-                  </li>
-                  <li>
-                    <a href="#update-account" class="toc-h2 toc-link" data-title="update-account">Update Account</a>
-                  </li>
-                  <li>
-                    <a href="#account-prism-score" class="toc-h2 toc-link" data-title="account-prism-score">Account Prism Score</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#investors" class="toc-h1 toc-link" data-title="investors">Investors</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-all-investors" class="toc-h2 toc-link" data-title="get-all-investors">Get All Investors</a>
-                  </li>
-                  <li>
-                    <a href="#create-investor" class="toc-h2 toc-link" data-title="create-investor">Create Investor</a>
-                  </li>
-                  <li>
-                    <a href="#get-investor-by-id" class="toc-h2 toc-link" data-title="get-investor-by-id">Get Investor By ID</a>
-                  </li>
-                  <li>
-                    <a href="#update-investor" class="toc-h2 toc-link" data-title="update-investor">Update Investor</a>
-                  </li>
-                  <li>
-                    <a href="#investor-prism-aggregation" class="toc-h2 toc-link" data-title="investor-prism-aggregation">Investor Prism Aggregation</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#households" class="toc-h1 toc-link" data-title="households">Households</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-all-households" class="toc-h2 toc-link" data-title="get-all-households">Get All Households</a>
-                  </li>
-                  <li>
-                    <a href="#create-household" class="toc-h2 toc-link" data-title="create-household">Create Household</a>
-                  </li>
-                  <li>
-                    <a href="#get-household-by-id" class="toc-h2 toc-link" data-title="get-household-by-id">Get Household By ID</a>
-                  </li>
-                  <li>
-                    <a href="#update-household" class="toc-h2 toc-link" data-title="update-household">Update Household</a>
-                  </li>
-                  <li>
-                    <a href="#household-prism-aggregation" class="toc-h2 toc-link" data-title="household-prism-aggregation">Household Prism Aggregation</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#advisors" class="toc-h1 toc-link" data-title="advisors">Advisors</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-all-advisors" class="toc-h2 toc-link" data-title="get-all-advisors">Get All Advisors</a>
-                  </li>
-                  <li>
-                    <a href="#create-advisor" class="toc-h2 toc-link" data-title="create-advisor">Create Advisor</a>
-                  </li>
-                  <li>
-                    <a href="#get-advisor-by-id" class="toc-h2 toc-link" data-title="get-advisor-by-id">Get Advisor By ID</a>
-                  </li>
-                  <li>
-                    <a href="#update-advisor" class="toc-h2 toc-link" data-title="update-advisor">Update Advisor</a>
-                  </li>
-                  <li>
-                    <a href="#advisor-prism-aggregation" class="toc-h2 toc-link" data-title="advisor-prism-aggregation">Advisor Prism Aggregation</a>
+                    <a href="#requests" class="toc-h2 toc-link" data-title="requests">Requests</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#authentication" class="toc-h3 toc-link" data-title="authentication">Authentication</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -349,6 +273,89 @@
               </ul>
           </li>
           <li>
+            <a href="#advisors" class="toc-h1 toc-link" data-title="advisors">Advisors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-advisors" class="toc-h2 toc-link" data-title="get-all-advisors">Get All Advisors</a>
+                  </li>
+                  <li>
+                    <a href="#create-advisor" class="toc-h2 toc-link" data-title="create-advisor">Create Advisor</a>
+                  </li>
+                  <li>
+                    <a href="#get-advisor-by-id" class="toc-h2 toc-link" data-title="get-advisor-by-id">Get Advisor By ID</a>
+                  </li>
+                  <li>
+                    <a href="#update-advisor" class="toc-h2 toc-link" data-title="update-advisor">Update Advisor</a>
+                  </li>
+                  <li>
+                    <a href="#advisor-prism-aggregation" class="toc-h2 toc-link" data-title="advisor-prism-aggregation">Advisor Prism Aggregation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#households" class="toc-h1 toc-link" data-title="households">Households</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-households" class="toc-h2 toc-link" data-title="get-all-households">Get All Households</a>
+                  </li>
+                  <li>
+                    <a href="#create-household" class="toc-h2 toc-link" data-title="create-household">Create Household</a>
+                  </li>
+                  <li>
+                    <a href="#get-household-by-id" class="toc-h2 toc-link" data-title="get-household-by-id">Get Household By ID</a>
+                  </li>
+                  <li>
+                    <a href="#update-household" class="toc-h2 toc-link" data-title="update-household">Update Household</a>
+                  </li>
+                  <li>
+                    <a href="#household-prism-aggregation" class="toc-h2 toc-link" data-title="household-prism-aggregation">Household Prism Aggregation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#investors" class="toc-h1 toc-link" data-title="investors">Investors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-investors" class="toc-h2 toc-link" data-title="get-all-investors">Get All Investors</a>
+                  </li>
+                  <li>
+                    <a href="#create-investor" class="toc-h2 toc-link" data-title="create-investor">Create Investor</a>
+                  </li>
+                  <li>
+                    <a href="#get-investor-by-id" class="toc-h2 toc-link" data-title="get-investor-by-id">Get Investor By ID</a>
+                  </li>
+                  <li>
+                    <a href="#update-investor" class="toc-h2 toc-link" data-title="update-investor">Update Investor</a>
+                  </li>
+                  <li>
+                    <a href="#investor-prism-aggregation" class="toc-h2 toc-link" data-title="investor-prism-aggregation">Investor Prism Aggregation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#accounts" class="toc-h1 toc-link" data-title="accounts">Accounts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#account-object" class="toc-h2 toc-link" data-title="account-object">Account Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-accounts" class="toc-h2 toc-link" data-title="get-all-accounts">Get All Accounts</a>
+                  </li>
+                  <li>
+                    <a href="#create-account" class="toc-h2 toc-link" data-title="create-account">Create Account</a>
+                  </li>
+                  <li>
+                    <a href="#get-account-by-id" class="toc-h2 toc-link" data-title="get-account-by-id">Get Account By ID</a>
+                  </li>
+                  <li>
+                    <a href="#update-account" class="toc-h2 toc-link" data-title="update-account">Update Account</a>
+                  </li>
+                  <li>
+                    <a href="#account-prism-score" class="toc-h2 toc-link" data-title="account-prism-score">Account Prism Score</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
@@ -357,73 +364,107 @@
       <div class="dark-box"></div>
       <div class="content">
         <div class="level-1-wrapper"><div class="level-1"><h1 id="introduction">Introduction</h1></div></div>
-<p>Welcome to the StratiFi PRISM API! You can use our API to access StratiFi's PRISM API endpoints, which can get information on various risks and returns scores. </p>
+<p>Welcome to the StratiFi API! You can use our API to access StratiFi's API endpoints, which allow you to review your portfolio and get information on various risks and scores.</p>
 
-<p>You can view code examples in the dark area to the right.</p>
-<div class="level-1-wrapper"><div class="level-1"><h1 id="authentication">Authentication</h1></div></div>
-<blockquote class="blockquote">
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'prism'</span>
+<p>Code examples will be presented in the dark area to the right.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Prism</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'stratifi-token'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">prism</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">prism</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'stratifi-token'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">prism</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'prism'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">prism</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'stratifi-token'</span><span class="p">);</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Make sure to replace <code>stratifi-token</code> with your API key.</p>
-</blockquote>
-
-<p>StratiFi's PRISM API uses API keys to allow access to the API endpoints. Current Authentication method is Bearer token, provided by StratiFi Team.</p>
-
-<p>StratiFi expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
+<p>StratiFi's API follows an architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope. Standard HTTP response codes describe the result of the operations in our API.</p>
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="requests">Requests</h2>
+<p>All requests should use the Hypertext Transfer Protocol Secure (HTTPS).</p>
+<p>StratiFi's API domain name is: <code>backend.stratifi.com</code>.
+You can also start testing using our sandbox hosted in <code>sandbox.stratifi.com</code></p>
+<div class="level-3">
+<div class="side"></div>
+<div class="main">
+<h3 id="authentication">Authentication</h3>
+<p>We use API keys to allow access to the API endpoints. The current Authentication method is Bearer token, provided by StratiFi Team. StratiFi expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 <p><code>Authorization: Bearer stratifi-token</code></p>
-
 <aside class="notice">
 You must replace <code>stratifi-token</code> with your personal API key.
 </aside>
-<div class="level-1-wrapper"><div class="level-1"><h1 id="accounts">Accounts</h1></div></div>
-<p>All accounts related endpoints</p>
+</div>
+</div>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="level-1-wrapper"><div class="level-1"><h1 id="companies">Companies</h1></div></div>
+<p>All companies related endpoints</p>
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>Account Object Description:</p>
+<p>To send request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/companies/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
-  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
-  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
-  <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
-  <span class="s2">"investor"</span>: 1,
-  <span class="s2">"advisor"</span>: 1,
-  <span class="s2">"positions"</span>: <span class="o">[</span>
-    <span class="o">{</span>
-      <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
-      <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P 500"</span>,
-      <span class="s2">"value"</span>: <span class="s2">"823045.26"</span>
-    <span class="o">}</span>,
-    <span class="o">{</span>
-      <span class="s2">"ticker"</span>: <span class="s2">"IBM"</span>,
-      <span class="s2">"ticker_name"</span>: <span class="s2">"IBM"</span>,
-      <span class="s2">"value"</span>: <span class="s2">"411522.63"</span>
-    <span class="o">}</span>,
-    …
-  <span class="o">]</span>
+    <span class="s2">"count"</span>: 2,
+    <span class="s2">"next"</span>: null,
+    <span class="s2">"previous"</span>: null,
+    <span class="s2">"results"</span>: <span class="o">[</span>
+         <span class="o">{</span>
+            <span class="s2">"id"</span>: 1,
+            <span class="s2">"name"</span>: <span class="s2">"Companny A, LLC"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2,
+            <span class="s2">"name"</span>: <span class="s2">"Companny B, LLC"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
 <span class="o">}</span>
-
 </code></pre>
 </div>
 <div class="main">
-<h2 id="account-object">Account Object</h2>
+<h2 id="get-all-companies">Get All Companies</h2>
+<p class="request-type">GET</p>
+<p class="request-url">/companies</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>Number of companies</td>
+</tr>
+<tr>
+<td>next</td>
+<td>String</td>
+<td>Link to next page of companies</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>String</td>
+<td>Link to previous page of companies</td>
+</tr>
+<tr>
+<td>results</td>
+<td>Object</td>
+<td>List of Company objects</td>
+</tr>
+</tbody>
+</table>
+<p><code>results</code> Object</p>
 <table>
 <thead>
 <tr>
@@ -436,37 +477,323 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>id</td>
 <td>int</td>
-<td>ID of Account in StratiFi's system</td>
+<td>ID of company in StratiFi's system</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of company</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/companies/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+    "name": "Company C, LLC",
+  }'</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 3,
+  <span class="s2">"name"</span>: <span class="s2">"Companny C, LLC"</span>
+<span class="o">}</span>
+
+</code></pre>
+</div>
+<div class="main">
+<h2 id="create-company">Create Company</h2>
+<p class="request-type">POST</p>
+<p class="request-url">/companies</p>
+<p><strong>Request Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of company</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of company in StratiFi's system</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of company</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="get-company-by-id">Get Company By ID</h2>
+<p>Get company by ID</p>
+<p class="request-type">GET</p>
+<p class="request-url">/companies/:ID</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of company in StratiFi's system</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of company</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="update-company">Update Company</h2>
+<p>Update company household</p>
+<p class="request-type">PUT/PATCH</p>
+<p class="request-url">/companies/:ID</p>
+<p><strong>Request Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of company</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>To send request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/companies/&lt;company id&gt;/prism_aggregation"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
+  <span class="s2">"no_overlay_correlation"</span>: 6.049895392953136,
+  <span class="s2">"no_overlay_overall"</span>: 8.214532798503825,
+  <span class="s2">"no_overlay_tail"</span>: 8.674759220001045,
+  <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
+<span class="o">}</span>
+</code></pre>
+</div>
+<div class="main">
+<h2 id="company-prism-aggregation">Company Prism Aggregation</h2>
+<p class="request-type">GET</p>
+<p class="request-url">/companies/:ID/prism_aggregation</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no_overlay_overall</td>
+<td>float</td>
+<td>Overall score</td>
+</tr>
+<tr>
+<td>no_overlay_concentrated</td>
+<td>float</td>
+<td>Concentration score</td>
+</tr>
+<tr>
+<td>no_overlay_correlation</td>
+<td>float</td>
+<td>Correlation score</td>
+</tr>
+<tr>
+<td>no_overlay_tail</td>
+<td>float</td>
+<td>Tail score</td>
+</tr>
+<tr>
+<td>no_overlay_volatility</td>
+<td>float</td>
+<td>Volatility score</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-1-wrapper"><div class="level-1"><h1 id="model-portfolios">Model Portfolios</h1></div></div>
+<p>All model portfolios related endpoints</p>
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>Model Portfolio Object Description:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"name"</span>: <span class="s2">"Aggresive 60/40"</span>,
+  <span class="s2">"value"</span>: <span class="s2">"100.0"</span>,
+  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"company"</span>: 1,
+  <span class="s2">"positions"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
+      <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P 500"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"60"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"ticker"</span>: <span class="s2">"IBM"</span>,
+      <span class="s2">"ticker_name"</span>: <span class="s2">"IBM"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"40"</span>
+    <span class="o">}</span>,
+    …
+  <span class="o">]</span>
+<span class="o">}</span>
+
+</code></pre>
+</div>
+<div class="main">
+<h2 id="model-portfolio-object">Model Portfolio Object</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of Model Portfolio in StratiFi's system</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
-<td>Account name</td>
+<td>Model Portfolio name</td>
 </tr>
 <tr>
 <td>value</td>
 <td>string</td>
-<td>Account value</td>
+<td>Model Portfolio value</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
-<td>Account type</td>
+<td>Model Portfolio type</td>
 </tr>
 <tr>
-<td>number</td>
-<td>string</td>
-<td>Account number</td>
-</tr>
-<tr>
-<td>investor</td>
+<td>company</td>
 <td>int</td>
-<td>ID of Investor object in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of Advisor object in StratiFi's system. Ideally, you would provide the investor ID. However, if you don't have that information but you do know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</td>
+<td>ID of Company object in StratiFi's system</td>
 </tr>
 <tr>
 <td>positions</td>
@@ -498,78 +825,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>value</td>
 <td>string</td>
-<td>Value</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Valid Account Types</strong></p>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100</td>
-<td>Individual</td>
-</tr>
-<tr>
-<td>101</td>
-<td>Joint</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Revocable Living Trust</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Irrevocable Living Trust</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Limited Liability Company</td>
-</tr>
-<tr>
-<td>304</td>
-<td>Limited Liability Limited Partnership</td>
-</tr>
-<tr>
-<td>301</td>
-<td>S Corporation</td>
-</tr>
-<tr>
-<td>302</td>
-<td>C Corporation</td>
-</tr>
-<tr>
-<td>303</td>
-<td>Sole Proprietorship</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Traditional IRA</td>
-</tr>
-<tr>
-<td>402</td>
-<td>Simplified Employee Pension IRA</td>
-</tr>
-<tr>
-<td>402</td>
-<td>Savings Incentive Match Plan for Employees IRA</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Roth IRA</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Rollover IRA</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Household Account</td>
+<td>Weight of the position in percentage.</td>
 </tr>
 </tbody>
 </table>
@@ -582,16 +838,12 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 
-
-
-
-
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To Get all the Accounts, use this code:</p>
+<p>To Get all the Model Portfolios, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/accounts/"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/models/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
@@ -606,9 +858,9 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </code></pre>
 </div>
 <div class="main">
-<h2 id="get-all-accounts">Get All Accounts</h2>
+<h2 id="get-all-model-portfolios">Get All Model Portfolios</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/accounts</p>
+<p class="request-url">/models</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -622,22 +874,22 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>count</td>
 <td>int</td>
-<td>Number of accounts</td>
+<td>Number of model portfolios</td>
 </tr>
 <tr>
 <td>next</td>
 <td>String</td>
-<td>Link to next page of accounts</td>
+<td>Link to next page of model portfolios</td>
 </tr>
 <tr>
 <td>previous</td>
 <td>String</td>
-<td>Link to previous page of accounts</td>
+<td>Link to previous page of model portfolios</td>
 </tr>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of Account objects</td>
+<td>List of Model Portfolio objects</td>
 </tr>
 </tbody>
 </table>
@@ -657,23 +909,23 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To Create an Account, use this code:</p>
+<p>To Create an Model Portfolio, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/accounts/"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/models/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{ … }'</span>
 </code></pre>
 </div>
 <div class="main">
-<h2 id="create-account">Create Account</h2>
+<h2 id="create-model-portfolio">Create Model Portfolio</h2>
 <p class="request-type">POST</p>
-<p class="request-url">/accounts</p>
+<p class="request-url">/models</p>
 <p><strong>Request Parameters</strong></p>
-<p>The Account object to be created (without ID). Only the account name is required.</p>
-<p>If the list of <code>positions</code> is included, the account value will be the Sum of the position's values.</p>
+<p>The Model Portfolio object to be created (without ID). Only the mode portfolio name is required.</p>
+<p>If the list of <code>positions</code> is included, the mode portfolio value will be the Sum of the position's values.</p>
 <p><strong>Response Fields</strong></p>
-<p>The Account object with a valid account ID.</p>
+<p>The Model Portfolio object with a valid mode portfolio ID.</p>
 </div>
 </div></div>
 
@@ -694,19 +946,19 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To Get an Account by ID, use this code:</p>
+<p>To Get an Model Portfolio by ID, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/accounts/1/"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/models/1/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 </div>
 <div class="main">
-<h2 id="get-account-by-id">Get Account By ID</h2>
-<p>Get account by ID</p>
+<h2 id="get-model-portfolio-by-id">Get Model Portfolio By ID</h2>
+<p>Get mode portfolio by ID</p>
 <p class="request-type">GET</p>
-<p class="request-url">/accounts/:ID</p>
+<p class="request-url">/models/:ID</p>
 <p><strong>Response Fields</strong></p>
-<p>Returns the account object.</p>
+<p>Returns the mode portfolio object.</p>
 </div>
 </div></div>
 
@@ -723,24 +975,24 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To Update an Account, use this code:</p>
+<p>To Update an Model Portfolio, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="s2">"api.stratifi.com/v1/accounts/"</span>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="s2">"api.stratifi.com/v1/models/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{ … }'</span>
 </code></pre>
 </div>
 <div class="main">
-<h2 id="update-account">Update Account</h2>
-<p>Update the account information.</p>
+<h2 id="update-model-portfolio">Update Model Portfolio</h2>
+<p>Update the mode portfolio information.</p>
 <p class="request-type">PUT/PATCH</p>
-<p class="request-url">/accounts/:ID</p>
+<p class="request-url">/models/:ID</p>
 <p><strong>Request Parameters</strong></p>
-<p>You can use a <code>PUT</code> request and send an entire account object, or a <code>PATCH</code> request and send only the fields you want to update.</p>
-<p>Notice that the if the <code>positions</code> field in included, the existing positions of the account will be replaced.</p>
+<p>You can use a <code>PUT</code> request and send an entire mode portfolio object, or a <code>PATCH</code> request and send only the fields you want to update.</p>
+<p>Notice that the if the <code>positions</code> field in included, the existing positions of the mode portfolio will be replaced.</p>
 <p><strong>Response Fields</strong></p>
-<p>Returns the account object.</p>
+<p>Returns the mode portfolio object.</p>
 </div>
 </div></div>
 
@@ -763,9 +1015,9 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To get the Account Prism Score, use this code:</p>
+<p>To get the Model Portfolio Prism Score, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/accounts/:ID/prism_score"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/models/:ID/prism_score"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
@@ -781,933 +1033,9 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </code></pre>
 </div>
 <div class="main">
-<h2 id="account-prism-score">Account Prism Score</h2>
+<h2 id="model-portfolio-prism-score">Model Portfolio Prism Score</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/accounts/:ID/prism_score</p>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>no_overlay_overall</td>
-<td>float</td>
-<td>Overall score</td>
-</tr>
-<tr>
-<td>no_overlay_concentrated</td>
-<td>float</td>
-<td>Concentration score</td>
-</tr>
-<tr>
-<td>no_overlay_correlation</td>
-<td>float</td>
-<td>Correlation score</td>
-</tr>
-<tr>
-<td>no_overlay_tail</td>
-<td>float</td>
-<td>Tail score</td>
-</tr>
-<tr>
-<td>no_overlay_volatility</td>
-<td>float</td>
-<td>Volatility score</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="investors">Investors</h1></div></div>
-<p>All investors related endpoints</p>
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>To send request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/investors/"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Reponse Body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"count"</span>: 10,
-  <span class="s2">"next"</span>: null,
-  <span class="s2">"previous"</span>: null,
-  <span class="s2">"results"</span>: <span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 1,
-        <span class="s2">"user"</span>: <span class="o">{</span>
-           <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
-           <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
-           <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-        <span class="o">}</span>,
-        <span class="s2">"advisor"</span>: 1,
-        <span class="s2">"household"</span>: 1,
-        <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 2,
-        <span class="s2">"user"</span>: <span class="o">{</span>
-           <span class="s2">"first_name"</span>:<span class="s2">"Mike"</span>,
-           <span class="s2">"last_name"</span>:<span class="s2">"Spencer"</span>,
-           <span class="s2">"email"</span>:<span class="s2">"mspencer@example.com"</span>
-        <span class="o">}</span>,
-        <span class="s2">"advisor"</span>: 1,
-        <span class="s2">"household"</span>: 2,
-        <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>
-    <span class="o">}</span>, … <span class="o">]</span>
-  <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-all-investors">Get All Investors</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/investors</p>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>count</td>
-<td>int</td>
-<td>Number of investors</td>
-</tr>
-<tr>
-<td>next</td>
-<td>String</td>
-<td>Link to next page of investors</td>
-</tr>
-<tr>
-<td>previous</td>
-<td>String</td>
-<td>Link to previous page of investors</td>
-</tr>
-<tr>
-<td>results</td>
-<td>Object</td>
-<td>List of Investor objects</td>
-</tr>
-</tbody>
-</table>
-<p><code>results</code> Object</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of investor in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of Advisor object in StratiFi's system</td>
-</tr>
-<tr>
-<td>household</td>
-<td>int</td>
-<td>ID of Household object in StratiFi's system</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>Phone of the investor</td>
-</tr>
-<tr>
-<td>user</td>
-<td>Object</td>
-<td>User object</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/investors/"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -d <span class="s1">'{
-    "household": &lt;household id&gt;,
-    "advisor": &lt;advisor id&gt;,
-    "phone": "5555555555",
-    "user": {
-      "first_name": "John",
-      "last_name": "Wick",
-      "email": "john.wick@example.com"
-      }
-    }'</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Reponse Body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 150,
-  <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
-  <span class="s2">"user"</span>: <span class="o">{</span>
-    <span class="s2">"first_name"</span>: <span class="s2">"Mike"</span>,
-    <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
-    <span class="s2">"email"</span>: <span class="s2">"mspencer@example.com"</span>
-  <span class="o">}</span>,
-  <span class="s2">"household"</span>: 200,
-  <span class="s2">"advisor"</span>: 101
-<span class="o">}</span>
-
-</code></pre>
-</div>
-<div class="main">
-<h2 id="create-investor">Create Investor</h2>
-<p class="request-type">POST</p>
-<p class="request-url">/investors</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of Advisor object in StratiFi's system</td>
-</tr>
-<tr>
-<td>household</td>
-<td>int</td>
-<td>(optional) ID of Household object in StratiFi's system</td>
-</tr>
-<tr>
-<td>user</td>
-<td>Object</td>
-<td>User data</td>
-</tr>
-</tbody>
-</table>
-<p><code>user</code> Object</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>email</td>
-<td>String</td>
-<td>Investor email</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>String</td>
-<td>Investor first name</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>String</td>
-<td>Investor last name</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of investor in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of Advisor object in StratiFi's system</td>
-</tr>
-<tr>
-<td>household</td>
-<td>int</td>
-<td>ID of Household object in StratiFi's system</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>Phone of the investor</td>
-</tr>
-<tr>
-<td>user</td>
-<td>Object</td>
-<td>User object</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="get-investor-by-id">Get Investor By ID</h2>
-<p>Get investor by ID</p>
-<p class="request-type">GET</p>
-<p class="request-url">/investors/:ID</p>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of investor in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of Advisor object in StratiFi's system</td>
-</tr>
-<tr>
-<td>household</td>
-<td>int</td>
-<td>ID of Household object in StratiFi's system</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>Phone of the investor</td>
-</tr>
-<tr>
-<td>user</td>
-<td>Object</td>
-<td>User object</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="update-investor">Update Investor</h2>
-<p>Update investor information</p>
-<p class="request-type">PUT/PATCH</p>
-<p class="request-url">/investors/:ID</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of Advisor object in StratiFi's system</td>
-</tr>
-<tr>
-<td>household</td>
-<td>int</td>
-<td>(optional) ID of Household object in StratiFi's system</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>Phone of the investor</td>
-</tr>
-<tr>
-<td>user</td>
-<td>Object</td>
-<td>User object</td>
-</tr>
-</tbody>
-</table>
-<p><code>user</code> Object</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>email</td>
-<td>String</td>
-<td>Investor email</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>String</td>
-<td>Investor first name</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>String</td>
-<td>Investor last name</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of investor in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of Advisor object in StratiFi's system</td>
-</tr>
-<tr>
-<td>household</td>
-<td>int</td>
-<td>ID of Household object in StratiFi's system</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>Phone of the investor</td>
-</tr>
-<tr>
-<td>user</td>
-<td>Object</td>
-<td>User object</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>To send request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/investors/&lt;investor id&gt;/prism_aggregation"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Reponse Body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
-  <span class="s2">"no_overlay_correlation"</span>: 6.049895392953136,
-  <span class="s2">"no_overlay_overall"</span>: 8.214532798503825,
-  <span class="s2">"no_overlay_tail"</span>: 8.674759220001045,
-  <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
-<span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="investor-prism-aggregation">Investor Prism Aggregation</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/investors/:ID/prism_aggregation</p>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>no_overlay_overall</td>
-<td>float</td>
-<td>Overall score</td>
-</tr>
-<tr>
-<td>no_overlay_concentrated</td>
-<td>float</td>
-<td>Concentration score</td>
-</tr>
-<tr>
-<td>no_overlay_correlation</td>
-<td>float</td>
-<td>Correlation score</td>
-</tr>
-<tr>
-<td>no_overlay_tail</td>
-<td>float</td>
-<td>Tail score</td>
-</tr>
-<tr>
-<td>no_overlay_volatility</td>
-<td>float</td>
-<td>Volatility score</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="households">Households</h1></div></div>
-<p>All household related endpoints</p>
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>To send request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/households/"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Reponse Body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"count"</span>: 2,
-  <span class="s2">"next"</span>: null,
-  <span class="s2">"previous"</span>: null,
-  <span class="s2">"results"</span>: <span class="o">[</span>
-    <span class="o">{</span>
-      <span class="s2">"id"</span>: 1,
-      <span class="s2">"name"</span>: <span class="s2">"Household A"</span>,
-      <span class="s2">"advisor"</span>: 71
-    <span class="o">}</span>,
-    <span class="o">{</span>
-      <span class="s2">"id"</span>: 2,
-      <span class="s2">"name"</span>: <span class="s2">"Household B"</span>,
-      <span class="s2">"advisor"</span>: 71
-    <span class="o">}</span>
-  <span class="o">]</span>
-<span class="o">}</span>
-
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-all-households">Get All Households</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/households</p>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>count</td>
-<td>int</td>
-<td>Number of households</td>
-</tr>
-<tr>
-<td>next</td>
-<td>String</td>
-<td>Link to next page of households</td>
-</tr>
-<tr>
-<td>previous</td>
-<td>String</td>
-<td>Link to previous page of households</td>
-</tr>
-<tr>
-<td>results</td>
-<td>Object</td>
-<td>List of household objects</td>
-</tr>
-</tbody>
-</table>
-<p><code>results</code> Object</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of household in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of the advisor</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Household name</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/households/"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -d <span class="s1">'{
-    "name": "Household C"
-    "advisor": &lt;advisor id&gt;,
-    }'</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Reponse Body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-    <span class="s2">"id"</span>: 2,
-    <span class="s2">"name"</span>: <span class="s2">"Household C"</span>,
-    <span class="s2">"advisor"</span>: &lt;advisor id&gt;
-<span class="o">}</span>
-
-</code></pre>
-</div>
-<div class="main">
-<h2 id="create-household">Create Household</h2>
-<p class="request-type">POST</p>
-<p class="request-url">/households</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of the Advisor object that owns this Household</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Name of the household</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of households in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of the Advisor object that owns this Household</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Household name</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="get-household-by-id">Get Household By ID</h2>
-<p>Get household by ID</p>
-<p class="request-type">GET</p>
-<p class="request-url">/households/:ID</p>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of household in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of the Advisor object that owns this Household</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Household name</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="update-household">Update Household</h2>
-<p>Update household</p>
-<p class="request-type">PUT/PATCH</p>
-<p class="request-url">/households/:ID</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of the Advisor object that owns this Household</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Household name</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Response Fields</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>ID of households in StratiFi's system</td>
-</tr>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>ID of the Advisor object that owns this Household</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Household name</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>To send request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/households/&lt;household id&gt;/prism_aggregation"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span>
-</code></pre>
-<blockquote class="blockquote">
-<p>Reponse Body</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-    <span class="s2">"no_overlay_overall"</span>: 5.1045410298932925,
-    <span class="s2">"no_overlay_concentrated"</span>: 4.205588959868668,
-    <span class="s2">"no_overlay_correlation"</span>: 4.999999999999999,
-    <span class="s2">"no_overlay_tail"</span>: 5.804890339885084,
-    <span class="s2">"no_overlay_volatility"</span>: 4.205588959868668
-<span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="household-prism-aggregation">Household Prism Aggregation</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/households/:ID/prism_aggregation</p>
+<p class="request-url">/models/:ID/prism_score</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -1765,7 +1093,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To send request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/advisors/"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/advisors/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
@@ -2229,7 +1557,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To send request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/advisors/&lt;advisor id&gt;/prism_aggregation"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/advisors/&lt;advisor id&gt;/prism_aggregation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
@@ -2298,40 +1626,43 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 
-<div class="level-1-wrapper"><div class="level-1"><h1 id="companies">Companies</h1></div></div>
-<p>All companies related endpoints</p>
+<div class="level-1-wrapper"><div class="level-1"><h1 id="households">Households</h1></div></div>
+<p>All household related endpoints</p>
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
 <p>To send request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/companies/"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/households/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
 <p>Reponse Body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-    <span class="s2">"count"</span>: 2,
-    <span class="s2">"next"</span>: null,
-    <span class="s2">"previous"</span>: null,
-    <span class="s2">"results"</span>: <span class="o">[</span>
-         <span class="o">{</span>
-            <span class="s2">"id"</span>: 1,
-            <span class="s2">"name"</span>: <span class="s2">"Companny A, LLC"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"id"</span>: 2,
-            <span class="s2">"name"</span>: <span class="s2">"Companny B, LLC"</span>
-        <span class="o">}</span>
-    <span class="o">]</span>
+  <span class="s2">"count"</span>: 2,
+  <span class="s2">"next"</span>: null,
+  <span class="s2">"previous"</span>: null,
+  <span class="s2">"results"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 1,
+      <span class="s2">"name"</span>: <span class="s2">"Household A"</span>,
+      <span class="s2">"advisor"</span>: 71
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"id"</span>: 2,
+      <span class="s2">"name"</span>: <span class="s2">"Household B"</span>,
+      <span class="s2">"advisor"</span>: 71
+    <span class="o">}</span>
+  <span class="o">]</span>
 <span class="o">}</span>
+
 </code></pre>
 </div>
 <div class="main">
-<h2 id="get-all-companies">Get All Companies</h2>
+<h2 id="get-all-households">Get All Households</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/companies</p>
+<p class="request-url">/households</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -2345,22 +1676,22 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>count</td>
 <td>int</td>
-<td>Number of companies</td>
+<td>Number of households</td>
 </tr>
 <tr>
 <td>next</td>
 <td>String</td>
-<td>Link to next page of companies</td>
+<td>Link to next page of households</td>
 </tr>
 <tr>
 <td>previous</td>
 <td>String</td>
-<td>Link to previous page of companies</td>
+<td>Link to previous page of households</td>
 </tr>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of Company objects</td>
+<td>List of household objects</td>
 </tr>
 </tbody>
 </table>
@@ -2377,12 +1708,17 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>id</td>
 <td>int</td>
-<td>ID of company in StratiFi's system</td>
+<td>ID of household in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of the advisor</td>
 </tr>
 <tr>
 <td>name</td>
 <td>String</td>
-<td>Name of company</td>
+<td>Household name</td>
 </tr>
 </tbody>
 </table>
@@ -2405,27 +1741,29 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/companies/"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/households/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{
-    "name": "Company C, LLC",
-  }'</span>
+    "name": "Household C"
+    "advisor": &lt;advisor id&gt;,
+    }'</span>
 </code></pre>
 <blockquote class="blockquote">
 <p>Reponse Body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 3,
-  <span class="s2">"name"</span>: <span class="s2">"Companny C, LLC"</span>
+    <span class="s2">"id"</span>: 2,
+    <span class="s2">"name"</span>: <span class="s2">"Household C"</span>,
+    <span class="s2">"advisor"</span>: &lt;advisor id&gt;
 <span class="o">}</span>
 
 </code></pre>
 </div>
 <div class="main">
-<h2 id="create-company">Create Company</h2>
+<h2 id="create-household">Create Household</h2>
 <p class="request-type">POST</p>
-<p class="request-url">/companies</p>
+<p class="request-url">/households</p>
 <p><strong>Request Parameters</strong></p>
 <table>
 <thead>
@@ -2437,9 +1775,14 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </thead>
 <tbody>
 <tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of the Advisor object that owns this Household</td>
+</tr>
+<tr>
 <td>name</td>
 <td>String</td>
-<td>Name of company</td>
+<td>Name of the household</td>
 </tr>
 </tbody>
 </table>
@@ -2456,12 +1799,17 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>id</td>
 <td>int</td>
-<td>ID of company in StratiFi's system</td>
+<td>ID of households in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of the Advisor object that owns this Household</td>
 </tr>
 <tr>
 <td>name</td>
 <td>String</td>
-<td>Name of company</td>
+<td>Household name</td>
 </tr>
 </tbody>
 </table>
@@ -2483,10 +1831,10 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side"></div>
 <div class="main">
-<h2 id="get-company-by-id">Get Company By ID</h2>
-<p>Get company by ID</p>
+<h2 id="get-household-by-id">Get Household By ID</h2>
+<p>Get household by ID</p>
 <p class="request-type">GET</p>
-<p class="request-url">/companies/:ID</p>
+<p class="request-url">/households/:ID</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -2500,12 +1848,17 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>id</td>
 <td>int</td>
-<td>ID of company in StratiFi's system</td>
+<td>ID of household in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of the Advisor object that owns this Household</td>
 </tr>
 <tr>
 <td>name</td>
 <td>String</td>
-<td>Name of company</td>
+<td>Household name</td>
 </tr>
 </tbody>
 </table>
@@ -2523,10 +1876,10 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side"></div>
 <div class="main">
-<h2 id="update-company">Update Company</h2>
-<p>Update company household</p>
+<h2 id="update-household">Update Household</h2>
+<p>Update household</p>
 <p class="request-type">PUT/PATCH</p>
-<p class="request-url">/companies/:ID</p>
+<p class="request-url">/households/:ID</p>
 <p><strong>Request Parameters</strong></p>
 <table>
 <thead>
@@ -2538,14 +1891,50 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </thead>
 <tbody>
 <tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of the Advisor object that owns this Household</td>
+</tr>
+<tr>
 <td>name</td>
 <td>String</td>
-<td>Name of company</td>
+<td>Household name</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of households in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of the Advisor object that owns this Household</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Household name</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div></div>
+
+
+
+
 
 
 
@@ -2560,25 +1949,25 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <blockquote class="blockquote">
 <p>To send request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/companies/&lt;company id&gt;/prism_aggregation"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/households/&lt;household id&gt;/prism_aggregation"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
 <p>Reponse Body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
-  <span class="s2">"no_overlay_correlation"</span>: 6.049895392953136,
-  <span class="s2">"no_overlay_overall"</span>: 8.214532798503825,
-  <span class="s2">"no_overlay_tail"</span>: 8.674759220001045,
-  <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
+    <span class="s2">"no_overlay_overall"</span>: 5.1045410298932925,
+    <span class="s2">"no_overlay_concentrated"</span>: 4.205588959868668,
+    <span class="s2">"no_overlay_correlation"</span>: 4.999999999999999,
+    <span class="s2">"no_overlay_tail"</span>: 5.804890339885084,
+    <span class="s2">"no_overlay_volatility"</span>: 4.205588959868668
 <span class="o">}</span>
 </code></pre>
 </div>
 <div class="main">
-<h2 id="company-prism-aggregation">Company Prism Aggregation</h2>
+<h2 id="household-prism-aggregation">Household Prism Aggregation</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/companies/:ID/prism_aggregation</p>
+<p class="request-url">/households/:ID/prism_aggregation</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -2629,38 +2018,87 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 
-<div class="level-1-wrapper"><div class="level-1"><h1 id="model-portfolios">Model Portfolios</h1></div></div>
-<p>All model portfolios related endpoints</p>
+<div class="level-1-wrapper"><div class="level-1"><h1 id="investors">Investors</h1></div></div>
+<p>All investors related endpoints</p>
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>Model Portfolio Object Description:</p>
+<p>To send request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/investors/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"name"</span>: <span class="s2">"Aggresive 60/40"</span>,
-  <span class="s2">"value"</span>: <span class="s2">"100.0"</span>,
-  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
-  <span class="s2">"company"</span>: 1,
-  <span class="s2">"positions"</span>: <span class="o">[</span>
+  <span class="s2">"count"</span>: 10,
+  <span class="s2">"next"</span>: null,
+  <span class="s2">"previous"</span>: null,
+  <span class="s2">"results"</span>: <span class="o">[</span>
     <span class="o">{</span>
-      <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
-      <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P 500"</span>,
-      <span class="s2">"value"</span>: <span class="s2">"60"</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"user"</span>: <span class="o">{</span>
+           <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
+           <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
+           <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
+        <span class="o">}</span>,
+        <span class="s2">"advisor"</span>: 1,
+        <span class="s2">"household"</span>: 1,
+        <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>
     <span class="o">}</span>,
     <span class="o">{</span>
-      <span class="s2">"ticker"</span>: <span class="s2">"IBM"</span>,
-      <span class="s2">"ticker_name"</span>: <span class="s2">"IBM"</span>,
-      <span class="s2">"value"</span>: <span class="s2">"40"</span>
-    <span class="o">}</span>,
-    …
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"user"</span>: <span class="o">{</span>
+           <span class="s2">"first_name"</span>:<span class="s2">"Mike"</span>,
+           <span class="s2">"last_name"</span>:<span class="s2">"Spencer"</span>,
+           <span class="s2">"email"</span>:<span class="s2">"mspencer@example.com"</span>
+        <span class="o">}</span>,
+        <span class="s2">"advisor"</span>: 1,
+        <span class="s2">"household"</span>: 2,
+        <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>
+    <span class="o">}</span>, … <span class="o">]</span>
   <span class="o">]</span>
 <span class="o">}</span>
-
 </code></pre>
 </div>
 <div class="main">
-<h2 id="model-portfolio-object">Model Portfolio Object</h2>
+<h2 id="get-all-investors">Get All Investors</h2>
+<p class="request-type">GET</p>
+<p class="request-url">/investors</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>Number of investors</td>
+</tr>
+<tr>
+<td>next</td>
+<td>String</td>
+<td>Link to next page of investors</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>String</td>
+<td>Link to previous page of investors</td>
+</tr>
+<tr>
+<td>results</td>
+<td>Object</td>
+<td>List of Investor objects</td>
+</tr>
+</tbody>
+</table>
+<p><code>results</code> Object</p>
 <table>
 <thead>
 <tr>
@@ -2673,27 +2111,522 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>id</td>
 <td>int</td>
-<td>ID of Model Portfolio in StratiFi's system</td>
+<td>ID of investor in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of Advisor object in StratiFi's system</td>
+</tr>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>ID of Household object in StratiFi's system</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Phone of the investor</td>
+</tr>
+<tr>
+<td>user</td>
+<td>Object</td>
+<td>User object</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/investors/"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -d <span class="s1">'{
+    "household": &lt;household id&gt;,
+    "advisor": &lt;advisor id&gt;,
+    "phone": "5555555555",
+    "user": {
+      "first_name": "John",
+      "last_name": "Wick",
+      "email": "john.wick@example.com"
+      }
+    }'</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 150,
+  <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
+  <span class="s2">"user"</span>: <span class="o">{</span>
+    <span class="s2">"first_name"</span>: <span class="s2">"Mike"</span>,
+    <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
+    <span class="s2">"email"</span>: <span class="s2">"mspencer@example.com"</span>
+  <span class="o">}</span>,
+  <span class="s2">"household"</span>: 200,
+  <span class="s2">"advisor"</span>: 101
+<span class="o">}</span>
+
+</code></pre>
+</div>
+<div class="main">
+<h2 id="create-investor">Create Investor</h2>
+<p class="request-type">POST</p>
+<p class="request-url">/investors</p>
+<p><strong>Request Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of Advisor object in StratiFi's system</td>
+</tr>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>(optional) ID of Household object in StratiFi's system</td>
+</tr>
+<tr>
+<td>user</td>
+<td>Object</td>
+<td>User data</td>
+</tr>
+</tbody>
+</table>
+<p><code>user</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Investor email</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>String</td>
+<td>Investor first name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>String</td>
+<td>Investor last name</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of investor in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of Advisor object in StratiFi's system</td>
+</tr>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>ID of Household object in StratiFi's system</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Phone of the investor</td>
+</tr>
+<tr>
+<td>user</td>
+<td>Object</td>
+<td>User object</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="get-investor-by-id">Get Investor By ID</h2>
+<p>Get investor by ID</p>
+<p class="request-type">GET</p>
+<p class="request-url">/investors/:ID</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of investor in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of Advisor object in StratiFi's system</td>
+</tr>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>ID of Household object in StratiFi's system</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Phone of the investor</td>
+</tr>
+<tr>
+<td>user</td>
+<td>Object</td>
+<td>User object</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="update-investor">Update Investor</h2>
+<p>Update investor information</p>
+<p class="request-type">PUT/PATCH</p>
+<p class="request-url">/investors/:ID</p>
+<p><strong>Request Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of Advisor object in StratiFi's system</td>
+</tr>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>(optional) ID of Household object in StratiFi's system</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Phone of the investor</td>
+</tr>
+<tr>
+<td>user</td>
+<td>Object</td>
+<td>User object</td>
+</tr>
+</tbody>
+</table>
+<p><code>user</code> Object</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Investor email</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>String</td>
+<td>Investor first name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>String</td>
+<td>Investor last name</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of investor in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of Advisor object in StratiFi's system</td>
+</tr>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>ID of Household object in StratiFi's system</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Phone of the investor</td>
+</tr>
+<tr>
+<td>user</td>
+<td>Object</td>
+<td>User object</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>To send request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/investors/&lt;investor id&gt;/prism_aggregation"</span>
+  -H <span class="s2">"Authorization: stratifi-token"</span>
+</code></pre>
+<blockquote class="blockquote">
+<p>Reponse Body</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
+  <span class="s2">"no_overlay_correlation"</span>: 6.049895392953136,
+  <span class="s2">"no_overlay_overall"</span>: 8.214532798503825,
+  <span class="s2">"no_overlay_tail"</span>: 8.674759220001045,
+  <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
+<span class="o">}</span>
+</code></pre>
+</div>
+<div class="main">
+<h2 id="investor-prism-aggregation">Investor Prism Aggregation</h2>
+<p class="request-type">GET</p>
+<p class="request-url">/investors/:ID/prism_aggregation</p>
+<p><strong>Response Fields</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no_overlay_overall</td>
+<td>float</td>
+<td>Overall score</td>
+</tr>
+<tr>
+<td>no_overlay_concentrated</td>
+<td>float</td>
+<td>Concentration score</td>
+</tr>
+<tr>
+<td>no_overlay_correlation</td>
+<td>float</td>
+<td>Correlation score</td>
+</tr>
+<tr>
+<td>no_overlay_tail</td>
+<td>float</td>
+<td>Tail score</td>
+</tr>
+<tr>
+<td>no_overlay_volatility</td>
+<td>float</td>
+<td>Volatility score</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-1-wrapper"><div class="level-1"><h1 id="accounts">Accounts</h1></div></div>
+<p>All accounts related endpoints</p>
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side">
+<blockquote class="blockquote">
+<p>Account Object Description:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
+  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
+  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
+  <span class="s2">"investor"</span>: 1,
+  <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"positions"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
+      <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P 500"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"823045.26"</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"ticker"</span>: <span class="s2">"IBM"</span>,
+      <span class="s2">"ticker_name"</span>: <span class="s2">"IBM"</span>,
+      <span class="s2">"value"</span>: <span class="s2">"411522.63"</span>
+    <span class="o">}</span>,
+    …
+  <span class="o">]</span>
+<span class="o">}</span>
+
+</code></pre>
+</div>
+<div class="main">
+<h2 id="account-object">Account Object</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>ID of Account in StratiFi's system</td>
 </tr>
 <tr>
 <td>name</td>
 <td>string</td>
-<td>Model Portfolio name</td>
+<td>Account name</td>
 </tr>
 <tr>
 <td>value</td>
 <td>string</td>
-<td>Model Portfolio value</td>
+<td>Account value</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
-<td>Model Portfolio type</td>
+<td>Account type</td>
 </tr>
 <tr>
-<td>company</td>
+<td>number</td>
+<td>string</td>
+<td>Account number</td>
+</tr>
+<tr>
+<td>investor</td>
 <td>int</td>
-<td>ID of Company object in StratiFi's system</td>
+<td>ID of Investor object in StratiFi's system</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>ID of Advisor object in StratiFi's system. Ideally, you would provide the investor ID. However, if you don't have that information but you do know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</td>
 </tr>
 <tr>
 <td>positions</td>
@@ -2725,7 +2658,78 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>value</td>
 <td>string</td>
-<td>Weight of the position in percentage.</td>
+<td>Value</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Valid Account Types</strong></p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Joint</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Revocable Living Trust</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Irrevocable Living Trust</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Limited Liability Company</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Limited Liability Limited Partnership</td>
+</tr>
+<tr>
+<td>301</td>
+<td>S Corporation</td>
+</tr>
+<tr>
+<td>302</td>
+<td>C Corporation</td>
+</tr>
+<tr>
+<td>303</td>
+<td>Sole Proprietorship</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Traditional IRA</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Simplified Employee Pension IRA</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Savings Incentive Match Plan for Employees IRA</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Roth IRA</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Rollover IRA</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Household Account</td>
 </tr>
 </tbody>
 </table>
@@ -2738,12 +2742,16 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 
+
+
+
+
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To Get all the Model Portfolios, use this code:</p>
+<p>To Get all the Accounts, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/models/"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/accounts/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
@@ -2758,9 +2766,9 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </code></pre>
 </div>
 <div class="main">
-<h2 id="get-all-model-portfolios">Get All Model Portfolios</h2>
+<h2 id="get-all-accounts">Get All Accounts</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/models</p>
+<p class="request-url">/accounts</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -2774,22 +2782,22 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <tr>
 <td>count</td>
 <td>int</td>
-<td>Number of model portfolios</td>
+<td>Number of accounts</td>
 </tr>
 <tr>
 <td>next</td>
 <td>String</td>
-<td>Link to next page of model portfolios</td>
+<td>Link to next page of accounts</td>
 </tr>
 <tr>
 <td>previous</td>
 <td>String</td>
-<td>Link to previous page of model portfolios</td>
+<td>Link to previous page of accounts</td>
 </tr>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of Model Portfolio objects</td>
+<td>List of Account objects</td>
 </tr>
 </tbody>
 </table>
@@ -2809,23 +2817,23 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To Create an Model Portfolio, use this code:</p>
+<p>To Create an Account, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/models/"</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"api.stratifi.com/v1/accounts/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{ … }'</span>
 </code></pre>
 </div>
 <div class="main">
-<h2 id="create-model-portfolio">Create Model Portfolio</h2>
+<h2 id="create-account">Create Account</h2>
 <p class="request-type">POST</p>
-<p class="request-url">/models</p>
+<p class="request-url">/accounts</p>
 <p><strong>Request Parameters</strong></p>
-<p>The Model Portfolio object to be created (without ID). Only the mode portfolio name is required.</p>
-<p>If the list of <code>positions</code> is included, the mode portfolio value will be the Sum of the position's values.</p>
+<p>The Account object to be created (without ID). Only the account name is required.</p>
+<p>If the list of <code>positions</code> is included, the account value will be the Sum of the position's values.</p>
 <p><strong>Response Fields</strong></p>
-<p>The Model Portfolio object with a valid mode portfolio ID.</p>
+<p>The Account object with a valid account ID.</p>
 </div>
 </div></div>
 
@@ -2846,19 +2854,19 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To Get an Model Portfolio by ID, use this code:</p>
+<p>To Get an Account by ID, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/models/1/"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/accounts/1/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 </div>
 <div class="main">
-<h2 id="get-model-portfolio-by-id">Get Model Portfolio By ID</h2>
-<p>Get mode portfolio by ID</p>
+<h2 id="get-account-by-id">Get Account By ID</h2>
+<p>Get account by ID</p>
 <p class="request-type">GET</p>
-<p class="request-url">/models/:ID</p>
+<p class="request-url">/accounts/:ID</p>
 <p><strong>Response Fields</strong></p>
-<p>Returns the mode portfolio object.</p>
+<p>Returns the account object.</p>
 </div>
 </div></div>
 
@@ -2875,24 +2883,24 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To Update an Model Portfolio, use this code:</p>
+<p>To Update an Account, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="s2">"api.stratifi.com/v1/models/"</span>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="s2">"api.stratifi.com/v1/accounts/"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -d <span class="s1">'{ … }'</span>
 </code></pre>
 </div>
 <div class="main">
-<h2 id="update-model-portfolio">Update Model Portfolio</h2>
-<p>Update the mode portfolio information.</p>
+<h2 id="update-account">Update Account</h2>
+<p>Update the account information.</p>
 <p class="request-type">PUT/PATCH</p>
-<p class="request-url">/models/:ID</p>
+<p class="request-url">/accounts/:ID</p>
 <p><strong>Request Parameters</strong></p>
-<p>You can use a <code>PUT</code> request and send an entire mode portfolio object, or a <code>PATCH</code> request and send only the fields you want to update.</p>
-<p>Notice that the if the <code>positions</code> field in included, the existing positions of the mode portfolio will be replaced.</p>
+<p>You can use a <code>PUT</code> request and send an entire account object, or a <code>PATCH</code> request and send only the fields you want to update.</p>
+<p>Notice that the if the <code>positions</code> field in included, the existing positions of the account will be replaced.</p>
 <p><strong>Response Fields</strong></p>
-<p>Returns the mode portfolio object.</p>
+<p>Returns the account object.</p>
 </div>
 </div></div>
 
@@ -2915,9 +2923,9 @@ You must replace <code>stratifi-token</code> with your personal API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>To get the Model Portfolio Prism Score, use this code:</p>
+<p>To get the Account Prism Score, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.stratifi.com/v1/models/:ID/prism_score"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/v1/accounts/:ID/prism_score"</span>
   -H <span class="s2">"Authorization: stratifi-token"</span>
 </code></pre>
 <blockquote class="blockquote">
@@ -2933,9 +2941,9 @@ You must replace <code>stratifi-token</code> with your personal API key.
 </code></pre>
 </div>
 <div class="main">
-<h2 id="model-portfolio-prism-score">Model Portfolio Prism Score</h2>
+<h2 id="account-prism-score">Account Prism Score</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/models/:ID/prism_score</p>
+<p class="request-url">/accounts/:ID/prism_score</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -2987,7 +2995,7 @@ You must replace <code>stratifi-token</code> with your personal API key.
 
 
 <div class="level-1-wrapper"><div class="level-1"><h1 id="errors">Errors</h1></div></div>
-<p>The StratiFi PRISM API uses the following error codes:</p>
+<p>The StratiFi API uses the following error codes:</p>
 
 <table>
 <thead>
