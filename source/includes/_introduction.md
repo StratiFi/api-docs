@@ -25,3 +25,13 @@ We use API keys to allow access to the API endpoints. The current Authentication
 <aside class="notice">
 You must replace <code>stratifi-token</code> with your API key.
 </aside>
+
+## Content Structure
+
+StratiFi's portfolios are stored in a hierarchical structure: Companies are at the top level and positions at the bottom level. Also, each object is linked to another in the upper level, for instance, an account has an `investor_id` attribute that contains the ID of the investor that owns that account.
+
+Company ⟶ Advisor ⟶ Household \* ⟶ Investor ⟶ Account ⟶ Position
+
+Company ⟶ Model Portfolio ⟶ Position
+
+(\*) Households are optional. An investor could be linked directly to the advisor.
