@@ -4,7 +4,9 @@ Welcome to the StratiFi API! You can use our API to access StratiFi's API endpoi
 
 Code examples will be presented in the dark area to the right.
 
-StratiFi's API follows an architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope. Standard HTTP response codes describe the result of the operations in our API.
+## Architecture
+
+StratiFi's API follows a REST architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope. The result of the operations is well described by standard HTTP response codes.
 
 ## Requests
 
