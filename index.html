@@ -220,10 +220,16 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#architecture" class="toc-h2 toc-link" data-title="architecture">Architecture</a>
+                  </li>
+                  <li>
                     <a href="#requests" class="toc-h2 toc-link" data-title="requests">Requests</a>
                   </li>
                   <li>
                     <a href="#authentication" class="toc-h2 toc-link" data-title="authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#content-structure" class="toc-h2 toc-link" data-title="content-structure">Content Structure</a>
                   </li>
               </ul>
           </li>
@@ -404,8 +410,14 @@
 <p>Welcome to the StratiFi API! You can use our API to access StratiFi's API endpoints, which allow you to review your portfolio and get information on various risks and scores.</p>
 
 <p>Code examples will be presented in the dark area to the right.</p>
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="architecture">Architecture</h2>
+<p>StratiFi's API follows a REST architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope. The result of the operations is well described by standard HTTP response codes.</p>
+</div>
+</div></div>
 
-<p>StratiFi's API follows an architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope. Standard HTTP response codes describe the result of the operations in our API.</p>
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side"></div>
 <div class="main">
@@ -431,6 +443,26 @@ You must replace <code>stratifi-token</code> with your API key.
 </aside>
 </div>
 </div></div>
+
+
+
+
+
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"></div>
+<div class="main">
+<h2 id="content-structure">Content Structure</h2>
+<p>StratiFi's portfolios are stored in a hierarchical structure where the company is in the top level and positions in the bottom level.</p>
+<p>Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account ⟶ Position</p>
+<p>Company ⟶ Model Portfolio ⟶ Position</p>
+<p>Each object has a link to the ID attribute in the upper level, for instance, an account object has an <code>investor_id</code> attribute that links an account to the investor that owns it.</p>
+<p>(*) Households are optional. An investor could be linked directly to the advisor.</p>
+</div>
+</div></div>
+
+
+
+
 
 
 
