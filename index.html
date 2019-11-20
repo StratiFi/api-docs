@@ -452,15 +452,12 @@ You must replace <code>stratifi-token</code> with your API key.
 <div class="side"></div>
 <div class="main">
 <h2 id="content-structure">Content Structure</h2>
-<p>StratiFi's portfolios are stored in a hierarchical structure where the company is in the top level and positions in the bottom level.</p>
+<p>StratiFi's portfolios are stored in a hierarchical structure: Companies are at the top level and positions at the bottom level. Also, each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that contains the ID of the investor that owns that account.</p>
 <p>Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account ⟶ Position</p>
 <p>Company ⟶ Model Portfolio ⟶ Position</p>
-<p>Each object has a link to the ID attribute in the upper level, for instance, an account object has an <code>investor_id</code> attribute that links an account to the investor that owns it.</p>
 <p>(*) Households are optional. An investor could be linked directly to the advisor.</p>
 </div>
 </div></div>
-
-
 
 
 
