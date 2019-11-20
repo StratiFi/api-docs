@@ -8,14 +8,17 @@ toc_footers:
 #  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - introduction
-  - companies
-  - models
-  - advisors
-  - household
-  - investors
-  - accounts
-  - errors
+    - introduction
+    - companies
+    - users
+    - advisors
+    - households
+    - investors
+    - risks
+    - positions
+    - accounts
+    - models
+    - errors
 
 search: true
 ---

@@ -1,10 +1,11 @@
 # Scenarios
+
 Get details of various scenarios used in PRISM
 
 > To send request:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scenarios"
+> curl "https://backend.stratifi.com/v1/prism/scenarios"
   -H "Authorization: stratifi-token"
 ```
 
@@ -81,18 +82,17 @@ curl "https://backend.stratifi.com/v1/prism/scenarios"
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-overlay_coverage | Object | The overlay coverage of this scenario
-name | String | Scenario name
-end_date | String | Start date of scenario
-start_Date | String | End date of scenario
+| Name             | Type   | Description                           |
+| ---------------- | ------ | ------------------------------------- |
+| overlay_coverage | Object | The overlay coverage of this scenario |
+| name             | string | Scenario name                         |
+| end_date         | string | Start date of scenario                |
+| start_Date       | string | End date of scenario                  |
 
 `overlay_coverage` Object
 
-Name | Type | Description
------|------|------------
-tail | float | Tail overlay value
-rr | float | Risk reduction overlay value
-rerr | float | Return enhancement risk reduction overlay value
-
+| Name | Type  | Description                                     |
+| ---- | ----- | ----------------------------------------------- |
+| tail | float | Tail overlay value                              |
+| rr   | float | Risk reduction overlay value                    |
+| rerr | float | Return enhancement risk reduction overlay value |

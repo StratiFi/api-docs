@@ -5,7 +5,9 @@
 | Name | Type   | Description         |
 | ---- | ------ | ------------------- |
 | id   | int    | ID of the company   |
-| name | String | Name of the company |
+| name | string | Name of the company |
+
+> Company Object
 
 ```shell
 {
@@ -21,21 +23,22 @@
 
 -request-url: `/companies/`
 
+> List Companies
+
 ```shell
-curl "https://backend.stratifi.com/v1/companies/" \
-  -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/v1/companies/" -H "Authorization: stratifi-token"
 
 {
-    "count": 10,
-    "next": "https://backend.stratifi.com/v1/companies/?page=2",
-    "previous": null,
-    "results": [
-         {
-            "id": 1,
-            "name": "Companny A, LLC"
-        },
-        ...
-    ]
+  "count": 10,
+  "next": "https://backend.stratifi.com/v1/companies/?page=2",
+  "previous": null,
+  "results": [
+    {
+        "id": 1,
+        "name": "Companny A, LLC"
+    },
+    …
+  ]
 }
 ```
 
@@ -44,8 +47,8 @@ curl "https://backend.stratifi.com/v1/companies/" \
 | Name     | Type   | Description                                           |
 | -------- | ------ | ----------------------------------------------------- |
 | count    | int    | Total number of companies                             |
-| next     | String | Link to next page of companies                        |
-| previous | String | Link to previous page of companies                    |
+| next     | string | Link to next page of companies                        |
+| previous | string | Link to previous page of companies                    |
 | results  | Object | List of [company objects](#company-object-definition) |
 
 ## Get Company
@@ -54,13 +57,12 @@ curl "https://backend.stratifi.com/v1/companies/" \
 
 -request-url: `/companies/<id>/`
 
-**Request Parameters**: None.
+**Response:** The requested [company object](#company-object-definition).
 
-**Response:** The [company object](#company-object-definition) of the company requested.
+> Get Company
 
 ```shell
-curl "https://backend.stratifi.com/v1/companies/1/" \
-  -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/v1/companies/1/" -H "Authorization: stratifi-token"
 
 {
   "id": 1,
@@ -74,9 +76,10 @@ curl "https://backend.stratifi.com/v1/companies/1/" \
 
 -request-url: `/companies/`
 
+> Create Company
+
 ```shell
-curl -X POST "https://backend.stratifi.com/v1/companies/" \
-  -H "Authorization: stratifi-token" \
+> curl -X POST "https://backend.stratifi.com/v1/companies/" -H "Authorization: stratifi-token" \
   -d '{"name": "Company Z, LLC"}'
 
 {
@@ -87,11 +90,11 @@ curl -X POST "https://backend.stratifi.com/v1/companies/" \
 
 **Request Parameters**
 
-| Parameter | Type   | Required |
+| Parameter | Type   |          |
 | --------- | ------ | -------- |
-| name      | String | Yes      |
+| name      | string | Required |
 
-**Response:** The [company object](#company-object-definition) of the new company.
+**Response:** The new [company object](#company-object-definition).
 
 ## Update Company
 
@@ -101,12 +104,14 @@ curl -X POST "https://backend.stratifi.com/v1/companies/" \
 
 **Request Parameters**
 
-| Parameter | Type   | Description         |
-| --------- | ------ | ------------------- |
-| name      | String | Name of the company |
+| Parameter | Type   |          |
+| --------- | ------ | -------- |
+| name      | string | Required |
+
+> Update Company
 
 ```shell
-curl -X PUT "https://backend.stratifi.com/v1/companies/11/"
+> curl -X PUT "https://backend.stratifi.com/v1/companies/11/"
   -H "Authorization: stratifi-token" \
   -d '{"name": "Company W, LLC"}'
 
@@ -122,9 +127,10 @@ curl -X PUT "https://backend.stratifi.com/v1/companies/11/"
 
 -request-url: `/companies/<id>/prism_aggregation/`
 
+> Company Prism Aggregation
+
 ```shell
-curl "https://backend.stratifi.com/v1/companies/11/prism_aggregation" \
-  -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/v1/companies/11/prism_aggregation" -H "Authorization: stratifi-token"
 
 {
   "no_overlay_concentrated": 4.785445142005072,

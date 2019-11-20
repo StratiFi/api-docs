@@ -692,7 +692,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -820,7 +820,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -834,9 +834,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -928,7 +928,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -942,9 +942,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1036,7 +1036,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1050,9 +1050,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1144,7 +1144,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1158,9 +1158,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1252,7 +1252,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1266,9 +1266,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1327,7 +1327,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1341,9 +1341,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1400,7 +1400,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1414,9 +1414,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1473,7 +1473,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1487,9 +1487,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1546,7 +1546,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1560,9 +1560,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1619,7 +1619,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1633,9 +1633,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1697,7 +1697,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1711,9 +1711,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1805,7 +1805,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1819,9 +1819,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1878,7 +1878,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1892,9 +1892,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -1951,7 +1951,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -1965,9 +1965,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -2024,7 +2024,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -2038,9 +2038,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -2099,7 +2099,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -2113,9 +2113,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -2172,7 +2172,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -2186,9 +2186,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -2245,7 +2245,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -2259,9 +2259,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -2318,7 +2318,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -2332,9 +2332,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 
@@ -2391,7 +2391,7 @@ positions | Object | Positions of the portfolio
 
 Name | Type | Description
 -----|------|------------
-ticker | String | The ticker symbol of the security
+ticker | string | The ticker symbol of the security
 value | float | The value of the position for the security
 
 **Response Fields**
@@ -2405,9 +2405,9 @@ scores | Object | The overall score of various scenarios
 
 Name | Type | Description
 -----|------|------------
-score | String | Score type
+score | string | Score type
 value | float | Score of portfolio for corresponding scenario
-scenario | String | A particular scenario
+scenario | string | A particular scenario
 
 **Error**
 

@@ -1,29 +1,44 @@
 # Accounts
 
-All accounts related endpoints
+## Account Object Definition
 
-## Account Object
+| Name         | Type                                                     | Description                                             |
+| ------------ | -------------------------------------------------------- | ------------------------------------------------------- |
+| id           | int                                                      | Account ID                                              |
+| name         | string                                                   | Account name                                            |
+| value        | string                                                   | Account value                                           |
+| type \*      | string                                                   | Account type                                            |
+| number       | string                                                   | Account number                                          |
+| investor     | int                                                      | Investor ID                                             |
+| advisor \*\* | int                                                      | Advisor ID                                              |
+| positions[]  | List of [Positions Objects](#position-object-definition) | Account holdings                                        |
+| risk         | [Risk Object](#risk-object-definition)                   | Account risk                                            |
+| tolerance    | [Tolerance Object](#tolerance-object-definition)         | Account tolerance                                       |
+| drift        | float                                                    | Drift between the risk and the tolerance overall scores |
 
-Name | Type | Description
------|------|------------
-id | int | ID of Account in StratiFi's system
-name |string | Account name
-value |string | Account value
-type |string | Account type
-number |string | Account number
-investor |int | ID of Investor object in StratiFi's system
-advisor |int | ID of Advisor object in StratiFi's system. Ideally, you would provide the investor ID. However, if you don't have that information but you do know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the `default_investor` of the selected advisor.
-positions | Array | Positions array
+(\*) **Valid Account Types**
 
-`position` Object
+| Value | Description                                    |
+| ----- | ---------------------------------------------- |
+| 100   | Individual                                     |
+| 101   | Joint                                          |
+| 200   | Revocable Living Trust                         |
+| 201   | Irrevocable Living Trust                       |
+| 300   | Limited Liability Company                      |
+| 301   | Limited Liability Limited Partnership          |
+| 302   | S Corporation                                  |
+| 303   | C Corporation                                  |
+| 304   | Sole Proprietorship                            |
+| 400   | Traditional IRA                                |
+| 401   | Simplified Employee Pension IRA                |
+| 402   | Savings Incentive Match Plan for Employees IRA |
+| 403   | Roth IRA                                       |
+| 404   | Rollover IRA                                   |
+| 500   | Household Account                              |
 
-Name | Type | Description
------|------|------------
-ticker |string | Ticker label
-ticker_name |string | Ticker description
-value |string | Value
+(\*\*) Ideally, you would provide the investor ID. However, if you don't have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the `default_investor` of the selected advisor.
 
-> Account Object Description:
+> Account Object
 
 ```shell
 {
@@ -36,184 +51,293 @@ value |string | Value
   "advisor": 1,
   "positions": [
     {
-      "ticker": "SPY",
-      "ticker_name": "SPDR S&P 500",
-      "value": "823045.26"
+        "ticker": "OPPI",
+        "ticker_name": "VANGUARD TARGET 2045",
+        "value": 368673.6
     },
     {
-      "ticker": "IBM",
-      "ticker_name": "IBM",
-      "value": "411522.63"
-    },
-    …
-  ]
+        "ticker": "UNTB",
+        "ticker_name": "Fha Non Int Bearing",
+        "value": 875.0
+    }
+  ],
+  "risk": {
+      "scores": {
+          "concentrated": 1,
+          "tail": 10.0,
+          "correlation": 8,
+          "overall": 8.1,
+          "volatility": 8
+      },
+      "top_risk_attributions": [
+          {
+              "ticker_name": "VANGUARD TARGET 2045",
+              "ticker": "OPPI",
+              "risk": 0.9997862976486193,
+              "weight": 99.763225
+          },
+          {
+              "ticker_name": "Fha Non Int Bearing",
+              "ticker": "UNTB",
+              "risk": 0.00021370235138087705,
+              "weight": 0.236775
+          }
+      ],
+      "scenarios": [
+          {
+              "risk": 8.8,
+              "name": "Global Financial Crisis",
+              "end_date": "2009-2-1",
+              "start_date": "2007-2-1"
+          },
+          {
+              "risk": 8.8,
+              "name": "2011 Euro Credit Crisis",
+              "end_date": "2012-1-1",
+              "start_date": "2010-1-1"
+          },
+          {
+              "risk": 8.1,
+              "name": "2013 Taper Tantrum",
+              "end_date": "2014-6-1",
+              "start_date": "2012-6-1"
+          },
+          {
+              "risk": 7.7,
+              "name": "2015-16 Market Selloff",
+              "end_date": "2017-1-1",
+              "start_date": "2015-1-1"
+          }
+      ]
+  },
+  "tolerance": {
+      "scores": {
+          "concentrated": 5,
+          "tail": 5,
+          "volatility": 8,
+          "overall": 6.4,
+          "correlation": 5
+      }
+  },
+  "drift": 1.7
 }
-
 ```
-
-**Valid Account Types**
-
-Value | Description
-----------|------
-100 | Individual
-101 | Joint
-200 | Revocable Living Trust
-201 | Irrevocable Living Trust
-300 | Limited Liability Company
-304 | Limited Liability Limited Partnership
-301 | S Corporation
-302 | C Corporation
-303 | Sole Proprietorship
-400 | Traditional IRA
-402 | Simplified Employee Pension IRA
-402 | Savings Incentive Match Plan for Employees IRA
-403 | Roth IRA
-404 | Rollover IRA
-500 | Household Account
-
 
 ## List Accounts
 
 -request-type: GET
 
--request-url: /accounts
+-request-url: `/accounts/`
 
-> To Get all the Accounts, use this code:
-
-```shell
-curl "https://backend.stratifi.com/v1/accounts/"
-  -H "Authorization: stratifi-token"
-```
-
-> Reponse Body:
+> List Accounts
 
 ```shell
+> curl "https://backend.stratifi.com/v1/accounts/" -H "Authorization: stratifi-token"
+
 {
   "count": 10,
-  "next": null,
+  "next": "https://backend.stratifi.com/v1/accounts/?page=2",
   "previous": null,
-  "results": [ … ]
+  "results": [
+    {
+      "id": 1,
+      "name": "John Doe Trust",
+      "value": "1234567.89",
+      "type": "100",
+      "number": "987654321",
+      "investor": 1,
+      "advisor": 1,
+      "positions": [ … ],
+      "risk": { … },
+      "tolerance": { … },
+      "drift": 1.0,
+    },
+    …
+  ]
 }
 ```
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-count | int | Number of accounts
-next | String | Link to next page of accounts
-previous | String | Link to previous page of accounts
-results | Object | List of Account objects
+| Name     | Type   | Description                                           |
+| -------- | ------ | ----------------------------------------------------- |
+| count    | int    | Total number of accounts                              |
+| next     | string | Link to next page of accounts                         |
+| previous | string | Link to previous page of accounts                     |
+| results  | Object | List of [account objects](#account-object-definition) |
 
+## Get Account
+
+-request-type: GET
+
+-request-url: `/accounts/<id>/`
+
+**Response:** The requested [account object](#account-object-definition).
+
+> Get Account
+
+```shell
+> curl "https://backend.stratifi.com/v1/accounts/1/" -H "Authorization: stratifi-token"
+
+{
+  "id": 1,
+  "name": "John Doe Trust",
+  "value": "1234567.89",
+  "type": "100",
+  "number": "987654321",
+  "investor": 1,
+  "advisor": 1,
+  "positions": [ … ],
+  "risk": { … },
+  "tolerance": { … },
+  "drift": 1.0,
+}
+```
 
 ## Create Account
 
 -request-type: POST
 
--request-url: /accounts
+-request-url: `/accounts/`
 
-> To Create an Account, use this code:
+> Create Account
 
 ```shell
-curl -X POST "api.stratifi.com/v1/accounts/"
-  -H "Authorization: stratifi-token"
-  -H "Content-Type: application/json"
-  -d '{ … }'
+> curl -X POST "https://backend.stratifi.com/v1/accounts/" -H "Authorization: stratifi-token" \
+  -d '{
+    "name": "John Doe Trust",
+    "value": "1234567.89",
+    "type": "100",
+    "number": "987654321",
+    "investor": 1,
+    "positions": [
+      {
+        "ticker": "SPY",
+        "ticker_name": "SPDR S&P 500",
+        "value": "823045.26"
+      },
+      {
+        "ticker": "IBM",
+        "ticker_name": "IBM",
+        "value": "411522.63"
+      },
+      …
+    ]
+  }'
+
+{
+  "id": 1,
+  "name": "John Doe Trust",
+  "value": "1234567.89",
+  "type": "100",
+  "number": "987654321",
+  "investor": 1,
+  "advisor": 1,
+  "positions": [ … ],
+  "risk": { … },
+  "tolerance": { … },
+  "drift": 1.0,
+}
 ```
 
 **Request Parameters**
 
-The Account object to be created (without ID). Only the account name is required.
+| Parameter   | Type                                                     |          |
+| ----------- | -------------------------------------------------------- | -------- |
+| name        | string                                                   | Required |
+| value       | string                                                   | Optional |
+| type        | string                                                   | Optional |
+| number      | string                                                   | Optional |
+| investor    | int                                                      | Optional |
+| advisor     | int                                                      | Optional |
+| positions[] | List of [Positions Objects](#position-object-definition) | Required |
 
-If the list of `positions` is included, the account value will be the Sum of the position's values.
-
-
-**Response Fields**
-
-The Account object with a valid account ID.
-
-
-## Get Account By ID
-
-Get account by ID
-
--request-type: GET
-
--request-url: /accounts/:ID
-
-
-**Response Fields**
-
-Returns the account object.
-
-> To Get an Account by ID, use this code:
-
-```shell
-curl "https://backend.stratifi.com/v1/accounts/1/"
-  -H "Authorization: stratifi-token"
-```
-
+**Response:** The new [account object](#account-object-definition).
 
 ## Update Account
 
-Update the account information.
-
 -request-type: PUT/PATCH
 
--request-url: /accounts/:ID
-
+-request-url: `/accounts/<id>/`
 
 **Request Parameters**
 
-You can use a `PUT` request and send an entire account object, or a `PATCH` request and send only the fields you want to update.
+| Parameter    | Type                                                     |          |
+| ------------ | -------------------------------------------------------- | -------- |
+| name         | string                                                   | Required |
+| value        | string                                                   | Optional |
+| type \*      | string                                                   | Optional |
+| number       | string                                                   | Optional |
+| investor     | int                                                      | Optional |
+| advisor \*\* | int                                                      | Optional |
+| positions[]  | List of [Positions Objects](#position-object-definition) | Required |
 
-Notice that the if the `positions` field in included, the existing positions of the account will be replaced.
-
-
-**Response Fields**
-
-Returns the account object.
-
-> To Update an Account, use this code:
+> Update Account
 
 ```shell
-curl -X PUT "api.stratifi.com/v1/accounts/"
-  -H "Authorization: stratifi-token"
-  -H "Content-Type: application/json"
-  -d '{ … }'
+> curl -X PUT "https://backend.stratifi.com/v1/accounts/1/" -H "Authorization: stratifi-token" \
+  -d '{
+    "name": "John Doe 401k",
+    "value": "1234567.89",
+    "type": "401",
+    "number": "987654321",
+    "investor": 1,
+    "positions": [
+      {
+        "ticker": "SPY",
+        "ticker_name": "SPDR S&P 500",
+        "value": "823045.26"
+      },
+      {
+        "ticker": "IBM",
+        "ticker_name": "IBM",
+        "value": "411522.63"
+      },
+      …
+    ]
+  }'
+
+{
+  "id": 1,
+  "name": "John Doe Trust",
+  "value": "1234567.89",
+  "type": "100",
+  "number": "987654321",
+  "investor": 1,
+  "advisor": 1,
+  "positions": [ … ],
+  "risk": { … },
+  "tolerance": { … },
+  "drift": 1.0,
+}
 ```
 
-## Account Prism Score
+## Account Prism Aggregation
 
 -request-type: GET
 
--request-url: /accounts/:ID/prism_score
+-request-url: `/accounts/<id>/prism_aggregation/`
 
-> To get the Account Prism Score, use this code:
-
-```shell
-curl "https://backend.stratifi.com/v1/accounts/:ID/prism_score"
-  -H "Authorization: stratifi-token"
-```
-
-> Reponse Body:
+> Account Prism Aggregation
 
 ```shell
+> curl "https://backend.stratifi.com/v1/accounts/11/prism_aggregation" -H "Authorization: stratifi-token"
+
 {
+  "no_overlay_concentrated": 4.214532742005072
   "no_overlay_concentrated": 4.785445142005072,
   "no_overlay_correlation": 6.049895392953136,
-  "no_overlay_overall": 8.214532798503825,
-  "no_overlay_tail": 8.674759220001045,
+  "no_overlay_overall": 8.2145327985038
   "no_overlay_volatility": 9.224755263382502
 }
 ```
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-no_overlay_overall | float | Overall score
-no_overlay_concentrated | float | Concentration score
-no_overlay_correlation | float | Correlation score
-no_overlay_tail | float | Tail score
-no_overlay_volatility | float | Volatility score
+| Name                    | Type  | Description         |
+| ----------------------- | ----- | ------------------- |
+| no_overlay_overall      | float | Overall score       |
+| no_overlay_concentrated | float | Concentration score |
+| no_overlay_correlation  | float | Correlation score   |
+| no_overlay_tail         | float | Tail score          |
+| no_overlay_volatility   | float | Volatility score    |
