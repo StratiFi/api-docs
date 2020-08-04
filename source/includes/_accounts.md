@@ -318,7 +318,7 @@
 
 -request-url: `/accounts/<id>/prism_score/`
 
-> Account Prism Aggregation
+> Account Prism Score
 
 ```shell
 > curl "https://backend.stratifi.com/v1/accounts/11/prism_score" -H "Authorization: stratifi-token"
