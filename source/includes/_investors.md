@@ -191,7 +191,7 @@
 > Investor Prism Aggregation
 
 ```shell
-> curl "https://backend.stratifi.com/v1/investors/11/prism_aggregation" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/v1/investors/11/prism_aggregation/" -H "Authorization: stratifi-token"
 
 {
   "no_overlay_concentrated": 4.850381420050724

@@ -321,7 +321,7 @@
 > Account Prism Score
 
 ```shell
-> curl "https://backend.stratifi.com/v1/accounts/11/prism_score" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/v1/accounts/11/prism_score/" -H "Authorization: stratifi-token"
 
 {
   "no_overlay_concentrated": 4.214532742005072
