@@ -252,16 +252,16 @@
 }
 ```
 
-## Model Portfolio Prism Aggregation
+## Model Portfolio Prism Score
 
 -request-type: GET
 
--request-url: `/models/<id>/prism_aggregation/`
+-request-url: `/models/<id>/prism_score/`
 
-> Model Portfolio Prism Aggregation
+> Model Portfolio Prism Score
 
 ```shell
-> curl "https://backend.stratifi.com/v1/models/11/prism_aggregation" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/v1/models/11/prism_score" -H "Authorization: stratifi-token"
 
 {
   "no_overlay_concentrated": 4.214532742005072
