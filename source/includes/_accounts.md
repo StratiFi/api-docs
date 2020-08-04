@@ -312,16 +312,16 @@
 }
 ```
 
-## Account Prism Aggregation
+## Account Prism Score
 
 -request-type: GET
 
--request-url: `/accounts/<id>/prism_aggregation/`
+-request-url: `/accounts/<id>/prism_score/`
 
 > Account Prism Aggregation
 
 ```shell
-> curl "https://backend.stratifi.com/v1/accounts/11/prism_aggregation" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/v1/accounts/11/prism_score" -H "Authorization: stratifi-token"
 
 {
   "no_overlay_concentrated": 4.214532742005072
