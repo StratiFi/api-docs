@@ -371,7 +371,7 @@
                     <a href="#update-account" class="toc-h2 toc-link" data-title="update-account">Update Account</a>
                   </li>
                   <li>
-                    <a href="#account-prism-aggregation" class="toc-h2 toc-link" data-title="account-prism-aggregation">Account Prism Aggregation</a>
+                    <a href="#account-prism-score" class="toc-h2 toc-link" data-title="account-prism-score">Account Prism Score</a>
                   </li>
               </ul>
           </li>
@@ -394,7 +394,7 @@
                     <a href="#update-model-portfolio" class="toc-h2 toc-link" data-title="update-model-portfolio">Update Model Portfolio</a>
                   </li>
                   <li>
-                    <a href="#model-portfolio-prism-aggregation" class="toc-h2 toc-link" data-title="model-portfolio-prism-aggregation">Model Portfolio Prism Aggregation</a>
+                    <a href="#model-portfolio-prism-score" class="toc-h2 toc-link" data-title="model-portfolio-prism-score">Model Portfolio Prism Score</a>
                   </li>
               </ul>
           </li>
@@ -702,7 +702,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Company Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/companies/11/prism_aggregation"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/companies/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1156,7 +1156,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Advisor Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/advisors/11/prism_aggregation"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/advisors/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1471,7 +1471,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Household Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/households/11/prism_aggregation"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/households/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1868,7 +1868,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Investor Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/investors/11/prism_aggregation"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/investors/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.850381420050724
@@ -2743,9 +2743,9 @@ You must replace <code>stratifi-token</code> with your API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>Account Prism Aggregation</p>
+<p>Account Prism Score</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/accounts/11/prism_aggregation"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/accounts/11/prism_score/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.214532742005072
@@ -2757,9 +2757,9 @@ You must replace <code>stratifi-token</code> with your API key.
 </code></pre>
 </div>
 <div class="main">
-<h2 id="account-prism-aggregation">Account Prism Aggregation</h2>
+<h2 id="account-prism-score">Account Prism Score</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/accounts/&lt;id&gt;/prism_aggregation/</p>
+<p class="request-url">/accounts/&lt;id&gt;/prism_score/</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
@@ -3229,9 +3229,9 @@ You must replace <code>stratifi-token</code> with your API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side">
 <blockquote class="blockquote">
-<p>Model Portfolio Prism Aggregation</p>
+<p>Model Portfolio Prism Score</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/models/11/prism_aggregation"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/v1/models/11/prism_score/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.214532742005072
@@ -3243,9 +3243,9 @@ You must replace <code>stratifi-token</code> with your API key.
 </code></pre>
 </div>
 <div class="main">
-<h2 id="model-portfolio-prism-aggregation">Model Portfolio Prism Aggregation</h2>
+<h2 id="model-portfolio-prism-score">Model Portfolio Prism Score</h2>
 <p class="request-type">GET</p>
-<p class="request-url">/models/&lt;id&gt;/prism_aggregation/</p>
+<p class="request-url">/models/&lt;id&gt;/prism_score/</p>
 <p><strong>Response Fields</strong></p>
 <table>
 <thead>
