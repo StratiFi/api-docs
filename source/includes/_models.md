@@ -96,11 +96,11 @@
 > List Model Portfolios
 
 ```shell
-> curl "https://backend.stratifi.com/v1/models/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: stratifi-token"
 
 {
   "count": 10,
-  "next": "https://backend.stratifi.com/v1/models/?page=2",
+  "next": "https://backend.stratifi.com/api/v1/models/?page=2",
   "previous": null,
   "results": [
     {
@@ -137,7 +137,7 @@
 > Get Model Portfolio
 
 ```shell
-> curl "https://backend.stratifi.com/v1/models/1/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: stratifi-token"
 
 {
   "id": 1,
@@ -159,7 +159,7 @@
 > Create Model Portfolio
 
 ```shell
-> curl -X POST "https://backend.stratifi.com/v1/models/" -H "Authorization: stratifi-token" \
+> curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: stratifi-token" \
   -d '{
     "name": "80% Equities / 20% Fixed Income",
     "value": 100.0,
@@ -221,7 +221,7 @@
 > Update Model Portfolio
 
 ```shell
-> curl -X PUT "https://backend.stratifi.com/v1/models/1/" -H "Authorization: stratifi-token" \
+> curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: stratifi-token" \
   -d '{
     "name": "70% Equities / 30% Fixed Income",
     "value": 100.0,
@@ -261,7 +261,7 @@
 > Model Portfolio Prism Score
 
 ```shell
-> curl "https://backend.stratifi.com/v1/models/11/prism_score/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/models/11/prism_score/" -H "Authorization: stratifi-token"
 
 {
   "no_overlay_concentrated": 4.214532742005072

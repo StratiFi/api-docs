@@ -27,11 +27,11 @@
 > List Households
 
 ```shell
-> curl "https://backend.stratifi.com/v1/households/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: stratifi-token"
 
 {
   "count": 10,
-  "next": "https://backend.stratifi.com/v1/households/?page=2",
+  "next": "https://backend.stratifi.com/api/v1/households/?page=2",
   "previous": null,
   "results": [
     {
@@ -64,7 +64,7 @@
 > Get Household
 
 ```shell
-> curl "https://backend.stratifi.com/v1/households/1/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/households/1/" -H "Authorization: stratifi-token"
 
 {
   "id": 1,
@@ -82,7 +82,7 @@
 > Create Household
 
 ```shell
-> curl -X POST "https://backend.stratifi.com/v1/households/" -H "Authorization: stratifi-token" \
+> curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization: stratifi-token" \
   -d '{
     "name": "Smith-Pinkett Family",
     "advisor": 2
@@ -118,7 +118,7 @@
 > Update Household
 
 ```shell
-> curl -X PUT "https://backend.stratifi.com/v1/households/2/"
+> curl -X PUT "https://backend.stratifi.com/api/v1/households/2/"
   -H "Authorization: stratifi-token" \
   -d '{
     "name": "Pinkett Family",
@@ -141,7 +141,7 @@
 > Household Prism Aggregation
 
 ```shell
-> curl "https://backend.stratifi.com/v1/households/11/prism_aggregation/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/households/11/prism_aggregation/" -H "Authorization: stratifi-token"
 
 {
   "no_overlay_concentrated": 4.785445142005072,

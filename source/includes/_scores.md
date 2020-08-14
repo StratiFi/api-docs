@@ -1,15 +1,19 @@
 # Scores
+
 The API allows you to compute two types of scores. Risks and Returns.
 
 ## Risks
+
 The Risks Scores describes the susceptibility of your portfolio to the various events.
+
 ### Current
+
 This API computes the Risks Scores of your current portfolio
 
 > To send request:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/current"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -683,66 +687,62 @@ curl "https://backend.stratifi.com/v1/prism/scores/risks/current"
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
-
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-custom | Object | Object containing risks scores, start date and end date
-Global Financial Crisis | Object | Object containing the simulated risk score of the portfolio during the Global Financial Crisis
-2011 Euro Credit Crisis | Object | Object containing the simulated risk score of the portfolio during the 2011 Euro Credit Crisis
-2013 Taper Tantrum | Object | Object containing the simulated risk score of the portfolio during the 2013 Taper Tantrum
-2015-16 Market Selloff | Object | Object containing the simulated risk score of the portfolio during the 2015-16 Market Selloff
-ignored tickers | Object | List of ignored tickers
-
+| Name                    | Type   | Description                                                                                    |
+| ----------------------- | ------ | ---------------------------------------------------------------------------------------------- |
+| custom                  | Object | Object containing risks scores, start date and end date                                        |
+| Global Financial Crisis | Object | Object containing the simulated risk score of the portfolio during the Global Financial Crisis |
+| 2011 Euro Credit Crisis | Object | Object containing the simulated risk score of the portfolio during the 2011 Euro Credit Crisis |
+| 2013 Taper Tantrum      | Object | Object containing the simulated risk score of the portfolio during the 2013 Taper Tantrum      |
+| 2015-16 Market Selloff  | Object | Object containing the simulated risk score of the portfolio during the 2015-16 Market Selloff  |
+| ignored tickers         | Object | List of ignored tickers                                                                        |
 
 `custom, Global Financial Crisis, 2011 Euro Credit Crisis, 2013 Taper Tantrum, 2015-16 Market Selloff` Object
 
-Name | Type | Description
------|------|------------
-risk_scores | Object | Contains the score_list object
-
+| Name        | Type   | Description                    |
+| ----------- | ------ | ------------------------------ |
+| risk_scores | Object | Contains the score_list object |
 
 `risk_scores` object
 
-Name | Type | Description
------|------|------------
-score_list | Object | Object containing various data
-
+| Name       | Type   | Description                    |
+| ---------- | ------ | ------------------------------ |
+| score_list | Object | Object containing various data |
 
 `score_list` Object
 
-Name | Type | Description
------|------|------------
-data | Object | Object containing various data
-overall _score | float | The overall score of the portfolio
-overlay | Object | Object containing score of portfolio with corresponding overlays
-
+| Name            | Type   | Description                                                      |
+| --------------- | ------ | ---------------------------------------------------------------- |
+| data            | Object | Object containing various data                                   |
+| overall \_score | float  | The overall score of the portfolio                               |
+| overlay         | Object | Object containing score of portfolio with corresponding overlays |
 
 `overlay` Object
 
-Name | Type | Description
------|------|------------
-tail | float | Score of portfolio with a tail overlay
-rr | float | Score of portfolio with a risk reduction overlay
-rerr | float | Score of portfolio with a return enhancement risk reduction overlay
+| Name | Type  | Description                                                         |
+| ---- | ----- | ------------------------------------------------------------------- |
+| tail | float | Score of portfolio with a tail overlay                              |
+| rr   | float | Score of portfolio with a risk reduction overlay                    |
+| rerr | float | Score of portfolio with a return enhancement risk reduction overlay |
 
 #### Overall
+
 > To send request:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/current/overall"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -812,45 +812,46 @@ Computes the overall risk score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Volatility
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/current/volatility"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -920,45 +921,46 @@ Computes the volatility risk score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Tail
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/current/tail"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1028,45 +1030,46 @@ Computes the tail risk score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Concentrated
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/current/concentrated"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1136,45 +1139,46 @@ Computes the concentrated stock risk score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Correlation
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/current/correlation"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1244,47 +1248,50 @@ Computes the correlation risk score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 ### Target
+
 This API computes the Risks Scores of your target portfolio
+
 #### Overall
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/target/overall"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1319,45 +1326,46 @@ Computes the overall risk score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Volatility
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/target/volatility"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1392,45 +1400,46 @@ Computes the volatility risk score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Tail
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/target/tail"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1465,45 +1474,46 @@ Computes the tail risk score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Concentrated
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/target/concentrated"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1538,45 +1548,46 @@ Computes the concentrated stock risk score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Correlation
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/risks/target/correlation"
+curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1611,50 +1622,54 @@ Computes the correlation risk score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
-
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 ## Returns
+
 The Returns Scores describes the potentials returns your portfolio could reap from the various events.
+
 ### Current
+
 This API computes the Returns Scores of your current portfolio
+
 #### Overall
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/current/overall"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1689,45 +1704,46 @@ Computes the overall returns score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Volatility
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/current/volatility"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1797,45 +1813,46 @@ Computes the volatility returns score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Tail
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/current/tail"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1870,45 +1887,46 @@ Computes the tail returns score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Concentrated
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/current/concentrated"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -1943,45 +1961,46 @@ Computes the concentrated stock returns score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Correlation
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/current/correlation"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2016,47 +2035,50 @@ Computes the correlation returns score of your current portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 ### Target
+
 This API computes the Returns Scores of your target portfolio
+
 #### Overall
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/target/overall"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/overall"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2091,45 +2113,46 @@ Computes the overall returns score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Volatility
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/target/volatility"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/volatility"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2164,45 +2187,46 @@ Computes the volatility returns score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Tail
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/target/tail"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/tail"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2237,45 +2261,46 @@ Computes the tail returns score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Concentrated
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/target/concentrated"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/concentrated"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2310,45 +2335,46 @@ Computes the concentrated stock returns score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |
 
 #### Correlation
+
 > To compute, use this code:
 
 ```shell
-curl "https://backend.stratifi.com/v1/prism/scores/returns/target/correlation"
+curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/correlation"
   -H "Authorization: stratifi-token"
   -H "Content-Type: application/json"
   -d '{
@@ -2383,36 +2409,36 @@ Computes the correlation returns score of your target portfolio
 
 **Request Parameters**
 
-Parameter | Type | Description
-----------|------|------------
-positions | Object | Positions of the portfolio
+| Parameter | Type   | Description                |
+| --------- | ------ | -------------------------- |
+| positions | Object | Positions of the portfolio |
 
 `positions` Object
 
-Name | Type | Description
------|------|------------
-ticker | string | The ticker symbol of the security
-value | float | The value of the position for the security
+| Name   | Type   | Description                                |
+| ------ | ------ | ------------------------------------------ |
+| ticker | string | The ticker symbol of the security          |
+| value  | float  | The value of the position for the security |
 
 **Response Fields**
 
-Name | Type | Description
------|------|------------
-ignored_tickers | Object | List of ignored tickers
-scores | Object | The overall score of various scenarios
+| Name            | Type   | Description                            |
+| --------------- | ------ | -------------------------------------- |
+| ignored_tickers | Object | List of ignored tickers                |
+| scores          | Object | The overall score of various scenarios |
 
 `scores` Object
 
-Name | Type | Description
------|------|------------
-score | string | Score type
-value | float | Score of portfolio for corresponding scenario
-scenario | string | A particular scenario
+| Name     | Type   | Description                                   |
+| -------- | ------ | --------------------------------------------- |
+| score    | string | Score type                                    |
+| value    | float  | Score of portfolio for corresponding scenario |
+| scenario | string | A particular scenario                         |
 
 **Error**
 
 This section describes some common errors you might encountered specifiic to this endpoint. For general errors, please look at the [Errors](#errors) section
 
-Code | Meaning
------------|--------
-Error Code | Standard meaning -- followed by explanation in layman terms
+| Code       | Meaning                                                     |
+| ---------- | ----------------------------------------------------------- |
+| Error Code | Standard meaning -- followed by explanation in layman terms |

@@ -35,11 +35,11 @@
 > List Investors
 
 ```shell
-> curl "https://backend.stratifi.com/v1/investors/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/investors/" -H "Authorization: stratifi-token"
 
 {
   "count": 10,
-  "next": "https://backend.stratifi.com/v1/investors/?page=2",
+  "next": "https://backend.stratifi.com/api/v1/investors/?page=2",
   "previous": null,
   "results": [
     {
@@ -78,7 +78,7 @@
 > Get Investor
 
 ```shell
-> curl "https://backend.stratifi.com/v1/investors/1/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/investors/1/" -H "Authorization: stratifi-token"
 
 {
   "id": 1,
@@ -102,7 +102,7 @@
 > Create Investor
 
 ```shell
-> curl -X POST "https://backend.stratifi.com/v1/investors/" -H "Authorization: stratifi-token" \
+> curl -X POST "https://backend.stratifi.com/api/v1/investors/" -H "Authorization: stratifi-token" \
   -d '{
     "advisor": 1,
     "household": 1,
@@ -156,7 +156,7 @@
 > Update Investor
 
 ```shell
-> curl -X PUT "https://backend.stratifi.com/v1/investors/150/" -H "Authorization: stratifi-token" \
+> curl -X PUT "https://backend.stratifi.com/api/v1/investors/150/" -H "Authorization: stratifi-token" \
   -d '{
     "advisor": 1,
     "household": 1,
@@ -191,7 +191,7 @@
 > Investor Prism Aggregation
 
 ```shell
-> curl "https://backend.stratifi.com/v1/investors/11/prism_aggregation/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/" -H "Authorization: stratifi-token"
 
 {
   "no_overlay_concentrated": 4.850381420050724

@@ -5,7 +5,7 @@ Get details of various scenarios used in PRISM
 > To send request:
 
 ```shell
-> curl "https://backend.stratifi.com/v1/prism/scenarios"
+> curl "https://backend.stratifi.com/api/v1/prism/scenarios"
   -H "Authorization: stratifi-token"
 ```
 
