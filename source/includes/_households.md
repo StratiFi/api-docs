@@ -53,6 +53,12 @@
 | previous | string | Link to previous page of households                       |
 | results  | Object | List of [household objects](#household-object-definition) |
 
+**Filtering Fields**
+
+| Name    | Type | Description |
+| ------- | ---- | ----------- |
+| advisor | int  | Advisor ID  |
+
 ## Get Household
 
 -request-type: GET

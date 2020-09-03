@@ -67,6 +67,13 @@
 | previous | string | Link to previous page of investors                      |
 | results  | Object | List of [investor objects](#investor-object-definition) |
 
+**Filtering Fields**
+
+| Name      | Type | Description  |
+| --------- | ---- | ------------ |
+| advisor   | int  | Advisor ID   |
+| household | int  | Household ID |
+
 ## Get Investor
 
 -request-type: GET

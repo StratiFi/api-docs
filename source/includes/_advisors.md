@@ -72,6 +72,12 @@
 | previous | string | Link to previous page of advisors                     |
 | results  | Object | List of [advisor objects](#advisor-object-definition) |
 
+**Filtering Fields**
+
+| Name    | Type | Description |
+| ------- | ---- | ----------- |
+| company | int  | Company ID  |
+
 ## Get Advisor
 
 -request-type: GET

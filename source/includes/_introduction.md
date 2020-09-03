@@ -35,3 +35,9 @@ Company ⟶ Advisor ⟶ Household \* ⟶ Investor ⟶ Account ⟶ Position
 Company ⟶ Model Portfolio ⟶ Position
 
 (\*) Households are optional. An investor could be linked directly to the advisor.
+
+## Filtering
+
+You can filter objects returned by an endpoint using URL params. Each section describes the allowed **Filtering Fields** in that endpoint.
+
+For instance, if you need to the accounts of the investor with ID 31 you can use `/api/v1/accounts/?investor=31`.

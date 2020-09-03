@@ -166,6 +166,12 @@
 | previous | string | Link to previous page of accounts                     |
 | results  | Object | List of [account objects](#account-object-definition) |
 
+**Filtering Fields**
+
+| Name     | Type | Description |
+| -------- | ---- | ----------- |
+| investor | int  | Investor ID |
+
 ## Get Account
 
 -request-type: GET
