@@ -4,6 +4,8 @@ Welcome to the StratiFi API! You can use our API to access StratiFi's API endpoi
 
 Code examples will be presented in the dark area to the right.
 
+If you are familiar with Postman, you can import <a href="https://www.getpostman.com/collections/9e82bcf47798dacdbb8c" target="_blank">this collection</a> and play with the API.
+
 ## Architecture
 
 StratiFi's API follows a REST architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope. The result of the operations is well described by standard HTTP response codes.
