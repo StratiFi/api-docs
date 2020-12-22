@@ -217,22 +217,29 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+            <a href="#get-started" class="toc-h1 toc-link" data-title="get-started">Get Started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#architecture" class="toc-h2 toc-link" data-title="architecture">Architecture</a>
+                    <a href="#about-stratifi" class="toc-h2 toc-link" data-title="about-stratifi">About StratiFi</a>
                   </li>
                   <li>
-                    <a href="#requests" class="toc-h2 toc-link" data-title="requests">Requests</a>
+                    <a href="#api-overview" class="toc-h2 toc-link" data-title="api-overview">API Overview</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#domain" class="toc-h3 toc-link" data-title="domain">Domain</a>
+                          </li>
+                          <li>
+                            <a href="#filtering" class="toc-h3 toc-link" data-title="filtering">Filtering</a>
+                          </li>
+                      </ul>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authorization" class="toc-h1 toc-link" data-title="authorization">Authorization</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#authentication" class="toc-h2 toc-link" data-title="authentication">Authentication</a>
-                  </li>
-                  <li>
-                    <a href="#content-structure" class="toc-h2 toc-link" data-title="content-structure">Content Structure</a>
-                  </li>
-                  <li>
-                    <a href="#filtering" class="toc-h2 toc-link" data-title="filtering">Filtering</a>
+                    <a href="#authorization-code-flow" class="toc-h2 toc-link" data-title="authorization-code-flow">Authorization Code Flow</a>
                   </li>
               </ul>
           </li>
@@ -409,58 +416,22 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <div class="level-1-wrapper"><div class="level-1"><h1 id="introduction">Introduction</h1></div></div>
-<p>Welcome to the StratiFi API! You can use our API to access StratiFi's API endpoints, which allow you to review your portfolio and get information on various risks and scores.</p>
+        <div class="level-1-wrapper"><div class="level-1"><h1 id="get-started">Get Started</h1></div></div>
+<p><strong>Welcome to the StratiFi API!</strong></p>
 
-<p>Code examples will be presented in the dark area to the right.</p>
+<p>With our API you can manage your portfolios in StratiFi's and get information on various risks and scores.</p>
 
-<p>If you are familiar with Postman, you can import <a href="https://www.getpostman.com/collections/9e82bcf47798dacdbb8c" target="_blank">this collection</a> and play with the API.</p>
+<p>This page describe the available API endpoints. Some code examples are presented in the dark area to the right. Also, if you are familiar with Postman, you can import <a href="https://www.getpostman.com/collections/9e82bcf47798dacdbb8c" target="_blank">this collection</a> and play with the API.</p>
+
+<p>Before start using the API you need contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a> and request API access. We will provide you a <em>CLIENT ID</em> an a <em>SECRET KEY</em> required to complete the authorization steps.</p>
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side"></div>
 <div class="main">
-<h2 id="architecture">Architecture</h2>
-<p>StratiFi's API follows a REST architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope. The result of the operations is well described by standard HTTP response codes.</p>
-</div>
-</div></div>
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="requests">Requests</h2>
-<p>All requests should use the Hypertext Transfer Protocol Secure (HTTPS).</p>
-<p>StratiFi's API domain name is: <code>backend.stratifi.com</code>.</p>
-<p>You can also start testing using our sandbox hosted in <code>sandbox.stratifi.com</code></p>
-</div>
-</div></div>
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="authentication">Authentication</h2>
-<p>We use API keys to allow access to the API endpoints. The current Authentication method is Bearer token, provided by StratiFi Team. StratiFi expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-<p><code>Authorization: Bearer stratifi-token</code></p>
-<aside class="notice">
-You must replace <code>stratifi-token</code> with your API key.
-</aside>
-</div>
-</div></div>
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="content-structure">Content Structure</h2>
-<p>StratiFi's portfolios are stored in a hierarchical structure: Companies are at the top level and positions at the bottom level. Also, each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that contains the ID of the investor that owns that account.</p>
-<p>Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account ⟶ Position</p>
-<p>Company ⟶ Model Portfolio ⟶ Position</p>
+<h2 id="about-stratifi">About StratiFi</h2>
+<p>You can think about data in StratiFi as a hierarchical structure where a <strong>Company</strong> is the higher level and accounts at the bottom level.</p>
+<p>Each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that contains the ID of the investor that owns that account.</p>
 <p>(*) Households are optional. An investor could be linked directly to the advisor.</p>
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/data2.2.png" title="StratiFi Data" alt="Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account"></p>
 </div>
 </div></div>
 
@@ -473,11 +444,126 @@ You must replace <code>stratifi-token</code> with your API key.
 <div class="level-2-wrapper"><div class="level-2">
 <div class="side"></div>
 <div class="main">
-<h2 id="filtering">Filtering</h2>
+<h2 id="api-overview">API Overview</h2>
+<p>Our API follows a REST architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope.</p>
+<ul>
+<li>GET ⟶ List / Retrieve resource</li>
+<li>POST ⟶ Create resource</li>
+<li>PUT / PATCH ⟶ Update resource</li>
+<li>DELETE ⟶ Delete resource</li>
+</ul>
+<p>The result of the operations is well described by standard HTTP response codes.</p>
+<ul>
+<li>20x ⟶ Success</li>
+<li>30x ⟶ Resource moved</li>
+<li>40x ⟶ Request error</li>
+<li>50x ⟶ Server error</li>
+</ul>
+<div class="level-3">
+<div class="side"></div>
+<div class="main">
+<h3 id="domain">Domain</h3>
+<p>We offer a sandbox where you can test safely: <code>https://sandbox.stratifi.com</code></p>
+<p>Once you are ready, you will get access to the production domain <code>https://backend.stratifi.com</code></p>
+</div>
+</div>
+<div class="level-3">
+<div class="side"></div>
+<div class="main">
+<h3 id="filtering">Filtering</h3>
 <p>You can filter objects returned by an endpoint using URL params. Each section describes the allowed <strong>Filtering Fields</strong> in that endpoint.</p>
-<p>For instance, if you need to the accounts of the investor with ID 31 you can use <code>/api/v1/accounts/?investor=31</code>.</p>
+<p>For instance, if you want to list the accounts of the investor with ID 31 you can use <code>/api/v1/accounts/?investor=31</code>.</p>
+</div>
+</div>
 </div>
 </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="level-1-wrapper"><div class="level-1"><h1 id="authorization">Authorization</h1></div></div>
+<p>We use the OAuth 2.0 protocol, an industry standard for authorization management.</p>
+
+<p>Make sure you have the <em>CLIENT ID</em> an a <em>SECRET KEY</em> provided by our support team. If you don't have them contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a>.</p>
+<div class="level-2-wrapper"><div class="level-2">
+<div class="side"><pre class="highlight shell tab-shell"><code>
+curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
+
+<span class="o">{</span>
+    <span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
+    <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
+    <span class="s2">"expires_in"</span>: 36000,
+    <span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
+    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>
+<span class="o">}</span>
+</code></pre></div>
+<div class="main">
+<h2 id="authorization-code-flow">Authorization Code Flow</h2>
+<p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
+<p>1) Redirect the advisor to the StratiFi authorization page:</p>
+<p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;state={{ state }}&amp;client_id={{ client_id }}</code></p>
+<ul>
+<li>
+<strong>domain:</strong> StratiFi sandbox or production domain.</li>
+<li>
+<strong>state:</strong> Random string generated by your application.</li>
+<li>
+<strong>client_id:</strong> Provided by StratiFi.</li>
+</ul>
+<p>2) The advisor submits the StratiFi credentials.</p>
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login"></p>
+<p>3) The advisor allow your application access the resources in StratiFi.</p>
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant"></p>
+<p>4) We redirect the browser to your return url with a single-usage access code.</p>
+<p><code>https://{{ callback-url }}code={{ code }}&amp;state={{ state }}</code></p>
+<ul>
+<li>
+<strong>callback-url:</strong> URL provided by you when during the application setup.</li>
+<li>
+<strong>state:</strong> Random string generated by your application.</li>
+<li>
+<strong>code:</strong> Single-usage code that can be exchanged by an access token.</li>
+</ul>
+<p>5) Your application backend exchange the access code by an access token.</p>
+<p>6) Include the <em>Authorization</em> header in your requests as follows: </p>
+<p><code>Authorization: Bearer {{ access-token }}</code></p>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -526,7 +612,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>List Companies</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -595,7 +681,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Get Company</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/1/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -622,7 +708,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Create Company</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{"name": "Company Z, LLC"}'</span>
 
 <span class="o">{</span>
@@ -672,7 +758,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <p>Update Company</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{"name": "Company W, LLC"}'</span>
 
 <span class="o">{</span>
@@ -718,7 +804,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Company Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -901,7 +987,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>List Advisors</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -999,7 +1085,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Get Advisor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/1/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -1034,7 +1120,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Create Advisor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "company": 1,
     "phone": "754-3010",
@@ -1115,7 +1201,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Update Advisor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "title": "CEO/Founder",
     "company": 1,
@@ -1193,7 +1279,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Advisor Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1306,7 +1392,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>List Households</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -1397,7 +1483,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Get Household</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/1/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -1425,7 +1511,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Create Household</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "name": "Smith-Pinkett Family",
     "advisor": 2
@@ -1479,7 +1565,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <p>Update Household</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/households/2/"</span>
-  -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "name": "Pinkett Family",
     "advisor": 2
@@ -1529,7 +1615,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Household Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1658,7 +1744,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>List Investors</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -1760,7 +1846,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Get Investor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/1/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -1794,7 +1880,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Create Investor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "advisor": 1,
     "household": 1,
@@ -1874,7 +1960,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Update Investor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "advisor": 1,
     "household": 1,
@@ -1952,7 +2038,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Investor Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.850381420050724
@@ -2502,7 +2588,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>List Accounts</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -2601,7 +2687,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Get Account</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -2637,7 +2723,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Create Account</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "name": "John Doe Trust",
     "value": "1234567.89",
@@ -2745,7 +2831,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Update Account</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "name": "John Doe 401k",
     "value": "1234567.89",
@@ -2850,7 +2936,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Account Prism Score</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/11/prism_score/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/11/prism_score/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.214532742005072
@@ -3049,7 +3135,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>List Model Portfolios</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -3123,7 +3209,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Get Model Portfolio</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -3155,7 +3241,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Create Model Portfolio</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "name": "80% Equities / 20% Fixed Income",
     "value": 100.0,
@@ -3247,7 +3333,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Update Model Portfolio</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> -H <span class="s2">"Authorization: stratifi-token"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "name": "70% Equities / 30% Fixed Income",
     "value": 100.0,
@@ -3336,7 +3422,7 @@ You must replace <code>stratifi-token</code> with your API key.
 <blockquote class="blockquote">
 <p>Model Portfolio Prism Score</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/11/prism_score/"</span> -H <span class="s2">"Authorization: stratifi-token"</span>
+<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/11/prism_score/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.214532742005072
