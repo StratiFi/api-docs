@@ -26,7 +26,7 @@
 > List Companies
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "count": 10,
@@ -62,7 +62,7 @@
 > Get Company
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/companies/1/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/companies/1/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "id": 1,
@@ -79,7 +79,7 @@
 > Create Company
 
 ```shell
-> curl -X POST "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: stratifi-token" \
+> curl -X POST "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{"name": "Company Z, LLC"}'
 
 {
@@ -112,7 +112,7 @@
 
 ```shell
 > curl -X PUT "https://backend.stratifi.com/api/v1/companies/11/"
-  -H "Authorization: stratifi-token" \
+  -H "Authorization: Bearer {{ access-token }}" \
   -d '{"name": "Company W, LLC"}'
 
 {
@@ -130,7 +130,7 @@
 > Company Prism Aggregation
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "no_overlay_concentrated": 4.785445142005072,

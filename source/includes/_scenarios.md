@@ -6,7 +6,7 @@ Get details of various scenarios used in PRISM
 
 ```shell
 > curl "https://backend.stratifi.com/api/v1/prism/scenarios"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
 ```
 
 > Reponse Body

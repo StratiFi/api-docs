@@ -39,7 +39,7 @@
 > List Advisors
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "count": 10,
@@ -89,7 +89,7 @@
 > Get Advisor
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/advisors/1/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/advisors/1/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "id": 1,
@@ -114,7 +114,7 @@
 > Create Advisor
 
 ```shell
-> curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: stratifi-token" \
+> curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
     "company": 1,
     "phone": "754-3010",
@@ -169,7 +169,7 @@
 > Update Advisor
 
 ```shell
-> curl -X PUT "https://backend.stratifi.com/api/v1/advisors/150/" -H "Authorization: stratifi-token" \
+> curl -X PUT "https://backend.stratifi.com/api/v1/advisors/150/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
     "title": "CEO/Founder",
     "company": 1,
@@ -204,7 +204,7 @@
 > Advisor Prism Aggregation
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "no_overlay_concentrated": 4.785445142005072,

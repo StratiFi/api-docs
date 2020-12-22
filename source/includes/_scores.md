@@ -14,7 +14,7 @@ This API computes the Risks Scores of your current portfolio
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -743,7 +743,7 @@ curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current"
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/overall"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -852,7 +852,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/volatility"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -961,7 +961,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/tail"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1070,7 +1070,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/concentrated"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1179,7 +1179,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/current/correlation"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1292,7 +1292,7 @@ This API computes the Risks Scores of your target portfolio
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/overall"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1366,7 +1366,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/volatility"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1440,7 +1440,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/tail"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1514,7 +1514,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/concentrated"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1588,7 +1588,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/risks/target/correlation"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1670,7 +1670,7 @@ This API computes the Returns Scores of your current portfolio
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/overall"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1744,7 +1744,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/volatility"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1853,7 +1853,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/tail"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -1927,7 +1927,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/concentrated"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -2001,7 +2001,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/current/correlation"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -2079,7 +2079,7 @@ This API computes the Returns Scores of your target portfolio
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/overall"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -2153,7 +2153,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/volatility"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -2227,7 +2227,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/tail"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -2301,7 +2301,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/concentrated"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [
@@ -2375,7 +2375,7 @@ This section describes some common errors you might encountered specifiic to thi
 
 ```shell
 curl "https://backend.stratifi.com/api/v1/prism/scores/returns/target/correlation"
-  -H "Authorization: stratifi-token"
+  -H "Authorization: Bearer {{ access-token }}"
   -H "Content-Type: application/json"
   -d '{
       "positions": [

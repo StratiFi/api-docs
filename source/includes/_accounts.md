@@ -132,7 +132,7 @@
 > List Accounts
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "count": 10,
@@ -183,7 +183,7 @@
 > Get Account
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "id": 1,
@@ -209,7 +209,7 @@
 > Create Account
 
 ```shell
-> curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: stratifi-token" \
+> curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
     "name": "John Doe Trust",
     "value": "1234567.89",
@@ -281,7 +281,7 @@
 > Update Account
 
 ```shell
-> curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: stratifi-token" \
+> curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
     "name": "John Doe 401k",
     "value": "1234567.89",
@@ -327,7 +327,7 @@
 > Account Prism Score
 
 ```shell
-> curl "https://backend.stratifi.com/api/v1/accounts/11/prism_score/" -H "Authorization: stratifi-token"
+> curl "https://backend.stratifi.com/api/v1/accounts/11/prism_score/" -H "Authorization: Bearer {{ access-token }}"
 
 {
   "no_overlay_concentrated": 4.214532742005072
