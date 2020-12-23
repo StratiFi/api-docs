@@ -89,7 +89,7 @@ body {
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - 30;
+      width: $nav-width - ($nav-padding * 2);
       outline: none;
       color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
@@ -306,12 +306,13 @@ body {
 }
 
 .lang-selector {
+  display: flex;
   background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
+  overflow-x: auto;
   a {
-    display: block;
-    float: left;
+    display: inline;
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 10px;
@@ -719,6 +720,10 @@ body {
 // This is all the stuff that appears in the right half of the page
 
 .content {
+  & > div.highlight {
+    clear: none;
+  }
+
   pre,
   blockquote {
     background-color: $code-bg;
@@ -827,4 +832,17 @@ body {
 .highlight,
 .highlight .w {
   background-color: $code-bg;
+}
+
+.copy-clipboard {
+  float: right;
+  fill: #9daab6;
+  cursor: pointer;
+  opacity: 0.4;
+  height: 18px;
+  width: 18px;
+}
+
+.copy-clipboard:hover {
+  opacity: 0.8;
 }
