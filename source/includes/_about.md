@@ -1,6 +1,6 @@
-# About
+# Data Endpoints
 
-## StratiFi
+## About StratiFi
 
 You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts at the bottom level.
 
