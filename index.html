@@ -313,7 +313,7 @@
                     <a href="#domain" class="toc-h2 toc-link" data-title="Domain">Domain</a>
                   </li>
                   <li>
-                    <a href="#filtering" class="toc-h2 toc-link" data-title="Filtering">Filtering</a>
+                    <a href="#search-amp-filtering" class="toc-h2 toc-link" data-title="Search &amp; Filtering">Search &amp; Filtering</a>
                   </li>
               </ul>
           </li>
@@ -591,10 +591,12 @@
 <p>We offer a sandbox where you can test safely: <code>https://sandbox.stratifi.com</code></p>
 
 <p>Once you are ready, you will get access to the production domain <code>https://backend.stratifi.com</code></p>
-<h2 id='filtering'>Filtering</h2>
-<p>You can filter objects returned by an endpoint using URL params. Each section describes the allowed <strong>Filtering Fields</strong> in that endpoint.</p>
+<h2 id='search-amp-filtering'>Search &amp; Filtering</h2>
+<p>You can search and filter objects returned by an endpoint using URL parameters.</p>
 
-<p>For instance, if you want to list the accounts of the investor with ID 31 you can use <code>/api/v1/accounts/?investor=31</code>.</p>
+<p>For searching, you need to include the <code>search</code> parameter in the URL. e.g. <code>/api/v1/households/?search=Smith</code></p>
+
+<p>For filtering, you need to include the desired attribute in the URL parameters. Each section describes the allowed <strong>Filtering Fields</strong> for that endpoint. For instance, if you want to list the accounts of the investor with ID 31 you can use <code>/api/v1/accounts/?investor=31</code>.</p>
 <h1 id='authorization'>Authorization</h1>
 <p>We use the OAuth 2.0 protocol, an industry standard for authorization management.</p>
 
