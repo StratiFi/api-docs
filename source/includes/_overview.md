@@ -37,6 +37,8 @@ Once you are ready, you will get access to the production domain `https://backen
 
 You can search and filter objects returned by an endpoint using URL parameters.
 
-For searching, you need to include the `search` parameter in the URL. e.g. `/api/v1/households/?search=Smith`
+For searching, you need to include the `search` parameter in the URL. e.g.
+`/api/v1/households/?search=Smith`
 
-For filtering, you need to include the desired attribute in the URL parameters. Each section describes the allowed **Filtering Fields** for that endpoint. For instance, if you want to list the accounts of the investor with ID 31 you can use `/api/v1/accounts/?investor=31`.
+For filtering, you need to include the desired attribute in the URL parameters. Each section describes the allowed **Filtering Fields** for that endpoint. For instance, if you want to list the accounts of the investor with ID 31 you can use
+`/api/v1/accounts/?investor=31`
