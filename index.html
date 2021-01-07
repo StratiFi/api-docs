@@ -8,7 +8,7 @@
     <title>StratiFI API Reference</title>
     <link rel="icon" href="https://s3.amazonaws.com/stratifi-marketing/img/icons/stratifi_favicon.ico" type="image/x-icon">
 
-    <style>
+    <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight .gh {
@@ -43,7 +43,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -127,7 +127,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -142,16 +142,13 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
 }
 .highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
   color: #ffffff;
 }
 .highlight .ni {
@@ -166,7 +163,7 @@
 .highlight .vi {
   color: #ffffff;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
 }
 .highlight .w {
@@ -177,6 +174,9 @@
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
 }
 .highlight .ow {
   color: #f92672;
@@ -197,307 +197,441 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-e033bdd3.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
   </head>
 
   <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo-4ef34e59.png" class="logo" alt="" />
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-      <div id="toc" class="toc-list-h1">
+      <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#get-started" class="toc-h1 toc-link" data-title="get-started">Get Started</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#about-stratifi" class="toc-h2 toc-link" data-title="about-stratifi">About StratiFi</a>
+                    <a href="#domain" class="toc-h2 toc-link" data-title="Domain">Domain</a>
                   </li>
                   <li>
-                    <a href="#api-overview" class="toc-h2 toc-link" data-title="api-overview">API Overview</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#domain" class="toc-h3 toc-link" data-title="domain">Domain</a>
-                          </li>
-                          <li>
-                            <a href="#filtering" class="toc-h3 toc-link" data-title="filtering">Filtering</a>
-                          </li>
-                      </ul>
+                    <a href="#filtering" class="toc-h2 toc-link" data-title="Filtering">Filtering</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#authorization" class="toc-h1 toc-link" data-title="authorization">Authorization</a>
+            <a href="#authorization" class="toc-h1 toc-link" data-title="Authorization">Authorization</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#authorization-code-flow" class="toc-h2 toc-link" data-title="authorization-code-flow">Authorization Code Flow</a>
+                    <a href="#authorization-code-flow" class="toc-h2 toc-link" data-title="Authorization Code Flow">Authorization Code Flow</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#companies" class="toc-h1 toc-link" data-title="companies">Companies</a>
+            <a href="#data-endpoints" class="toc-h1 toc-link" data-title="Data Endpoints">Data Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#company-object-definition" class="toc-h2 toc-link" data-title="company-object-definition">Company Object Definition</a>
-                  </li>
-                  <li>
-                    <a href="#list-companies" class="toc-h2 toc-link" data-title="list-companies">List Companies</a>
-                  </li>
-                  <li>
-                    <a href="#get-company" class="toc-h2 toc-link" data-title="get-company">Get Company</a>
-                  </li>
-                  <li>
-                    <a href="#create-company" class="toc-h2 toc-link" data-title="create-company">Create Company</a>
-                  </li>
-                  <li>
-                    <a href="#update-company" class="toc-h2 toc-link" data-title="update-company">Update Company</a>
-                  </li>
-                  <li>
-                    <a href="#company-prism-aggregation" class="toc-h2 toc-link" data-title="company-prism-aggregation">Company Prism Aggregation</a>
+                    <a href="#about-stratifi" class="toc-h2 toc-link" data-title="About StratiFi">About StratiFi</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#users" class="toc-h1 toc-link" data-title="users">Users</a>
+            <a href="#companies" class="toc-h1 toc-link" data-title="Companies">Companies</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#user-object-definition" class="toc-h2 toc-link" data-title="user-object-definition">User Object Definition</a>
+                    <a href="#company-object-definition" class="toc-h2 toc-link" data-title="Company Object Definition">Company Object Definition</a>
+                  </li>
+                  <li>
+                    <a href="#list-companies" class="toc-h2 toc-link" data-title="List Companies">List Companies</a>
+                  </li>
+                  <li>
+                    <a href="#get-company" class="toc-h2 toc-link" data-title="Get Company">Get Company</a>
+                  </li>
+                  <li>
+                    <a href="#create-company" class="toc-h2 toc-link" data-title="Create Company">Create Company</a>
+                  </li>
+                  <li>
+                    <a href="#update-company" class="toc-h2 toc-link" data-title="Update Company">Update Company</a>
+                  </li>
+                  <li>
+                    <a href="#company-prism-aggregation" class="toc-h2 toc-link" data-title="Company Prism Aggregation">Company Prism Aggregation</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#advisors" class="toc-h1 toc-link" data-title="advisors">Advisors</a>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#advisor-object-definition" class="toc-h2 toc-link" data-title="advisor-object-definition">Advisor Object Definition</a>
-                  </li>
-                  <li>
-                    <a href="#list-advisors" class="toc-h2 toc-link" data-title="list-advisors">List Advisors</a>
-                  </li>
-                  <li>
-                    <a href="#get-advisor" class="toc-h2 toc-link" data-title="get-advisor">Get Advisor</a>
-                  </li>
-                  <li>
-                    <a href="#create-advisor" class="toc-h2 toc-link" data-title="create-advisor">Create Advisor</a>
-                  </li>
-                  <li>
-                    <a href="#update-advisor" class="toc-h2 toc-link" data-title="update-advisor">Update Advisor</a>
-                  </li>
-                  <li>
-                    <a href="#advisor-prism-aggregation" class="toc-h2 toc-link" data-title="advisor-prism-aggregation">Advisor Prism Aggregation</a>
+                    <a href="#user-object-definition" class="toc-h2 toc-link" data-title="User Object Definition">User Object Definition</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#households" class="toc-h1 toc-link" data-title="households">Households</a>
+            <a href="#advisors" class="toc-h1 toc-link" data-title="Advisors">Advisors</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#household-object-definition" class="toc-h2 toc-link" data-title="household-object-definition">Household Object Definition</a>
+                    <a href="#advisor-object-definition" class="toc-h2 toc-link" data-title="Advisor Object Definition">Advisor Object Definition</a>
                   </li>
                   <li>
-                    <a href="#list-households" class="toc-h2 toc-link" data-title="list-households">List Households</a>
+                    <a href="#list-advisors" class="toc-h2 toc-link" data-title="List Advisors">List Advisors</a>
                   </li>
                   <li>
-                    <a href="#get-household" class="toc-h2 toc-link" data-title="get-household">Get Household</a>
+                    <a href="#get-advisor" class="toc-h2 toc-link" data-title="Get Advisor">Get Advisor</a>
                   </li>
                   <li>
-                    <a href="#create-household" class="toc-h2 toc-link" data-title="create-household">Create Household</a>
+                    <a href="#create-advisor" class="toc-h2 toc-link" data-title="Create Advisor">Create Advisor</a>
                   </li>
                   <li>
-                    <a href="#update-household" class="toc-h2 toc-link" data-title="update-household">Update Household</a>
+                    <a href="#update-advisor" class="toc-h2 toc-link" data-title="Update Advisor">Update Advisor</a>
                   </li>
                   <li>
-                    <a href="#household-prism-aggregation" class="toc-h2 toc-link" data-title="household-prism-aggregation">Household Prism Aggregation</a>
+                    <a href="#advisor-prism-aggregation" class="toc-h2 toc-link" data-title="Advisor Prism Aggregation">Advisor Prism Aggregation</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#investors" class="toc-h1 toc-link" data-title="investors">Investors</a>
+            <a href="#households" class="toc-h1 toc-link" data-title="Households">Households</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#investor-object-definition" class="toc-h2 toc-link" data-title="investor-object-definition">Investor Object Definition</a>
+                    <a href="#household-object-definition" class="toc-h2 toc-link" data-title="Household Object Definition">Household Object Definition</a>
                   </li>
                   <li>
-                    <a href="#list-investors" class="toc-h2 toc-link" data-title="list-investors">List Investors</a>
+                    <a href="#list-households" class="toc-h2 toc-link" data-title="List Households">List Households</a>
                   </li>
                   <li>
-                    <a href="#get-investor" class="toc-h2 toc-link" data-title="get-investor">Get Investor</a>
+                    <a href="#get-household" class="toc-h2 toc-link" data-title="Get Household">Get Household</a>
                   </li>
                   <li>
-                    <a href="#create-investor" class="toc-h2 toc-link" data-title="create-investor">Create Investor</a>
+                    <a href="#create-household" class="toc-h2 toc-link" data-title="Create Household">Create Household</a>
                   </li>
                   <li>
-                    <a href="#update-investor" class="toc-h2 toc-link" data-title="update-investor">Update Investor</a>
+                    <a href="#update-household" class="toc-h2 toc-link" data-title="Update Household">Update Household</a>
                   </li>
                   <li>
-                    <a href="#investor-prism-aggregation" class="toc-h2 toc-link" data-title="investor-prism-aggregation">Investor Prism Aggregation</a>
+                    <a href="#household-prism-aggregation" class="toc-h2 toc-link" data-title="Household Prism Aggregation">Household Prism Aggregation</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#risk-and-tolerance" class="toc-h1 toc-link" data-title="risk-and-tolerance">Risk and Tolerance</a>
+            <a href="#investors" class="toc-h1 toc-link" data-title="Investors">Investors</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#risk-object-definition" class="toc-h2 toc-link" data-title="risk-object-definition">Risk Object Definition</a>
+                    <a href="#investor-object-definition" class="toc-h2 toc-link" data-title="Investor Object Definition">Investor Object Definition</a>
                   </li>
                   <li>
-                    <a href="#tolerance-object-definition" class="toc-h2 toc-link" data-title="tolerance-object-definition">Tolerance Object Definition</a>
+                    <a href="#list-investors" class="toc-h2 toc-link" data-title="List Investors">List Investors</a>
+                  </li>
+                  <li>
+                    <a href="#get-investor" class="toc-h2 toc-link" data-title="Get Investor">Get Investor</a>
+                  </li>
+                  <li>
+                    <a href="#create-investor" class="toc-h2 toc-link" data-title="Create Investor">Create Investor</a>
+                  </li>
+                  <li>
+                    <a href="#update-investor" class="toc-h2 toc-link" data-title="Update Investor">Update Investor</a>
+                  </li>
+                  <li>
+                    <a href="#investor-prism-aggregation" class="toc-h2 toc-link" data-title="Investor Prism Aggregation">Investor Prism Aggregation</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#positions" class="toc-h1 toc-link" data-title="positions">Positions</a>
+            <a href="#risk-and-tolerance" class="toc-h1 toc-link" data-title="Risk and Tolerance">Risk and Tolerance</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#position-object-definition" class="toc-h2 toc-link" data-title="position-object-definition">Position Object Definition</a>
+                    <a href="#risk-object-definition" class="toc-h2 toc-link" data-title="Risk Object Definition">Risk Object Definition</a>
+                  </li>
+                  <li>
+                    <a href="#tolerance-object-definition" class="toc-h2 toc-link" data-title="Tolerance Object Definition">Tolerance Object Definition</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#accounts" class="toc-h1 toc-link" data-title="accounts">Accounts</a>
+            <a href="#accounts" class="toc-h1 toc-link" data-title="Accounts">Accounts</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#account-object-definition" class="toc-h2 toc-link" data-title="account-object-definition">Account Object Definition</a>
+                    <a href="#account-object-definition" class="toc-h2 toc-link" data-title="Account Object Definition">Account Object Definition</a>
                   </li>
                   <li>
-                    <a href="#list-accounts" class="toc-h2 toc-link" data-title="list-accounts">List Accounts</a>
+                    <a href="#list-accounts" class="toc-h2 toc-link" data-title="List Accounts">List Accounts</a>
                   </li>
                   <li>
-                    <a href="#get-account" class="toc-h2 toc-link" data-title="get-account">Get Account</a>
+                    <a href="#get-account" class="toc-h2 toc-link" data-title="Get Account">Get Account</a>
                   </li>
                   <li>
-                    <a href="#create-account" class="toc-h2 toc-link" data-title="create-account">Create Account</a>
+                    <a href="#create-account" class="toc-h2 toc-link" data-title="Create Account">Create Account</a>
                   </li>
                   <li>
-                    <a href="#update-account" class="toc-h2 toc-link" data-title="update-account">Update Account</a>
+                    <a href="#update-account" class="toc-h2 toc-link" data-title="Update Account">Update Account</a>
                   </li>
                   <li>
-                    <a href="#account-prism-score" class="toc-h2 toc-link" data-title="account-prism-score">Account Prism Score</a>
+                    <a href="#account-prism-score" class="toc-h2 toc-link" data-title="Account Prism Score">Account Prism Score</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#model-portfolios" class="toc-h1 toc-link" data-title="model-portfolios">Model Portfolios</a>
+            <a href="#model-portfolios" class="toc-h1 toc-link" data-title="Model Portfolios">Model Portfolios</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#model-portfolio-object-definition" class="toc-h2 toc-link" data-title="model-portfolio-object-definition">Model Portfolio Object Definition</a>
+                    <a href="#model-portfolio-object-definition" class="toc-h2 toc-link" data-title="Model Portfolio Object Definition">Model Portfolio Object Definition</a>
                   </li>
                   <li>
-                    <a href="#list-model-portfolios" class="toc-h2 toc-link" data-title="list-model-portfolios">List Model Portfolios</a>
+                    <a href="#list-model-portfolios" class="toc-h2 toc-link" data-title="List Model Portfolios">List Model Portfolios</a>
                   </li>
                   <li>
-                    <a href="#get-model-portfolio" class="toc-h2 toc-link" data-title="get-model-portfolio">Get Model Portfolio</a>
+                    <a href="#get-model-portfolio" class="toc-h2 toc-link" data-title="Get Model Portfolio">Get Model Portfolio</a>
                   </li>
                   <li>
-                    <a href="#create-model-portfolio" class="toc-h2 toc-link" data-title="create-model-portfolio">Create Model Portfolio</a>
+                    <a href="#create-model-portfolio" class="toc-h2 toc-link" data-title="Create Model Portfolio">Create Model Portfolio</a>
                   </li>
                   <li>
-                    <a href="#update-model-portfolio" class="toc-h2 toc-link" data-title="update-model-portfolio">Update Model Portfolio</a>
+                    <a href="#update-model-portfolio" class="toc-h2 toc-link" data-title="Update Model Portfolio">Update Model Portfolio</a>
                   </li>
                   <li>
-                    <a href="#model-portfolio-prism-score" class="toc-h2 toc-link" data-title="model-portfolio-prism-score">Model Portfolio Prism Score</a>
+                    <a href="#model-portfolio-prism-score" class="toc-h2 toc-link" data-title="Model Portfolio Prism Score">Model Portfolio Prism Score</a>
                   </li>
               </ul>
           </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
-          </li>
-      </div>
+      </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <div class="level-1-wrapper"><div class="level-1"><h1 id="get-started">Get Started</h1></div></div>
+        <h1 id='introduction'>Introduction</h1>
 <p><strong>Welcome to the StratiFi API!</strong></p>
 
-<p>With our API you can manage your portfolios in StratiFi's and get information on various risks and scores.</p>
+<p>With our API you can manage your portfolios in StratiFi and get information on various risks and scores.</p>
 
-<p>This page describe the available API endpoints. Some code examples are presented in the dark area to the right. Also, if you are familiar with Postman, you can import <a href="https://www.getpostman.com/collections/9e82bcf47798dacdbb8c" target="_blank">this collection</a> and play with the API.</p>
+<p>This page describe the available API endpoints. You will find some code examples in the dark area to the right. Also, if you are familiar with Postman, you can import <a href="https://www.getpostman.com/collections/9e82bcf47798dacdbb8c" target="_blank">this collection</a> and play with the API.</p>
 
-<p>Before start using the API you need contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a> and request API access. We will provide you a <em>CLIENT ID</em> an a <em>SECRET KEY</em> required to complete the authorization steps.</p>
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="about-stratifi">About StratiFi</h2>
-<p>You can think about data in StratiFi as a hierarchical structure where a <strong>Company</strong> is the higher level and accounts at the bottom level.</p>
-<p>Each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that contains the ID of the investor that owns that account.</p>
-<p>(*) Households are optional. An investor could be linked directly to the advisor.</p>
-<p><img src="https://s3.amazonaws.com/api.stratifi.com/data2.2.png" title="StratiFi Data" alt="Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account"></p>
-</div>
-</div></div>
+<p>Before start using the API you need contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a> and request API access. We will provide you a <em>CLIENT ID</em> an a <em>SECRET KEY</em> required to complete the authorization process.</p>
 
+<p>If you want to know more about how the information is organized in StratiFi or want to familiarize with the API structure go to the <a href="http://localhost:4567/#about">About</a> section. If you are ready to start, go to the <a href="http://localhost:4567/#authorization">Authorization</a> section.</p>
+<h1 id='overview'>Overview</h1>
+<p>Our API follows a REST pattern, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope.</p>
 
+<table><thead>
+<tr>
+<th>HTTP method</th>
+<th>Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GET</td>
+<td>List objects or Retrieve a particular object if the ID is provided in the URL.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>Create object.</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>Update entire object.</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>Update only the provided attributes.</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>Delete object.</td>
+</tr>
+</tbody></table>
 
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"></div>
-<div class="main">
-<h2 id="api-overview">API Overview</h2>
-<p>Our API follows a REST architecture, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope.</p>
-<ul>
-<li>GET ⟶ List / Retrieve resource</li>
-<li>POST ⟶ Create resource</li>
-<li>PUT / PATCH ⟶ Update resource</li>
-<li>DELETE ⟶ Delete resource</li>
-</ul>
 <p>The result of the operations is well described by standard HTTP response codes.</p>
-<ul>
-<li>20x ⟶ Success</li>
-<li>30x ⟶ Resource moved</li>
-<li>40x ⟶ Request error</li>
-<li>50x ⟶ Server error</li>
-</ul>
-<div class="level-3">
-<div class="side"></div>
-<div class="main">
-<h3 id="domain">Domain</h3>
+
+<table><thead>
+<tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>20x</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>30x</td>
+<td>Resource moved</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The resource requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified resource could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a uri with an invalid method.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re making too many requests. Please allow some time for our server to serve your previous requests.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+<p>The StratiFi API uses the following error codes:</p>
+<h2 id='domain'>Domain</h2>
 <p>We offer a sandbox where you can test safely: <code>https://sandbox.stratifi.com</code></p>
+
 <p>Once you are ready, you will get access to the production domain <code>https://backend.stratifi.com</code></p>
-</div>
-</div>
-<div class="level-3">
-<div class="side"></div>
-<div class="main">
-<h3 id="filtering">Filtering</h3>
+<h2 id='filtering'>Filtering</h2>
 <p>You can filter objects returned by an endpoint using URL params. Each section describes the allowed <strong>Filtering Fields</strong> in that endpoint.</p>
+
 <p>For instance, if you want to list the accounts of the investor with ID 31 you can use <code>/api/v1/accounts/?investor=31</code>.</p>
-</div>
-</div>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="authorization">Authorization</h1></div></div>
+<h1 id='authorization'>Authorization</h1>
 <p>We use the OAuth 2.0 protocol, an industry standard for authorization management.</p>
 
-<p>Make sure you have the <em>CLIENT ID</em> an a <em>SECRET KEY</em> provided by our support team. If you don't have them contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a>.</p>
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side"><pre class="highlight shell tab-shell"><code>
+<p>Make sure you have the <em>CLIENT ID</em> an a <em>SECRET KEY</em> provided by our support team. If you don&#39;t have them contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a>.</p>
+<h2 id='authorization-code-flow'>Authorization Code Flow</h2>
+<p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
+
+<p>1) Redirect the advisor to the StratiFi authorization page:</p>
+
+<p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;state={{ state }}&amp;client_id={{ client_id }}</code></p>
+
+<ul>
+<li><strong>domain:</strong> StratiFi sandbox or production domain.</li>
+<li><strong>state:</strong> Random string generated by your application.</li>
+<li><strong>client_id:</strong> Provided by StratiFi.</li>
+</ul>
+
+<p>2) The advisor submits the StratiFi credentials.</p>
+
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login" /></p>
+
+<p>3) The advisor allow your application access the resources in StratiFi.</p>
+
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant" /></p>
+
+<p>4) We redirect the browser to your return url with a single-usage access code.</p>
+
+<p><code>https://{{ callback-url }}code={{ code }}&amp;state={{ state }}</code></p>
+
+<ul>
+<li><strong>callback-url:</strong> URL provided by you when during the application setup.</li>
+<li><strong>state:</strong> Random string generated by your application.</li>
+<li><strong>code:</strong> Single-usage code that can be exchanged by an access token.</li>
+</ul>
+
+<p>5) Your application backend exchange the access code by an access token.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>
 curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 
 <span class="o">{</span>
@@ -508,88 +642,25 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     <span class="s2">"scope"</span>: <span class="s2">"read write"</span>
 <span class="o">}</span>
 </code></pre></div>
-<div class="main">
-<h2 id="authorization-code-flow">Authorization Code Flow</h2>
-<p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
-<p>1) Redirect the advisor to the StratiFi authorization page:</p>
-<p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;state={{ state }}&amp;client_id={{ client_id }}</code></p>
-<ul>
-<li>
-<strong>domain:</strong> StratiFi sandbox or production domain.</li>
-<li>
-<strong>state:</strong> Random string generated by your application.</li>
-<li>
-<strong>client_id:</strong> Provided by StratiFi.</li>
-</ul>
-<p>2) The advisor submits the StratiFi credentials.</p>
-<p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login"></p>
-<p>3) The advisor allow your application access the resources in StratiFi.</p>
-<p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant"></p>
-<p>4) We redirect the browser to your return url with a single-usage access code.</p>
-<p><code>https://{{ callback-url }}code={{ code }}&amp;state={{ state }}</code></p>
-<ul>
-<li>
-<strong>callback-url:</strong> URL provided by you when during the application setup.</li>
-<li>
-<strong>state:</strong> Random string generated by your application.</li>
-<li>
-<strong>code:</strong> Single-usage code that can be exchanged by an access token.</li>
-</ul>
-<p>5) Your application backend exchange the access code by an access token.</p>
 <p>6) Include the <em>Authorization</em> header in your requests as follows: </p>
+
 <p><code>Authorization: Bearer {{ access-token }}</code></p>
-</div>
-</div></div>
+<h1 id='data-endpoints'>Data Endpoints</h1><h2 id='about-stratifi'>About StratiFi</h2>
+<p>You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts at the bottom level.</p>
 
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/data2.2.png" title="StratiFi Data" alt="Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account" /></p>
 
+<p>Each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that contains the ID of the investor that owns that account.</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="companies">Companies</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>Company Object</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"name"</span>: <span class="s2">"Company A, LLC"</span>
-<span class="o">}</span>
-
-</code></pre>
-</div>
-<div class="main">
-<h2 id="company-object-definition">Company Object Definition</h2>
-<table>
-<thead>
+<p>(*) Households are optional. An investor can be linked directly to the advisor.</p>
+<h1 id='companies'>Companies</h1><h2 id='company-object-definition'>Company Object Definition</h2>
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>id</td>
 <td>int</td>
@@ -600,19 +671,25 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>string</td>
 <td>Name of the company</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
 
+<blockquote>
+<p>Company Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"name"</span>: <span class="s2">"Company A, LLC"</span>
+<span class="o">}</span>
 
+</code></pre></div><h2 id='list-companies'>List Companies</h2>
+<p>-request-type: GET</p>
 
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<p>-request-url: <code>/companies/</code></p>
+
+<blockquote>
 <p>List Companies</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -626,22 +703,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     …
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="list-companies">List Companies</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/companies/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>count</td>
 <td>int</td>
@@ -660,151 +731,99 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of <a href="#company-object-definition">company objects</a>
-</td>
+<td>List of <a href="#company-object-definition">company objects</a></td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
+<h2 id='get-company'>Get Company</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/companies/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#company-object-definition">company object</a>.</p>
 
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Get Company</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
   <span class="s2">"name"</span>: <span class="s2">"Companny A, LLC"</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-company">Get Company</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/companies/&lt;id&gt;/</p>
-<p><strong>Response:</strong> The requested <a href="#company-object-definition">company object</a>.</p>
-</div>
-</div></div>
+</code></pre></div><h2 id='create-company'>Create Company</h2>
+<p>-request-type: POST</p>
 
+<p>-request-url: <code>/companies/</code></p>
 
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Create Company</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{"name": "Company Z, LLC"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"name": "Company Z, LLC"}'</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 11,
   <span class="s2">"name"</span>: <span class="s2">"Companny Z, LLC"</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="create-company">Create Company</h2>
-<p class="request-type">POST</p>
-<p class="request-url">/companies/</p>
+</code></pre></div>
 <p><strong>Request Parameters</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
 <th></th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>Required</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Response:</strong> The new <a href="#company-object-definition">company object</a>.</p>
-</div>
-</div></div>
+<h2 id='update-company'>Update Company</h2>
+<p>-request-type: PUT/PATCH</p>
 
+<p>-request-url: <code>/companies/&lt;id&gt;/</code></p>
 
+<p><strong>Request Parameters</strong></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Required</td>
+</tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Update Company</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/"</span>
-  -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{"name": "Company W, LLC"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"name": "Company W, LLC"}'</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 11,
   <span class="s2">"name"</span>: <span class="s2">"Companny W, LLC"</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="update-company">Update Company</h2>
-<p class="request-type">PUT/PATCH</p>
-<p class="request-url">/companies/&lt;id&gt;/</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</code></pre></div><h2 id='company-prism-aggregation'>Company Prism Aggregation</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/companies/&lt;id&gt;/prism_aggregation/</code></p>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Company Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -813,22 +832,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"no_overlay_tail"</span>: 8.674759220001045,
   <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="company-prism-aggregation">Company Prism Aggregation</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/companies/&lt;id&gt;/prism_aggregation/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>no_overlay_overall</td>
 <td>float</td>
@@ -854,42 +867,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>float</td>
 <td>Volatility score</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="users">Users</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>User Object</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
- <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
- <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
- <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="user-object-definition">User Object Definition</h2>
-<table>
-<thead>
+</tbody></table>
+<h1 id='users'>Users</h1><h2 id='user-object-definition'>User Object Definition</h2>
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>first_name</td>
 <td>string</td>
@@ -905,43 +891,24 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>string</td>
 <td>User email address</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
 
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="advisors">Advisors</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>Advisor Object</p>
+<blockquote>
+<p>User Object</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"company"</span>: 1,
-  <span class="s2">"default_investor"</span>: 101,
-  <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
-  <span class="s2">"title"</span>: <span class="s2">"Co-founder"</span>,
-  <span class="s2">"user"</span>: <span class="o">{</span>
-     <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
-     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
-     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-  <span class="o">}</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+ <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
+ <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
+ <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="advisor-object-definition">Advisor Object Definition</h2>
-<table>
-<thead>
+</code></pre></div><h1 id='advisors'>Advisors</h1><h2 id='advisor-object-definition'>Advisor Object Definition</h2>
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>id</td>
 <td>int</td>
@@ -972,22 +939,34 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td><a href="#user-object-definition">User Object</a></td>
 <td>User info</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p>(*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an investor.</p>
-</div>
-</div></div>
 
+<blockquote>
+<p>Advisor Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"company"</span>: 1,
+  <span class="s2">"default_investor"</span>: 101,
+  <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
+  <span class="s2">"title"</span>: <span class="s2">"Co-founder"</span>,
+  <span class="s2">"user"</span>: <span class="o">{</span>
+     <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
+     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
+     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h2 id='list-advisors'>List Advisors</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/advisors/</code></p>
 
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>List Advisors</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -1009,22 +988,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     …
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="list-advisors">List Advisors</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/advisors/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>count</td>
 <td>int</td>
@@ -1043,49 +1016,36 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of <a href="#advisor-object-definition">advisor objects</a>
-</td>
+<td>List of <a href="#advisor-object-definition">advisor objects</a></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Filtering Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>company</td>
 <td>int</td>
 <td>Company ID</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
+<h2 id='get-advisor'>Get Advisor</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/advisors/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#advisor-object-definition">advisor object</a>.</p>
 
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Get Advisor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -1099,29 +1059,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-advisor">Get Advisor</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/advisors/&lt;id&gt;/</p>
-<p><strong>Response:</strong> The requested <a href="#advisor-object-definition">advisor object</a>.</p>
-</div>
-</div></div>
+</code></pre></div><h2 id='create-advisor'>Create Advisor</h2>
+<p>-request-type: POST</p>
 
+<p>-request-url: <code>/advisors/</code></p>
 
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Create Advisor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "company": 1,
     "phone": "754-3010",
     "title": "CEO",
@@ -1144,22 +1091,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     <span class="s2">"email"</span>: <span class="s2">"doug.spencer@example.com"</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="create-advisor">Create Advisor</h2>
-<p class="request-type">POST</p>
-<p class="request-url">/advisors/</p>
+</code></pre></div>
 <p><strong>Request Parameters</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
 <th></th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>company</td>
 <td>int</td>
@@ -1180,29 +1121,50 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td><a href="#user-object-definition">User Object</a></td>
 <td>Required</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Response:</strong> The new <a href="#advisor-object-definition">advisor object</a>.</p>
-</div>
-</div></div>
+<h2 id='update-advisor'>Update Advisor</h2>
+<p>-request-type: PUT/PATCH</p>
 
+<p>-request-url: <code>/advisors/&lt;id&gt;/</code></p>
 
+<p><strong>Request Parameters</strong></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company</td>
+<td>int</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>user</td>
+<td><a href="#user-object-definition">User Object</a></td>
+<td>Required</td>
+</tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Update Advisor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "title": "CEO/Founder",
     "company": 1,
     "phone": "754-3010",
@@ -1225,61 +1187,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     <span class="s2">"email"</span>: <span class="s2">"dspencer@example.com"</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="update-advisor">Update Advisor</h2>
-<p class="request-type">PUT/PATCH</p>
-<p class="request-url">/advisors/&lt;id&gt;/</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>company</td>
-<td>int</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>title</td>
-<td>string</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>user</td>
-<td><a href="#user-object-definition">User Object</a></td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</code></pre></div><h2 id='advisor-prism-aggregation'>Advisor Prism Aggregation</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/advisors/&lt;id&gt;/prism_aggregation/</code></p>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Advisor Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1288,22 +1204,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"no_overlay_tail"</span>: 8.674759220001045,
   <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="advisor-prism-aggregation">Advisor Prism Aggregation</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/advisors/&lt;id&gt;/prism_aggregation/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>no_overlay_overall</td>
 <td>float</td>
@@ -1329,42 +1239,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>float</td>
 <td>Volatility score</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="households">Households</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>Household Object</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
-<span class="o">}</span>
-
-</code></pre>
-</div>
-<div class="main">
-<h2 id="household-object-definition">Household Object Definition</h2>
-<table>
-<thead>
+</tbody></table>
+<h1 id='households'>Households</h1><h2 id='household-object-definition'>Household Object Definition</h2>
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>id</td>
 <td>int</td>
@@ -1380,19 +1263,25 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>int</td>
 <td>Advisor ID</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
 
+<blockquote>
+<p>Household Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
+<span class="o">}</span>
 
+</code></pre></div><h2 id='list-households'>List Households</h2>
+<p>-request-type: GET</p>
 
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<p>-request-url: <code>/households/</code></p>
+
+<blockquote>
 <p>List Households</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -1407,22 +1296,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     …
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="list-households">List Households</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/households/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>count</td>
 <td>int</td>
@@ -1441,78 +1324,52 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of <a href="#household-object-definition">household objects</a>
-</td>
+<td>List of <a href="#household-object-definition">household objects</a></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Filtering Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>advisor</td>
 <td>int</td>
 <td>Advisor ID</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
+<h2 id='get-household'>Get Household</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/households/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#household-object-definition">household object</a>.</p>
 
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Get Household</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/households/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
   <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
   <span class="s2">"advisor"</span>: 1
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-household">Get Household</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/households/&lt;id&gt;/</p>
-<p><strong>Response:</strong> The requested <a href="#household-object-definition">household object</a>.</p>
-</div>
-</div></div>
+</code></pre></div><h2 id='create-household'>Create Household</h2>
+<p>-request-type: POST</p>
 
+<p>-request-url: <code>/households/</code></p>
 
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Create Household</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "Smith-Pinkett Family",
     "advisor": 2
   }'</span>
@@ -1522,51 +1379,51 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"name"</span>: <span class="s2">"Smith-Pinkett Family"</span>,
   <span class="s2">"advisor"</span>: 2
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="create-household">Create Household</h2>
-<p class="request-type">POST</p>
-<p class="request-url">/households/</p>
+</code></pre></div>
 <p><strong>Request Parameters</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
 <th></th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>name</td>
 <td>string</td>
 <td>Required</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Response:</strong> The new <a href="#household-object-definition">household object</a>.</p>
-</div>
-</div></div>
+<h2 id='update-household'>Update Household</h2>
+<p>-request-type: PUT/PATCH</p>
 
+<p>-request-url: <code>/households/&lt;id&gt;/</code></p>
 
+<p><strong>Request Parameters</strong></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Required</td>
+</tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Update Household</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/households/2/"</span>
-  -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/households/2/"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "Pinkett Family",
     "advisor": 2
   }'</span>
@@ -1576,46 +1433,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"name"</span>: <span class="s2">"Pinkett Family"</span>,
   <span class="s2">"advisor"</span>: 2
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="update-household">Update Household</h2>
-<p class="request-type">PUT/PATCH</p>
-<p class="request-url">/households/&lt;id&gt;/</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</code></pre></div><h2 id='household-prism-aggregation'>Household Prism Aggregation</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/households/&lt;id&gt;/prism_aggregation/</code></p>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Household Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/households/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1624,22 +1450,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"no_overlay_tail"</span>: 8.674759220001045,
   <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="household-prism-aggregation">Household Prism Aggregation</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/households/&lt;id&gt;/prism_aggregation/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>no_overlay_overall</td>
 <td>float</td>
@@ -1665,48 +1485,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>float</td>
 <td>Volatility score</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="investors">Investors</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>Investor Object</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"advisor"</span>: 1,
-  <span class="s2">"household"</span>: 1,
-  <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
-  <span class="s2">"user"</span>: <span class="o">{</span>
-     <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
-     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
-     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="investor-object-definition">Investor Object Definition</h2>
-<table>
-<thead>
+</tbody></table>
+<h1 id='investors'>Investors</h1><h2 id='investor-object-definition'>Investor Object Definition</h2>
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>id</td>
 <td>int</td>
@@ -1732,19 +1519,31 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td><a href="#user-object-definition">User Object</a></td>
 <td>User info</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
 
+<blockquote>
+<p>Investor Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"household"</span>: 1,
+  <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
+  <span class="s2">"user"</span>: <span class="o">{</span>
+     <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
+     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
+     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><h2 id='list-investors'>List Investors</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/investors/</code></p>
 
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>List Investors</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -1765,22 +1564,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     …
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="list-investors">List Investors</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/investors/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>count</td>
 <td>int</td>
@@ -1799,21 +1592,19 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of <a href="#investor-object-definition">investor objects</a>
-</td>
+<td>List of <a href="#investor-object-definition">investor objects</a></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Filtering Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>advisor</td>
 <td>int</td>
@@ -1824,29 +1615,18 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>int</td>
 <td>Household ID</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
+<h2 id='get-investor'>Get Investor</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/investors/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#investor-object-definition">investor object</a>.</p>
 
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Get Investor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -1859,29 +1639,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-investor">Get Investor</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/investors/&lt;id&gt;/</p>
-<p><strong>Response:</strong> The requested <a href="#investor-object-definition">investor object</a>.</p>
-</div>
-</div></div>
+</code></pre></div><h2 id='create-investor'>Create Investor</h2>
+<p>-request-type: POST</p>
 
+<p>-request-url: <code>/investors/</code></p>
 
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Create Investor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "advisor": 1,
     "household": 1,
     "phone": "754-3010",
@@ -1903,22 +1670,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     <span class="s2">"email"</span>: <span class="s2">"brian.may@example.com"</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="create-investor">Create Investor</h2>
-<p class="request-type">POST</p>
-<p class="request-url">/investors/</p>
+</code></pre></div>
 <p><strong>Request Parameters</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
 <th></th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>advisor</td>
 <td>int</td>
@@ -1939,29 +1700,50 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td><a href="#user-object-definition">User Object</a></td>
 <td>Required</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Response:</strong> The new <a href="#investor-object-definition">investor object</a>.</p>
-</div>
-</div></div>
+<h2 id='update-investor'>Update Investor</h2>
+<p>-request-type: PUT/PATCH</p>
 
+<p>-request-url: <code>/investors/&lt;id&gt;/</code></p>
 
+<p><strong>Request Parameters</strong></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>user</td>
+<td><a href="#user-object-definition">User Object</a></td>
+<td>Required</td>
+</tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Update Investor</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "advisor": 1,
     "household": 1,
     "phone": "754-3010",
@@ -1984,61 +1766,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   }
 }
 
-</span></code></pre>
-</div>
-<div class="main">
-<h2 id="update-investor">Update Investor</h2>
-<p class="request-type">PUT/PATCH</p>
-<p class="request-url">/investors/&lt;id&gt;/</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>advisor</td>
-<td>int</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>household</td>
-<td>int</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>user</td>
-<td><a href="#user-object-definition">User Object</a></td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</span></code></pre></div><h2 id='investor-prism-aggregation'>Investor Prism Aggregation</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/investors/&lt;id&gt;/prism_aggregation/</code></p>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Investor Prism Aggregation</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.850381420050724
@@ -2047,22 +1783,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"no_overlay_overall"</span>: 8.2145327985038
   <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="investor-prism-aggregation">Investor Prism Aggregation</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/investors/&lt;id&gt;/prism_aggregation/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>no_overlay_overall</td>
 <td>float</td>
@@ -2088,86 +1818,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>float</td>
 <td>Volatility score</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="risk-and-tolerance">Risk and Tolerance</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>Risk Object</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"scores"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8,
-      <span class="s2">"volatility"</span>: 8
-  <span class="o">}</span>,
-  <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
-      <span class="o">{</span>
-          <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TARGET 2045"</span>,
-          <span class="s2">"ticker"</span>: <span class="s2">"OPPI"</span>,
-          <span class="s2">"risk"</span>: 0.9997862976486193,
-          <span class="s2">"weight"</span>: 99.763225
-      <span class="o">}</span>,
-      <span class="o">{</span>
-          <span class="s2">"ticker_name"</span>: <span class="s2">"Fha Non Int Bearing"</span>,
-          <span class="s2">"ticker"</span>: <span class="s2">"UNTB"</span>,
-          <span class="s2">"risk"</span>: 0.00021370235138087705,
-          <span class="s2">"weight"</span>: 0.236775
-      <span class="o">}</span>
-  <span class="o">]</span>,
-  <span class="s2">"scenarios"</span>: <span class="o">[</span>
-      <span class="o">{</span>
-          <span class="s2">"risk"</span>: 8.8,
-          <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
-          <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
-          <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
-      <span class="o">}</span>,
-      <span class="o">{</span>
-          <span class="s2">"risk"</span>: 8.8,
-          <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
-          <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
-          <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
-      <span class="o">}</span>,
-      <span class="o">{</span>
-          <span class="s2">"risk"</span>: 8.1,
-          <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
-          <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
-          <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
-      <span class="o">}</span>,
-      <span class="o">{</span>
-          <span class="s2">"risk"</span>: 7.7,
-          <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
-          <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
-          <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
-      <span class="o">}</span>
-  <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="risk-object-definition">Risk Object Definition</h2>
-<table>
-<thead>
+</tbody></table>
+<h1 id='risk-and-tolerance'>Risk and Tolerance</h1><h2 id='risk-object-definition'>Risk Object Definition</h2>
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>scores.overall</td>
 <td>float</td>
@@ -2233,40 +1892,68 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>float</td>
 <td>Scenario overall risk</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
 
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>Tolerance Object</p>
+<blockquote>
+<p>Risk Object</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"scores"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 6.4,
-      <span class="s2">"concentrated"</span>: 5,
-      <span class="s2">"tail"</span>: 5,
-      <span class="s2">"volatility"</span>: 8,
-      <span class="s2">"correlation"</span>: 5
-  <span class="o">}</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8,
+      <span class="s2">"volatility"</span>: 8
+  <span class="o">}</span>,
+  <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+          <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TARGET 2045"</span>,
+          <span class="s2">"ticker"</span>: <span class="s2">"OPPI"</span>,
+          <span class="s2">"risk"</span>: 0.9997862976486193,
+          <span class="s2">"weight"</span>: 99.763225
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"ticker_name"</span>: <span class="s2">"Fha Non Int Bearing"</span>,
+          <span class="s2">"ticker"</span>: <span class="s2">"UNTB"</span>,
+          <span class="s2">"risk"</span>: 0.00021370235138087705,
+          <span class="s2">"weight"</span>: 0.236775
+      <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"scenarios"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+          <span class="s2">"risk"</span>: 8.8,
+          <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
+          <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
+          <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"risk"</span>: 8.8,
+          <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
+          <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
+          <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"risk"</span>: 8.1,
+          <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
+          <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
+          <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+          <span class="s2">"risk"</span>: 7.7,
+          <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
+          <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
+          <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
+      <span class="o">}</span>
+  <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="tolerance-object-definition">Tolerance Object Definition</h2>
-<table>
-<thead>
+</code></pre></div><h2 id='tolerance-object-definition'>Tolerance Object Definition</h2>
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>scores.overall</td>
 <td>float</td>
@@ -2292,64 +1979,161 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>float</td>
 <td>Correlation tolerance score</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
 
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="positions">Positions</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
-<p>Position Object</p>
+<blockquote>
+<p>Tolerance Object</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
-  <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P 500"</span>,
-  <span class="s2">"value"</span>: <span class="s2">"823045.26"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"scores"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 6.4,
+      <span class="s2">"concentrated"</span>: 5,
+      <span class="s2">"tail"</span>: 5,
+      <span class="s2">"volatility"</span>: 8,
+      <span class="s2">"correlation"</span>: 5
+  <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="position-object-definition">Position Object Definition</h2>
-<table>
-<thead>
+</code></pre></div><h1 id='accounts'>Accounts</h1><h2 id='account-object-definition'>Account Object Definition</h2>
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
-<td>ticker</td>
-<td>string</td>
-<td>Position ticker</td>
+<td>id</td>
+<td>int</td>
+<td>Account ID</td>
 </tr>
 <tr>
-<td>ticker_name</td>
+<td>name</td>
 <td>string</td>
-<td>Position ticker description</td>
+<td>Account name</td>
 </tr>
 <tr>
 <td>value</td>
 <td>string</td>
-<td>Position value</td>
+<td>Account value</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+<tr>
+<td>type *</td>
+<td>string</td>
+<td>Account type</td>
+</tr>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>Account number</td>
+</tr>
+<tr>
+<td>investor</td>
+<td>int</td>
+<td>Investor ID</td>
+</tr>
+<tr>
+<td>advisor **</td>
+<td>int</td>
+<td>Advisor ID</td>
+</tr>
+<tr>
+<td>positions[]</td>
+<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>Account holdings</td>
+</tr>
+<tr>
+<td>risk</td>
+<td><a href="#risk-object-definition">Risk Object</a></td>
+<td>Account risk</td>
+</tr>
+<tr>
+<td>tolerance</td>
+<td><a href="#tolerance-object-definition">Tolerance Object</a></td>
+<td>Account tolerance</td>
+</tr>
+<tr>
+<td>drift</td>
+<td>float</td>
+<td>Drift between the risk and the tolerance overall scores</td>
+</tr>
+</tbody></table>
 
+<p>(*) <strong>Valid Account Types</strong></p>
 
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>100</td>
+<td>Individual</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Joint</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Revocable Living Trust</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Irrevocable Living Trust</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Limited Liability Company</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Limited Liability Limited Partnership</td>
+</tr>
+<tr>
+<td>302</td>
+<td>S Corporation</td>
+</tr>
+<tr>
+<td>303</td>
+<td>C Corporation</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Sole Proprietorship</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Traditional IRA</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Simplified Employee Pension IRA</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Savings Incentive Match Plan for Employees IRA</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Roth IRA</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Rollover IRA</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Household Account</td>
+</tr>
+</tbody></table>
 
-<div class="level-1-wrapper"><div class="level-1"><h1 id="accounts">Accounts</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<p>(**) Ideally, you would provide the investor ID. However, if you don&#39;t have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</p>
+
+<blockquote>
 <p>Account Object</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 1,
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
@@ -2429,166 +2213,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.7
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="account-object-definition">Account Object Definition</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>Account ID</td>
-</tr>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Account name</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>Account value</td>
-</tr>
-<tr>
-<td>type *</td>
-<td>string</td>
-<td>Account type</td>
-</tr>
-<tr>
-<td>number</td>
-<td>string</td>
-<td>Account number</td>
-</tr>
-<tr>
-<td>investor</td>
-<td>int</td>
-<td>Investor ID</td>
-</tr>
-<tr>
-<td>advisor **</td>
-<td>int</td>
-<td>Advisor ID</td>
-</tr>
-<tr>
-<td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a>
-</td>
-<td>Account holdings</td>
-</tr>
-<tr>
-<td>risk</td>
-<td><a href="#risk-object-definition">Risk Object</a></td>
-<td>Account risk</td>
-</tr>
-<tr>
-<td>tolerance</td>
-<td><a href="#tolerance-object-definition">Tolerance Object</a></td>
-<td>Account tolerance</td>
-</tr>
-<tr>
-<td>drift</td>
-<td>float</td>
-<td>Drift between the risk and the tolerance overall scores</td>
-</tr>
-</tbody>
-</table>
-<p>(*) <strong>Valid Account Types</strong></p>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100</td>
-<td>Individual</td>
-</tr>
-<tr>
-<td>101</td>
-<td>Joint</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Revocable Living Trust</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Irrevocable Living Trust</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Limited Liability Company</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Limited Liability Limited Partnership</td>
-</tr>
-<tr>
-<td>302</td>
-<td>S Corporation</td>
-</tr>
-<tr>
-<td>303</td>
-<td>C Corporation</td>
-</tr>
-<tr>
-<td>304</td>
-<td>Sole Proprietorship</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Traditional IRA</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Simplified Employee Pension IRA</td>
-</tr>
-<tr>
-<td>402</td>
-<td>Savings Incentive Match Plan for Employees IRA</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Roth IRA</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Rollover IRA</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Household Account</td>
-</tr>
-</tbody>
-</table>
-<p>(**) Ideally, you would provide the investor ID. However, if you don't have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</p>
-</div>
-</div></div>
+</code></pre></div><h2 id='list-accounts'>List Accounts</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/accounts/</code></p>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>List Accounts</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -2611,22 +2244,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     …
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="list-accounts">List Accounts</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/accounts/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>count</td>
 <td>int</td>
@@ -2645,49 +2272,41 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of <a href="#account-object-definition">account objects</a>
-</td>
+<td>List of <a href="#account-object-definition">account objects</a></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Filtering Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>investor</td>
 <td>int</td>
 <td>Investor ID</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+<tr>
+<td>household</td>
+<td>int</td>
+<td>Household ID</td>
+</tr>
+</tbody></table>
+<h2 id='get-account'>Get Account</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/accounts/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#account-object-definition">account object</a>.</p>
 
-
-
-
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Get Account</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -2702,29 +2321,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-account">Get Account</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/accounts/&lt;id&gt;/</p>
-<p><strong>Response:</strong> The requested <a href="#account-object-definition">account object</a>.</p>
-</div>
-</div></div>
+</code></pre></div><h2 id='create-account'>Create Account</h2>
+<p>-request-type: POST</p>
 
+<p>-request-url: <code>/accounts/</code></p>
 
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Create Account</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "John Doe Trust",
     "value": "1234567.89",
     "type": "100",
@@ -2758,22 +2364,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="create-account">Create Account</h2>
-<p class="request-type">POST</p>
-<p class="request-url">/accounts/</p>
+</code></pre></div>
 <p><strong>Request Parameters</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
 <th></th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>name</td>
 <td>string</td>
@@ -2806,33 +2406,68 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 </tr>
 <tr>
 <td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a>
-</td>
+<td>List of <a href="#position-object-definition">Positions Objects</a></td>
 <td>Required</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Response:</strong> The new <a href="#account-object-definition">account object</a>.</p>
-</div>
-</div></div>
+<h2 id='update-account'>Update Account</h2>
+<p>-request-type: PUT/PATCH</p>
 
+<p>-request-url: <code>/accounts/&lt;id&gt;/</code></p>
 
+<p><strong>Request Parameters</strong></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>type *</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>investor</td>
+<td>int</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>advisor **</td>
+<td>int</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>positions[]</td>
+<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>Required</td>
+</tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Update Account</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "John Doe 401k",
     "value": "1234567.89",
     "type": "401",
@@ -2866,77 +2501,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="update-account">Update Account</h2>
-<p class="request-type">PUT/PATCH</p>
-<p class="request-url">/accounts/&lt;id&gt;/</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>type *</td>
-<td>string</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>number</td>
-<td>string</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>investor</td>
-<td>int</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>advisor **</td>
-<td>int</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a>
-</td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</code></pre></div><h2 id='account-prism-score'>Account Prism Score</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/accounts/&lt;id&gt;/prism_score/</code></p>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Account Prism Score</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/11/prism_score/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.214532742005072
@@ -2945,22 +2518,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"no_overlay_overall"</span>: 8.2145327985038
   <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="account-prism-score">Account Prism Score</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/accounts/&lt;id&gt;/prism_score/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>no_overlay_overall</td>
 <td>float</td>
@@ -2986,25 +2553,56 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>float</td>
 <td>Volatility score</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
+<h1 id='model-portfolios'>Model Portfolios</h1><h2 id='model-portfolio-object-definition'>Model Portfolio Object Definition</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Model Portfolio ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Model Portfolio name</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>Model Portfolio value</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Model Portfolio type</td>
+</tr>
+<tr>
+<td>company</td>
+<td>int</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>positions[]</td>
+<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>Model Portfolio holdings</td>
+</tr>
+<tr>
+<td>risk</td>
+<td><a href="#risk-object-definition">Risk Object</a></td>
+<td>Model Portfolio risk</td>
+</tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="model-portfolios">Model Portfolios</h1></div></div><div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Model Portfolio Object</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 1,
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
@@ -3074,68 +2672,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     <span class="o">]</span>
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="model-portfolio-object-definition">Model Portfolio Object Definition</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>Model Portfolio ID</td>
-</tr>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Model Portfolio name</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>Model Portfolio value</td>
-</tr>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>Model Portfolio type</td>
-</tr>
-<tr>
-<td>company</td>
-<td>int</td>
-<td>Company ID</td>
-</tr>
-<tr>
-<td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a>
-</td>
-<td>Model Portfolio holdings</td>
-</tr>
-<tr>
-<td>risk</td>
-<td><a href="#risk-object-definition">Risk Object</a></td>
-<td>Model Portfolio risk</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</code></pre></div><h2 id='list-model-portfolios'>List Model Portfolios</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/models/</code></p>
 
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>List Model Portfolios</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -3154,22 +2699,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
     …
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="list-model-portfolios">List Model Portfolios</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/models/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>count</td>
 <td>int</td>
@@ -3188,28 +2727,20 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of <a href="#model-object-definition">model objects</a>
-</td>
+<td>List of <a href="#model-object-definition">model objects</a></td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</tbody></table>
+<h2 id='get-model-portfolio'>Get Model Portfolio</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/models/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#model-object-definition">model object</a>.</p>
 
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Get Model Portfolio</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -3220,29 +2751,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="get-model-portfolio">Get Model Portfolio</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/models/&lt;id&gt;/</p>
-<p><strong>Response:</strong> The requested <a href="#model-object-definition">model object</a>.</p>
-</div>
-</div></div>
+</code></pre></div><h2 id='create-model-portfolio'>Create Model Portfolio</h2>
+<p>-request-type: POST</p>
 
+<p>-request-url: <code>/models/</code></p>
 
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Create Model Portfolio</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X POST <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "80% Equities / 20% Fixed Income",
     "value": 100.0,
     "type": "Aggressive",
@@ -3270,22 +2788,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="create-model-portfolio">Create Model Portfolio</h2>
-<p class="request-type">POST</p>
-<p class="request-url">/models/</p>
+</code></pre></div>
 <p><strong>Request Parameters</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
 <th></th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>name</td>
 <td>string</td>
@@ -3308,33 +2820,58 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 </tr>
 <tr>
 <td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a>
-</td>
+<td>List of <a href="#position-object-definition">Positions Objects</a></td>
 <td>Required</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
+
 <p><strong>Response:</strong> The new <a href="#model-object-definition">model object</a>.</p>
-</div>
-</div></div>
+<h2 id='update-model-portfolio'>Update Model Portfolio</h2>
+<p>-request-type: PUT/PATCH</p>
 
+<p>-request-url: <code>/models/&lt;id&gt;/</code></p>
 
+<p><strong>Request Parameters</strong></p>
 
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>type *</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>company</td>
+<td>int</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>positions[]</td>
+<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>Required</td>
+</tr>
+</tbody></table>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Update Model Portfolio</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl -X PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  -d <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "70% Equities / 30% Fixed Income",
     "value": 100.0,
     "type": "Moderate",
@@ -3362,67 +2899,15 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="update-model-portfolio">Update Model Portfolio</h2>
-<p class="request-type">PUT/PATCH</p>
-<p class="request-url">/models/&lt;id&gt;/</p>
-<p><strong>Request Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Required</td>
-</tr>
-<tr>
-<td>value</td>
-<td>string</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>type *</td>
-<td>string</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>company</td>
-<td>int</td>
-<td>Optional</td>
-</tr>
-<tr>
-<td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a>
-</td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div></div>
+</code></pre></div><h2 id='model-portfolio-prism-score'>Model Portfolio Prism Score</h2>
+<p>-request-type: GET</p>
 
+<p>-request-url: <code>/models/&lt;id&gt;/prism_score/</code></p>
 
-
-
-
-
-
-
-
-<div class="level-2-wrapper"><div class="level-2">
-<div class="side">
-<blockquote class="blockquote">
+<blockquote>
 <p>Model Portfolio Prism Score</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="gp">&gt; </span>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/11/prism_score/"</span> -H <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/models/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.214532742005072
@@ -3431,22 +2916,16 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
   <span class="s2">"no_overlay_overall"</span>: 8.2145327985038
   <span class="s2">"no_overlay_volatility"</span>: 9.224755263382502
 <span class="o">}</span>
-</code></pre>
-</div>
-<div class="main">
-<h2 id="model-portfolio-prism-score">Model Portfolio Prism Score</h2>
-<p class="request-type">GET</p>
-<p class="request-url">/models/&lt;id&gt;/prism_score/</p>
+</code></pre></div>
 <p><strong>Response Fields</strong></p>
-<table>
-<thead>
+
+<table><thead>
 <tr>
 <th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
-</thead>
-<tbody>
+</thead><tbody>
 <tr>
 <td>no_overlay_overall</td>
 <td>float</td>
@@ -3472,76 +2951,7 @@ curl <span class="s2">"https://backend.stratifi.com/o/token/"</span>
 <td>float</td>
 <td>Volatility score</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div></div>
-
-
-
-
-
-
-
-
-
-<div class="level-1-wrapper"><div class="level-1"><h1 id="errors">Errors</h1></div></div>
-<p>The StratiFi API uses the following error codes:</p>
-
-<table>
-<thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The resource requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified resource could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a uri with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn't json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The resource requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I'm a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You're making too many requests. Please allow some time for our server to serve your previous requests.</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We're temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody>
-</table>
+</tbody></table>
 
       </div>
       <div class="dark-box">
