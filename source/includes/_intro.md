@@ -2,7 +2,7 @@
 
 **Welcome to the StratiFi API!**
 
-With our API you can manage your portfolios in StratiFi's and get information on various risks and scores.
+With our API you can manage your portfolios in StratiFi and get information on various risks and scores.
 
 This page describe the available API endpoints. You will find some code examples in the dark area to the right. Also, if you are familiar with Postman, you can import <a href="https://www.getpostman.com/collections/9e82bcf47798dacdbb8c" target="_blank">this collection</a> and play with the API.
 

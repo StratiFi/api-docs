@@ -1,4 +1,4 @@
-# API Overview
+# Overview
 
 Our API follows a REST pattern, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope.
 

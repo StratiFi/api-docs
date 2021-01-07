@@ -168,9 +168,10 @@
 
 **Filtering Fields**
 
-| Name     | Type | Description |
-| -------- | ---- | ----------- |
-| investor | int  | Investor ID |
+| Name      | Type | Description  |
+| --------- | ---- | ------------ |
+| investor  | int  | Investor ID  |
+| household | int  | Household ID |
 
 ## Get Account
 
