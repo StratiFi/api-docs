@@ -38,9 +38,9 @@ Following the steps below you will get an access token that can be used to acces
 
 1.  Your application backend exchange the access code by an access token.
 
-    ```shell
-    curl -X POST "https://backend.stratifi.com/o/token/" \
-    -d '{
+```shell
+curl -X POST "https://backend.stratifi.com/o/token/" \
+-d '{
     "grant_type": "authorization_code",
     "code": "{{ code }}",
     "redirect_uri": "{{ redirect_url }}",
@@ -48,36 +48,38 @@ Following the steps below you will get an access token that can be used to acces
     "client_secret": "{{ secret_key }}"
     }'
 
-    {
+{
     "access_token": "{{ access_token }}",
     "token_type": "Bearer",
     "expires_in": 3600,
     "refresh_token": "{{ refresh_token }}",
     "scope": "read write"
-    }
-    ```
+}
+```
 
-    **Request Parameters**
+**Request Parameters**
 
-    | Parameter     | Type   |                                                |
-    | ------------- | ------ | ---------------------------------------------- |
-    | grant_type    | string | Always "authorization_code"                    |
-    | code          | string | The single-usage code received in the callback |
-    | redirect_uri  | string | The callback URL                               |
-    | client_id     | string | Your application client id                     |
-    | client_secret | string | Your application secret key                    |
+| Parameter     | Type   |                                                |
+| ------------- | ------ | ---------------------------------------------- |
+| grant_type    | string | Always "authorization_code"                    |
+| code          | string | The single-usage code received in the callback |
+| redirect_uri  | string | The callback URL                               |
+| client_id     | string | Your application client id                     |
+| client_secret | string | Your application secret key                    |
 
-    **Response**
+**Response**
 
-    | Parameter     | Type   |                                                                        |
-    | ------------- | ------ | ---------------------------------------------------------------------- |
-    | token_type    | string | Always "Bearer"                                                        |
-    | access_token  | string | An access token valid to consult other endpoints on behalf of the user |
-    | expires_in    | string | Expiration time of the access token in seconds                         |
-    | refresh_token | string | An refresh token valid to renew the access token                       |
-    | scope         | string | The scopes with granted access for this token                          |
+| Parameter     | Type   |                                                                        |
+| ------------- | ------ | ---------------------------------------------------------------------- |
+| token_type    | string | Always "Bearer"                                                        |
+| access_token  | string | An access token valid to consult other endpoints on behalf of the user |
+| expires_in    | string | Expiration time of the access token in seconds                         |
+| refresh_token | string | An refresh token valid to renew the access token                       |
+| scope         | string | The scopes with granted access for this token                          |
 
-1.  Include the _Authorization_ header in your requests as follows:
+&#54;. Include the _Authorization_ header in your requests as follows:
+
+<!-- (Hardcode the 6. because at this point the format is mess between the list, table and the shell code) -->
 
     `Authorization: Bearer {{ access-token }}`
 
@@ -87,7 +89,7 @@ If your access token expired you can renew it using a valid refresh token.
 
 ```shell
 curl -X POST "https://backend.stratifi.com/o/token/" \
--d '{
+  -d '{
     "grant_type": "refresh_token",
     "refresh_token": "{{ refresh_token }}",
     "client_id": "{{ client_id }}",
