@@ -612,9 +612,7 @@
 <h2 id='authorization-code-flow'>Authorization Code Flow</h2>
 <p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
 
-<ol>
-<li>Redirect the advisor to the StratiFi authorization page:</li>
-</ol>
+<p>1) Redirect the advisor to the StratiFi authorization page:</p>
 
 <p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;state={{ state }}&amp;client_id={{ client_id }}</code></p>
 
@@ -638,21 +636,15 @@
 </tr>
 </tbody></table>
 
-<ol>
-<li>The advisor submits the StratiFi credentials.</li>
-</ol>
+<p>2) The advisor submits the StratiFi credentials.</p>
 
 <p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login" /></p>
 
-<ol>
-<li>The advisor allow your application access the resources in StratiFi.</li>
-</ol>
+<p>3) The advisor allow your application access the resources in StratiFi.</p>
 
 <p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant" /></p>
 
-<ol>
-<li>We redirect the browser to your return url with a single-usage access code.</li>
-</ol>
+<p>4) We redirect the browser to your return url with a single-usage access code.</p>
 
 <p><code>https://{{ callback-url }}code={{ code }}&amp;state={{ state }}</code></p>
 
@@ -676,9 +668,7 @@
 </tr>
 </tbody></table>
 
-<ol>
-<li>Your application backend exchange the access code by an access token.</li>
-</ol>
+<p>5) Your application backend exchange the access code by an access token.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
    "grant_type": "authorization_code",
@@ -768,9 +758,7 @@
 </tr>
 </tbody></table>
 
-<ol>
-<li>Include the <em>Authorization</em> header in your requests as follows:</li>
-</ol>
+<p>6) Include the <em>Authorization</em> header in your requests as follows:</p>
 
 <p><code>Authorization: Bearer {{ access-token }}</code></p>
 <h2 id='refresh-token-flow'>Refresh Token Flow</h2>
