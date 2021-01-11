@@ -1,1 +1,4 @@
-StratiFi - v1.0.0
+# Changelog
+
+- 1.1.0
+  - Add oauth endpoints
