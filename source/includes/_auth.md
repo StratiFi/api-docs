@@ -88,9 +88,8 @@ If your access token expired you can renew it using a valid refresh token.
 ```shell
 curl -X POST "https://backend.stratifi.com/o/token/" \
   -d '{
-    "grant_type": "authorization_code",
-    "code": "{{ code }}",
-    "redirect_uri": "{{ redirect_url }}",
+    "grant_type": "refresh_token",
+    "refresh_token": "{{ refresh_token }}",
     "client_id": "{{ client_id }}",
     "client_secret": "{{ secret_key }}"
   }'
