@@ -612,9 +612,9 @@
 <h2 id='authorization-code-flow'>Authorization Code Flow</h2>
 <p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
 
-<ol>
+<ul>
 <li>Redirect the advisor to the StratiFi authorization page:</li>
-</ol>
+</ul>
 
 <p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;state={{ state }}&amp;client_id={{ client_id }}</code></p>
 
@@ -638,21 +638,21 @@
 </tr>
 </tbody></table>
 
-<ol>
+<ul>
 <li>The advisor submits the StratiFi credentials.</li>
-</ol>
+</ul>
 
 <p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login" /></p>
 
-<ol>
+<ul>
 <li>The advisor allow your application access the resources in StratiFi.</li>
-</ol>
+</ul>
 
 <p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant" /></p>
 
-<ol>
+<ul>
 <li>We redirect the browser to your return url with a single-usage access code.</li>
-</ol>
+</ul>
 
 <p><code>https://{{ callback-url }}code={{ code }}&amp;state={{ state }}</code></p>
 
@@ -676,9 +676,9 @@
 </tr>
 </tbody></table>
 
-<ol>
+<ul>
 <li>Your application backend exchange the access code by an access token.</li>
-</ol>
+</ul>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
    "grant_type": "authorization_code",
@@ -768,9 +768,9 @@
 </tr>
 </tbody></table>
 
-<ol>
+<ul>
 <li>Include the <em>Authorization</em> header in your requests as follows:</li>
-</ol>
+</ul>
 
 <p><code>Authorization: Bearer {{ access-token }}</code></p>
 <h2 id='refresh-token-flow'>Refresh Token Flow</h2>
