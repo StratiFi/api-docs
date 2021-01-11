@@ -665,22 +665,23 @@
 <td>Single-usage code that can be exchanged by an access token</td>
 </tr>
 </tbody></table></li>
-<li><p>Your application backend exchange the access code by an access token.</p>
+<li><p>Your application backend exchange the access code by an access token.</p></li>
+</ol>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
-"grant_type": "authorization_code",
-"code": "{{ code }}",
-"redirect_uri": "{{ redirect_url }}",
-"client_id": "{{ client_id }}",
-"client_secret": "{{ secret_key }}"
-}'</span>
+    "grant_type": "authorization_code",
+    "code": "{{ code }}",
+    "redirect_uri": "{{ redirect_url }}",
+    "client_id": "{{ client_id }}",
+    "client_secret": "{{ secret_key }}"
+    }'</span>
 
 <span class="o">{</span>
-<span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
-<span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
-<span class="s2">"expires_in"</span>: 3600,
-<span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
-<span class="s2">"scope"</span>: <span class="s2">"read write"</span>
+    <span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
+    <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
+    <span class="s2">"expires_in"</span>: 3600,
+    <span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
+    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>
 <span class="o">}</span>
 </code></pre></div>
 <p><strong>Request Parameters</strong></p>
@@ -753,15 +754,17 @@
 <td>string</td>
 <td>The scopes with granted access for this token</td>
 </tr>
-</tbody></table></li>
-<li><p>Include the <em>Authorization</em> header in your requests as follows:</p>
+</tbody></table>
 
-<p><code>Authorization: Bearer {{ access-token }}</code></p></li>
-</ol>
+<p>&#50;. Include the <em>Authorization</em> header in your requests as follows:</p>
+
+<!-- (Hardcode the 6. because at this point the format is mess between the list, table and the shell code) -->
+
+<p><code>Authorization: Bearer {{ access-token }}</code></p>
 <h2 id='refresh-token-flow'>Refresh Token Flow</h2>
 <p>If your access token expired you can renew it using a valid refresh token.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{
+  <span class="nt">-d</span> <span class="s1">'{
     "grant_type": "refresh_token",
     "refresh_token": "{{ refresh_token }}",
     "client_id": "{{ client_id }}",
@@ -886,7 +889,7 @@
 <blockquote>
 <p>List Companies</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -941,7 +944,7 @@
 <blockquote>
 <p>Get Company</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -955,7 +958,7 @@
 <blockquote>
 <p>Create Company</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"name": "Company Z, LLC"}'</span>
 
 <span class="o">{</span>
@@ -1004,7 +1007,7 @@
 <blockquote>
 <p>Update Company</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{"name": "Company W, LLC"}'</span>
 
@@ -1020,7 +1023,7 @@
 <blockquote>
 <p>Company Prism Aggregation</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1163,7 +1166,7 @@
 <blockquote>
 <p>List Advisors</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -1242,7 +1245,7 @@
 <blockquote>
 <p>Get Advisor</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -1264,7 +1267,7 @@
 <blockquote>
 <p>Create Advisor</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "company": 1,
     "phone": "754-3010",
@@ -1360,7 +1363,7 @@
 <blockquote>
 <p>Update Advisor</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "title": "CEO/Founder",
     "company": 1,
@@ -1392,7 +1395,7 @@
 <blockquote>
 <p>Advisor Prism Aggregation</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1478,7 +1481,7 @@
 <blockquote>
 <p>List Households</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -1550,7 +1553,7 @@
 <blockquote>
 <p>Get Household</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/households/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -1565,7 +1568,7 @@
 <blockquote>
 <p>Create Household</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "name": "Smith-Pinkett Family",
     "advisor": 2
@@ -1618,7 +1621,7 @@
 <blockquote>
 <p>Update Household</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/households/2/"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/households/2/"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "name": "Pinkett Family",
@@ -1638,7 +1641,7 @@
 <blockquote>
 <p>Household Prism Aggregation</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/households/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.785445142005072,
@@ -1745,7 +1748,7 @@
 <blockquote>
 <p>List Investors</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -1828,7 +1831,7 @@
 <blockquote>
 <p>Get Investor</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -1849,7 +1852,7 @@
 <blockquote>
 <p>Create Investor</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "advisor": 1,
     "household": 1,
@@ -1944,7 +1947,7 @@
 <blockquote>
 <p>Update Investor</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "advisor": 1,
     "household": 1,
@@ -1976,7 +1979,7 @@
 <blockquote>
 <p>Investor Prism Aggregation</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.850381420050724
@@ -2423,7 +2426,7 @@
 <blockquote>
 <p>List Accounts</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -2508,7 +2511,7 @@
 <blockquote>
 <p>Get Account</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -2531,7 +2534,7 @@
 <blockquote>
 <p>Create Account</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "name": "John Doe Trust",
     "value": "1234567.89",
@@ -2668,7 +2671,7 @@
 <blockquote>
 <p>Update Account</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "name": "John Doe 401k",
     "value": "1234567.89",
@@ -2711,7 +2714,7 @@
 <blockquote>
 <p>Account Prism Score</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.214532742005072
@@ -2882,7 +2885,7 @@
 <blockquote>
 <p>List Model Portfolios</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"count"</span>: 10,
@@ -2942,7 +2945,7 @@
 <blockquote>
 <p>Get Model Portfolio</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
@@ -2961,7 +2964,7 @@
 <blockquote>
 <p>Create Model Portfolio</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "name": "80% Equities / 20% Fixed Income",
     "value": 100.0,
@@ -3072,7 +3075,7 @@
 <blockquote>
 <p>Update Model Portfolio</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "name": "70% Equities / 30% Fixed Income",
     "value": 100.0,
@@ -3109,7 +3112,7 @@
 <blockquote>
 <p>Model Portfolio Prism Score</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">&gt;</span> curl <span class="s2">"https://backend.stratifi.com/api/v1/models/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"no_overlay_concentrated"</span>: 4.214532742005072
