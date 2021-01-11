@@ -2,13 +2,14 @@
 
 ## Investor Object Definition
 
-| Name      | Type                                   | Description           |
-| --------- | -------------------------------------- | --------------------- |
-| id        | int                                    | Investor ID           |
-| advisor   | int                                    | Advisor ID            |
-| household | int                                    | Household ID          |
-| phone     | string                                 | Phone of the investor |
-| user      | [User Object](#user-object-definition) | User info             |
+| Name        | Type                                   | Description                                         |
+| ----------- | -------------------------------------- | --------------------------------------------------- |
+| id          | int                                    | Investor ID                                         |
+| advisor     | int                                    | Advisor ID                                          |
+| household   | int                                    | Household ID                                        |
+| is_prospect | bool                                   | Indicates if the investor is a client or a prospect |
+| phone       | string                                 | Phone of the investor                               |
+| user        | [User Object](#user-object-definition) | User info                                           |
 
 > Investor Object
 
