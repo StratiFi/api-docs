@@ -612,9 +612,8 @@
 <h2 id='authorization-code-flow'>Authorization Code Flow</h2>
 <p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
 
-<ul>
-<li>Redirect the advisor to the StratiFi authorization page:</li>
-</ul>
+<ol>
+<li><p>Redirect the advisor to the StratiFi authorization page:</p>
 
 <p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;state={{ state }}&amp;client_id={{ client_id }}</code></p>
 
@@ -636,23 +635,14 @@
 <td>client_id</td>
 <td>Provided by StratiFi</td>
 </tr>
-</tbody></table>
+</tbody></table></li>
+<li><p>The advisor submits the StratiFi credentials.</p>
 
-<ul>
-<li>The advisor submits the StratiFi credentials.</li>
-</ul>
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login" /></p></li>
+<li><p>The advisor allow your application access the resources in StratiFi.</p>
 
-<p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login" /></p>
-
-<ul>
-<li>The advisor allow your application access the resources in StratiFi.</li>
-</ul>
-
-<p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant" /></p>
-
-<ul>
-<li>We redirect the browser to your return url with a single-usage access code.</li>
-</ul>
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant" /></p></li>
+<li><p>We redirect the browser to your return url with a single-usage access code.</p>
 
 <p><code>https://{{ callback-url }}code={{ code }}&amp;state={{ state }}</code></p>
 
@@ -674,26 +664,23 @@
 <td>code</td>
 <td>Single-usage code that can be exchanged by an access token</td>
 </tr>
-</tbody></table>
-
-<ul>
-<li>Your application backend exchange the access code by an access token.</li>
-</ul>
+</tbody></table></li>
+<li><p>Your application backend exchange the access code by an access token.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
-   "grant_type": "authorization_code",
-   "code": "{{ code }}",
-   "redirect_uri": "{{ redirect_url }}",
-   "client_id": "{{ client_id }}",
-   "client_secret": "{{ secret_key }}"
+"grant_type": "authorization_code",
+"code": "{{ code }}",
+"redirect_uri": "{{ redirect_url }}",
+"client_id": "{{ client_id }}",
+"client_secret": "{{ secret_key }}"
 }'</span>
 
 <span class="o">{</span>
-   <span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
-   <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
-   <span class="s2">"expires_in"</span>: 3600,
-   <span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
-   <span class="s2">"scope"</span>: <span class="s2">"read write"</span>
+<span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
+<span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
+<span class="s2">"expires_in"</span>: 3600,
+<span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
+<span class="s2">"scope"</span>: <span class="s2">"read write"</span>
 <span class="o">}</span>
 </code></pre></div>
 <p><strong>Request Parameters</strong></p>
@@ -766,22 +753,20 @@
 <td>string</td>
 <td>The scopes with granted access for this token</td>
 </tr>
-</tbody></table>
+</tbody></table></li>
+<li><p>Include the <em>Authorization</em> header in your requests as follows:</p>
 
-<ul>
-<li>Include the <em>Authorization</em> header in your requests as follows:</li>
-</ul>
-
-<p><code>Authorization: Bearer {{ access-token }}</code></p>
+<p><code>Authorization: Bearer {{ access-token }}</code></p></li>
+</ol>
 <h2 id='refresh-token-flow'>Refresh Token Flow</h2>
 <p>If your access token expired you can renew it using a valid refresh token.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
+<span class="nt">-d</span> <span class="s1">'{
     "grant_type": "refresh_token",
     "refresh_token": "{{ refresh_token }}",
     "client_id": "{{ client_id }}",
     "client_secret": "{{ secret_key }}"
-  }'</span>
+}'</span>
 
 <span class="o">{</span>
     <span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
