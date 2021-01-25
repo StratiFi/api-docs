@@ -2,19 +2,19 @@
 
 ## Account Object Definition
 
-| Name         | Type                                                     | Description                                             |
-| ------------ | -------------------------------------------------------- | ------------------------------------------------------- |
-| id           | int                                                      | Account ID                                              |
-| name         | string                                                   | Account name                                            |
-| value        | string                                                   | Account value                                           |
-| type \*      | string                                                   | Account type                                            |
-| number       | string                                                   | Account number                                          |
-| investor     | int                                                      | Investor ID                                             |
-| advisor \*\* | int                                                      | Advisor ID                                              |
-| positions[]  | List of [Positions Objects](#position-object-definition) | Account holdings                                        |
-| risk         | [Risk Object](#risk-object-definition)                   | Account risk                                            |
-| tolerance    | [Tolerance Object](#tolerance-object-definition)         | Account tolerance                                       |
-| drift        | float                                                    | Drift between the risk and the tolerance overall scores |
+| Name         | Type                                             | Description                                             |
+| ------------ | ------------------------------------------------ | ------------------------------------------------------- |
+| id           | int                                              | Account ID                                              |
+| name         | string                                           | Account name                                            |
+| value        | string                                           | Account value                                           |
+| type \*      | string                                           | Account type                                            |
+| number       | string                                           | Account number                                          |
+| investor     | int                                              | Investor ID                                             |
+| advisor \*\* | int                                              | Advisor ID                                              |
+| positions[]  | List of [Positions Objects](#positions)          | Account holdings                                        |
+| risk         | [Risk Object](#risk-object-definition)           | Account risk                                            |
+| tolerance    | [Tolerance Object](#tolerance-object-definition) | Account tolerance                                       |
+| drift        | float                                            | Drift between the risk and the tolerance overall scores |
 
 (\*) **Valid Account Types**
 
@@ -249,15 +249,15 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 
 **Request Parameters**
 
-| Parameter   | Type                                                     |          |
-| ----------- | -------------------------------------------------------- | -------- |
-| name        | string                                                   | Required |
-| value       | string                                                   | Optional |
-| type        | string                                                   | Optional |
-| number      | string                                                   | Optional |
-| investor    | int                                                      | Optional |
-| advisor     | int                                                      | Optional |
-| positions[] | List of [Positions Objects](#position-object-definition) | Required |
+| Parameter   | Type                                    |          |
+| ----------- | --------------------------------------- | -------- |
+| name        | string                                  | Required |
+| value       | string                                  | Optional |
+| type        | string                                  | Optional |
+| number      | string                                  | Optional |
+| investor    | int                                     | Optional |
+| advisor     | int                                     | Optional |
+| positions[] | List of [Positions Objects](#positions) | Required |
 
 **Response:** The new [account object](#account-object-definition).
 
@@ -269,15 +269,15 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 
 **Request Parameters**
 
-| Parameter    | Type                                                     |          |
-| ------------ | -------------------------------------------------------- | -------- |
-| name         | string                                                   | Required |
-| value        | string                                                   | Optional |
-| type \*      | string                                                   | Optional |
-| number       | string                                                   | Optional |
-| investor     | int                                                      | Optional |
-| advisor \*\* | int                                                      | Optional |
-| positions[]  | List of [Positions Objects](#position-object-definition) | Required |
+| Parameter    | Type                                    |          |
+| ------------ | --------------------------------------- | -------- |
+| name         | string                                  | Required |
+| value        | string                                  | Optional |
+| type \*      | string                                  | Optional |
+| number       | string                                  | Optional |
+| investor     | int                                     | Optional |
+| advisor \*\* | int                                     | Optional |
+| positions[]  | List of [Positions Objects](#positions) | Required |
 
 > Update Account
 

@@ -18,7 +18,7 @@ includes:
   - households
   - investors
   - risks
-  #   - positions
+  - positions
   - accounts
   - models
   - version

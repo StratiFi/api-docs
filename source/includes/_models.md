@@ -2,15 +2,15 @@
 
 ## Model Portfolio Object Definition
 
-| Name        | Type                                                     | Description              |
-| ----------- | -------------------------------------------------------- | ------------------------ |
-| id          | int                                                      | Model Portfolio ID       |
-| name        | string                                                   | Model Portfolio name     |
-| value       | string                                                   | Model Portfolio value    |
-| type        | string                                                   | Model Portfolio type     |
-| company     | int                                                      | Company ID               |
-| positions[] | List of [Positions Objects](#position-object-definition) | Model Portfolio holdings |
-| risk        | [Risk Object](#risk-object-definition)                   | Model Portfolio risk     |
+| Name        | Type                                    | Description              |
+| ----------- | --------------------------------------- | ------------------------ |
+| id          | int                                     | Model Portfolio ID       |
+| name        | string                                  | Model Portfolio name     |
+| value       | string                                  | Model Portfolio value    |
+| type        | string                                  | Model Portfolio type     |
+| company     | int                                     | Company ID               |
+| positions[] | List of [Positions Objects](#positions) | Model Portfolio holdings |
+| risk        | [Risk Object](#risk-object-definition)  | Model Portfolio risk     |
 
 > Model Portfolio Object
 
@@ -192,13 +192,13 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
 
 **Request Parameters**
 
-| Parameter   | Type                                                     |          |
-| ----------- | -------------------------------------------------------- | -------- |
-| name        | string                                                   | Required |
-| value       | string                                                   | Optional |
-| type        | string                                                   | Optional |
-| company     | int                                                      | Optional |
-| positions[] | List of [Positions Objects](#position-object-definition) | Required |
+| Parameter   | Type                                    |          |
+| ----------- | --------------------------------------- | -------- |
+| name        | string                                  | Required |
+| value       | string                                  | Optional |
+| type        | string                                  | Optional |
+| company     | int                                     | Optional |
+| positions[] | List of [Positions Objects](#positions) | Required |
 
 **Response:** The new [model object](#model-object-definition).
 
@@ -210,13 +210,13 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
 
 **Request Parameters**
 
-| Parameter   | Type                                                     |          |
-| ----------- | -------------------------------------------------------- | -------- |
-| name        | string                                                   | Required |
-| value       | string                                                   | Optional |
-| type \*     | string                                                   | Optional |
-| company     | int                                                      | Optional |
-| positions[] | List of [Positions Objects](#position-object-definition) | Required |
+| Parameter   | Type                                    |          |
+| ----------- | --------------------------------------- | -------- |
+| name        | string                                  | Required |
+| value       | string                                  | Optional |
+| type \*     | string                                  | Optional |
+| company     | int                                     | Optional |
+| positions[] | List of [Positions Objects](#positions) | Required |
 
 > Update Model Portfolio
 
