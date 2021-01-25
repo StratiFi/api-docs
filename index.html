@@ -448,6 +448,9 @@
               </ul>
           </li>
           <li>
+            <a href="#positions" class="toc-h1 toc-link" data-title="Positions">Positions</a>
+          </li>
+          <li>
             <a href="#accounts" class="toc-h1 toc-link" data-title="Accounts">Accounts</a>
               <ul class="toc-list-h2">
                   <li>
@@ -2198,7 +2201,79 @@
       <span class="s2">"correlation"</span>: 5
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div><h1 id='accounts'>Accounts</h1><h2 id='account-object-definition'>Account Object Definition</h2>
+</code></pre></div><h1 id='positions'>Positions</h1>
+<blockquote>
+<p>Position Object Description:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
+    <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
+    <span class="s2">"isin"</span>: <span class="s2">"US38259P5089"</span>,
+    <span class="s2">"ticker_name"</span>: <span class="s2">"ALPHABET INC CLASS A"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
+    <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
+    <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
+    <span class="s2">"value"</span>: <span class="s2">"36275.50"</span>
+<span class="o">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>-</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ticker</td>
+<td>string</td>
+<td>Asset symbol</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>value</td>
+<td>number</td>
+<td>Value</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>cusip</td>
+<td>string</td>
+<td>Asset cusip</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>isin</td>
+<td>string</td>
+<td>ISIN identifier</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>ticker_name</td>
+<td>string</td>
+<td>Asset description</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Position type</td>
+<td>Read-only</td>
+</tr>
+<tr>
+<td>subtype</td>
+<td>string</td>
+<td>Position subtype</td>
+<td>Read-only</td>
+</tr>
+<tr>
+<td>sector</td>
+<td>string</td>
+<td>Position sector</td>
+<td>Read-only</td>
+</tr>
+</tbody></table>
+<h1 id='accounts'>Accounts</h1><h2 id='account-object-definition'>Account Object Definition</h2>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2243,7 +2318,7 @@
 </tr>
 <tr>
 <td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>List of <a href="#positions">Positions Objects</a></td>
 <td>Account holdings</td>
 </tr>
 <tr>
@@ -2611,7 +2686,7 @@
 </tr>
 <tr>
 <td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>List of <a href="#positions">Positions Objects</a></td>
 <td>Required</td>
 </tr>
 </tbody></table>
@@ -2663,7 +2738,7 @@
 </tr>
 <tr>
 <td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>List of <a href="#positions">Positions Objects</a></td>
 <td>Required</td>
 </tr>
 </tbody></table>
@@ -2794,7 +2869,7 @@
 </tr>
 <tr>
 <td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>List of <a href="#positions">Positions Objects</a></td>
 <td>Model Portfolio holdings</td>
 </tr>
 <tr>
@@ -3025,7 +3100,7 @@
 </tr>
 <tr>
 <td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>List of <a href="#positions">Positions Objects</a></td>
 <td>Required</td>
 </tr>
 </tbody></table>
@@ -3067,7 +3142,7 @@
 </tr>
 <tr>
 <td>positions[]</td>
-<td>List of <a href="#position-object-definition">Positions Objects</a></td>
+<td>List of <a href="#positions">Positions Objects</a></td>
 <td>Required</td>
 </tr>
 </tbody></table>
