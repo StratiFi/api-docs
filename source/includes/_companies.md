@@ -2,10 +2,11 @@
 
 ## Company Object Definition
 
-| Name | Type   | Description         |
-| ---- | ------ | ------------------- |
-| id   | int    | ID of the company   |
-| name | string | Name of the company |
+| Name        | Type   | Description             |
+| ----------- | ------ | ----------------------- |
+| id          | int    | ID of the company       |
+| external_id | string | Your company identifier |
+| name        | string | Name of the company     |
 
 > Company Object
 
@@ -35,6 +36,7 @@ curl "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer 
   "results": [
     {
         "id": 1,
+        "external_id": "co-1",
         "name": "Companny A, LLC"
     },
     …
@@ -51,6 +53,12 @@ curl "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer 
 | previous | string | Link to previous page of companies                    |
 | results  | Object | List of [company objects](#company-object-definition) |
 
+**Filtering Fields**
+
+| Name        | Type   | Description             |
+| ----------- | ------ | ----------------------- |
+| external_id | string | Your company identifier |
+
 ## Get Company
 
 -request-type: GET
@@ -66,6 +74,7 @@ curl "https://backend.stratifi.com/api/v1/companies/1/" -H "Authorization: Beare
 
 {
   "id": 1,
+  "external_id": "co-1",
   "name": "Companny A, LLC"
 }
 ```
@@ -80,19 +89,21 @@ curl "https://backend.stratifi.com/api/v1/companies/1/" -H "Authorization: Beare
 
 ```shell
 curl -X POST "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer {{ access-token }}" \
-  -d '{"name": "Company Z, LLC"}'
+  -d '{"name": "Company Z, LLC", "external_id": "co-1",}'
 
 {
   "id": 11,
+  "external_id": "co-1",
   "name": "Companny Z, LLC"
 }
 ```
 
 **Request Parameters**
 
-| Parameter | Type   |          |
-| --------- | ------ | -------- |
-| name      | string | Required |
+| Parameter   | Type   |          |
+| ----------- | ------ | -------- |
+| name        | string | Required |
+| external_id | string | Optional |
 
 **Response:** The new [company object](#company-object-definition).
 
@@ -104,19 +115,21 @@ curl -X POST "https://backend.stratifi.com/api/v1/companies/" -H "Authorization:
 
 **Request Parameters**
 
-| Parameter | Type   |          |
-| --------- | ------ | -------- |
-| name      | string | Required |
+| Parameter   | Type   |          |
+| ----------- | ------ | -------- |
+| name        | string | Required |
+| external_id | string | Optional |
 
 > Update Company
 
 ```shell
 curl -X PUT "https://backend.stratifi.com/api/v1/companies/11/"
   -H "Authorization: Bearer {{ access-token }}" \
-  -d '{"name": "Company W, LLC"}'
+  -d '{"name": "Company W, LLC", "external_id": "co-1"}'
 
 {
   "id": 11,
+  "external_id": "co-1",
   "name": "Companny W, LLC"
 }
 ```

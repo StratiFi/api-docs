@@ -5,6 +5,7 @@
 | Name             | Type                                   | Description                                   |
 | ---------------- | -------------------------------------- | --------------------------------------------- |
 | id               | int                                    | Advisor ID                                    |
+| external_id      | string                                 | Your advisor identifier                       |
 | company          | int                                    | Company ID                                    |
 | default_investor | int                                    | ID of the default investor of this advisor \* |
 | phone            | string                                 | Advisor Phone                                 |
@@ -18,6 +19,7 @@
 ```shell
 {
   "id": 1,
+  "external_id": "adv-1",
   "company": 1,
   "default_investor": 101,
   "phone": "5555555555",
@@ -48,6 +50,7 @@ curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {
   "results": [
     {
       "id": 1,
+      "external_id": "adv-1",
       "company": 1,
       "default_investor": 101,
       "phone": "5555555555",
@@ -74,9 +77,10 @@ curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {
 
 **Filtering Fields**
 
-| Name    | Type | Description |
-| ------- | ---- | ----------- |
-| company | int  | Company ID  |
+| Name        | Type   | Description             |
+| ----------- | ------ | ----------------------- |
+| company     | int    | Company ID              |
+| external_id | string | Your advisor identifier |
 
 ## Get Advisor
 
@@ -93,6 +97,7 @@ curl "https://backend.stratifi.com/api/v1/advisors/1/" -H "Authorization: Bearer
 
 {
   "id": 1,
+  "external_id": "adv-1",
   "company": 1,
   "default_investor": 101,
   "phone": "5555555555",
@@ -116,6 +121,7 @@ curl "https://backend.stratifi.com/api/v1/advisors/1/" -H "Authorization: Bearer
 ```shell
 curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
+    "external_id": "adv-1",
     "company": 1,
     "phone": "754-3010",
     "title": "CEO",
@@ -128,6 +134,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: 
 
 {
   "id": 150,
+  "external_id": "adv-1",
   "company": 1,
   "default_investor": 102,
   "phone": "754-3010",
@@ -142,12 +149,13 @@ curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: 
 
 **Request Parameters**
 
-| Parameter | Type                                   |          |
-| --------- | -------------------------------------- | -------- |
-| company   | int                                    | Required |
-| phone     | string                                 | Optional |
-| title     | string                                 | Optional |
-| user      | [User Object](#user-object-definition) | Required |
+| Parameter   | Type                                   |          |
+| ----------- | -------------------------------------- | -------- |
+| user        | [User Object](#user-object-definition) | Required |
+| company     | int                                    | Required |
+| phone       | string                                 | Optional |
+| title       | string                                 | Optional |
+| external_id | string                                 | Optional |
 
 **Response:** The new [advisor object](#advisor-object-definition).
 
@@ -159,18 +167,20 @@ curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: 
 
 **Request Parameters**
 
-| Parameter | Type                                   |          |
-| --------- | -------------------------------------- | -------- |
-| company   | int                                    | Required |
-| phone     | string                                 | Optional |
-| title     | string                                 | Optional |
-| user      | [User Object](#user-object-definition) | Required |
+| Parameter   | Type                                   |          |
+| ----------- | -------------------------------------- | -------- |
+| user        | [User Object](#user-object-definition) | Required |
+| company     | int                                    | Required |
+| phone       | string                                 | Optional |
+| title       | string                                 | Optional |
+| external_id | string                                 | Optional |
 
 > Update Advisor
 
 ```shell
 curl -X PUT "https://backend.stratifi.com/api/v1/advisors/150/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
+    "external_id": "adv-1",
     "title": "CEO/Founder",
     "company": 1,
     "phone": "754-3010",
@@ -183,6 +193,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/advisors/150/" -H "Authorizatio
 
 {
   "id": 150,
+  "external_id": "adv-1",
   "company": 1
   "phone": "754-3010",
   "default_investor": 102,

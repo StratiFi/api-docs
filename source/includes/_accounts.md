@@ -5,6 +5,7 @@
 | Name         | Type                                             | Description                                             |
 | ------------ | ------------------------------------------------ | ------------------------------------------------------- |
 | id           | int                                              | Account ID                                              |
+| external_id  | string                                           | Your account identifier                                 |
 | name         | string                                           | Account name                                            |
 | value        | string                                           | Account value                                           |
 | type \*      | string                                           | Account type                                            |
@@ -43,6 +44,7 @@
 ```shell
 {
   "id": 1,
+  "external_id": "act-1",
   "name": "John Doe Trust",
   "value": "1234567.89",
   "type": "100",
@@ -141,6 +143,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {
   "results": [
     {
       "id": 1,
+      "external_id": "act-1",
       "name": "John Doe Trust",
       "value": "1234567.89",
       "type": "100",
@@ -168,10 +171,11 @@ curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {
 
 **Filtering Fields**
 
-| Name      | Type | Description  |
-| --------- | ---- | ------------ |
-| investor  | int  | Investor ID  |
-| household | int  | Household ID |
+| Name        | Type   | Description             |
+| ----------- | ------ | ----------------------- |
+| external_id | string | Your account identifier |
+| investor    | int    | Investor ID             |
+| household   | int    | Household ID            |
 
 ## Get Account
 
@@ -188,6 +192,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer
 
 {
   "id": 1,
+  "external_id": "act-1",
   "name": "John Doe Trust",
   "value": "1234567.89",
   "type": "100",
@@ -212,6 +217,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer
 ```shell
 curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
+    "external_id": "act-1",
     "name": "John Doe Trust",
     "value": "1234567.89",
     "type": "100",
@@ -234,6 +240,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 
 {
   "id": 1,
+  "external_id": "act-1",
   "name": "John Doe Trust",
   "value": "1234567.89",
   "type": "100",
@@ -252,12 +259,14 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 | Parameter   | Type                                    |          |
 | ----------- | --------------------------------------- | -------- |
 | name        | string                                  | Required |
+| positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
 | type        | string                                  | Optional |
 | number      | string                                  | Optional |
 | investor    | int                                     | Optional |
 | advisor     | int                                     | Optional |
-| positions[] | List of [Positions Objects](#positions) | Required |
+| advisor     | int                                     | Optional |
+| external_id | string                                  | Optional |
 
 **Response:** The new [account object](#account-object-definition).
 
@@ -272,18 +281,20 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 | Parameter    | Type                                    |          |
 | ------------ | --------------------------------------- | -------- |
 | name         | string                                  | Required |
+| positions[]  | List of [Positions Objects](#positions) | Required |
 | value        | string                                  | Optional |
 | type \*      | string                                  | Optional |
 | number       | string                                  | Optional |
 | investor     | int                                     | Optional |
 | advisor \*\* | int                                     | Optional |
-| positions[]  | List of [Positions Objects](#positions) | Required |
+| external_id  | string                                  | Optional |
 
 > Update Account
 
 ```shell
 curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
+    "external_id": "act-1",
     "name": "John Doe 401k",
     "value": "1234567.89",
     "type": "401",
@@ -306,6 +317,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
 
 {
   "id": 1,
+  "external_id": "act-1",
   "name": "John Doe Trust",
   "value": "1234567.89",
   "type": "100",

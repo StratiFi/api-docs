@@ -5,6 +5,7 @@
 | Name        | Type                                    | Description              |
 | ----------- | --------------------------------------- | ------------------------ |
 | id          | int                                     | Model Portfolio ID       |
+| external_id | string                                  | Your model identifier    |
 | name        | string                                  | Model Portfolio name     |
 | value       | string                                  | Model Portfolio value    |
 | type        | string                                  | Model Portfolio type     |
@@ -17,6 +18,7 @@
 ```shell
 {
   "id": 1,
+  "external_id": "mp-1",
   "name": "80% Equities / 20% Fixed Income",
   "value": 100.0,
   "type": "Aggressive",
@@ -105,6 +107,7 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
   "results": [
     {
       "id": 1,
+      "external_id": "mp-1",
       "name": "80% Equities / 20% Fixed Income",
       "value": 100.0,
       "type": "Aggressive",
@@ -126,6 +129,12 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
 | previous | string | Link to previous page of models                   |
 | results  | Object | List of [model objects](#model-object-definition) |
 
+**Filtering Fields**
+
+| Name        | Type   | Description           |
+| ----------- | ------ | --------------------- |
+| external_id | string | Your model identifier |
+
 ## Get Model Portfolio
 
 -request-type: GET
@@ -141,6 +150,7 @@ curl "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: Bearer {
 
 {
   "id": 1,
+  "external_id": "mp-1",
   "name": "80% Equities / 20% Fixed Income",
   "value": 100.0,
   "type": "Aggressive",
@@ -161,6 +171,7 @@ curl "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: Bearer {
 ```shell
 curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
+    "external_id": "mp-1",
     "name": "80% Equities / 20% Fixed Income",
     "value": 100.0,
     "type": "Aggressive",
@@ -181,6 +192,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
 
 {
   "id": 1,
+  "external_id": "mp-1",
   "name": "80% Equities / 20% Fixed Income",
   "value": 100.0,
   "type": "Aggressive",
@@ -195,10 +207,11 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
 | Parameter   | Type                                    |          |
 | ----------- | --------------------------------------- | -------- |
 | name        | string                                  | Required |
+| positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
 | type        | string                                  | Optional |
 | company     | int                                     | Optional |
-| positions[] | List of [Positions Objects](#positions) | Required |
+| external_id | int                                     | Optional |
 
 **Response:** The new [model object](#model-object-definition).
 
@@ -213,16 +226,18 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
 | Parameter   | Type                                    |          |
 | ----------- | --------------------------------------- | -------- |
 | name        | string                                  | Required |
+| positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
 | type \*     | string                                  | Optional |
 | company     | int                                     | Optional |
-| positions[] | List of [Positions Objects](#positions) | Required |
+| external_id | int                                     | Optional |
 
 > Update Model Portfolio
 
 ```shell
 curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
+    "external_id": "mp-1",
     "name": "70% Equities / 30% Fixed Income",
     "value": 100.0,
     "type": "Moderate",
@@ -243,6 +258,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
 
 {
   "id": 1,
+  "external_id": "mp-1",
   "name": "80% Equities / 20% Fixed Income",
   "value": 100.0,
   "type": "Moderate",

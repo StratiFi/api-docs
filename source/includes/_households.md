@@ -2,17 +2,19 @@
 
 ## Household Object Definition
 
-| Name    | Type   | Description    |
-| ------- | ------ | -------------- |
-| id      | int    | Household ID   |
-| name    | string | Household Name |
-| advisor | int    | Advisor ID     |
+| Name        | Type   | Description               |
+| ----------- | ------ | ------------------------- |
+| id          | int    | Household ID              |
+| external_id | string | Your household identifier |
+| name        | string | Household Name            |
+| advisor     | int    | Advisor ID                |
 
 > Household Object
 
 ```shell
 {
   "id": 1,
+  "external_id": "hou-1",
   "name": "Smith Family"
 }
 
@@ -36,6 +38,7 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
   "results": [
     {
         "id": 1,
+        "external_id": "hou-1",
         "name": "Smith Family"
         "advisor": 1
     },
@@ -55,9 +58,10 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
 
 **Filtering Fields**
 
-| Name    | Type | Description |
-| ------- | ---- | ----------- |
-| advisor | int  | Advisor ID  |
+| Name        | Type   | Description               |
+| ----------- | ------ | ------------------------- |
+| advisor     | int    | Advisor ID                |
+| external_id | string | Your household identifier |
 
 ## Get Household
 
@@ -74,6 +78,7 @@ curl "https://backend.stratifi.com/api/v1/households/1/" -H "Authorization: Bear
 
 {
   "id": 1,
+  "external_id": "hou-1",
   "name": "Smith Family"
   "advisor": 1
 }
@@ -90,12 +95,14 @@ curl "https://backend.stratifi.com/api/v1/households/1/" -H "Authorization: Bear
 ```shell
 curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer {{ access-token }}" \
   -d '{
+    "external_id": "hou-1",
     "name": "Smith-Pinkett Family",
     "advisor": 2
   }'
 
 {
   "id": 11,
+  "external_id": "hou-1",
   "name": "Smith-Pinkett Family",
   "advisor": 2
 }
@@ -103,9 +110,10 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
 
 **Request Parameters**
 
-| Parameter | Type   |          |
-| --------- | ------ | -------- |
-| name      | string | Required |
+| Parameter   | Type   |          |
+| ----------- | ------ | -------- |
+| name        | string | Required |
+| external_id | string | Optional |
 
 **Response:** The new [household object](#household-object-definition).
 
@@ -117,9 +125,10 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
 
 **Request Parameters**
 
-| Parameter | Type   |          |
-| --------- | ------ | -------- |
-| name      | string | Required |
+| Parameter   | Type   |          |
+| ----------- | ------ | -------- |
+| name        | string | Required |
+| external_id | string | Optional |
 
 > Update Household
 
@@ -127,12 +136,14 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
 curl -X PUT "https://backend.stratifi.com/api/v1/households/2/"
   -H "Authorization: Bearer {{ access-token }}" \
   -d '{
+    "external_id": "hou-1",
     "name": "Pinkett Family",
     "advisor": 2
   }'
 
 {
   "id": 11,
+  "external_id": "hou-1",
   "name": "Pinkett Family",
   "advisor": 2
 }
