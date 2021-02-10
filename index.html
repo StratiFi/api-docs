@@ -870,6 +870,11 @@
 <td>ID of the company</td>
 </tr>
 <tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your company identifier</td>
+</tr>
+<tr>
 <td>name</td>
 <td>string</td>
 <td>Name of the company</td>
@@ -901,6 +906,7 @@
   <span class="s2">"results"</span>: <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
+        <span class="s2">"external_id"</span>: <span class="s2">"co-1"</span>,
         <span class="s2">"name"</span>: <span class="s2">"Companny A, LLC"</span>
     <span class="o">}</span>,
     …
@@ -937,6 +943,22 @@
 <td>List of <a href="#company-object-definition">company objects</a></td>
 </tr>
 </tbody></table>
+
+<p><strong>Filtering Fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your company identifier</td>
+</tr>
+</tbody></table>
 <h2 id='get-company'>Get Company</h2>
 <p>-request-type: GET</p>
 
@@ -951,6 +973,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"co-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Companny A, LLC"</span>
 <span class="o">}</span>
 </code></pre></div><h2 id='create-company'>Create Company</h2>
@@ -962,10 +985,11 @@
 <p>Create Company</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/companies/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"name": "Company Z, LLC"}'</span>
+  <span class="nt">-d</span> <span class="s1">'{"name": "Company Z, LLC", "external_id": "co-1",}'</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 11,
+  <span class="s2">"external_id"</span>: <span class="s2">"co-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Companny Z, LLC"</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -982,6 +1006,11 @@
 <td>name</td>
 <td>string</td>
 <td>Required</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -1005,6 +1034,11 @@
 <td>string</td>
 <td>Required</td>
 </tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -1012,10 +1046,11 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"name": "Company W, LLC"}'</span>
+  <span class="nt">-d</span> <span class="s1">'{"name": "Company W, LLC", "external_id": "co-1"}'</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 11,
+  <span class="s2">"external_id"</span>: <span class="s2">"co-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Companny W, LLC"</span>
 <span class="o">}</span>
 </code></pre></div><h2 id='company-prism-aggregation'>Company Prism Aggregation</h2>
@@ -1118,6 +1153,11 @@
 <td>Advisor ID</td>
 </tr>
 <tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your advisor identifier</td>
+</tr>
+<tr>
 <td>company</td>
 <td>int</td>
 <td>Company ID</td>
@@ -1151,6 +1191,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"default_investor"</span>: 101,
   <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
@@ -1178,6 +1219,7 @@
   <span class="s2">"results"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"id"</span>: 1,
+      <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
       <span class="s2">"company"</span>: 1,
       <span class="s2">"default_investor"</span>: 101,
       <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
@@ -1237,6 +1279,11 @@
 <td>int</td>
 <td>Company ID</td>
 </tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your advisor identifier</td>
+</tr>
 </tbody></table>
 <h2 id='get-advisor'>Get Advisor</h2>
 <p>-request-type: GET</p>
@@ -1252,6 +1299,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"default_investor"</span>: 101,
   <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
@@ -1272,6 +1320,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/advisors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "adv-1",
     "company": 1,
     "phone": "754-3010",
     "title": "CEO",
@@ -1284,6 +1333,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 150,
+  <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"default_investor"</span>: 102,
   <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
@@ -1305,6 +1355,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>user</td>
+<td><a href="#user-object-definition">User Object</a></td>
+<td>Required</td>
+</tr>
+<tr>
 <td>company</td>
 <td>int</td>
 <td>Required</td>
@@ -1320,9 +1375,9 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td>user</td>
-<td><a href="#user-object-definition">User Object</a></td>
-<td>Required</td>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -1342,6 +1397,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>user</td>
+<td><a href="#user-object-definition">User Object</a></td>
+<td>Required</td>
+</tr>
+<tr>
 <td>company</td>
 <td>int</td>
 <td>Required</td>
@@ -1357,9 +1417,9 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td>user</td>
-<td><a href="#user-object-definition">User Object</a></td>
-<td>Required</td>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -1368,6 +1428,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "adv-1",
     "title": "CEO/Founder",
     "company": 1,
     "phone": "754-3010",
@@ -1380,6 +1441,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 150,
+  <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
   <span class="s2">"company"</span>: 1
   <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
   <span class="s2">"default_investor"</span>: 102,
@@ -1457,6 +1519,11 @@
 <td>Household ID</td>
 </tr>
 <tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your household identifier</td>
+</tr>
+<tr>
 <td>name</td>
 <td>string</td>
 <td>Household Name</td>
@@ -1473,6 +1540,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
 <span class="o">}</span>
 
@@ -1493,6 +1561,7 @@
   <span class="s2">"results"</span>: <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
+        <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
         <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
         <span class="s2">"advisor"</span>: 1
     <span class="o">}</span>,
@@ -1545,6 +1614,11 @@
 <td>int</td>
 <td>Advisor ID</td>
 </tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your household identifier</td>
+</tr>
 </tbody></table>
 <h2 id='get-household'>Get Household</h2>
 <p>-request-type: GET</p>
@@ -1560,6 +1634,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
   <span class="s2">"advisor"</span>: 1
 <span class="o">}</span>
@@ -1573,12 +1648,14 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/households/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "hou-1",
     "name": "Smith-Pinkett Family",
     "advisor": 2
   }'</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 11,
+  <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith-Pinkett Family"</span>,
   <span class="s2">"advisor"</span>: 2
 <span class="o">}</span>
@@ -1596,6 +1673,11 @@
 <td>name</td>
 <td>string</td>
 <td>Required</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -1619,6 +1701,11 @@
 <td>string</td>
 <td>Required</td>
 </tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -1627,12 +1714,14 @@
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/households/2/"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "hou-1",
     "name": "Pinkett Family",
     "advisor": 2
   }'</span>
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 11,
+  <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Pinkett Family"</span>,
   <span class="s2">"advisor"</span>: 2
 <span class="o">}</span>
@@ -1703,6 +1792,11 @@
 <td>Investor ID</td>
 </tr>
 <tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your investor identifier</td>
+</tr>
+<tr>
 <td>advisor</td>
 <td>int</td>
 <td>Advisor ID</td>
@@ -1734,6 +1828,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
   <span class="s2">"advisor"</span>: 1,
   <span class="s2">"household"</span>: 1,
   <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
@@ -1760,6 +1855,7 @@
   <span class="s2">"results"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"id"</span>: 1,
+      <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
       <span class="s2">"advisor"</span>: 1,
       <span class="s2">"household"</span>: 1,
       <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
@@ -1823,6 +1919,11 @@
 <td>int</td>
 <td>Household ID</td>
 </tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your investor identifier</td>
+</tr>
 </tbody></table>
 <h2 id='get-investor'>Get Investor</h2>
 <p>-request-type: GET</p>
@@ -1838,6 +1939,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
   <span class="s2">"advisor"</span>: 1,
   <span class="s2">"household"</span>: 1,
   <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
@@ -1857,6 +1959,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/investors/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "inv-1",
     "advisor": 1,
     "household": 1,
     "phone": "754-3010",
@@ -1869,6 +1972,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 150,
+  <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
   <span class="s2">"advisor"</span>: 1,
   <span class="s2">"household"</span>: 1,
   <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
@@ -1889,6 +1993,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>user</td>
+<td><a href="#user-object-definition">User Object</a></td>
+<td>Required</td>
+</tr>
+<tr>
 <td>advisor</td>
 <td>int</td>
 <td>Required</td>
@@ -1904,9 +2013,9 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td>user</td>
-<td><a href="#user-object-definition">User Object</a></td>
-<td>Required</td>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -1926,6 +2035,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>user</td>
+<td><a href="#user-object-definition">User Object</a></td>
+<td>Required</td>
+</tr>
+<tr>
 <td>advisor</td>
 <td>int</td>
 <td>Required</td>
@@ -1941,9 +2055,9 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td>user</td>
-<td><a href="#user-object-definition">User Object</a></td>
-<td>Required</td>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -1952,6 +2066,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "inv-1",
     "advisor": 1,
     "household": 1,
     "phone": "754-3010",
@@ -1964,6 +2079,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 150,
+  <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
   <span class="s2">"advisor"</span>: 1
   <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
   <span class="s2">"user"</span>: <span class="o">{</span>
@@ -2287,6 +2403,11 @@
 <td>Account ID</td>
 </tr>
 <tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your account identifier</td>
+</tr>
+<tr>
 <td>name</td>
 <td>string</td>
 <td>Account name</td>
@@ -2415,6 +2536,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
@@ -2510,6 +2632,7 @@
   <span class="s2">"results"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"id"</span>: 1,
+      <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
       <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
       <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
       <span class="s2">"type"</span>: <span class="s2">"100"</span>,
@@ -2566,6 +2689,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your account identifier</td>
+</tr>
+<tr>
 <td>investor</td>
 <td>int</td>
 <td>Investor ID</td>
@@ -2590,6 +2718,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
@@ -2611,6 +2740,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/accounts/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "act-1",
     "name": "John Doe Trust",
     "value": "1234567.89",
     "type": "100",
@@ -2633,6 +2763,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
@@ -2657,6 +2788,11 @@
 <tr>
 <td>name</td>
 <td>string</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>positions[]</td>
+<td>List of <a href="#positions">Positions Objects</a></td>
 <td>Required</td>
 </tr>
 <tr>
@@ -2685,9 +2821,14 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td>positions[]</td>
-<td>List of <a href="#positions">Positions Objects</a></td>
-<td>Required</td>
+<td>advisor</td>
+<td>int</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -2709,6 +2850,11 @@
 <tr>
 <td>name</td>
 <td>string</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>positions[]</td>
+<td>List of <a href="#positions">Positions Objects</a></td>
 <td>Required</td>
 </tr>
 <tr>
@@ -2737,9 +2883,9 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td>positions[]</td>
-<td>List of <a href="#positions">Positions Objects</a></td>
-<td>Required</td>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -2748,6 +2894,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "act-1",
     "name": "John Doe 401k",
     "value": "1234567.89",
     "type": "401",
@@ -2770,6 +2917,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
@@ -2848,6 +2996,11 @@
 <td>Model Portfolio ID</td>
 </tr>
 <tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your model identifier</td>
+</tr>
+<tr>
 <td>name</td>
 <td>string</td>
 <td>Model Portfolio name</td>
@@ -2884,6 +3037,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
   <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
@@ -2969,6 +3123,7 @@
   <span class="s2">"results"</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"id"</span>: 1,
+      <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
       <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
       <span class="s2">"value"</span>: 100.0,
       <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
@@ -3010,6 +3165,22 @@
 <td>List of <a href="#model-object-definition">model objects</a></td>
 </tr>
 </tbody></table>
+
+<p><strong>Filtering Fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your model identifier</td>
+</tr>
+</tbody></table>
 <h2 id='get-model-portfolio'>Get Model Portfolio</h2>
 <p>-request-type: GET</p>
 
@@ -3024,6 +3195,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
   <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
@@ -3041,6 +3213,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/models/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "mp-1",
     "name": "80% Equities / 20% Fixed Income",
     "value": 100.0,
     "type": "Aggressive",
@@ -3061,6 +3234,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
   <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
@@ -3084,6 +3258,11 @@
 <td>Required</td>
 </tr>
 <tr>
+<td>positions[]</td>
+<td>List of <a href="#positions">Positions Objects</a></td>
+<td>Required</td>
+</tr>
+<tr>
 <td>value</td>
 <td>string</td>
 <td>Optional</td>
@@ -3099,9 +3278,9 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td>positions[]</td>
-<td>List of <a href="#positions">Positions Objects</a></td>
-<td>Required</td>
+<td>external_id</td>
+<td>int</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -3126,6 +3305,11 @@
 <td>Required</td>
 </tr>
 <tr>
+<td>positions[]</td>
+<td>List of <a href="#positions">Positions Objects</a></td>
+<td>Required</td>
+</tr>
+<tr>
 <td>value</td>
 <td>string</td>
 <td>Optional</td>
@@ -3141,9 +3325,9 @@
 <td>Optional</td>
 </tr>
 <tr>
-<td>positions[]</td>
-<td>List of <a href="#positions">Positions Objects</a></td>
-<td>Required</td>
+<td>external_id</td>
+<td>int</td>
+<td>Optional</td>
 </tr>
 </tbody></table>
 
@@ -3152,6 +3336,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "mp-1",
     "name": "70% Equities / 30% Fixed Income",
     "value": 100.0,
     "type": "Moderate",
@@ -3172,6 +3357,7 @@
 
 <span class="o">{</span>
   <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
   <span class="s2">"type"</span>: <span class="s2">"Moderate"</span>,
