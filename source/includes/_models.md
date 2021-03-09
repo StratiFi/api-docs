@@ -280,20 +280,20 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
 curl "https://backend.stratifi.com/api/v1/models/11/prism_score/" -H "Authorization: Bearer {{ access-token }}"
 
 {
-  "no_overlay_concentrated": 4.214532742005072
-  "no_overlay_concentrated": 4.785445142005072,
-  "no_overlay_correlation": 6.049895392953136,
-  "no_overlay_overall": 8.2145327985038
-  "no_overlay_volatility": 9.224755263382502
+  "concentrated": 4.214532742005072
+  "concentrated": 4.785445142005072,
+  "correlation": 6.049895392953136,
+  "overall": 8.2145327985038
+  "volatility": 9.224755263382502
 }
 ```
 
 **Response Fields**
 
-| Name                    | Type  | Description         |
-| ----------------------- | ----- | ------------------- |
-| no_overlay_overall      | float | Overall score       |
-| no_overlay_concentrated | float | Concentration score |
-| no_overlay_correlation  | float | Correlation score   |
-| no_overlay_tail         | float | Tail score          |
-| no_overlay_volatility   | float | Volatility score    |
+| Name         | Type  | Description         |
+| ------------ | ----- | ------------------- |
+| overall      | float | Overall score       |
+| concentrated | float | Concentration score |
+| correlation  | float | Correlation score   |
+| tail         | float | Tail score          |
+| volatility   | float | Volatility score    |
