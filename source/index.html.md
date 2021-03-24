@@ -21,6 +21,7 @@ includes:
   - positions
   - accounts
   - models
+  - securities
   - version
 
 search: true
