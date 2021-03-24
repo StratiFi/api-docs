@@ -497,6 +497,20 @@
               </ul>
           </li>
           <li>
+            <a href="#securities" class="toc-h1 toc-link" data-title="Securities">Securities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#security-object-definition" class="toc-h2 toc-link" data-title="Security Object Definition">Security Object Definition</a>
+                  </li>
+                  <li>
+                    <a href="#get-security-by-ticker" class="toc-h2 toc-link" data-title="Get Security by ticker">Get Security by ticker</a>
+                  </li>
+                  <li>
+                    <a href="#get-security-by-cusip" class="toc-h2 toc-link" data-title="Get Security by cusip">Get Security by cusip</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
           </li>
       </ul>
@@ -3422,7 +3436,110 @@
 <td>Volatility score</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1>
+<h1 id='securities'>Securities</h1><h2 id='security-object-definition'>Security Object Definition</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ticker</td>
+<td>string</td>
+<td>Asset symbol</td>
+</tr>
+<tr>
+<td>cusip</td>
+<td>string</td>
+<td>Asset cusip</td>
+</tr>
+<tr>
+<td>isin</td>
+<td>string</td>
+<td>ISIN identifier</td>
+</tr>
+<tr>
+<td>ticker_name</td>
+<td>string</td>
+<td>Asset description</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Asset type</td>
+</tr>
+<tr>
+<td>subtype</td>
+<td>string</td>
+<td>Asset subtype</td>
+</tr>
+<tr>
+<td>sector</td>
+<td>string</td>
+<td>Asset sector</td>
+</tr>
+<tr>
+<td>prism_overall</td>
+<td>float</td>
+<td>Asset risk score</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Security Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
+    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
+    <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
+    <span class="s2">"isin"</span>: <span class="s2">"US02079K3059"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
+    <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
+    <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
+    <span class="s2">"prism_overall"</span>: 9.3
+<span class="o">}</span>
+</code></pre></div><h2 id='get-security-by-ticker'>Get Security by ticker</h2>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/securties/ticker/&lt;ticker&gt;</code></p>
+
+<blockquote>
+<p>Get Security by ticker</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/ticker/GOOGL"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+
+<span class="o">{</span>
+    <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
+    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
+    <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
+    <span class="s2">"isin"</span>: <span class="s2">"US02079K3059"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
+    <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
+    <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
+    <span class="s2">"prism_overall"</span>: 9.3
+<span class="o">}</span>
+</code></pre></div><h2 id='get-security-by-cusip'>Get Security by cusip</h2>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
+
+<blockquote>
+<p>Get Security by cusip</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/cusip/02079K305"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+
+<span class="o">{</span>
+    <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
+    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
+    <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
+    <span class="s2">"isin"</span>: <span class="s2">"US02079K3059"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
+    <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
+    <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
+    <span class="s2">"prism_overall"</span>: 9.3
+<span class="o">}</span>
+</code></pre></div><h1 id='changelog'>Changelog</h1>
 <ul>
 <li>1.1.0
 
