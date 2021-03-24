@@ -503,10 +503,10 @@
                     <a href="#security-object-definition" class="toc-h2 toc-link" data-title="Security Object Definition">Security Object Definition</a>
                   </li>
                   <li>
-                    <a href="#get-security-by-ticker" class="toc-h2 toc-link" data-title="Get Security by ticker">Get Security by ticker</a>
+                    <a href="#get-security-by-ticker" class="toc-h2 toc-link" data-title="Get security by ticker">Get security by ticker</a>
                   </li>
                   <li>
-                    <a href="#get-security-by-cusip" class="toc-h2 toc-link" data-title="Get Security by cusip">Get Security by cusip</a>
+                    <a href="#get-security-by-cusip" class="toc-h2 toc-link" data-title="Get security by cusip">Get security by cusip</a>
                   </li>
               </ul>
           </li>
@@ -3480,9 +3480,39 @@
 <td>Asset sector</td>
 </tr>
 <tr>
-<td>prism_overall</td>
+<td>prism_score.overall</td>
 <td>float</td>
-<td>Asset risk score</td>
+<td>Overall risk score</td>
+</tr>
+<tr>
+<td>prism_score.concentrated</td>
+<td>float</td>
+<td>Concentrated risk score</td>
+</tr>
+<tr>
+<td>prism_score.tail</td>
+<td>float</td>
+<td>Tail risk score</td>
+</tr>
+<tr>
+<td>prism_score.volatility</td>
+<td>float</td>
+<td>Volatility risk score</td>
+</tr>
+<tr>
+<td>prism_score.correlation</td>
+<td>float</td>
+<td>Correlation risk score</td>
+</tr>
+<tr>
+<td>prism_score.downside_capture_ratio</td>
+<td>float</td>
+<td>Asset downside capture vs the market</td>
+</tr>
+<tr>
+<td>prism_score.upside_capture_ratio</td>
+<td>float</td>
+<td>Asset upside capture vs the market</td>
 </tr>
 </tbody></table>
 
@@ -3491,53 +3521,80 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
     <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
-    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
     <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
     <span class="s2">"isin"</span>: <span class="s2">"US02079K3059"</span>,
+    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
     <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
     <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
     <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
-    <span class="s2">"prism_overall"</span>: 9.3
+    <span class="s2">"prism_score"</span>: <span class="o">{</span>
+        <span class="s2">"concentrated"</span>: 10,
+        <span class="s2">"overall"</span>: 9.3,
+        <span class="s2">"tail"</span>: 9,
+        <span class="s2">"correlation"</span>: 6,
+        <span class="s2">"volatility"</span>: 10,
+        <span class="s2">"upside_capture_ratio"</span>: 1.33886097996,
+        <span class="s2">"downside_capture_ratio"</span>: 0.863528362089
+
+    <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div><h2 id='get-security-by-ticker'>Get Security by ticker</h2>
+</code></pre></div><h2 id='get-security-by-ticker'>Get security by ticker</h2>
 <p>-request-type: GET</p>
 
 <p>-request-url: <code>/securties/ticker/&lt;ticker&gt;</code></p>
 
 <blockquote>
-<p>Get Security by ticker</p>
+<p>Get security by ticker</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/ticker/GOOGL"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
     <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
-    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
     <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
     <span class="s2">"isin"</span>: <span class="s2">"US02079K3059"</span>,
+    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
     <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
     <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
     <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
-    <span class="s2">"prism_overall"</span>: 9.3
+    <span class="s2">"prism_score"</span>: <span class="o">{</span>
+        <span class="s2">"concentrated"</span>: 10,
+        <span class="s2">"overall"</span>: 9.3,
+        <span class="s2">"tail"</span>: 9,
+        <span class="s2">"correlation"</span>: 6,
+        <span class="s2">"volatility"</span>: 10,
+        <span class="s2">"upside_capture_ratio"</span>: 1.33886097996,
+        <span class="s2">"downside_capture_ratio"</span>: 0.863528362089
+
+    <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div><h2 id='get-security-by-cusip'>Get Security by cusip</h2>
+</code></pre></div><h2 id='get-security-by-cusip'>Get security by cusip</h2>
 <p>-request-type: GET</p>
 
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 
 <blockquote>
-<p>Get Security by cusip</p>
+<p>Get security by cusip</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/cusip/02079K305"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
     <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
-    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
     <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
     <span class="s2">"isin"</span>: <span class="s2">"US02079K3059"</span>,
+    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
     <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
     <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
     <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
-    <span class="s2">"prism_overall"</span>: 9.3
+    <span class="s2">"prism_score"</span>: <span class="o">{</span>
+        <span class="s2">"concentrated"</span>: 10,
+        <span class="s2">"overall"</span>: 9.3,
+        <span class="s2">"tail"</span>: 9,
+        <span class="s2">"correlation"</span>: 6,
+        <span class="s2">"volatility"</span>: 10,
+        <span class="s2">"upside_capture_ratio"</span>: 1.33886097996,
+        <span class="s2">"downside_capture_ratio"</span>: 0.863528362089
+
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div><h1 id='changelog'>Changelog</h1>
 <ul>
