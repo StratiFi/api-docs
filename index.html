@@ -3544,26 +3544,6 @@
 <p>Get security by ticker</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/ticker/GOOGL"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
-
-<span class="o">{</span>
-    <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
-    <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
-    <span class="s2">"isin"</span>: <span class="s2">"US02079K3059"</span>,
-    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
-    <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
-    <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
-    <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
-    <span class="s2">"prism_score"</span>: <span class="o">{</span>
-        <span class="s2">"concentrated"</span>: 10,
-        <span class="s2">"overall"</span>: 9.3,
-        <span class="s2">"tail"</span>: 9,
-        <span class="s2">"correlation"</span>: 6,
-        <span class="s2">"volatility"</span>: 10,
-        <span class="s2">"upside_capture_ratio"</span>: 1.33886097996,
-        <span class="s2">"downside_capture_ratio"</span>: 0.863528362089
-
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div><h2 id='get-security-by-cusip'>Get security by cusip</h2>
 <p>-request-type: GET</p>
 
@@ -3573,26 +3553,6 @@
 <p>Get security by cusip</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/cusip/02079K305"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
-
-<span class="o">{</span>
-    <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
-    <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
-    <span class="s2">"isin"</span>: <span class="s2">"US02079K3059"</span>,
-    <span class="s2">"ticker_name"</span>: <span class="s2">"Alphabet Inc"</span>,
-    <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
-    <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
-    <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
-    <span class="s2">"prism_score"</span>: <span class="o">{</span>
-        <span class="s2">"concentrated"</span>: 10,
-        <span class="s2">"overall"</span>: 9.3,
-        <span class="s2">"tail"</span>: 9,
-        <span class="s2">"correlation"</span>: 6,
-        <span class="s2">"volatility"</span>: 10,
-        <span class="s2">"upside_capture_ratio"</span>: 1.33886097996,
-        <span class="s2">"downside_capture_ratio"</span>: 0.863528362089
-
-    <span class="o">}</span>
-<span class="o">}</span>
 </code></pre></div><h1 id='changelog'>Changelog</h1>
 <ul>
 <li>1.1.0
