@@ -326,6 +326,9 @@
                   <li>
                     <a href="#refresh-token-flow" class="toc-h2 toc-link" data-title="Refresh Token Flow">Refresh Token Flow</a>
                   </li>
+                  <li>
+                    <a href="#starting-a-session-in-stratifi-com" class="toc-h2 toc-link" data-title="Starting a session in stratifi.com">Starting a session in stratifi.com</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -699,9 +702,11 @@
     <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
     <span class="s2">"expires_in"</span>: 3600,
     <span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
-    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>
-<span class="o">}</span>
-</code></pre></div>
+    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>,
+    <span class="s2">"advisor_id"</span>: 1,
+    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}
+}
+</span></code></pre></div>
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -765,12 +770,22 @@
 <tr>
 <td>refresh_token</td>
 <td>string</td>
-<td>An refresh token valid to renew the access token</td>
+<td>An refresh token valid to renew the access token. It does not expires.</td>
 </tr>
 <tr>
 <td>scope</td>
 <td>string</td>
 <td>The scopes with granted access for this token</td>
+</tr>
+<tr>
+<td>advisor_id</td>
+<td>int</td>
+<td>The ID of the advisor associated to this user</td>
+</tr>
+<tr>
+<td>session_token</td>
+<td>string</td>
+<td>A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>)</td>
 </tr>
 </tbody></table>
 
@@ -794,9 +809,12 @@
     <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
     <span class="s2">"expires_in"</span>: 3600,
     <span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
-    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>
-<span class="o">}</span>
-</code></pre></div>
+    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>,
+    <span class="s2">"advisor_id"</span>: 1,
+    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}
+
+}
+</span></code></pre></div>
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -862,7 +880,75 @@
 <td>string</td>
 <td>The scopes with granted access for this token</td>
 </tr>
+<tr>
+<td>advisor_id</td>
+<td>int</td>
+<td>The ID of the advisor associated to this user</td>
+</tr>
+<tr>
+<td>session_token</td>
+<td>string</td>
+<td>A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>)</td>
+</tr>
 </tbody></table>
+<h2 id='starting-a-session-in-stratifi-com'>Starting a session in stratifi.com</h2>
+<p>The authorization responses described above contain a <strong>session_token</strong> property. This token automatically
+authenticates advisors in stratifi.com, meaning that the advisor won&#39;t be required to fill the credentials when visiting Stratifi.</p>
+
+<p>To build an authenticated URL you need 3 parts:</p>
+
+<ul>
+<li><strong>Base domain:</strong> <code>advisors-sandbox.stratifi.com</code> (sandbox) or <code>advisors.stratifi.com</code> (production)</li>
+<li><strong>Session Token:</strong> Received during the authorization flow.</li>
+<li><strong>Path:</strong> The path you want to visit. You may be particularly interested in the following ones:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Description</th>
+<th>URL</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Clients list</td>
+<td><code>/advisors/investors/</code></td>
+</tr>
+<tr>
+<td>Clients overview</td>
+<td><code>/advisors/investors/&lt;id&gt;/</code></td>
+</tr>
+<tr>
+<td>Prospects list</td>
+<td><code>/advisors/prospects/</code></td>
+</tr>
+<tr>
+<td>Prospects overview</td>
+<td><code>/advisors/prospects/&lt;id&gt;/</code></td>
+</tr>
+<tr>
+<td>Households list</td>
+<td><code>/advisors/households/</code></td>
+</tr>
+<tr>
+<td>Households overview</td>
+<td><code>/advisors/households/&lt;id&gt;/</code></td>
+</tr>
+<tr>
+<td>Model Portfolios list</td>
+<td><code>/advisors/models/</code></td>
+</tr>
+<tr>
+<td>Model Portfolios overview</td>
+<td><code>/advisors/models/&lt;id&gt;/</code></td>
+</tr>
+</tbody></table>
+
+<p>Having these 3 elements, the full URL is: <code>https://{{ base_domain}}{{ path }}?session={{ sesison_token }}</code></p>
+
+<p>For instance, <code>https://advisors-sandbox.stratifi.com/advisors/investors/1/?session=abc123</code> will lead the user
+to the details page of the client with id 1 in the sandbox environment.</p>
+
+<p><small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in Stratifi.</small></p>
 <h1 id='data-endpoints'>Data Endpoints</h1><h2 id='about-stratifi'>About StratiFi</h2>
 <p>You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts at the bottom level.</p>
 
