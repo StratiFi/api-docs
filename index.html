@@ -329,6 +329,9 @@
                   <li>
                     <a href="#starting-a-session-in-stratifi-com" class="toc-h2 toc-link" data-title="Starting a session in stratifi.com">Starting a session in stratifi.com</a>
                   </li>
+                  <li>
+                    <a href="#retrieving-logged-user-information" class="toc-h2 toc-link" data-title="Retrieving logged user information">Retrieving logged user information</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -949,6 +952,27 @@ authenticates advisors in stratifi.com, meaning that the advisor won&#39;t be re
 to the details page of the client with id 1 in the sandbox environment.</p>
 
 <p><small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in Stratifi.</small></p>
+<h2 id='retrieving-logged-user-information'>Retrieving logged user information</h2>
+<p>You can get basic information about the user related to a token by consulting the <code>/userinfo</code> endpoint.
+The response includes the advisor ID and the <strong>session_token</strong> described above.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"https://backend.stratifi.com/api/v1/userinfo/"</span>
+
+<span class="o">{</span>
+    <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
+    <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
+    <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>,
+    <span class="s2">"advisor_id"</span>: 1,
+    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}
+}
+</span></code></pre></div>
+<p><strong>Response</strong>
+| Name | Type | Description |
+| ---------- | ------ | ------------------ |
+| first_name | string | User first name |
+| last_name | string | User last name |
+| email | string | User email address |
+| advisor_id | int | The ID of the advisor associated to this user |
+| session_token | string | A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>) |</p>
 <h1 id='data-endpoints'>Data Endpoints</h1><h2 id='about-stratifi'>About StratiFi</h2>
 <p>You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts at the bottom level.</p>
 
