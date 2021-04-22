@@ -162,3 +162,30 @@ For instance, `https://advisors-sandbox.stratifi.com/advisors/investors/1/?sessi
 to the details page of the client with id 1 in the sandbox environment.
 
 <small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in Stratifi.</small>
+
+## Retrieving logged user information
+
+You can get basic information about the user related to a token by consulting the `/userinfo` endpoint.
+The response includes the advisor ID and the **session_token** described above.
+
+```shell
+curl -X GET "https://backend.stratifi.com/api/v1/userinfo/"
+
+{
+    "first_name":"John",
+    "last_name":"Wick",
+    "email":"john.wick@example.com",
+    "advisor_id": 1,
+    "session_token": "{{ session_token }}
+}
+```
+
+**Response**
+
+| Name          | Type   | Description                                                                                                                                                   |
+| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| first_name    | string | User first name                                                                                                                                               |
+| last_name     | string | User last name                                                                                                                                                |
+| email         | string | User email address                                                                                                                                            |
+| advisor_id    | int    | The ID of the advisor associated to this user                                                                                                                 |
+| session_token | string | A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>) |

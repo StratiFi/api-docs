@@ -11,7 +11,6 @@ includes:
   - intro
   - overview
   - auth
-  - about
   - companies
   - users
   - advisors
