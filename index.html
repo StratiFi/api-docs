@@ -313,6 +313,9 @@
                     <a href="#domain" class="toc-h2 toc-link" data-title="Domain">Domain</a>
                   </li>
                   <li>
+                    <a href="#about-stratifi" class="toc-h2 toc-link" data-title="About StratiFi">About StratiFi</a>
+                  </li>
+                  <li>
                     <a href="#search-amp-filtering" class="toc-h2 toc-link" data-title="Search &amp; Filtering">Search &amp; Filtering</a>
                   </li>
               </ul>
@@ -331,14 +334,6 @@
                   </li>
                   <li>
                     <a href="#retrieving-logged-user-information" class="toc-h2 toc-link" data-title="Retrieving logged user information">Retrieving logged user information</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#data-endpoints" class="toc-h1 toc-link" data-title="Data Endpoints">Data Endpoints</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#about-stratifi" class="toc-h2 toc-link" data-title="About StratiFi">About StratiFi</a>
                   </li>
               </ul>
           </li>
@@ -617,6 +612,14 @@
 <p>We offer a sandbox where you can test safely: <code>https://sandbox.stratifi.com</code></p>
 
 <p>Once you are ready, you will get access to the production domain <code>https://backend.stratifi.com</code></p>
+<h2 id='about-stratifi'>About StratiFi</h2>
+<p>You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts at the bottom level.</p>
+
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/data2.2.png" title="StratiFi Data" alt="Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account" /></p>
+
+<p>Each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that contains the ID of the investor that owns that account.</p>
+
+<p>(*) Households are optional. An investor can be linked directly to the advisor.</p>
 <h2 id='search-amp-filtering'>Search &amp; Filtering</h2>
 <p>You can search and filter objects returned by an endpoint using URL parameters.</p>
 
@@ -965,22 +968,41 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}
 }
 </span></code></pre></div>
-<p><strong>Response</strong>
-| Name | Type | Description |
-| ---------- | ------ | ------------------ |
-| first_name | string | User first name |
-| last_name | string | User last name |
-| email | string | User email address |
-| advisor_id | int | The ID of the advisor associated to this user |
-| session_token | string | A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>) |</p>
-<h1 id='data-endpoints'>Data Endpoints</h1><h2 id='about-stratifi'>About StratiFi</h2>
-<p>You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts at the bottom level.</p>
+<p><strong>Response</strong></p>
 
-<p><img src="https://s3.amazonaws.com/api.stratifi.com/data2.2.png" title="StratiFi Data" alt="Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account" /></p>
-
-<p>Each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that contains the ID of the investor that owns that account.</p>
-
-<p>(*) Households are optional. An investor can be linked directly to the advisor.</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>User first name</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>User last name</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>User email address</td>
+</tr>
+<tr>
+<td>advisor_id</td>
+<td>int</td>
+<td>The ID of the advisor associated to this user</td>
+</tr>
+<tr>
+<td>session_token</td>
+<td>string</td>
+<td>A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>)</td>
+</tr>
+</tbody></table>
 <h1 id='companies'>Companies</h1><h2 id='company-object-definition'>Company Object Definition</h2>
 <table><thead>
 <tr>
@@ -3665,6 +3687,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/cusip/02079K305"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 </code></pre></div><h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.3.0
+
+<ul>
+<li>Add userinfo endpoint</li>
+</ul></li>
 <li>1.2.0
 
 <ul>
