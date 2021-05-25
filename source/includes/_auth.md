@@ -145,20 +145,20 @@ To build an authenticated URL you need 3 parts:
 - **Session Token:** Received during the authorization flow.
 - **Path:** The path you want to visit. You may be particularly interested in the following ones:
 
-| Description               | URL                          |
-| ------------------------- | ---------------------------- |
-| Clients list              | `/advisors/investors/`       |
-| Clients overview          | `/advisors/investors/<id>/`  |
-| Prospects list            | `/advisors/prospects/`       |
-| Prospects overview        | `/advisors/prospects/<id>/`  |
-| Households list           | `/advisors/households/`      |
-| Households overview       | `/advisors/households/<id>/` |
-| Model Portfolios list     | `/advisors/models/`          |
-| Model Portfolios overview | `/advisors/models/<id>/`     |
+| Description               | URL                         |
+| ------------------------- | --------------------------- |
+| Clients list              | `/advisor/investors/`       |
+| Clients overview          | `/advisor/investors/<id>/`  |
+| Prospects list            | `/advisor/prospects/`       |
+| Prospects overview        | `/advisor/prospects/<id>/`  |
+| Households list           | `/advisor/households/`      |
+| Households overview       | `/advisor/households/<id>/` |
+| Model Portfolios list     | `/advisor/models/`          |
+| Model Portfolios overview | `/advisor/models/<id>/`     |
 
 Having these 3 elements, the full URL is: `https://{{ base_domain}}{{ path }}?session={{ sesison_token }}`
 
-For instance, `https://advisors-sandbox.stratifi.com/advisors/investors/1/?session=abc123` will lead the user
+For instance, `https://advisors-sandbox.stratifi.com/advisor/investors/1/?session=abc123` will lead the user
 to the details page of the client with id 1 in the sandbox environment.
 
 <small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in Stratifi.</small>
