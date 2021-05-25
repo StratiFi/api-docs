@@ -917,41 +917,41 @@ authenticates advisors in stratifi.com, meaning that the advisor won&#39;t be re
 </thead><tbody>
 <tr>
 <td>Clients list</td>
-<td><code>/advisors/investors/</code></td>
+<td><code>/advisor/investors/</code></td>
 </tr>
 <tr>
 <td>Clients overview</td>
-<td><code>/advisors/investors/&lt;id&gt;/</code></td>
+<td><code>/advisor/investors/&lt;id&gt;/</code></td>
 </tr>
 <tr>
 <td>Prospects list</td>
-<td><code>/advisors/prospects/</code></td>
+<td><code>/advisor/prospects/</code></td>
 </tr>
 <tr>
 <td>Prospects overview</td>
-<td><code>/advisors/prospects/&lt;id&gt;/</code></td>
+<td><code>/advisor/prospects/&lt;id&gt;/</code></td>
 </tr>
 <tr>
 <td>Households list</td>
-<td><code>/advisors/households/</code></td>
+<td><code>/advisor/households/</code></td>
 </tr>
 <tr>
 <td>Households overview</td>
-<td><code>/advisors/households/&lt;id&gt;/</code></td>
+<td><code>/advisor/households/&lt;id&gt;/</code></td>
 </tr>
 <tr>
 <td>Model Portfolios list</td>
-<td><code>/advisors/models/</code></td>
+<td><code>/advisor/models/</code></td>
 </tr>
 <tr>
 <td>Model Portfolios overview</td>
-<td><code>/advisors/models/&lt;id&gt;/</code></td>
+<td><code>/advisor/models/&lt;id&gt;/</code></td>
 </tr>
 </tbody></table>
 
 <p>Having these 3 elements, the full URL is: <code>https://{{ base_domain}}{{ path }}?session={{ sesison_token }}</code></p>
 
-<p>For instance, <code>https://advisors-sandbox.stratifi.com/advisors/investors/1/?session=abc123</code> will lead the user
+<p>For instance, <code>https://advisors-sandbox.stratifi.com/advisor/investors/1/?session=abc123</code> will lead the user
 to the details page of the client with id 1 in the sandbox environment.</p>
 
 <p><small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in Stratifi.</small></p>
