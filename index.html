@@ -2564,14 +2564,14 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Account value</td>
 </tr>
 <tr>
-<td>type [1]</td>
+<td>type</td>
 <td>string</td>
-<td>Account type</td>
+<td>Account type. One of <a href="http://api.stratifi.com/docs/v1/#account-types">these values</a>.</td>
 </tr>
 <tr>
-<td>tax_status [2]</td>
+<td>tax_status</td>
 <td>string</td>
-<td>Account tax status</td>
+<td>Account tax status. One of <a href="http://api.stratifi.com/docs/v1/#account-tax-statuses">these values</a>.</td>
 </tr>
 <tr>
 <td>number</td>
@@ -2579,19 +2579,19 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Account number</td>
 </tr>
 <tr>
+<td>strategy</td>
+<td>int</td>
+<td>Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the <a href="http://api.stratifi.com/docs/v1/#list-model-portfolios">list or get endpoint</a>.</td>
+</tr>
+<tr>
 <td>investor</td>
 <td>int</td>
 <td>Investor ID</td>
 </tr>
 <tr>
-<td>advisor [3]</td>
+<td>advisor</td>
 <td>int</td>
-<td>Advisor ID</td>
-</tr>
-<tr>
-<td>strategy [4]</td>
-<td>int</td>
-<td>Account tax status</td>
+<td>Advisor ID. Ideally, you would provide the investor ID. However, if you don&#39;t have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</td>
 </tr>
 <tr>
 <td>positions[]</td>
@@ -2614,9 +2614,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Drift between the risk and the tolerance overall scores</td>
 </tr>
 </tbody></table>
-
-<p>([1]) <strong>Account Types</strong></p>
-
+<h3 id='account-types'>Account Types</h3>
 <table><thead>
 <tr>
 <th>Value</th>
@@ -2684,9 +2682,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Household Account</td>
 </tr>
 </tbody></table>
-
-<p>([2]) <strong>Account Tax Statuses</strong></p>
-
+<h3 id='account-tax-statuses'>Account Tax Statuses</h3>
 <table><thead>
 <tr>
 <th>Value</th>
@@ -2706,10 +2702,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Tax Deferred accounts</td>
 </tr>
 </tbody></table>
-
-<p>([3]) Ideally, you would provide the investor ID. However, if you don&#39;t have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</p>
-
-<p>([4]) Account strategies are represented as Model Portfolios. If you want to link an account to its strategy, find the desired model portfolio using the <a href="http://api.stratifi.com/docs/v1/#list-model-portfolios">list or get endpoint</a> and pass the model ID as account strategy.</p>
 
 <blockquote>
 <p>Account Object</p>
