@@ -694,14 +694,14 @@
 </tbody></table></li>
 <li><p>Your application backend exchange the access code by an access token.</p></li>
 </ol>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{
-    "grant_type": "authorization_code",
-    "code": "{{ code }}",
-    "redirect_uri": "{{ redirect_url }}",
-    "client_id": "{{ client_id }}",
-    "client_secret": "{{ secret_key }}"
-    }'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>
+curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'grant_type=authorization_code'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'client_id={{ client_id }}'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'client_secret={{ secret_key }}'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'redirect_uri={{ redirect_url }}'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'code={{ code }}'</span>
 
 <span class="o">{</span>
     <span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
@@ -803,12 +803,11 @@
 <h2 id='refresh-token-flow'>Refresh Token Flow</h2>
 <p>If your access token expired you can renew it using a valid refresh token.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "grant_type": "refresh_token",
-    "refresh_token": "{{ refresh_token }}",
-    "client_id": "{{ client_id }}",
-    "client_secret": "{{ secret_key }}"
-}'</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'grant_type=refresh_token'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'client_id={{ client_id }}'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'client_secret={{ secret_key }}'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'refresh_token={{ refresh_token }}'</span>
 
 <span class="o">{</span>
     <span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
@@ -2565,9 +2564,14 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Account value</td>
 </tr>
 <tr>
-<td>type *</td>
+<td>type [1]</td>
 <td>string</td>
 <td>Account type</td>
+</tr>
+<tr>
+<td>tax_status [2]]</td>
+<td>string</td>
+<td>Account tax status</td>
 </tr>
 <tr>
 <td>number</td>
@@ -2580,9 +2584,14 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Investor ID</td>
 </tr>
 <tr>
-<td>advisor **</td>
+<td>advisor [3]</td>
 <td>int</td>
 <td>Advisor ID</td>
+</tr>
+<tr>
+<td>strategy [4]]</td>
+<td>int</td>
+<td>Account tax status</td>
 </tr>
 <tr>
 <td>positions[]</td>
@@ -2606,7 +2615,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 
-<p>(*) <strong>Valid Account Types</strong></p>
+<p>([1]) <strong>Account Types</strong></p>
 
 <table><thead>
 <tr>
@@ -2676,7 +2685,31 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 
-<p>(**) Ideally, you would provide the investor ID. However, if you don&#39;t have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</p>
+<p>([2]) <strong>Account Tax Statuses</strong></p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>taxable</td>
+<td>Taxable accounts</td>
+</tr>
+<tr>
+<td>tax-exempt</td>
+<td>Tax Exempt accounts</td>
+</tr>
+<tr>
+<td>tax-deferred</td>
+<td>Tax Deferred accounts</td>
+</tr>
+</tbody></table>
+
+<p>([3]) Ideally, you would provide the investor ID. However, if you don&#39;t have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the <code>default_investor</code> of the selected advisor.</p>
+
+<p>([4]) Account strategies are represented as Model Portfolios. If you want to link an account to its strategy, find the desired model portfolio using the <a href="http://api.stratifi.com/docs/v1/#list-model-portfolios">list or get endpoint</a> and pass the model ID as account strategy.</p>
 
 <blockquote>
 <p>Account Object</p>
@@ -2687,9 +2720,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"tax_status"</span>: <span class="s2">"taxable"</span>,
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
   <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"strategy"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"ticker"</span>: <span class="s2">"OPPI"</span>,
@@ -2783,9 +2818,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
       <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
       <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
       <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+      <span class="s2">"tax_status"</span>: <span class="s2">"taxable"</span>,
       <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
       <span class="s2">"investor"</span>: 1,
       <span class="s2">"advisor"</span>: 1,
+      <span class="s2">"strategy"</span>: 1,
       <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
       <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
       <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
@@ -2869,6 +2906,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"tax_status"</span>: <span class="s2">"tax-exempt"</span>,
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
   <span class="s2">"advisor"</span>: 1,
@@ -2891,6 +2929,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     "name": "John Doe Trust",
     "value": "1234567.89",
     "type": "100",
+    "tax_status": "tax-exempt",
     "number": "987654321",
     "investor": 1,
     "positions": [
@@ -2914,9 +2953,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"tax_status"</span>: <span class="s2">"tax-exempt"</span>,
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
   <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"strategy"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
@@ -2953,6 +2994,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 <tr>
+<td>tax_status</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
 <td>number</td>
 <td>string</td>
 <td>Optional</td>
@@ -2968,7 +3014,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 <tr>
-<td>advisor</td>
+<td>strategy</td>
 <td>int</td>
 <td>Optional</td>
 </tr>
@@ -3010,7 +3056,12 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 <tr>
-<td>type *</td>
+<td>type [1]</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>tax_status [2]</td>
 <td>string</td>
 <td>Optional</td>
 </tr>
@@ -3025,7 +3076,12 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 <tr>
-<td>advisor **</td>
+<td>advisor [3]</td>
+<td>int</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>stratehy [4]</td>
 <td>int</td>
 <td>Optional</td>
 </tr>
@@ -3045,8 +3101,10 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     "name": "John Doe 401k",
     "value": "1234567.89",
     "type": "401",
+    "tax_status": "tax-deferred",
     "number": "987654321",
     "investor": 1,
+    "strategy": 1,
     "positions": [
       {
         "ticker": "SPY",
@@ -3068,9 +3126,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
   <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
   <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"tax_status"</span>: <span class="s2">"tax-deferred"</span>,
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
   <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"strategy"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
@@ -3687,6 +3747,13 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/cusip/02079K305"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 </code></pre></div><h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.4.0
+
+<ul>
+<li>Add tax status field to accounts</li>
+<li>Add strategy field to accounts</li>
+<li>Fix /o/token/ examples</li>
+</ul></li>
 <li>1.3.0
 
 <ul>
