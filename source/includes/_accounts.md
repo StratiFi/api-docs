@@ -2,43 +2,6 @@
 
 ## Account Object Definition
 
-| Name         | Type                                             | Description                                             |
-| ------------ | ------------------------------------------------ | ------------------------------------------------------- |
-| id           | int                                              | Account ID                                              |
-| external_id  | string                                           | Your account identifier                                 |
-| name         | string                                           | Account name                                            |
-| value        | string                                           | Account value                                           |
-| type \*      | string                                           | Account type                                            |
-| number       | string                                           | Account number                                          |
-| investor     | int                                              | Investor ID                                             |
-| advisor \*\* | int                                              | Advisor ID                                              |
-| positions[]  | List of [Positions Objects](#positions)          | Account holdings                                        |
-| risk         | [Risk Object](#risk-object-definition)           | Account risk                                            |
-| tolerance    | [Tolerance Object](#tolerance-object-definition) | Account tolerance                                       |
-| drift        | float                                            | Drift between the risk and the tolerance overall scores |
-
-(\*) **Valid Account Types**
-
-| Value | Description                                    |
-| ----- | ---------------------------------------------- |
-| 100   | Individual                                     |
-| 101   | Joint                                          |
-| 200   | Revocable Living Trust                         |
-| 201   | Irrevocable Living Trust                       |
-| 300   | Limited Liability Company                      |
-| 301   | Limited Liability Limited Partnership          |
-| 302   | S Corporation                                  |
-| 303   | C Corporation                                  |
-| 304   | Sole Proprietorship                            |
-| 400   | Traditional IRA                                |
-| 401   | Simplified Employee Pension IRA                |
-| 402   | Savings Incentive Match Plan for Employees IRA |
-| 403   | Roth IRA                                       |
-| 404   | Rollover IRA                                   |
-| 500   | Household Account                              |
-
-(\*\*) Ideally, you would provide the investor ID. However, if you don't have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the `default_investor` of the selected advisor.
-
 > Account Object
 
 ```shell
@@ -48,9 +11,11 @@
   "name": "John Doe Trust",
   "value": "1234567.89",
   "type": "100",
+  "tax_status": "taxable",
   "number": "987654321",
   "investor": 1,
   "advisor": 1,
+  "strategy": 1,
   "positions": [
     {
         "ticker": "OPPI",
@@ -125,6 +90,51 @@
 }
 ```
 
+| Name        | Type                                             | Description                                                                                                                                                                                                                                                                |
+| ----------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id          | int                                              | Account ID                                                                                                                                                                                                                                                                 |
+| external_id | string                                           | Your account identifier                                                                                                                                                                                                                                                    |
+| name        | string                                           | Account name                                                                                                                                                                                                                                                               |
+| value       | string                                           | Account value                                                                                                                                                                                                                                                              |
+| type        | string                                           | Account type. One of [these values](http://api.stratifi.com/docs/v1/#account-types).                                                                                                                                                                                       |
+| tax_status  | string                                           | Account tax status. One of [these values](http://api.stratifi.com/docs/v1/#account-tax-statuses).                                                                                                                                                                          |
+| number      | string                                           | Account number                                                                                                                                                                                                                                                             |
+| strategy    | int                                              | Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the [list or get endpoint](http://api.stratifi.com/docs/v1/#list-model-portfolios).                                                                                     |
+| investor    | int                                              | Investor ID                                                                                                                                                                                                                                                                |
+| advisor     | int                                              | Advisor ID. Ideally, you would provide the investor ID. However, if you don't have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the `default_investor` of the selected advisor. |
+| positions[] | List of [Positions Objects](#positions)          | Account holdings                                                                                                                                                                                                                                                           |
+| risk        | [Risk Object](#risk-object-definition)           | Account risk                                                                                                                                                                                                                                                               |
+| tolerance   | [Tolerance Object](#tolerance-object-definition) | Account tolerance                                                                                                                                                                                                                                                          |
+| drift       | float                                            | Drift between the risk and the tolerance overall scores                                                                                                                                                                                                                    |
+
+### Account Types
+
+| Value | Description                                    |
+| ----- | ---------------------------------------------- |
+| 100   | Individual                                     |
+| 101   | Joint                                          |
+| 200   | Revocable Living Trust                         |
+| 201   | Irrevocable Living Trust                       |
+| 300   | Limited Liability Company                      |
+| 301   | Limited Liability Limited Partnership          |
+| 302   | S Corporation                                  |
+| 303   | C Corporation                                  |
+| 304   | Sole Proprietorship                            |
+| 400   | Traditional IRA                                |
+| 401   | Simplified Employee Pension IRA                |
+| 402   | Savings Incentive Match Plan for Employees IRA |
+| 403   | Roth IRA                                       |
+| 404   | Rollover IRA                                   |
+| 500   | Household Account                              |
+
+### Account Tax Statuses
+
+| Value        | Description           |
+| ------------ | --------------------- |
+| taxable      | Taxable accounts      |
+| tax-exempt   | Tax Exempt accounts   |
+| tax-deferred | Tax Deferred accounts |
+
 ## List Accounts
 
 -request-type: GET
@@ -147,9 +157,11 @@ curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {
       "name": "John Doe Trust",
       "value": "1234567.89",
       "type": "100",
+      "tax_status": "taxable",
       "number": "987654321",
       "investor": 1,
       "advisor": 1,
+      "strategy": 1,
       "positions": [ … ],
       "risk": { … },
       "tolerance": { … },
@@ -196,6 +208,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer
   "name": "John Doe Trust",
   "value": "1234567.89",
   "type": "100",
+  "tax_status": "tax-exempt",
   "number": "987654321",
   "investor": 1,
   "advisor": 1,
@@ -221,6 +234,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
     "name": "John Doe Trust",
     "value": "1234567.89",
     "type": "100",
+    "tax_status": "tax-exempt",
     "number": "987654321",
     "investor": 1,
     "positions": [
@@ -244,9 +258,11 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
   "name": "John Doe Trust",
   "value": "1234567.89",
   "type": "100",
+  "tax_status": "tax-exempt",
   "number": "987654321",
   "investor": 1,
   "advisor": 1,
+  "strategy": 1,
   "positions": [ … ],
   "risk": { … },
   "tolerance": { … },
@@ -262,10 +278,11 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 | positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
 | type        | string                                  | Optional |
+| tax_status  | string                                  | Optional |
 | number      | string                                  | Optional |
 | investor    | int                                     | Optional |
 | advisor     | int                                     | Optional |
-| advisor     | int                                     | Optional |
+| strategy    | int                                     | Optional |
 | external_id | string                                  | Optional |
 
 **Response:** The new [account object](#account-object-definition).
@@ -278,16 +295,18 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 
 **Request Parameters**
 
-| Parameter    | Type                                    |          |
-| ------------ | --------------------------------------- | -------- |
-| name         | string                                  | Required |
-| positions[]  | List of [Positions Objects](#positions) | Required |
-| value        | string                                  | Optional |
-| type \*      | string                                  | Optional |
-| number       | string                                  | Optional |
-| investor     | int                                     | Optional |
-| advisor \*\* | int                                     | Optional |
-| external_id  | string                                  | Optional |
+| Parameter      | Type                                    |          |
+| -------------- | --------------------------------------- | -------- |
+| name           | string                                  | Required |
+| positions[]    | List of [Positions Objects](#positions) | Required |
+| value          | string                                  | Optional |
+| type [1]       | string                                  | Optional |
+| tax_status [2] | string                                  | Optional |
+| number         | string                                  | Optional |
+| investor       | int                                     | Optional |
+| advisor [3]    | int                                     | Optional |
+| stratehy [4]   | int                                     | Optional |
+| external_id    | string                                  | Optional |
 
 > Update Account
 
@@ -298,8 +317,10 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
     "name": "John Doe 401k",
     "value": "1234567.89",
     "type": "401",
+    "tax_status": "tax-deferred",
     "number": "987654321",
     "investor": 1,
+    "strategy": 1,
     "positions": [
       {
         "ticker": "SPY",
@@ -321,9 +342,11 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
   "name": "John Doe Trust",
   "value": "1234567.89",
   "type": "100",
+  "tax_status": "tax-deferred",
   "number": "987654321",
   "investor": 1,
   "advisor": 1,
+  "strategy": 1,
   "positions": [ … ],
   "risk": { … },
   "tolerance": { … },
