@@ -40,14 +40,14 @@ Following the steps below you will get an access token that can be used to acces
 1.  Your application backend exchange the access code by an access token.
 
 ```shell
+
 curl -X POST "https://backend.stratifi.com/o/token/" \
--d '{
-    "grant_type": "authorization_code",
-    "code": "{{ code }}",
-    "redirect_uri": "{{ redirect_url }}",
-    "client_id": "{{ client_id }}",
-    "client_secret": "{{ secret_key }}"
-    }'
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'grant_type=authorization_code' \
+  --data-urlencode 'client_id={{ client_id }}' \
+  --data-urlencode 'client_secret={{ secret_key }}' \
+  --data-urlencode 'redirect_uri={{ redirect_url }}' \
+  --data-urlencode 'code={{ code }}'
 
 {
     "access_token": "{{ access_token }}",
@@ -94,12 +94,11 @@ If your access token expired you can renew it using a valid refresh token.
 
 ```shell
 curl -X POST "https://backend.stratifi.com/o/token/" \
-  -d '{
-    "grant_type": "refresh_token",
-    "refresh_token": "{{ refresh_token }}",
-    "client_id": "{{ client_id }}",
-    "client_secret": "{{ secret_key }}"
-}'
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'grant_type=refresh_token' \
+  --data-urlencode 'client_id={{ client_id }}' \
+  --data-urlencode 'client_secret={{ secret_key }}' \
+  --data-urlencode 'refresh_token={{ refresh_token }}'
 
 {
     "access_token": "{{ access_token }}",
