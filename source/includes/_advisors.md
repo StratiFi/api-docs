@@ -2,18 +2,6 @@
 
 ## Advisor Object Definition
 
-| Name             | Type                                   | Description                                   |
-| ---------------- | -------------------------------------- | --------------------------------------------- |
-| id               | int                                    | Advisor ID                                    |
-| external_id      | string                                 | Your advisor identifier                       |
-| company          | int                                    | Company ID                                    |
-| default_investor | int                                    | ID of the default investor of this advisor \* |
-| phone            | string                                 | Advisor Phone                                 |
-| title            | string                                 | Advisor Job Title                             |
-| user             | [User Object](#user-object-definition) | User info                                     |
-
-(\*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an investor.
-
 > Advisor Object
 
 ```shell
@@ -28,15 +16,37 @@
      "first_name":"John",
      "last_name":"Wick",
      "email":"john.wick@example.com"
-  }
+  },
+  "risk": {
+    "scores": {…},
+    "media": {…}
+  },
+  "tolerance": {
+    "scores": {…},
+    "media": {…}
+  },
+  "drift": 5.1
 }
 ```
 
+| Name             | Type                                   | Description                                   |
+| ---------------- | -------------------------------------- | --------------------------------------------- |
+| id               | int                                    | Advisor ID                                    |
+| external_id      | string                                 | Your advisor identifier                       |
+| company          | int                                    | Company ID                                    |
+| default_investor | int                                    | ID of the default investor of this advisor \* |
+| phone            | string                                 | Advisor Phone                                 |
+| title            | string                                 | Advisor Job Title                             |
+| user             | [User Object](#user-object-definition) | User info                                     |
+| risk.scores      | [Scores Factors](#scores-factors)      | Advisor aggregated risk scores                |
+| risk.media       | [Scores Media](#scores-media)          | Advisor aggregated risk scores images         |
+| tolerance.scores | [Scores Factors](#scores-factors)      | Advisor aggregated tolerance scores           |
+| tolerance.media  | [Scores Media](#scores-factors)        | Advisor aggregated tolerance scores images    |
+| drift            | float                                  | Advisor drift score                           |
+
+(\*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an investor.
+
 ## List Advisors
-
--request-type: GET
-
--request-url: `/advisors/`
 
 > List Advisors
 
@@ -59,12 +69,19 @@ curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {
          "first_name":"John",
          "last_name":"Wick",
          "email":"john.wick@example.com"
-      }
+      },
+      "risk": {…},
+      "tolerance": {…},
+      "drift": 5.1
     },
     …
   ]
 }
 ```
+
+-request-type: GET
+
+-request-url: `/advisors/`
 
 **Response Fields**
 
@@ -84,12 +101,6 @@ curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {
 
 ## Get Advisor
 
--request-type: GET
-
--request-url: `/advisors/<id>/`
-
-**Response:** The requested [advisor object](#advisor-object-definition).
-
 > Get Advisor
 
 ```shell
@@ -106,15 +117,20 @@ curl "https://backend.stratifi.com/api/v1/advisors/1/" -H "Authorization: Bearer
      "first_name":"John",
      "last_name":"Wick",
      "email":"john.wick@example.com"
-  }
+  },
+  "risk": {…},
+  "tolerance": {…},
+  "drift": 5.1
 }
 ```
 
+-request-type: GET
+
+-request-url: `/advisors/<id>/`
+
+**Response:** The requested [advisor object](#advisor-object-definition).
+
 ## Create Advisor
-
--request-type: POST
-
--request-url: `/advisors/`
 
 > Create Advisor
 
@@ -143,9 +159,16 @@ curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: 
     "first_name": "Doug",
     "last_name": "Spencer",
     "email": "doug.spencer@example.com"
-  }
+  },
+  "risk": {…},
+  "tolerance": {…},
+  "drift": 5.1
 }
 ```
+
+-request-type: POST
+
+-request-url: `/advisors/`
 
 **Request Parameters**
 
@@ -160,20 +183,6 @@ curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: 
 **Response:** The new [advisor object](#advisor-object-definition).
 
 ## Update Advisor
-
--request-type: PUT/PATCH
-
--request-url: `/advisors/<id>/`
-
-**Request Parameters**
-
-| Parameter   | Type                                   |          |
-| ----------- | -------------------------------------- | -------- |
-| user        | [User Object](#user-object-definition) | Required |
-| company     | int                                    | Required |
-| phone       | string                                 | Optional |
-| title       | string                                 | Optional |
-| external_id | string                                 | Optional |
 
 > Update Advisor
 
@@ -202,15 +211,28 @@ curl -X PUT "https://backend.stratifi.com/api/v1/advisors/150/" -H "Authorizatio
     "first_name": "Doug",
     "last_name": "Spencer",
     "email": "dspencer@example.com"
-  }
+  },
+  "risk": {…},
+  "tolerance": {…},
+  "drift": 5.1
 }
 ```
 
+-request-type: PUT/PATCH
+
+-request-url: `/advisors/<id>/`
+
+**Request Parameters**
+
+| Parameter   | Type                                   |          |
+| ----------- | -------------------------------------- | -------- |
+| user        | [User Object](#user-object-definition) | Required |
+| company     | int                                    | Required |
+| phone       | string                                 | Optional |
+| title       | string                                 | Optional |
+| external_id | string                                 | Optional |
+
 ## Advisor Prism Aggregation
-
--request-type: GET
-
--request-url: `/advisors/<id>/prism_aggregation/`
 
 > Advisor Prism Aggregation
 
@@ -218,20 +240,19 @@ curl -X PUT "https://backend.stratifi.com/api/v1/advisors/150/" -H "Authorizatio
 curl "https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/" -H "Authorization: Bearer {{ access-token }}"
 
 {
-  "concentrated": 4.785445142005072,
-  "correlation": 6.049895392953136,
-  "overall": 8.214532798503825,
-  "tail": 8.674759220001045,
-  "volatility": 9.224755263382502
+  "scores": {…},
+  "media": {…}
 }
 ```
 
+-request-type: GET
+
+-request-url: `/advisors/<id>/prism_aggregation/`
+
 **Response Fields**
 
-| Name         | Type  | Description         |
-| ------------ | ----- | ------------------- |
-| overall      | float | Overall score       |
-| concentrated | float | Concentration score |
-| correlation  | float | Correlation score   |
-| tail         | float | Tail score          |
-| volatility   | float | Volatility score    |
+| Name   | Type                              | Description               |
+| ------ | --------------------------------- | ------------------------- |
+| scores | [Scores Factors](#scores-factors) | Risk score factors        |
+| media  | [Scores Images](#scores-media)    | Risk score factors images |
+| status | [Scores Status](#scores-status)   | Risk score status         |

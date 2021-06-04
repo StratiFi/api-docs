@@ -2,29 +2,49 @@
 
 ## Household Object Definition
 
-| Name        | Type   | Description               |
-| ----------- | ------ | ------------------------- |
-| id          | int    | Household ID              |
-| external_id | string | Your household identifier |
-| name        | string | Household Name            |
-| advisor     | int    | Advisor ID                |
-
 > Household Object
 
 ```shell
 {
   "id": 1,
   "external_id": "hou-1",
-  "name": "Smith Family"
+  "name": "Smith Family",
+  "risk": {
+    "scores": {
+      "overall": 8.1,
+      "concentrated": 3.0,
+      "correlation": 3.0,
+      "tail": 2.0,
+      "volatility": 4.0
+    }
+  },
+  "tolerance": {
+    "scores": {
+      "overall": 3.0,
+      "concentrated": 3.0,
+      "correlation": 3.0,
+      "tail": 2.0,
+      "volatility": 4.0
+    }
+  },
+  "drift": 5.1
 }
 
 ```
 
+| Name             | Type                              | Description                                  |
+| ---------------- | --------------------------------- | -------------------------------------------- |
+| id               | int                               | Household ID                                 |
+| external_id      | string                            | Your household identifier                    |
+| name             | string                            | Household Name                               |
+| advisor          | int                               | Advisor ID                                   |
+| risk.scores      | [Scores Factors](#scores-factors) | Household aggregated risk scores             |
+| risk.media       | [Scores Media](#scores-media)     | Household aggregated risk scores images      |
+| tolerance.scores | [Scores Factors](#scores-factors) | Household aggregated tolerance scores        |
+| tolerance.media  | [Scores Media](#scores-factors)   | Household aggregated tolerance scores images |
+| drift            | float                             | Household drift score                        |
+
 ## List Households
-
--request-type: GET
-
--request-url: `/households/`
 
 > List Households
 
@@ -40,12 +60,19 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
         "id": 1,
         "external_id": "hou-1",
         "name": "Smith Family"
-        "advisor": 1
+        "advisor": 1,
+        "risk": {…},
+        "tolerance": {…},
+        "drift": 5.1
     },
     …
   ]
 }
 ```
+
+-request-type: GET
+
+-request-url: `/households/`
 
 **Response Fields**
 
@@ -65,12 +92,6 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
 
 ## Get Household
 
--request-type: GET
-
--request-url: `/households/<id>/`
-
-**Response:** The requested [household object](#household-object-definition).
-
 > Get Household
 
 ```shell
@@ -80,15 +101,20 @@ curl "https://backend.stratifi.com/api/v1/households/1/" -H "Authorization: Bear
   "id": 1,
   "external_id": "hou-1",
   "name": "Smith Family"
-  "advisor": 1
+  "advisor": 1,
+  "risk": {…},
+  "tolerance": {…},
+  "drift": 5.1
 }
 ```
 
+-request-type: GET
+
+-request-url: `/households/<id>/`
+
+**Response:** The requested [household object](#household-object-definition).
+
 ## Create Household
-
--request-type: POST
-
--request-url: `/households/`
 
 > Create Household
 
@@ -104,9 +130,16 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
   "id": 11,
   "external_id": "hou-1",
   "name": "Smith-Pinkett Family",
-  "advisor": 2
+  "advisor": 2,
+  "risk": {…},
+  "tolerance": {…},
+  "drift": 5.1
 }
 ```
+
+-request-type: POST
+
+-request-url: `/households/`
 
 **Request Parameters**
 
@@ -118,17 +151,6 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
 **Response:** The new [household object](#household-object-definition).
 
 ## Update Household
-
--request-type: PUT/PATCH
-
--request-url: `/households/<id>/`
-
-**Request Parameters**
-
-| Parameter   | Type   |          |
-| ----------- | ------ | -------- |
-| name        | string | Required |
-| external_id | string | Optional |
 
 > Update Household
 
@@ -145,15 +167,25 @@ curl -X PUT "https://backend.stratifi.com/api/v1/households/2/"
   "id": 11,
   "external_id": "hou-1",
   "name": "Pinkett Family",
-  "advisor": 2
+  "advisor": 2,
+  "risk": {…},
+  "tolerance": {…},
+  "drift": 5.1
 }
 ```
 
+-request-type: PUT/PATCH
+
+-request-url: `/households/<id>/`
+
+**Request Parameters**
+
+| Parameter   | Type   |          |
+| ----------- | ------ | -------- |
+| name        | string | Required |
+| external_id | string | Optional |
+
 ## Household Prism Aggregation
-
--request-type: GET
-
--request-url: `/households/<id>/prism_aggregation/`
 
 > Household Prism Aggregation
 
@@ -161,20 +193,19 @@ curl -X PUT "https://backend.stratifi.com/api/v1/households/2/"
 curl "https://backend.stratifi.com/api/v1/households/11/prism_aggregation/" -H "Authorization: Bearer {{ access-token }}"
 
 {
-  "concentrated": 4.785445142005072,
-  "correlation": 6.049895392953136,
-  "overall": 8.214532798503825,
-  "tail": 8.674759220001045,
-  "volatility": 9.224755263382502
+  "scores": {…},
+  "media": {…},
 }
 ```
 
+-request-type: GET
+
+-request-url: `/households/<id>/prism_aggregation/`
+
 **Response Fields**
 
-| Name         | Type  | Description         |
-| ------------ | ----- | ------------------- |
-| overall      | float | Overall score       |
-| concentrated | float | Concentration score |
-| correlation  | float | Correlation score   |
-| tail         | float | Tail score          |
-| volatility   | float | Volatility score    |
+| Name   | Type                              | Description               |
+| ------ | --------------------------------- | ------------------------- |
+| scores | [Scores Factors](#scores-factors) | Risk score factors        |
+| media  | [Scores Images](#scores-media)    | Risk score factors images |
+| status | [Scores Status](#scores-status)   | Risk score status         |

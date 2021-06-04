@@ -2,12 +2,6 @@
 
 ## Company Object Definition
 
-| Name        | Type   | Description             |
-| ----------- | ------ | ----------------------- |
-| id          | int    | ID of the company       |
-| external_id | string | Your company identifier |
-| name        | string | Name of the company     |
-
 > Company Object
 
 ```shell
@@ -18,11 +12,13 @@
 
 ```
 
+| Name        | Type   | Description             |
+| ----------- | ------ | ----------------------- |
+| id          | int    | ID of the company       |
+| external_id | string | Your company identifier |
+| name        | string | Name of the company     |
+
 ## List Companies
-
--request-type: GET
-
--request-url: `/companies/`
 
 > List Companies
 
@@ -44,6 +40,10 @@ curl "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer 
 }
 ```
 
+-request-type: GET
+
+-request-url: `/companies/`
+
 **Response Fields**
 
 | Name     | Type   | Description                                           |
@@ -61,12 +61,6 @@ curl "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer 
 
 ## Get Company
 
--request-type: GET
-
--request-url: `/companies/<id>/`
-
-**Response:** The requested [company object](#company-object-definition).
-
 > Get Company
 
 ```shell
@@ -79,11 +73,13 @@ curl "https://backend.stratifi.com/api/v1/companies/1/" -H "Authorization: Beare
 }
 ```
 
+-request-type: GET
+
+-request-url: `/companies/<id>/`
+
+**Response:** The requested [company object](#company-object-definition).
+
 ## Create Company
-
--request-type: POST
-
--request-url: `/companies/`
 
 > Create Company
 
@@ -98,6 +94,10 @@ curl -X POST "https://backend.stratifi.com/api/v1/companies/" -H "Authorization:
 }
 ```
 
+-request-type: POST
+
+-request-url: `/companies/`
+
 **Request Parameters**
 
 | Parameter   | Type   |          |
@@ -108,17 +108,6 @@ curl -X POST "https://backend.stratifi.com/api/v1/companies/" -H "Authorization:
 **Response:** The new [company object](#company-object-definition).
 
 ## Update Company
-
--request-type: PUT/PATCH
-
--request-url: `/companies/<id>/`
-
-**Request Parameters**
-
-| Parameter   | Type   |          |
-| ----------- | ------ | -------- |
-| name        | string | Required |
-| external_id | string | Optional |
 
 > Update Company
 
@@ -134,11 +123,18 @@ curl -X PUT "https://backend.stratifi.com/api/v1/companies/11/"
 }
 ```
 
+-request-type: PUT/PATCH
+
+-request-url: `/companies/<id>/`
+
+**Request Parameters**
+
+| Parameter   | Type   |          |
+| ----------- | ------ | -------- |
+| name        | string | Required |
+| external_id | string | Optional |
+
 ## Company Prism Aggregation
-
--request-type: GET
-
--request-url: `/companies/<id>/prism_aggregation/`
 
 > Company Prism Aggregation
 
@@ -146,20 +142,18 @@ curl -X PUT "https://backend.stratifi.com/api/v1/companies/11/"
 curl "https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/" -H "Authorization: Bearer {{ access-token }}"
 
 {
-  "concentrated": 4.785445142005072,
-  "correlation": 6.049895392953136,
-  "overall": 8.214532798503825,
-  "tail": 8.674759220001045,
-  "volatility": 9.224755263382502
+  "scores": {…},
+  "media": {…},
 }
 ```
 
+-request-type: GET
+
+-request-url: `/companies/<id>/prism_aggregation/`
+
 **Response Fields**
 
-| Name         | Type  | Description         |
-| ------------ | ----- | ------------------- |
-| overall      | float | Overall score       |
-| concentrated | float | Concentration score |
-| correlation  | float | Correlation score   |
-| tail         | float | Tail score          |
-| volatility   | float | Volatility score    |
+| Name   | Type                              | Description               |
+| ------ | --------------------------------- | ------------------------- |
+| scores | [Scores Factors](#scores-factors) | Risk score factors        |
+| media  | [Scores Images](#scores-media)    | Risk score factors images |

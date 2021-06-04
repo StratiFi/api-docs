@@ -28,64 +28,8 @@
         "value": 875.0
     }
   ],
-  "risk": {
-      "scores": {
-          "concentrated": 1,
-          "tail": 10.0,
-          "correlation": 8,
-          "overall": 8.1,
-          "volatility": 8
-      },
-      "top_risk_attributions": [
-          {
-              "ticker_name": "VANGUARD TARGET 2045",
-              "ticker": "OPPI",
-              "risk": 0.9997862976486193,
-              "weight": 99.763225
-          },
-          {
-              "ticker_name": "Fha Non Int Bearing",
-              "ticker": "UNTB",
-              "risk": 0.00021370235138087705,
-              "weight": 0.236775
-          }
-      ],
-      "scenarios": [
-          {
-              "risk": 8.8,
-              "name": "Global Financial Crisis",
-              "end_date": "2009-2-1",
-              "start_date": "2007-2-1"
-          },
-          {
-              "risk": 8.8,
-              "name": "2011 Euro Credit Crisis",
-              "end_date": "2012-1-1",
-              "start_date": "2010-1-1"
-          },
-          {
-              "risk": 8.1,
-              "name": "2013 Taper Tantrum",
-              "end_date": "2014-6-1",
-              "start_date": "2012-6-1"
-          },
-          {
-              "risk": 7.7,
-              "name": "2015-16 Market Selloff",
-              "end_date": "2017-1-1",
-              "start_date": "2015-1-1"
-          }
-      ]
-  },
-  "tolerance": {
-      "scores": {
-          "concentrated": 5,
-          "tail": 5,
-          "volatility": 8,
-          "overall": 6.4,
-          "correlation": 5
-      }
-  },
+  "risk": {…},
+  "tolerance": {…},
   "drift": 1.7
 }
 ```
@@ -171,12 +115,6 @@ curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {
 
 ## Get Account
 
--request-type: GET
-
--request-url: `/accounts/<id>/`
-
-**Response:** The requested [account object](#account-object-definition).
-
 > Get Account
 
 ```shell
@@ -199,11 +137,13 @@ curl "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer
 }
 ```
 
+-request-type: GET
+
+-request-url: `/accounts/<id>/`
+
+**Response:** The requested [account object](#account-object-definition).
+
 ## Create Account
-
--request-type: POST
-
--request-url: `/accounts/`
 
 > Create Account
 
@@ -250,6 +190,10 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 }
 ```
 
+-request-type: POST
+
+-request-url: `/accounts/`
+
 **Request Parameters**
 
 | Parameter   | Type                                    |          |
@@ -268,25 +212,6 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 **Response:** The new [account object](#account-object-definition).
 
 ## Update Account
-
--request-type: PUT/PATCH
-
--request-url: `/accounts/<id>/`
-
-**Request Parameters**
-
-| Parameter      | Type                                    |          |
-| -------------- | --------------------------------------- | -------- |
-| name           | string                                  | Required |
-| positions[]    | List of [Positions Objects](#positions) | Required |
-| value          | string                                  | Optional |
-| type [1]       | string                                  | Optional |
-| tax_status [2] | string                                  | Optional |
-| number         | string                                  | Optional |
-| investor       | int                                     | Optional |
-| advisor [3]    | int                                     | Optional |
-| stratehy [4]   | int                                     | Optional |
-| external_id    | string                                  | Optional |
 
 > Update Account
 
@@ -334,11 +259,26 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
 }
 ```
 
+-request-type: PUT/PATCH
+
+-request-url: `/accounts/<id>/`
+
+**Request Parameters**
+
+| Parameter      | Type                                    |          |
+| -------------- | --------------------------------------- | -------- |
+| name           | string                                  | Required |
+| positions[]    | List of [Positions Objects](#positions) | Required |
+| value          | string                                  | Optional |
+| type [1]       | string                                  | Optional |
+| tax_status [2] | string                                  | Optional |
+| number         | string                                  | Optional |
+| investor       | int                                     | Optional |
+| advisor [3]    | int                                     | Optional |
+| stratehy [4]   | int                                     | Optional |
+| external_id    | string                                  | Optional |
+
 ## Account Prism Score
-
--request-type: GET
-
--request-url: `/accounts/<id>/prism_score/`
 
 > Account Prism Score
 
@@ -346,20 +286,18 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
 curl "https://backend.stratifi.com/api/v1/accounts/11/prism_score/" -H "Authorization: Bearer {{ access-token }}"
 
 {
-  "concentrated": 4.214532742005072
-  "concentrated": 4.785445142005072,
-  "correlation": 6.049895392953136,
-  "overall": 8.2145327985038
-  "volatility": 9.224755263382502
+  "scores": {…},
+  "media": {…},
 }
 ```
 
+-request-type: GET
+
+-request-url: `/accounts/<id>/prism_score/`
+
 **Response Fields**
 
-| Name         | Type  | Description         |
-| ------------ | ----- | ------------------- |
-| overall      | float | Overall score       |
-| concentrated | float | Concentration score |
-| correlation  | float | Correlation score   |
-| tail         | float | Tail score          |
-| volatility   | float | Volatility score    |
+| Name   | Type                              | Description               |
+| ------ | --------------------------------- | ------------------------- |
+| scores | [Scores Factors](#scores-factors) | Risk score factors        |
+| media  | [Scores Images](#scores-media)    | Risk score factors images |
