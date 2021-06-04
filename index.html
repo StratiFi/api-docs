@@ -441,6 +441,9 @@
             <a href="#risk-and-tolerance" class="toc-h1 toc-link" data-title="Risk and Tolerance">Risk and Tolerance</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#scores-factors" class="toc-h2 toc-link" data-title="Scores Factors">Scores Factors</a>
+                  </li>
+                  <li>
                     <a href="#risk-object-definition" class="toc-h2 toc-link" data-title="Risk Object Definition">Risk Object Definition</a>
                   </li>
                   <li>
@@ -1003,6 +1006,15 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h1 id='companies'>Companies</h1><h2 id='company-object-definition'>Company Object Definition</h2>
+<blockquote>
+<p>Company Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"name"</span>: <span class="s2">"Company A, LLC"</span>
+<span class="o">}</span>
+
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1026,20 +1038,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Name of the company</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Company Object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"name"</span>: <span class="s2">"Company A, LLC"</span>
-<span class="o">}</span>
-
-</code></pre></div><h2 id='list-companies'>List Companies</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/companies/</code></p>
-
+<h2 id='list-companies'>List Companies</h2>
 <blockquote>
 <p>List Companies</p>
 </blockquote>
@@ -1059,6 +1058,10 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/companies/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -1106,12 +1109,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h2 id='get-company'>Get Company</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/companies/&lt;id&gt;/</code></p>
-
-<p><strong>Response:</strong> The requested <a href="#company-object-definition">company object</a>.</p>
-
 <blockquote>
 <p>Get Company</p>
 </blockquote>
@@ -1122,11 +1119,13 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"external_id"</span>: <span class="s2">"co-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Companny A, LLC"</span>
 <span class="o">}</span>
-</code></pre></div><h2 id='create-company'>Create Company</h2>
-<p>-request-type: POST</p>
+</code></pre></div>
+<p>-request-type: GET</p>
 
-<p>-request-url: <code>/companies/</code></p>
+<p>-request-url: <code>/companies/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#company-object-definition">company object</a>.</p>
+<h2 id='create-company'>Create Company</h2>
 <blockquote>
 <p>Create Company</p>
 </blockquote>
@@ -1139,6 +1138,10 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"name"</span>: <span class="s2">"Companny Z, LLC"</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: POST</p>
+
+<p>-request-url: <code>/companies/</code></p>
+
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -1162,6 +1165,19 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 
 <p><strong>Response:</strong> The new <a href="#company-object-definition">company object</a>.</p>
 <h2 id='update-company'>Update Company</h2>
+<blockquote>
+<p>Update Company</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"name": "Company W, LLC", "external_id": "co-1"}'</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 11,
+  <span class="s2">"external_id"</span>: <span class="s2">"co-1"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"Companny W, LLC"</span>
+<span class="o">}</span>
+</code></pre></div>
 <p>-request-type: PUT/PATCH</p>
 
 <p>-request-url: <code>/companies/&lt;id&gt;/</code></p>
@@ -1186,24 +1202,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Update Company</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"name": "Company W, LLC", "external_id": "co-1"}'</span>
-
-<span class="o">{</span>
-  <span class="s2">"id"</span>: 11,
-  <span class="s2">"external_id"</span>: <span class="s2">"co-1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"Companny W, LLC"</span>
-<span class="o">}</span>
-</code></pre></div><h2 id='company-prism-aggregation'>Company Prism Aggregation</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/companies/&lt;id&gt;/prism_aggregation/</code></p>
-
+<h2 id='company-prism-aggregation'>Company Prism Aggregation</h2>
 <blockquote>
 <p>Company Prism Aggregation</p>
 </blockquote>
@@ -1217,6 +1216,10 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"volatility"</span>: 9.224755263382502
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/companies/&lt;id&gt;/prism_aggregation/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -1286,6 +1289,38 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
  <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
 <span class="o">}</span>
 </code></pre></div><h1 id='advisors'>Advisors</h1><h2 id='advisor-object-definition'>Advisor Object Definition</h2>
+<blockquote>
+<p>Advisor Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
+  <span class="s2">"company"</span>: 1,
+  <span class="s2">"default_investor"</span>: 101,
+  <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
+  <span class="s2">"title"</span>: <span class="s2">"Co-founder"</span>,
+  <span class="s2">"user"</span>: <span class="o">{</span>
+     <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
+     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
+     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
+  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+    <span class="s2">"overall"</span>: 8.1,
+    <span class="s2">"concentrated"</span>: 1.0,
+    <span class="s2">"tail"</span>: 10.0,
+    <span class="s2">"correlation"</span>: 8.0,
+    <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+    <span class="s2">"overall"</span>: 3.0,
+    <span class="s2">"concentrated"</span>: 3.0,
+    <span class="s2">"tail"</span>: 2.0,
+    <span class="s2">"correlation"</span>: 3.0,
+    <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
+<span class="o">}</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1328,31 +1363,25 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td><a href="#user-object-definition">User Object</a></td>
 <td>User info</td>
 </tr>
+<tr>
+<td>risk</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Advisor aggregated risk scores</td>
+</tr>
+<tr>
+<td>tolerance</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Advisor aggregated tolerance scores</td>
+</tr>
+<tr>
+<td>drift</td>
+<td>float</td>
+<td>Advisor drift score</td>
+</tr>
 </tbody></table>
 
 <p>(*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an investor.</p>
-
-<blockquote>
-<p>Advisor Object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
-  <span class="s2">"company"</span>: 1,
-  <span class="s2">"default_investor"</span>: 101,
-  <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
-  <span class="s2">"title"</span>: <span class="s2">"Co-founder"</span>,
-  <span class="s2">"user"</span>: <span class="o">{</span>
-     <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
-     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
-     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h2 id='list-advisors'>List Advisors</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/advisors/</code></p>
-
+<h2 id='list-advisors'>List Advisors</h2>
 <blockquote>
 <p>List Advisors</p>
 </blockquote>
@@ -1374,12 +1403,31 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
          <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
          <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
          <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-      <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"risk"</span>: <span class="o">{</span>
+          <span class="s2">"overall"</span>: 8.1,
+          <span class="s2">"concentrated"</span>: 1.0,
+          <span class="s2">"tail"</span>: 10.0,
+          <span class="s2">"correlation"</span>: 8.0,
+          <span class="s2">"volatility"</span>: 8.0
+      <span class="o">}</span>,
+      <span class="s2">"tolerance"</span>: <span class="o">{</span>
+          <span class="s2">"overall"</span>: 3.0,
+          <span class="s2">"concentrated"</span>: 3.0,
+          <span class="s2">"tail"</span>: 2.0,
+          <span class="s2">"correlation"</span>: 3.0,
+          <span class="s2">"volatility"</span>: 4.0
+      <span class="o">}</span>,
+      <span class="s2">"drift"</span>: 5.1
     <span class="o">}</span>,
     …
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/advisors/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -1432,12 +1480,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h2 id='get-advisor'>Get Advisor</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/advisors/&lt;id&gt;/</code></p>
-
-<p><strong>Response:</strong> The requested <a href="#advisor-object-definition">advisor object</a>.</p>
-
 <blockquote>
 <p>Get Advisor</p>
 </blockquote>
@@ -1454,13 +1496,30 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
      <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
      <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-  <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
-</code></pre></div><h2 id='create-advisor'>Create Advisor</h2>
-<p>-request-type: POST</p>
+</code></pre></div>
+<p>-request-type: GET</p>
 
-<p>-request-url: <code>/advisors/</code></p>
+<p>-request-url: <code>/advisors/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#advisor-object-definition">advisor object</a>.</p>
+<h2 id='create-advisor'>Create Advisor</h2>
 <blockquote>
 <p>Create Advisor</p>
 </blockquote>
@@ -1488,9 +1547,28 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"first_name"</span>: <span class="s2">"Doug"</span>,
     <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
     <span class="s2">"email"</span>: <span class="s2">"doug.spencer@example.com"</span>
-  <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: POST</p>
+
+<p>-request-url: <code>/advisors/</code></p>
+
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -1529,6 +1607,51 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 
 <p><strong>Response:</strong> The new <a href="#advisor-object-definition">advisor object</a>.</p>
 <h2 id='update-advisor'>Update Advisor</h2>
+<blockquote>
+<p>Update Advisor</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "adv-1",
+    "title": "CEO/Founder",
+    "company": 1,
+    "phone": "754-3010",
+    "user": {
+      "first_name": "Doug",
+      "last_name": "Spencer",
+      "email": "dspencer@example.com"
+    }
+  }'</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 150,
+  <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
+  <span class="s2">"company"</span>: 1
+  <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
+  <span class="s2">"default_investor"</span>: 102,
+  <span class="s2">"title"</span>: <span class="s2">"CEO/Founder"</span>,
+  <span class="s2">"user"</span>: <span class="o">{</span>
+    <span class="s2">"first_name"</span>: <span class="s2">"Doug"</span>,
+    <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
+    <span class="s2">"email"</span>: <span class="s2">"dspencer@example.com"</span>
+  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
+<span class="o">}</span>
+</code></pre></div>
 <p>-request-type: PUT/PATCH</p>
 
 <p>-request-url: <code>/advisors/&lt;id&gt;/</code></p>
@@ -1568,54 +1691,24 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Update Advisor</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/advisors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "external_id": "adv-1",
-    "title": "CEO/Founder",
-    "company": 1,
-    "phone": "754-3010",
-    "user": {
-      "first_name": "Doug",
-      "last_name": "Spencer",
-      "email": "dspencer@example.com"
-    }
-  }'</span>
-
-<span class="o">{</span>
-  <span class="s2">"id"</span>: 150,
-  <span class="s2">"external_id"</span>: <span class="s2">"adv-1"</span>,
-  <span class="s2">"company"</span>: 1
-  <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
-  <span class="s2">"default_investor"</span>: 102,
-  <span class="s2">"title"</span>: <span class="s2">"CEO/Founder"</span>,
-  <span class="s2">"user"</span>: <span class="o">{</span>
-    <span class="s2">"first_name"</span>: <span class="s2">"Doug"</span>,
-    <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
-    <span class="s2">"email"</span>: <span class="s2">"dspencer@example.com"</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h2 id='advisor-prism-aggregation'>Advisor Prism Aggregation</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/advisors/&lt;id&gt;/prism_aggregation/</code></p>
-
+<h2 id='advisor-prism-aggregation'>Advisor Prism Aggregation</h2>
 <blockquote>
 <p>Advisor Prism Aggregation</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"concentrated"</span>: 4.785445142005072,
-  <span class="s2">"correlation"</span>: 6.049895392953136,
-  <span class="s2">"overall"</span>: 8.214532798503825,
-  <span class="s2">"tail"</span>: 8.674759220001045,
-  <span class="s2">"volatility"</span>: 9.224755263382502
+  <span class="s2">"overall"</span>: 8.2,
+  <span class="s2">"concentrated"</span>: 4.7,
+  <span class="s2">"correlation"</span>: 6.0,
+  <span class="s2">"tail"</span>: 8.6,
+  <span class="s2">"volatility"</span>: 9.2
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/advisors/&lt;id&gt;/prism_aggregation/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -1652,6 +1745,31 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h1 id='households'>Households</h1><h2 id='household-object-definition'>Household Object Definition</h2>
+<blockquote>
+<p>Household Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+    <span class="s2">"overall"</span>: 8.1,
+    <span class="s2">"concentrated"</span>: 1.0,
+    <span class="s2">"tail"</span>: 10.0,
+    <span class="s2">"correlation"</span>: 8.0,
+    <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+    <span class="s2">"overall"</span>: 3.0,
+    <span class="s2">"concentrated"</span>: 3.0,
+    <span class="s2">"tail"</span>: 2.0,
+    <span class="s2">"correlation"</span>: 3.0,
+    <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
+<span class="o">}</span>
+
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1679,22 +1797,23 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>int</td>
 <td>Advisor ID</td>
 </tr>
+<tr>
+<td>risk</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Household aggregated risk scores</td>
+</tr>
+<tr>
+<td>tolerance</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Household aggregated tolerance scores</td>
+</tr>
+<tr>
+<td>drift</td>
+<td>float</td>
+<td>Household drift score</td>
+</tr>
 </tbody></table>
-
-<blockquote>
-<p>Household Object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
-<span class="o">}</span>
-
-</code></pre></div><h2 id='list-households'>List Households</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/households/</code></p>
-
+<h2 id='list-households'>List Households</h2>
 <blockquote>
 <p>List Households</p>
 </blockquote>
@@ -1709,12 +1828,31 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
         <span class="s2">"id"</span>: 1,
         <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
         <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
-        <span class="s2">"advisor"</span>: 1
+        <span class="s2">"advisor"</span>: 1,
+        <span class="s2">"risk"</span>: <span class="o">{</span>
+            <span class="s2">"overall"</span>: 8.1,
+            <span class="s2">"concentrated"</span>: 1.0,
+            <span class="s2">"tail"</span>: 10.0,
+            <span class="s2">"correlation"</span>: 8.0,
+            <span class="s2">"volatility"</span>: 8.0
+        <span class="o">}</span>,
+        <span class="s2">"tolerance"</span>: <span class="o">{</span>
+            <span class="s2">"overall"</span>: 3.0,
+            <span class="s2">"concentrated"</span>: 3.0,
+            <span class="s2">"tail"</span>: 2.0,
+            <span class="s2">"correlation"</span>: 3.0,
+            <span class="s2">"volatility"</span>: 4.0
+        <span class="o">}</span>,
+        <span class="s2">"drift"</span>: 5.1
     <span class="o">}</span>,
     …
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/households/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -1767,12 +1905,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h2 id='get-household'>Get Household</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/households/&lt;id&gt;/</code></p>
-
-<p><strong>Response:</strong> The requested <a href="#household-object-definition">household object</a>.</p>
-
 <blockquote>
 <p>Get Household</p>
 </blockquote>
@@ -1782,13 +1914,30 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"id"</span>: 1,
   <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
-  <span class="s2">"advisor"</span>: 1
+  <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
-</code></pre></div><h2 id='create-household'>Create Household</h2>
-<p>-request-type: POST</p>
+</code></pre></div>
+<p>-request-type: GET</p>
 
-<p>-request-url: <code>/households/</code></p>
+<p>-request-url: <code>/households/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#household-object-definition">household object</a>.</p>
+<h2 id='create-household'>Create Household</h2>
 <blockquote>
 <p>Create Household</p>
 </blockquote>
@@ -1803,9 +1952,28 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"id"</span>: 11,
   <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith-Pinkett Family"</span>,
-  <span class="s2">"advisor"</span>: 2
+  <span class="s2">"advisor"</span>: 2,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: POST</p>
+
+<p>-request-url: <code>/households/</code></p>
+
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -1829,6 +1997,39 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 
 <p><strong>Response:</strong> The new <a href="#household-object-definition">household object</a>.</p>
 <h2 id='update-household'>Update Household</h2>
+<blockquote>
+<p>Update Household</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/households/2/"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "hou-1",
+    "name": "Pinkett Family",
+    "advisor": 2
+  }'</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 11,
+  <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"Pinkett Family"</span>,
+  <span class="s2">"advisor"</span>: 2,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
+<span class="o">}</span>
+</code></pre></div>
 <p>-request-type: PUT/PATCH</p>
 
 <p>-request-url: <code>/households/&lt;id&gt;/</code></p>
@@ -1853,42 +2054,24 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Update Household</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/households/2/"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "external_id": "hou-1",
-    "name": "Pinkett Family",
-    "advisor": 2
-  }'</span>
-
-<span class="o">{</span>
-  <span class="s2">"id"</span>: 11,
-  <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"Pinkett Family"</span>,
-  <span class="s2">"advisor"</span>: 2
-<span class="o">}</span>
-</code></pre></div><h2 id='household-prism-aggregation'>Household Prism Aggregation</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/households/&lt;id&gt;/prism_aggregation/</code></p>
-
+<h2 id='household-prism-aggregation'>Household Prism Aggregation</h2>
 <blockquote>
 <p>Household Prism Aggregation</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"concentrated"</span>: 4.785445142005072,
-  <span class="s2">"correlation"</span>: 6.049895392953136,
-  <span class="s2">"overall"</span>: 8.214532798503825,
-  <span class="s2">"tail"</span>: 8.674759220001045,
-  <span class="s2">"volatility"</span>: 9.224755263382502
+  <span class="s2">"overall"</span>: 8.2,
+  <span class="s2">"concentrated"</span>: 4.7,
+  <span class="s2">"correlation"</span>: 6.0,
+  <span class="s2">"tail"</span>: 8.6,
+  <span class="s2">"volatility"</span>: 9.2
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/households/&lt;id&gt;/prism_aggregation/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -1925,6 +2108,37 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h1 id='investors'>Investors</h1><h2 id='investor-object-definition'>Investor Object Definition</h2>
+<blockquote>
+<p>Investor Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
+  <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"household"</span>: 1,
+  <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
+  <span class="s2">"user"</span>: <span class="o">{</span>
+     <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
+     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
+     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
+  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+    <span class="s2">"overall"</span>: 8.1,
+    <span class="s2">"concentrated"</span>: 1.0,
+    <span class="s2">"tail"</span>: 10.0,
+    <span class="s2">"correlation"</span>: 8.0,
+    <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+    <span class="s2">"overall"</span>: 3.0,
+    <span class="s2">"concentrated"</span>: 3.0,
+    <span class="s2">"tail"</span>: 2.0,
+    <span class="s2">"correlation"</span>: 3.0,
+    <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
+<span class="o">}</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1967,28 +2181,23 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td><a href="#user-object-definition">User Object</a></td>
 <td>User info</td>
 </tr>
+<tr>
+<td>risk</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Investor aggregated risk scores</td>
+</tr>
+<tr>
+<td>tolerance</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Investor aggregated tolerance scores</td>
+</tr>
+<tr>
+<td>drift</td>
+<td>float</td>
+<td>Investor drift score</td>
+</tr>
 </tbody></table>
-
-<blockquote>
-<p>Investor Object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
-  <span class="s2">"advisor"</span>: 1,
-  <span class="s2">"household"</span>: 1,
-  <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
-  <span class="s2">"user"</span>: <span class="o">{</span>
-     <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
-     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
-     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h2 id='list-investors'>List Investors</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/investors/</code></p>
-
+<h2 id='list-investors'>List Investors</h2>
 <blockquote>
 <p>List Investors</p>
 </blockquote>
@@ -2009,12 +2218,31 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
          <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
          <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
          <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-      <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"risk"</span>: <span class="o">{</span>
+          <span class="s2">"overall"</span>: 8.1,
+          <span class="s2">"concentrated"</span>: 1.0,
+          <span class="s2">"tail"</span>: 10.0,
+          <span class="s2">"correlation"</span>: 8.0,
+          <span class="s2">"volatility"</span>: 8.0
+      <span class="o">}</span>,
+      <span class="s2">"tolerance"</span>: <span class="o">{</span>
+          <span class="s2">"overall"</span>: 3.0,
+          <span class="s2">"concentrated"</span>: 3.0,
+          <span class="s2">"tail"</span>: 2.0,
+          <span class="s2">"correlation"</span>: 3.0,
+          <span class="s2">"volatility"</span>: 4.0
+      <span class="o">}</span>,
+      <span class="s2">"drift"</span>: 5.1
     <span class="o">}</span>,
     …
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/investors/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -2072,12 +2300,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h2 id='get-investor'>Get Investor</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/investors/&lt;id&gt;/</code></p>
-
-<p><strong>Response:</strong> The requested <a href="#investor-object-definition">investor object</a>.</p>
-
 <blockquote>
 <p>Get Investor</p>
 </blockquote>
@@ -2093,13 +2315,30 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
      <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
      <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-  <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
-</code></pre></div><h2 id='create-investor'>Create Investor</h2>
-<p>-request-type: POST</p>
+</code></pre></div>
+<p>-request-type: GET</p>
 
-<p>-request-url: <code>/investors/</code></p>
+<p>-request-url: <code>/investors/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#investor-object-definition">investor object</a>.</p>
+<h2 id='create-investor'>Create Investor</h2>
 <blockquote>
 <p>Create Investor</p>
 </blockquote>
@@ -2126,9 +2365,28 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"first_name"</span>: <span class="s2">"Brian"</span>,
     <span class="s2">"last_name"</span>: <span class="s2">"May"</span>,
     <span class="s2">"email"</span>: <span class="s2">"brian.may@example.com"</span>
-  <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: POST</p>
+
+<p>-request-url: <code>/investors/</code></p>
+
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -2167,6 +2425,50 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 
 <p><strong>Response:</strong> The new <a href="#investor-object-definition">investor object</a>.</p>
 <h2 id='update-investor'>Update Investor</h2>
+<blockquote>
+<p>Update Investor</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "inv-1",
+    "advisor": 1,
+    "household": 1,
+    "phone": "754-3010",
+    "user": {
+      "first_name": "Brian",
+      "last_name": "May",
+      "email": "b.may@example.com"
+    }
+  }'</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 150,
+  <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
+  <span class="s2">"advisor"</span>: 1
+  <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
+  <span class="s2">"user"</span>: <span class="o">{</span>
+    <span class="s2">"first_name"</span>: <span class="s2">"Brian"</span>,
+    <span class="s2">"last_name"</span>: <span class="s2">"May"</span>,
+    <span class="s2">"email"</span>: <span class="s2">"b.may@example.com"</span>
+  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 1.0,
+      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"volatility"</span>: 4.0
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 5.1
+<span class="o">}</span>
+
+</code></pre></div>
 <p>-request-type: PUT/PATCH</p>
 
 <p>-request-url: <code>/investors/&lt;id&gt;/</code></p>
@@ -2206,54 +2508,24 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Update Investor</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/investors/150/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "external_id": "inv-1",
-    "advisor": 1,
-    "household": 1,
-    "phone": "754-3010",
-    "user": {
-      "first_name": "Brian",
-      "last_name": "May",
-      "email": "b.may@example.com"
-    }
-  }'</span>
-
-<span class="o">{</span>
-  <span class="s2">"id"</span>: 150,
-  <span class="s2">"external_id"</span>: <span class="s2">"inv-1"</span>,
-  <span class="s2">"advisor"</span>: 1
-  <span class="s2">"phone"</span>: <span class="s2">"754-3010"</span>,
-  <span class="s2">"user"</span>: <span class="o">{</span>
-    <span class="s2">"first_name"</span>: <span class="s2">"Brian"</span>,
-    <span class="s2">"advisor "</span>May<span class="s2">",
-    "</span>last_name<span class="s2">": "</span>May<span class="s2">",
-    "</span>email<span class="s2">": "</span>b.may@example.com<span class="s2">"
-  }
-}
-
-</span></code></pre></div><h2 id='investor-prism-aggregation'>Investor Prism Aggregation</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/investors/&lt;id&gt;/prism_aggregation/</code></p>
-
+<h2 id='investor-prism-aggregation'>Investor Prism Aggregation</h2>
 <blockquote>
 <p>Investor Prism Aggregation</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"concentrated"</span>: 4.850381420050724
-  <span class="s2">"concentrated"</span>: 4.785445142005072,
-  <span class="s2">"correlation"</span>: 6.049895392953136,
-  <span class="s2">"overall"</span>: 8.2145327985038
-  <span class="s2">"volatility"</span>: 9.224755263382502
+  <span class="s2">"overall"</span>: 8.2
+  <span class="s2">"concentrated"</span>: 4.8
+  <span class="s2">"concentrated"</span>: 4.7,
+  <span class="s2">"correlation"</span>: 6.0,
+  <span class="s2">"volatility"</span>: 9.2
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/investors/&lt;id&gt;/prism_aggregation/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -2289,7 +2561,18 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Volatility score</td>
 </tr>
 </tbody></table>
-<h1 id='risk-and-tolerance'>Risk and Tolerance</h1><h2 id='risk-object-definition'>Risk Object Definition</h2>
+<h1 id='risk-and-tolerance'>Risk and Tolerance</h1><h2 id='scores-factors'>Scores Factors</h2>
+<blockquote>
+<p>Risk Factors</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"overall"</span>: 8.1,
+    <span class="s2">"concentrated"</span>: 1.0,
+    <span class="s2">"tail"</span>: 10.0,
+    <span class="s2">"correlation"</span>: 8.0,
+    <span class="s2">"volatility"</span>: 8.0
+<span class="o">}</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2298,82 +2581,42 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>scores.overall</td>
+<td>overall</td>
 <td>float</td>
-<td>Overall risk score</td>
+<td>Overall score</td>
 </tr>
 <tr>
-<td>scores.concentrated</td>
+<td>concentrated</td>
 <td>float</td>
-<td>Concentrated risk score</td>
+<td>Concentrated score</td>
 </tr>
 <tr>
-<td>scores.tail</td>
+<td>tail</td>
 <td>float</td>
-<td>Tail risk score</td>
+<td>Tail score</td>
 </tr>
 <tr>
-<td>scores.volatility</td>
+<td>volatility</td>
 <td>float</td>
-<td>Volatility risk score</td>
+<td>Volatility score</td>
 </tr>
 <tr>
-<td>scores.correlation</td>
+<td>correlation</td>
 <td>float</td>
-<td>Correlation risk score</td>
-</tr>
-<tr>
-<td>top_risk_attributions[].ticker</td>
-<td>string</td>
-<td>Risk attribution ticker</td>
-</tr>
-<tr>
-<td>top_risk_attributions[].ticker_name</td>
-<td>string</td>
-<td>Risk attribution ticker description</td>
-</tr>
-<tr>
-<td>top_risk_attributions[].risk</td>
-<td>float</td>
-<td>Risk attribution overall score</td>
-</tr>
-<tr>
-<td>top_risk_attributions[].weight</td>
-<td>float</td>
-<td>Risk attribution weight</td>
-</tr>
-<tr>
-<td>scenarios[].name</td>
-<td>string</td>
-<td>Scenario name</td>
-</tr>
-<tr>
-<td>scenarios[].start_date</td>
-<td>string</td>
-<td>Scenario start date</td>
-</tr>
-<tr>
-<td>scenarios[].end_date</td>
-<td>string</td>
-<td>Scenario end date</td>
-</tr>
-<tr>
-<td>scenarios[].risk</td>
-<td>float</td>
-<td>Scenario overall risk</td>
+<td>Correlation score</td>
 </tr>
 </tbody></table>
-
+<h2 id='risk-object-definition'>Risk Object Definition</h2>
 <blockquote>
 <p>Risk Object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"scores"</span>: <span class="o">{</span>
       <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1,
+      <span class="s2">"concentrated"</span>: 1.0,
       <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8,
-      <span class="s2">"volatility"</span>: 8
+      <span class="s2">"correlation"</span>: 8.0,
+      <span class="s2">"volatility"</span>: 8.0
   <span class="o">}</span>,
   <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
       <span class="o">{</span>
@@ -2416,7 +2659,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
       <span class="o">}</span>
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre></div><h2 id='tolerance-object-definition'>Tolerance Object Definition</h2>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2425,45 +2668,79 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>scores.overall</td>
-<td>float</td>
-<td>Overall tolerance score</td>
+<td>scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Risk score factors</td>
 </tr>
 <tr>
-<td>scores.concentrated</td>
-<td>float</td>
-<td>Concentrated tolerance score</td>
+<td>top_risk_attributions[].ticker</td>
+<td>string</td>
+<td>Risk attribution ticker</td>
 </tr>
 <tr>
-<td>scores.tail</td>
-<td>float</td>
-<td>Tail tolerance score</td>
+<td>top_risk_attributions[].ticker_name</td>
+<td>string</td>
+<td>Risk attribution ticker description</td>
 </tr>
 <tr>
-<td>scores.volatility</td>
+<td>top_risk_attributions[].risk</td>
 <td>float</td>
-<td>Volatility tolerance score</td>
+<td>Risk attribution overall score</td>
 </tr>
 <tr>
-<td>scores.correlation</td>
+<td>top_risk_attributions[].weight</td>
 <td>float</td>
-<td>Correlation tolerance score</td>
+<td>Risk attribution weight</td>
+</tr>
+<tr>
+<td>scenarios[].name</td>
+<td>string</td>
+<td>Scenario name</td>
+</tr>
+<tr>
+<td>scenarios[].start_date</td>
+<td>string</td>
+<td>Scenario start date</td>
+</tr>
+<tr>
+<td>scenarios[].end_date</td>
+<td>string</td>
+<td>Scenario end date</td>
+</tr>
+<tr>
+<td>scenarios[].risk</td>
+<td>float</td>
+<td>Scenario overall risk</td>
 </tr>
 </tbody></table>
-
+<h2 id='tolerance-object-definition'>Tolerance Object Definition</h2>
 <blockquote>
 <p>Tolerance Object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"scores"</span>: <span class="o">{</span>
       <span class="s2">"overall"</span>: 6.4,
-      <span class="s2">"concentrated"</span>: 5,
-      <span class="s2">"tail"</span>: 5,
-      <span class="s2">"volatility"</span>: 8,
-      <span class="s2">"correlation"</span>: 5
+      <span class="s2">"concentrated"</span>: 5.0,
+      <span class="s2">"tail"</span>: 5.0,
+      <span class="s2">"volatility"</span>: 8.0,
+      <span class="s2">"correlation"</span>: 5.0
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div><h1 id='positions'>Positions</h1>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Tolerance score factors</td>
+</tr>
+</tbody></table>
+<h1 id='positions'>Positions</h1>
 <blockquote>
 <p>Position Object Description:</p>
 </blockquote>
@@ -2536,6 +2813,93 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h1 id='accounts'>Accounts</h1><h2 id='account-object-definition'>Account Object Definition</h2>
+<blockquote>
+<p>Account Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
+  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
+  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"tax_status"</span>: <span class="s2">"taxable"</span>,
+  <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
+  <span class="s2">"investor"</span>: 1,
+  <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"strategy"</span>: 1,
+  <span class="s2">"positions"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"ticker"</span>: <span class="s2">"OPPI"</span>,
+        <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TARGET 2045"</span>,
+        <span class="s2">"value"</span>: 368673.6
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"ticker"</span>: <span class="s2">"UNTB"</span>,
+        <span class="s2">"ticker_name"</span>: <span class="s2">"Fha Non Int Bearing"</span>,
+        <span class="s2">"value"</span>: 875.0
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+      <span class="s2">"scores"</span>: <span class="o">{</span>
+          <span class="s2">"concentrated"</span>: 1.0,
+          <span class="s2">"tail"</span>: 10.0,
+          <span class="s2">"correlation"</span>: 8.0,
+          <span class="s2">"overall"</span>: 8.1,
+          <span class="s2">"volatility"</span>: 8.0
+      <span class="o">}</span>,
+      <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+              <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TARGET 2045"</span>,
+              <span class="s2">"ticker"</span>: <span class="s2">"OPPI"</span>,
+              <span class="s2">"risk"</span>: 0.9997862976486193,
+              <span class="s2">"weight"</span>: 99.763225
+          <span class="o">}</span>,
+          <span class="o">{</span>
+              <span class="s2">"ticker_name"</span>: <span class="s2">"Fha Non Int Bearing"</span>,
+              <span class="s2">"ticker"</span>: <span class="s2">"UNTB"</span>,
+              <span class="s2">"risk"</span>: 0.00021370235138087705,
+              <span class="s2">"weight"</span>: 0.236775
+          <span class="o">}</span>
+      <span class="o">]</span>,
+      <span class="s2">"scenarios"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+              <span class="s2">"risk"</span>: 8.8,
+              <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
+              <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
+              <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
+          <span class="o">}</span>,
+          <span class="o">{</span>
+              <span class="s2">"risk"</span>: 8.8,
+              <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
+              <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
+              <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
+          <span class="o">}</span>,
+          <span class="o">{</span>
+              <span class="s2">"risk"</span>: 8.1,
+              <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
+              <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
+              <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
+          <span class="o">}</span>,
+          <span class="o">{</span>
+              <span class="s2">"risk"</span>: 7.7,
+              <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
+              <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
+              <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
+          <span class="o">}</span>
+      <span class="o">]</span>
+  <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>
+      <span class="s2">"scores"</span>: <span class="o">{</span>
+          <span class="s2">"concentrated"</span>: 5.0,
+          <span class="s2">"tail"</span>: 5.0,
+          <span class="s2">"volatility"</span>: 8.0,
+          <span class="s2">"overall"</span>: 6.4,
+          <span class="s2">"correlation"</span>: 5.0
+      <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 1.7
+<span class="o">}</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2702,94 +3066,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Tax Deferred accounts</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Account Object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
-  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
-  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
-  <span class="s2">"tax_status"</span>: <span class="s2">"taxable"</span>,
-  <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
-  <span class="s2">"investor"</span>: 1,
-  <span class="s2">"advisor"</span>: 1,
-  <span class="s2">"strategy"</span>: 1,
-  <span class="s2">"positions"</span>: <span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"ticker"</span>: <span class="s2">"OPPI"</span>,
-        <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TARGET 2045"</span>,
-        <span class="s2">"value"</span>: 368673.6
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"ticker"</span>: <span class="s2">"UNTB"</span>,
-        <span class="s2">"ticker_name"</span>: <span class="s2">"Fha Non Int Bearing"</span>,
-        <span class="s2">"value"</span>: 875.0
-    <span class="o">}</span>
-  <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"scores"</span>: <span class="o">{</span>
-          <span class="s2">"concentrated"</span>: 1,
-          <span class="s2">"tail"</span>: 10.0,
-          <span class="s2">"correlation"</span>: 8,
-          <span class="s2">"overall"</span>: 8.1,
-          <span class="s2">"volatility"</span>: 8
-      <span class="o">}</span>,
-      <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
-          <span class="o">{</span>
-              <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TARGET 2045"</span>,
-              <span class="s2">"ticker"</span>: <span class="s2">"OPPI"</span>,
-              <span class="s2">"risk"</span>: 0.9997862976486193,
-              <span class="s2">"weight"</span>: 99.763225
-          <span class="o">}</span>,
-          <span class="o">{</span>
-              <span class="s2">"ticker_name"</span>: <span class="s2">"Fha Non Int Bearing"</span>,
-              <span class="s2">"ticker"</span>: <span class="s2">"UNTB"</span>,
-              <span class="s2">"risk"</span>: 0.00021370235138087705,
-              <span class="s2">"weight"</span>: 0.236775
-          <span class="o">}</span>
-      <span class="o">]</span>,
-      <span class="s2">"scenarios"</span>: <span class="o">[</span>
-          <span class="o">{</span>
-              <span class="s2">"risk"</span>: 8.8,
-              <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
-              <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
-              <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-              <span class="s2">"risk"</span>: 8.8,
-              <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
-              <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
-              <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-              <span class="s2">"risk"</span>: 8.1,
-              <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
-              <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
-              <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-              <span class="s2">"risk"</span>: 7.7,
-              <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
-              <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
-              <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
-          <span class="o">}</span>
-      <span class="o">]</span>
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"scores"</span>: <span class="o">{</span>
-          <span class="s2">"concentrated"</span>: 5,
-          <span class="s2">"tail"</span>: 5,
-          <span class="s2">"volatility"</span>: 8,
-          <span class="s2">"overall"</span>: 6.4,
-          <span class="s2">"correlation"</span>: 5
-      <span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="s2">"drift"</span>: 1.7
-<span class="o">}</span>
-</code></pre></div><h2 id='list-accounts'>List Accounts</h2>
+<h2 id='list-accounts'>List Accounts</h2>
 <p>-request-type: GET</p>
 
 <p>-request-url: <code>/accounts/</code></p>
@@ -2881,12 +3158,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h2 id='get-account'>Get Account</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/accounts/&lt;id&gt;/</code></p>
-
-<p><strong>Response:</strong> The requested <a href="#account-object-definition">account object</a>.</p>
-
 <blockquote>
 <p>Get Account</p>
 </blockquote>
@@ -2907,11 +3178,13 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
 <span class="o">}</span>
-</code></pre></div><h2 id='create-account'>Create Account</h2>
-<p>-request-type: POST</p>
+</code></pre></div>
+<p>-request-type: GET</p>
 
-<p>-request-url: <code>/accounts/</code></p>
+<p>-request-url: <code>/accounts/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#account-object-definition">account object</a>.</p>
+<h2 id='create-account'>Create Account</h2>
 <blockquote>
 <p>Create Account</p>
 </blockquote>
@@ -2956,6 +3229,10 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"drift"</span>: 1.0,
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: POST</p>
+
+<p>-request-url: <code>/accounts/</code></p>
+
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -3019,6 +3296,51 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 
 <p><strong>Response:</strong> The new <a href="#account-object-definition">account object</a>.</p>
 <h2 id='update-account'>Update Account</h2>
+<blockquote>
+<p>Update Account</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "act-1",
+    "name": "John Doe 401k",
+    "value": "1234567.89",
+    "type": "401",
+    "tax_status": "tax-deferred",
+    "number": "987654321",
+    "investor": 1,
+    "strategy": 1,
+    "positions": [
+      {
+        "ticker": "SPY",
+        "ticker_name": "SPDR S&amp;P 500",
+        "value": "823045.26"
+      },
+      {
+        "ticker": "IBM",
+        "ticker_name": "IBM",
+        "value": "411522.63"
+      },
+      …
+    ]
+  }'</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
+  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
+  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
+  <span class="s2">"tax_status"</span>: <span class="s2">"tax-deferred"</span>,
+  <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
+  <span class="s2">"investor"</span>: 1,
+  <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"strategy"</span>: 1,
+  <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
+  <span class="s2">"drift"</span>: 1.0,
+<span class="o">}</span>
+</code></pre></div>
 <p>-request-type: PUT/PATCH</p>
 
 <p>-request-url: <code>/accounts/&lt;id&gt;/</code></p>
@@ -3083,69 +3405,24 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Update Account</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/accounts/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "external_id": "act-1",
-    "name": "John Doe 401k",
-    "value": "1234567.89",
-    "type": "401",
-    "tax_status": "tax-deferred",
-    "number": "987654321",
-    "investor": 1,
-    "strategy": 1,
-    "positions": [
-      {
-        "ticker": "SPY",
-        "ticker_name": "SPDR S&amp;P 500",
-        "value": "823045.26"
-      },
-      {
-        "ticker": "IBM",
-        "ticker_name": "IBM",
-        "value": "411522.63"
-      },
-      …
-    ]
-  }'</span>
-
-<span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
-  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
-  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
-  <span class="s2">"tax_status"</span>: <span class="s2">"tax-deferred"</span>,
-  <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
-  <span class="s2">"investor"</span>: 1,
-  <span class="s2">"advisor"</span>: 1,
-  <span class="s2">"strategy"</span>: 1,
-  <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
-  <span class="s2">"drift"</span>: 1.0,
-<span class="o">}</span>
-</code></pre></div><h2 id='account-prism-score'>Account Prism Score</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/accounts/&lt;id&gt;/prism_score/</code></p>
-
+<h2 id='account-prism-score'>Account Prism Score</h2>
 <blockquote>
 <p>Account Prism Score</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"concentrated"</span>: 4.214532742005072
-  <span class="s2">"concentrated"</span>: 4.785445142005072,
-  <span class="s2">"correlation"</span>: 6.049895392953136,
-  <span class="s2">"overall"</span>: 8.2145327985038
-  <span class="s2">"volatility"</span>: 9.224755263382502
+  <span class="s2">"concentrated"</span>: 4.2
+  <span class="s2">"concentrated"</span>: 4.7,
+  <span class="s2">"correlation"</span>: 6.0,
+  <span class="s2">"overall"</span>: 8.2
+  <span class="s2">"volatility"</span>: 9.2
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/accounts/&lt;id&gt;/prism_score/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -3182,6 +3459,81 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h1 id='model-portfolios'>Model Portfolios</h1><h2 id='model-portfolio-object-definition'>Model Portfolio Object Definition</h2>
+<blockquote>
+<p>Model Portfolio Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
+  <span class="s2">"value"</span>: 100.0,
+  <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
+  <span class="s2">"company"</span>: 1,
+  <span class="s2">"positions"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"ticker"</span>: <span class="s2">"AGG"</span>,
+        <span class="s2">"ticker_name"</span>: <span class="s2">"iShares Core US Aggregate Bond"</span>,
+        <span class="s2">"value"</span>: 20.0
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
+        <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P500 ETF Trust"</span>,
+        <span class="s2">"value"</span>: 80.0
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>
+    <span class="s2">"start_date"</span>: <span class="s2">"2005-01-01"</span>,
+    <span class="s2">"end_date"</span>: <span class="s2">"2019-11-10"</span>,
+    <span class="s2">"scores"</span>: <span class="o">{</span>
+        <span class="s2">"concentrated"</span>: 1.0,
+        <span class="s2">"tail"</span>: 8.0,
+        <span class="s2">"correlation"</span>: 8.0,
+        <span class="s2">"overall"</span>: 6.8,
+        <span class="s2">"volatility"</span>: 6
+    <span class="o">}</span>,
+    <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P500 ETF Trust"</span>,
+            <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
+            <span class="s2">"risk"</span>: 0.9924230255643414,
+            <span class="s2">"weight"</span>: 80.0
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"ticker_name"</span>: <span class="s2">"iShares Core US Aggregate Bond"</span>,
+            <span class="s2">"ticker"</span>: <span class="s2">"AGG"</span>,
+            <span class="s2">"risk"</span>: 0.0075769744356585424,
+            <span class="s2">"weight"</span>: 20.0
+        <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"scenarios"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"risk"</span>: 8.1,
+            <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
+            <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
+            <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"risk"</span>: 7.7,
+            <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
+            <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
+            <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"risk"</span>: 6.4,
+            <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
+            <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
+            <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"risk"</span>: 6.4,
+            <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
+            <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
+            <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3230,86 +3582,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Model Portfolio risk</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Model Portfolio Object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
-  <span class="s2">"value"</span>: 100.0,
-  <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
-  <span class="s2">"company"</span>: 1,
-  <span class="s2">"positions"</span>: <span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"ticker"</span>: <span class="s2">"AGG"</span>,
-        <span class="s2">"ticker_name"</span>: <span class="s2">"iShares Core US Aggregate Bond"</span>,
-        <span class="s2">"value"</span>: 20.0
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
-        <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P500 ETF Trust"</span>,
-        <span class="s2">"value"</span>: 80.0
-    <span class="o">}</span>
-  <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-    <span class="s2">"start_date"</span>: <span class="s2">"2005-01-01"</span>,
-    <span class="s2">"end_date"</span>: <span class="s2">"2019-11-10"</span>,
-    <span class="s2">"scores"</span>: <span class="o">{</span>
-        <span class="s2">"concentrated"</span>: 1,
-        <span class="s2">"tail"</span>: 8.0,
-        <span class="s2">"correlation"</span>: 8,
-        <span class="s2">"overall"</span>: 6.8,
-        <span class="s2">"volatility"</span>: 6
-    <span class="o">}</span>,
-    <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P500 ETF Trust"</span>,
-            <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
-            <span class="s2">"risk"</span>: 0.9924230255643414,
-            <span class="s2">"weight"</span>: 80.0
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"ticker_name"</span>: <span class="s2">"iShares Core US Aggregate Bond"</span>,
-            <span class="s2">"ticker"</span>: <span class="s2">"AGG"</span>,
-            <span class="s2">"risk"</span>: 0.0075769744356585424,
-            <span class="s2">"weight"</span>: 20.0
-        <span class="o">}</span>
-    <span class="o">]</span>,
-    <span class="s2">"scenarios"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"risk"</span>: 8.1,
-            <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
-            <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
-            <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"risk"</span>: 7.7,
-            <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
-            <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
-            <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"risk"</span>: 6.4,
-            <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
-            <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
-            <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"risk"</span>: 6.4,
-            <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
-            <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
-            <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
-        <span class="o">}</span>
-    <span class="o">]</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h2 id='list-model-portfolios'>List Model Portfolios</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/models/</code></p>
-
+<h2 id='list-model-portfolios'>List Model Portfolios</h2>
 <blockquote>
 <p>List Model Portfolios</p>
 </blockquote>
@@ -3334,6 +3607,10 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/models/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -3381,12 +3658,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h2 id='get-model-portfolio'>Get Model Portfolio</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/models/&lt;id&gt;/</code></p>
-
-<p><strong>Response:</strong> The requested <a href="#model-object-definition">model object</a>.</p>
-
 <blockquote>
 <p>Get Model Portfolio</p>
 </blockquote>
@@ -3402,11 +3673,13 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div><h2 id='create-model-portfolio'>Create Model Portfolio</h2>
-<p>-request-type: POST</p>
+</code></pre></div>
+<p>-request-type: GET</p>
 
-<p>-request-url: <code>/models/</code></p>
+<p>-request-url: <code>/models/&lt;id&gt;/</code></p>
 
+<p><strong>Response:</strong> The requested <a href="#model-object-definition">model object</a>.</p>
+<h2 id='create-model-portfolio'>Create Model Portfolio</h2>
 <blockquote>
 <p>Create Model Portfolio</p>
 </blockquote>
@@ -3442,6 +3715,10 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: POST</p>
+
+<p>-request-url: <code>/models/</code></p>
+
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -3485,6 +3762,41 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 
 <p><strong>Response:</strong> The new <a href="#model-object-definition">model object</a>.</p>
 <h2 id='update-model-portfolio'>Update Model Portfolio</h2>
+<blockquote>
+<p>Update Model Portfolio</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "external_id": "mp-1",
+    "name": "70% Equities / 30% Fixed Income",
+    "value": 100.0,
+    "type": "Moderate",
+    "company": 1,
+    "positions": [
+      {
+          "ticker": "AGG",
+          "ticker_name": "iShares Core US Aggregate Bond",
+          "value": 30.0
+      },
+      {
+          "ticker": "SPY",
+          "ticker_name": "SPDR S&amp;P500 ETF Trust",
+          "value": 70.0
+      }
+    ]
+  }'</span>
+
+<span class="o">{</span>
+  <span class="s2">"id"</span>: 1,
+  <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
+  <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
+  <span class="s2">"value"</span>: 100.0,
+  <span class="s2">"type"</span>: <span class="s2">"Moderate"</span>,
+  <span class="s2">"company"</span>: 1,
+  <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 <p>-request-type: PUT/PATCH</p>
 
 <p>-request-url: <code>/models/&lt;id&gt;/</code></p>
@@ -3529,46 +3841,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Update Model Portfolio</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT <span class="s2">"https://backend.stratifi.com/api/v1/models/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "external_id": "mp-1",
-    "name": "70% Equities / 30% Fixed Income",
-    "value": 100.0,
-    "type": "Moderate",
-    "company": 1,
-    "positions": [
-      {
-          "ticker": "AGG",
-          "ticker_name": "iShares Core US Aggregate Bond",
-          "value": 30.0
-      },
-      {
-          "ticker": "SPY",
-          "ticker_name": "SPDR S&amp;P500 ETF Trust",
-          "value": 70.0
-      }
-    ]
-  }'</span>
-
-<span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"external_id"</span>: <span class="s2">"mp-1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
-  <span class="s2">"value"</span>: 100.0,
-  <span class="s2">"type"</span>: <span class="s2">"Moderate"</span>,
-  <span class="s2">"company"</span>: 1,
-  <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div><h2 id='model-portfolio-prism-score'>Model Portfolio Prism Score</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/models/&lt;id&gt;/prism_score/</code></p>
-
+<h2 id='model-portfolio-prism-score'>Model Portfolio Prism Score</h2>
 <blockquote>
 <p>Model Portfolio Prism Score</p>
 </blockquote>
@@ -3582,6 +3855,10 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"volatility"</span>: 9.224755263382502
 <span class="o">}</span>
 </code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/models/&lt;id&gt;/prism_score/</code></p>
+
 <p><strong>Response Fields</strong></p>
 
 <table><thead>
@@ -3720,31 +3997,36 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h2 id='get-security-by-ticker'>Get security by ticker</h2>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/securties/ticker/&lt;ticker&gt;</code></p>
-
 <blockquote>
 <p>Get security by ticker</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/ticker/GOOGL"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
-</code></pre></div><h2 id='get-security-by-cusip'>Get security by cusip</h2>
+</code></pre></div>
 <p>-request-type: GET</p>
 
-<p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
-
+<p>-request-url: <code>/securties/ticker/&lt;ticker&gt;</code></p>
+<h2 id='get-security-by-cusip'>Get security by cusip</h2>
 <blockquote>
 <p>Get security by cusip</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/cusip/02079K305"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
-</code></pre></div><h1 id='changelog'>Changelog</h1>
+</code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
+<h1 id='changelog'>Changelog</h1>
 <ul>
-<li>1.4.0
+<li>1.5.0
 
 <ul>
 <li>Add tax status field to accounts</li>
 <li>Add strategy field to accounts</li>
 <li>Fix /o/token/ examples</li>
+</ul></li>
+<li>1.4.0
+
+<ul>
+<li>Add the aggregated risk, tolerance and drift to the investor, household and advisor.</li>
 </ul></li>
 <li>1.3.0
 
