@@ -8,4 +8,4 @@ This page describe the available API endpoints. You will find some code examples
 
 Before start using the API you need contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a> and request API access. We will provide you a _CLIENT ID_ an a _SECRET KEY_ required to complete the authorization process.
 
-If you want to know more about how the information is organized in StratiFi or want to familiarize with the API structure go to the <a href="https://api.stratifi.com/docs/v1/#about">About</a> section. If you are ready to start, go to the <a href="https://api.stratifi.com/docs/v1/#authorization">Authorization</a> section.
+If you want to know more about how the information is organized in StratiFi or want to familiarize with the API structure go to the <a href="https://api.stratifi.com/docs/v1/#about-stratifi">About</a> section. If you are ready to start, go to the <a href="https://api.stratifi.com/docs/v1/#authorization">Authorization</a> section.

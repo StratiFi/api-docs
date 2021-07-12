@@ -96,7 +96,7 @@
 | external_id | string                                           | Your account identifier                                                                                                                                                                                                                                                    |
 | name        | string                                           | Account name                                                                                                                                                                                                                                                               |
 | value       | string                                           | Account value                                                                                                                                                                                                                                                              |
-| type        | string                                           | Account type. One of [these values](http://api.stratifi.com/docs/v1/#account-types).                                                                                                                                                                                       |
+| type        | string                                           | Account type .                                                                                                                                                                                                                                                             |
 | tax_status  | string                                           | Account tax status. One of [these values](http://api.stratifi.com/docs/v1/#account-tax-statuses).                                                                                                                                                                          |
 | number      | string                                           | Account number                                                                                                                                                                                                                                                             |
 | strategy    | int                                              | Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the [list or get endpoint](http://api.stratifi.com/docs/v1/#list-model-portfolios).                                                                                     |
@@ -106,26 +106,6 @@
 | risk        | [Risk Object](#risk-object-definition)           | Account risk                                                                                                                                                                                                                                                               |
 | tolerance   | [Tolerance Object](#tolerance-object-definition) | Account tolerance                                                                                                                                                                                                                                                          |
 | drift       | float                                            | Drift between the risk and the tolerance overall scores                                                                                                                                                                                                                    |
-
-### Account Types
-
-| Value | Description                                    |
-| ----- | ---------------------------------------------- |
-| 100   | Individual                                     |
-| 101   | Joint                                          |
-| 200   | Revocable Living Trust                         |
-| 201   | Irrevocable Living Trust                       |
-| 300   | Limited Liability Company                      |
-| 301   | Limited Liability Limited Partnership          |
-| 302   | S Corporation                                  |
-| 303   | C Corporation                                  |
-| 304   | Sole Proprietorship                            |
-| 400   | Traditional IRA                                |
-| 401   | Simplified Employee Pension IRA                |
-| 402   | Savings Incentive Match Plan for Employees IRA |
-| 403   | Roth IRA                                       |
-| 404   | Rollover IRA                                   |
-| 500   | Household Account                              |
 
 ### Account Tax Statuses
 
