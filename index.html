@@ -444,6 +444,9 @@
                     <a href="#scores-factors" class="toc-h2 toc-link" data-title="Scores Factors">Scores Factors</a>
                   </li>
                   <li>
+                    <a href="#scores-media" class="toc-h2 toc-link" data-title="Scores Media">Scores Media</a>
+                  </li>
+                  <li>
                     <a href="#risk-object-definition" class="toc-h2 toc-link" data-title="Risk Object Definition">Risk Object Definition</a>
                   </li>
                   <li>
@@ -528,7 +531,7 @@
 
 <p>Before start using the API you need contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a> and request API access. We will provide you a <em>CLIENT ID</em> an a <em>SECRET KEY</em> required to complete the authorization process.</p>
 
-<p>If you want to know more about how the information is organized in StratiFi or want to familiarize with the API structure go to the <a href="https://api.stratifi.com/docs/v1/#about">About</a> section. If you are ready to start, go to the <a href="https://api.stratifi.com/docs/v1/#authorization">Authorization</a> section.</p>
+<p>If you want to know more about how the information is organized in StratiFi or want to familiarize with the API structure go to the <a href="https://api.stratifi.com/docs/v1/#about-stratifi">About</a> section. If you are ready to start, go to the <a href="https://api.stratifi.com/docs/v1/#authorization">Authorization</a> section.</p>
 <h1 id='overview'>Overview</h1>
 <p>Our API follows a REST pattern, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope.</p>
 
@@ -1209,11 +1212,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"concentrated"</span>: 4.785445142005072,
-  <span class="s2">"correlation"</span>: 6.049895392953136,
-  <span class="s2">"overall"</span>: 8.214532798503825,
-  <span class="s2">"tail"</span>: 8.674759220001045,
-  <span class="s2">"volatility"</span>: 9.224755263382502
+  <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>,
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -1230,29 +1230,14 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>overall</td>
-<td>float</td>
-<td>Overall score</td>
+<td>scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Risk score factors</td>
 </tr>
 <tr>
-<td>concentrated</td>
-<td>float</td>
-<td>Concentration score</td>
-</tr>
-<tr>
-<td>correlation</td>
-<td>float</td>
-<td>Correlation score</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>float</td>
-<td>Tail score</td>
-</tr>
-<tr>
-<td>volatility</td>
-<td>float</td>
-<td>Volatility score</td>
+<td>media</td>
+<td><a href="#scores-media">Scores Images</a></td>
+<td>Risk score factors images</td>
 </tr>
 </tbody></table>
 <h1 id='users'>Users</h1><h2 id='user-object-definition'>User Object Definition</h2>
@@ -1305,18 +1290,12 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
   <span class="o">}</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span>
-    <span class="s2">"overall"</span>: 8.1,
-    <span class="s2">"concentrated"</span>: 1.0,
-    <span class="s2">"tail"</span>: 10.0,
-    <span class="s2">"correlation"</span>: 8.0,
-    <span class="s2">"volatility"</span>: 8.0
+    <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
+    <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>
-    <span class="s2">"overall"</span>: 3.0,
-    <span class="s2">"concentrated"</span>: 3.0,
-    <span class="s2">"tail"</span>: 2.0,
-    <span class="s2">"correlation"</span>: 3.0,
-    <span class="s2">"volatility"</span>: 4.0
+    <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
+    <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
@@ -1364,14 +1343,24 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>User info</td>
 </tr>
 <tr>
-<td>risk</td>
+<td>risk.scores</td>
 <td><a href="#scores-factors">Scores Factors</a></td>
 <td>Advisor aggregated risk scores</td>
 </tr>
 <tr>
-<td>tolerance</td>
+<td>risk.media</td>
+<td><a href="#scores-media">Scores Media</a></td>
+<td>Advisor aggregated risk scores images</td>
+</tr>
+<tr>
+<td>tolerance.scores</td>
 <td><a href="#scores-factors">Scores Factors</a></td>
 <td>Advisor aggregated tolerance scores</td>
+</tr>
+<tr>
+<td>tolerance.media</td>
+<td><a href="#scores-factors">Scores Media</a></td>
+<td>Advisor aggregated tolerance scores images</td>
 </tr>
 <tr>
 <td>drift</td>
@@ -1404,20 +1393,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
          <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
          <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
       <span class="o">}</span>,
-      <span class="s2">"risk"</span>: <span class="o">{</span>
-          <span class="s2">"overall"</span>: 8.1,
-          <span class="s2">"concentrated"</span>: 1.0,
-          <span class="s2">"tail"</span>: 10.0,
-          <span class="s2">"correlation"</span>: 8.0,
-          <span class="s2">"volatility"</span>: 8.0
-      <span class="o">}</span>,
-      <span class="s2">"tolerance"</span>: <span class="o">{</span>
-          <span class="s2">"overall"</span>: 3.0,
-          <span class="s2">"concentrated"</span>: 3.0,
-          <span class="s2">"tail"</span>: 2.0,
-          <span class="s2">"correlation"</span>: 3.0,
-          <span class="s2">"volatility"</span>: 4.0
-      <span class="o">}</span>,
+      <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+      <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
       <span class="s2">"drift"</span>: 5.1
     <span class="o">}</span>,
     …
@@ -1497,20 +1474,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
      <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
   <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
@@ -1548,20 +1513,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
     <span class="s2">"email"</span>: <span class="s2">"doug.spencer@example.com"</span>
   <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
@@ -1635,20 +1588,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
     <span class="s2">"email"</span>: <span class="s2">"dspencer@example.com"</span>
   <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
@@ -1698,11 +1639,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"overall"</span>: 8.2,
-  <span class="s2">"concentrated"</span>: 4.7,
-  <span class="s2">"correlation"</span>: 6.0,
-  <span class="s2">"tail"</span>: 8.6,
-  <span class="s2">"volatility"</span>: 9.2
+  <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -1719,29 +1657,14 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>overall</td>
-<td>float</td>
-<td>Overall score</td>
+<td>scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Risk score factors</td>
 </tr>
 <tr>
-<td>concentrated</td>
-<td>float</td>
-<td>Concentration score</td>
-</tr>
-<tr>
-<td>correlation</td>
-<td>float</td>
-<td>Correlation score</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>float</td>
-<td>Tail score</td>
-</tr>
-<tr>
-<td>volatility</td>
-<td>float</td>
-<td>Volatility score</td>
+<td>media</td>
+<td><a href="#scores-media">Scores Images</a></td>
+<td>Risk score factors images</td>
 </tr>
 </tbody></table>
 <h1 id='households'>Households</h1><h2 id='household-object-definition'>Household Object Definition</h2>
@@ -1753,18 +1676,22 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span>
-    <span class="s2">"overall"</span>: 8.1,
-    <span class="s2">"concentrated"</span>: 1.0,
-    <span class="s2">"tail"</span>: 10.0,
-    <span class="s2">"correlation"</span>: 8.0,
-    <span class="s2">"volatility"</span>: 8.0
+    <span class="s2">"scores"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"volatility"</span>: 4.0
+    <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>
-    <span class="s2">"overall"</span>: 3.0,
-    <span class="s2">"concentrated"</span>: 3.0,
-    <span class="s2">"tail"</span>: 2.0,
-    <span class="s2">"correlation"</span>: 3.0,
-    <span class="s2">"volatility"</span>: 4.0
+    <span class="s2">"scores"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"volatility"</span>: 4.0
+    <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
@@ -1798,14 +1725,24 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Advisor ID</td>
 </tr>
 <tr>
-<td>risk</td>
+<td>risk.scores</td>
 <td><a href="#scores-factors">Scores Factors</a></td>
 <td>Household aggregated risk scores</td>
 </tr>
 <tr>
-<td>tolerance</td>
+<td>risk.media</td>
+<td><a href="#scores-media">Scores Media</a></td>
+<td>Household aggregated risk scores images</td>
+</tr>
+<tr>
+<td>tolerance.scores</td>
 <td><a href="#scores-factors">Scores Factors</a></td>
 <td>Household aggregated tolerance scores</td>
+</tr>
+<tr>
+<td>tolerance.media</td>
+<td><a href="#scores-factors">Scores Media</a></td>
+<td>Household aggregated tolerance scores images</td>
 </tr>
 <tr>
 <td>drift</td>
@@ -1829,20 +1766,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
         <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
         <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
         <span class="s2">"advisor"</span>: 1,
-        <span class="s2">"risk"</span>: <span class="o">{</span>
-            <span class="s2">"overall"</span>: 8.1,
-            <span class="s2">"concentrated"</span>: 1.0,
-            <span class="s2">"tail"</span>: 10.0,
-            <span class="s2">"correlation"</span>: 8.0,
-            <span class="s2">"volatility"</span>: 8.0
-        <span class="o">}</span>,
-        <span class="s2">"tolerance"</span>: <span class="o">{</span>
-            <span class="s2">"overall"</span>: 3.0,
-            <span class="s2">"concentrated"</span>: 3.0,
-            <span class="s2">"tail"</span>: 2.0,
-            <span class="s2">"correlation"</span>: 3.0,
-            <span class="s2">"volatility"</span>: 4.0
-        <span class="o">}</span>,
+        <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+        <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
         <span class="s2">"drift"</span>: 5.1
     <span class="o">}</span>,
     …
@@ -1915,20 +1840,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>
   <span class="s2">"advisor"</span>: 1,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
@@ -1953,20 +1866,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith-Pinkett Family"</span>,
   <span class="s2">"advisor"</span>: 2,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
@@ -2013,20 +1914,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Pinkett Family"</span>,
   <span class="s2">"advisor"</span>: 2,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
@@ -2061,11 +1950,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/households/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"overall"</span>: 8.2,
-  <span class="s2">"concentrated"</span>: 4.7,
-  <span class="s2">"correlation"</span>: 6.0,
-  <span class="s2">"tail"</span>: 8.6,
-  <span class="s2">"volatility"</span>: 9.2
+  <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>,
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -2082,29 +1968,14 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>overall</td>
-<td>float</td>
-<td>Overall score</td>
+<td>scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Risk score factors</td>
 </tr>
 <tr>
-<td>concentrated</td>
-<td>float</td>
-<td>Concentration score</td>
-</tr>
-<tr>
-<td>correlation</td>
-<td>float</td>
-<td>Correlation score</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>float</td>
-<td>Tail score</td>
-</tr>
-<tr>
-<td>volatility</td>
-<td>float</td>
-<td>Volatility score</td>
+<td>media</td>
+<td><a href="#scores-media">Scores Images</a></td>
+<td>Risk score factors images</td>
 </tr>
 </tbody></table>
 <h1 id='investors'>Investors</h1><h2 id='investor-object-definition'>Investor Object Definition</h2>
@@ -2123,18 +1994,22 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
   <span class="o">}</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span>
-    <span class="s2">"overall"</span>: 8.1,
-    <span class="s2">"concentrated"</span>: 1.0,
-    <span class="s2">"tail"</span>: 10.0,
-    <span class="s2">"correlation"</span>: 8.0,
-    <span class="s2">"volatility"</span>: 8.0
+    <span class="s2">"scores"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 8.1,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"volatility"</span>: 4.0
+    <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>
-    <span class="s2">"overall"</span>: 3.0,
-    <span class="s2">"concentrated"</span>: 3.0,
-    <span class="s2">"tail"</span>: 2.0,
-    <span class="s2">"correlation"</span>: 3.0,
-    <span class="s2">"volatility"</span>: 4.0
+    <span class="s2">"scores"</span>: <span class="o">{</span>
+      <span class="s2">"overall"</span>: 3.0,
+      <span class="s2">"concentrated"</span>: 3.0,
+      <span class="s2">"correlation"</span>: 3.0,
+      <span class="s2">"tail"</span>: 2.0,
+      <span class="s2">"volatility"</span>: 4.0
+    <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
@@ -2182,14 +2057,24 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>User info</td>
 </tr>
 <tr>
-<td>risk</td>
+<td>risk.scores</td>
 <td><a href="#scores-factors">Scores Factors</a></td>
 <td>Investor aggregated risk scores</td>
 </tr>
 <tr>
-<td>tolerance</td>
+<td>risk.media</td>
+<td><a href="#scores-media">Scores Media</a></td>
+<td>Investor aggregated risk scores images</td>
+</tr>
+<tr>
+<td>tolerance.scores</td>
 <td><a href="#scores-factors">Scores Factors</a></td>
 <td>Investor aggregated tolerance scores</td>
+</tr>
+<tr>
+<td>tolerance.media</td>
+<td><a href="#scores-factors">Scores Media</a></td>
+<td>Investor aggregated tolerance scores images</td>
 </tr>
 <tr>
 <td>drift</td>
@@ -2219,20 +2104,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
          <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
          <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
       <span class="o">}</span>,
-      <span class="s2">"risk"</span>: <span class="o">{</span>
-          <span class="s2">"overall"</span>: 8.1,
-          <span class="s2">"concentrated"</span>: 1.0,
-          <span class="s2">"tail"</span>: 10.0,
-          <span class="s2">"correlation"</span>: 8.0,
-          <span class="s2">"volatility"</span>: 8.0
-      <span class="o">}</span>,
-      <span class="s2">"tolerance"</span>: <span class="o">{</span>
-          <span class="s2">"overall"</span>: 3.0,
-          <span class="s2">"concentrated"</span>: 3.0,
-          <span class="s2">"tail"</span>: 2.0,
-          <span class="s2">"correlation"</span>: 3.0,
-          <span class="s2">"volatility"</span>: 4.0
-      <span class="o">}</span>,
+      <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+      <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
       <span class="s2">"drift"</span>: 5.1
     <span class="o">}</span>,
     …
@@ -2316,20 +2189,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
      <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
   <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
@@ -2366,20 +2227,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"last_name"</span>: <span class="s2">"May"</span>,
     <span class="s2">"email"</span>: <span class="s2">"brian.may@example.com"</span>
   <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
@@ -2451,20 +2300,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"last_name"</span>: <span class="s2">"May"</span>,
     <span class="s2">"email"</span>: <span class="s2">"b.may@example.com"</span>
   <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 8.1,
-      <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
-      <span class="s2">"correlation"</span>: 8.0,
-      <span class="s2">"volatility"</span>: 8.0
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"overall"</span>: 3.0,
-      <span class="s2">"concentrated"</span>: 3.0,
-      <span class="s2">"tail"</span>: 2.0,
-      <span class="s2">"correlation"</span>: 3.0,
-      <span class="s2">"volatility"</span>: 4.0
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 
@@ -2515,11 +2352,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"overall"</span>: 8.2
-  <span class="s2">"concentrated"</span>: 4.8
-  <span class="s2">"concentrated"</span>: 4.7,
-  <span class="s2">"correlation"</span>: 6.0,
-  <span class="s2">"volatility"</span>: 9.2
+  <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>,
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -2536,40 +2370,25 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>overall</td>
-<td>float</td>
-<td>Overall score</td>
+<td>scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Risk score factors</td>
 </tr>
 <tr>
-<td>concentrated</td>
-<td>float</td>
-<td>Concentration score</td>
-</tr>
-<tr>
-<td>correlation</td>
-<td>float</td>
-<td>Correlation score</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>float</td>
-<td>Tail score</td>
-</tr>
-<tr>
-<td>volatility</td>
-<td>float</td>
-<td>Volatility score</td>
+<td>media</td>
+<td><a href="#scores-media">Scores Images</a></td>
+<td>Risk score factors images</td>
 </tr>
 </tbody></table>
 <h1 id='risk-and-tolerance'>Risk and Tolerance</h1><h2 id='scores-factors'>Scores Factors</h2>
 <blockquote>
-<p>Risk Factors</p>
+<p>Scores Factors</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
     <span class="s2">"overall"</span>: 8.1,
     <span class="s2">"concentrated"</span>: 1.0,
-    <span class="s2">"tail"</span>: 10.0,
     <span class="s2">"correlation"</span>: 8.0,
+    <span class="s2">"tail"</span>: 9.0,
     <span class="s2">"volatility"</span>: 8.0
 <span class="o">}</span>
 </code></pre></div>
@@ -2591,6 +2410,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Concentrated score</td>
 </tr>
 <tr>
+<td>correlation</td>
+<td>float</td>
+<td>Correlation score</td>
+</tr>
+<tr>
 <td>tail</td>
 <td>float</td>
 <td>Tail score</td>
@@ -2600,10 +2424,120 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>float</td>
 <td>Volatility score</td>
 </tr>
+</tbody></table>
+<h2 id='scores-media'>Scores Media</h2>
+<blockquote>
+<p>Scores Images</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"overall"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/81.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/81.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/81.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"concentrated"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/10.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/10.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/10.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"correlation"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/80.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/80.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/80.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"tail"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/90.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/90.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/90.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"volatility"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/80.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/80.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/80.png"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<table><thead>
 <tr>
-<td>correlation</td>
-<td>float</td>
-<td>Correlation score</td>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>overall.large</td>
+<td>string</td>
+<td>Overall score image URL - large version</td>
+</tr>
+<tr>
+<td>overall.medium</td>
+<td>string</td>
+<td>Overall score image URL - medium version</td>
+</tr>
+<tr>
+<td>overall.compact</td>
+<td>string</td>
+<td>Overall score image URL - compact version</td>
+</tr>
+<tr>
+<td>concentrated.large</td>
+<td>string</td>
+<td>Concentrated score image URL - large version</td>
+</tr>
+<tr>
+<td>concentrated.medium</td>
+<td>string</td>
+<td>Concentrated score image URL - medium version</td>
+</tr>
+<tr>
+<td>concentrated.compact</td>
+<td>string</td>
+<td>Concentrated score image URL - compact version</td>
+</tr>
+<tr>
+<td>correlation.large</td>
+<td>string</td>
+<td>Correlation score image URL - large version</td>
+</tr>
+<tr>
+<td>correlation.medium</td>
+<td>string</td>
+<td>Correlation score image URL - medium version</td>
+</tr>
+<tr>
+<td>correlation.compact</td>
+<td>string</td>
+<td>Correlation score image URL - compact version</td>
+</tr>
+<tr>
+<td>tail.large</td>
+<td>string</td>
+<td>Tail score image URL - large version</td>
+</tr>
+<tr>
+<td>tail.medium</td>
+<td>string</td>
+<td>Tail score image URL - medium version</td>
+</tr>
+<tr>
+<td>tail.compact</td>
+<td>string</td>
+<td>Tail score image URL - compact version</td>
+</tr>
+<tr>
+<td>volatility.large</td>
+<td>string</td>
+<td>Volatility score image URL - large version</td>
+</tr>
+<tr>
+<td>volatility.medium</td>
+<td>string</td>
+<td>Volatility score image URL - medium version</td>
+</tr>
+<tr>
+<td>volatility.compact</td>
+<td>string</td>
+<td>Volatility score image URL - compact version</td>
 </tr>
 </tbody></table>
 <h2 id='risk-object-definition'>Risk Object Definition</h2>
@@ -2614,10 +2548,38 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"scores"</span>: <span class="o">{</span>
       <span class="s2">"overall"</span>: 8.1,
       <span class="s2">"concentrated"</span>: 1.0,
-      <span class="s2">"tail"</span>: 10.0,
+      <span class="s2">"tail"</span>: 9.0,
       <span class="s2">"correlation"</span>: 8.0,
       <span class="s2">"volatility"</span>: 8.0
   <span class="o">}</span>,
+  <span class="s2">"media"</span>: <span class="o">{</span>
+    <span class="s2">"overall"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/81.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/81.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/81.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"concentrated"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/10.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/10.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/10.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"correlation"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/80.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/80.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/80.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"tail"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/90.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/90.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/90.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"volatility"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/80.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/80.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/80.png"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"created"</span>: <span class="s2">"2021-04-21T15:11:37.564188"</span>,
   <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
       <span class="o">{</span>
           <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TARGET 2045"</span>,
@@ -2673,6 +2635,16 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Risk score factors</td>
 </tr>
 <tr>
+<td>media</td>
+<td><a href="#scores-media">Scores Images</a></td>
+<td>Risk score factors images</td>
+</tr>
+<tr>
+<td>created</td>
+<td>date</td>
+<td>Score timestamp</td>
+</tr>
+<tr>
 <td>top_risk_attributions[].ticker</td>
 <td>string</td>
 <td>Risk attribution ticker</td>
@@ -2721,10 +2693,37 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"scores"</span>: <span class="o">{</span>
       <span class="s2">"overall"</span>: 6.4,
       <span class="s2">"concentrated"</span>: 5.0,
+      <span class="s2">"correlation"</span>: 5.0,
       <span class="s2">"tail"</span>: 5.0,
-      <span class="s2">"volatility"</span>: 8.0,
-      <span class="s2">"correlation"</span>: 5.0
-  <span class="o">}</span>
+      <span class="s2">"volatility"</span>: 8.0
+  <span class="o">}</span>,
+  <span class="s2">"media"</span>: <span class="o">{</span>
+    <span class="s2">"overall"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/64.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/64.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/64.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"concentrated"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/50.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/50.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/50.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"correlation"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/50.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/50.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/50.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"tail"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/50.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/50.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/50.png"</span>
+    <span class="o">}</span>,
+    <span class="s2">"volatility"</span>: <span class="o">{</span>
+        <span class="s2">"large"</span>: <span class="s2">"https://scores-media.stratifi.com/10/large/80.png"</span>,
+        <span class="s2">"medium"</span>: <span class="s2">"https://scores-media.stratifi.com/10/medium/80.png"</span>,
+        <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/80.png"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -2738,6 +2737,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>scores</td>
 <td><a href="#scores-factors">Scores Factors</a></td>
 <td>Tolerance score factors</td>
+</tr>
+<tr>
+<td>media</td>
+<td><a href="#scores-media">Scores Images</a></td>
+<td>Tolerance score factors images</td>
 </tr>
 </tbody></table>
 <h1 id='positions'>Positions</h1>
@@ -2839,64 +2843,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
         <span class="s2">"value"</span>: 875.0
     <span class="o">}</span>
   <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-      <span class="s2">"scores"</span>: <span class="o">{</span>
-          <span class="s2">"concentrated"</span>: 1.0,
-          <span class="s2">"tail"</span>: 10.0,
-          <span class="s2">"correlation"</span>: 8.0,
-          <span class="s2">"overall"</span>: 8.1,
-          <span class="s2">"volatility"</span>: 8.0
-      <span class="o">}</span>,
-      <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
-          <span class="o">{</span>
-              <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TARGET 2045"</span>,
-              <span class="s2">"ticker"</span>: <span class="s2">"OPPI"</span>,
-              <span class="s2">"risk"</span>: 0.9997862976486193,
-              <span class="s2">"weight"</span>: 99.763225
-          <span class="o">}</span>,
-          <span class="o">{</span>
-              <span class="s2">"ticker_name"</span>: <span class="s2">"Fha Non Int Bearing"</span>,
-              <span class="s2">"ticker"</span>: <span class="s2">"UNTB"</span>,
-              <span class="s2">"risk"</span>: 0.00021370235138087705,
-              <span class="s2">"weight"</span>: 0.236775
-          <span class="o">}</span>
-      <span class="o">]</span>,
-      <span class="s2">"scenarios"</span>: <span class="o">[</span>
-          <span class="o">{</span>
-              <span class="s2">"risk"</span>: 8.8,
-              <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
-              <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
-              <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-              <span class="s2">"risk"</span>: 8.8,
-              <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
-              <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
-              <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-              <span class="s2">"risk"</span>: 8.1,
-              <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
-              <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
-              <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
-          <span class="o">}</span>,
-          <span class="o">{</span>
-              <span class="s2">"risk"</span>: 7.7,
-              <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
-              <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
-              <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
-          <span class="o">}</span>
-      <span class="o">]</span>
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-      <span class="s2">"scores"</span>: <span class="o">{</span>
-          <span class="s2">"concentrated"</span>: 5.0,
-          <span class="s2">"tail"</span>: 5.0,
-          <span class="s2">"volatility"</span>: 8.0,
-          <span class="s2">"overall"</span>: 6.4,
-          <span class="s2">"correlation"</span>: 5.0
-      <span class="o">}</span>
-  <span class="o">}</span>,
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.7
 <span class="o">}</span>
 </code></pre></div>
@@ -2930,7 +2878,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <tr>
 <td>type</td>
 <td>string</td>
-<td>Account type. One of <a href="http://api.stratifi.com/docs/v1/#account-types">these values</a>.</td>
+<td>Account type .</td>
 </tr>
 <tr>
 <td>tax_status</td>
@@ -2976,74 +2924,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>drift</td>
 <td>float</td>
 <td>Drift between the risk and the tolerance overall scores</td>
-</tr>
-</tbody></table>
-<h3 id='account-types'>Account Types</h3>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>100</td>
-<td>Individual</td>
-</tr>
-<tr>
-<td>101</td>
-<td>Joint</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Revocable Living Trust</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Irrevocable Living Trust</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Limited Liability Company</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Limited Liability Limited Partnership</td>
-</tr>
-<tr>
-<td>302</td>
-<td>S Corporation</td>
-</tr>
-<tr>
-<td>303</td>
-<td>C Corporation</td>
-</tr>
-<tr>
-<td>304</td>
-<td>Sole Proprietorship</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Traditional IRA</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Simplified Employee Pension IRA</td>
-</tr>
-<tr>
-<td>402</td>
-<td>Savings Incentive Match Plan for Employees IRA</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Roth IRA</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Rollover IRA</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Household Account</td>
 </tr>
 </tbody></table>
 <h3 id='account-tax-statuses'>Account Tax Statuses</h3>
@@ -3412,11 +3292,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/accounts/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"concentrated"</span>: 4.2
-  <span class="s2">"concentrated"</span>: 4.7,
-  <span class="s2">"correlation"</span>: 6.0,
-  <span class="s2">"overall"</span>: 8.2
-  <span class="s2">"volatility"</span>: 9.2
+  <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>,
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -3433,29 +3310,14 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>overall</td>
-<td>float</td>
-<td>Overall score</td>
+<td>scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Risk score factors</td>
 </tr>
 <tr>
-<td>concentrated</td>
-<td>float</td>
-<td>Concentration score</td>
-</tr>
-<tr>
-<td>correlation</td>
-<td>float</td>
-<td>Correlation score</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>float</td>
-<td>Tail score</td>
-</tr>
-<tr>
-<td>volatility</td>
-<td>float</td>
-<td>Volatility score</td>
+<td>media</td>
+<td><a href="#scores-media">Scores Images</a></td>
+<td>Risk score factors images</td>
 </tr>
 </tbody></table>
 <h1 id='model-portfolios'>Model Portfolios</h1><h2 id='model-portfolio-object-definition'>Model Portfolio Object Definition</h2>
@@ -3481,57 +3343,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
         <span class="s2">"value"</span>: 80.0
     <span class="o">}</span>
   <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-    <span class="s2">"start_date"</span>: <span class="s2">"2005-01-01"</span>,
-    <span class="s2">"end_date"</span>: <span class="s2">"2019-11-10"</span>,
-    <span class="s2">"scores"</span>: <span class="o">{</span>
-        <span class="s2">"concentrated"</span>: 1.0,
-        <span class="s2">"tail"</span>: 8.0,
-        <span class="s2">"correlation"</span>: 8.0,
-        <span class="s2">"overall"</span>: 6.8,
-        <span class="s2">"volatility"</span>: 6
-    <span class="o">}</span>,
-    <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"ticker_name"</span>: <span class="s2">"SPDR S&amp;P500 ETF Trust"</span>,
-            <span class="s2">"ticker"</span>: <span class="s2">"SPY"</span>,
-            <span class="s2">"risk"</span>: 0.9924230255643414,
-            <span class="s2">"weight"</span>: 80.0
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"ticker_name"</span>: <span class="s2">"iShares Core US Aggregate Bond"</span>,
-            <span class="s2">"ticker"</span>: <span class="s2">"AGG"</span>,
-            <span class="s2">"risk"</span>: 0.0075769744356585424,
-            <span class="s2">"weight"</span>: 20.0
-        <span class="o">}</span>
-    <span class="o">]</span>,
-    <span class="s2">"scenarios"</span>: <span class="o">[</span>
-        <span class="o">{</span>
-            <span class="s2">"risk"</span>: 8.1,
-            <span class="s2">"name"</span>: <span class="s2">"Global Financial Crisis"</span>,
-            <span class="s2">"end_date"</span>: <span class="s2">"2009-2-1"</span>,
-            <span class="s2">"start_date"</span>: <span class="s2">"2007-2-1"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"risk"</span>: 7.7,
-            <span class="s2">"name"</span>: <span class="s2">"2011 Euro Credit Crisis"</span>,
-            <span class="s2">"end_date"</span>: <span class="s2">"2012-1-1"</span>,
-            <span class="s2">"start_date"</span>: <span class="s2">"2010-1-1"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"risk"</span>: 6.4,
-            <span class="s2">"name"</span>: <span class="s2">"2013 Taper Tantrum"</span>,
-            <span class="s2">"end_date"</span>: <span class="s2">"2014-6-1"</span>,
-            <span class="s2">"start_date"</span>: <span class="s2">"2012-6-1"</span>
-        <span class="o">}</span>,
-        <span class="o">{</span>
-            <span class="s2">"risk"</span>: 6.4,
-            <span class="s2">"name"</span>: <span class="s2">"2015-16 Market Selloff"</span>,
-            <span class="s2">"end_date"</span>: <span class="s2">"2017-1-1"</span>,
-            <span class="s2">"start_date"</span>: <span class="s2">"2015-1-1"</span>
-        <span class="o">}</span>
-    <span class="o">]</span>
-  <span class="o">}</span>
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -3848,11 +3660,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/models/11/prism_score/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
-  <span class="s2">"concentrated"</span>: 4.214532742005072
-  <span class="s2">"concentrated"</span>: 4.785445142005072,
-  <span class="s2">"correlation"</span>: 6.049895392953136,
-  <span class="s2">"overall"</span>: 8.2145327985038
-  <span class="s2">"volatility"</span>: 9.224755263382502
+  <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>,
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -3869,29 +3678,14 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>overall</td>
-<td>float</td>
-<td>Overall score</td>
+<td>scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Risk score factors</td>
 </tr>
 <tr>
-<td>concentrated</td>
-<td>float</td>
-<td>Concentration score</td>
-</tr>
-<tr>
-<td>correlation</td>
-<td>float</td>
-<td>Correlation score</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>float</td>
-<td>Tail score</td>
-</tr>
-<tr>
-<td>volatility</td>
-<td>float</td>
-<td>Volatility score</td>
+<td>media</td>
+<td><a href="#scores-media">Scores Images</a></td>
+<td>Risk score factors images</td>
 </tr>
 </tbody></table>
 <h1 id='securities'>Securities</h1>
@@ -4016,6 +3810,16 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.6.0
+
+<ul>
+<li>Enhance the risk and tolerance objects with score factors and media.</li>
+</ul></li>
+<li>1.5.1
+
+<ul>
+<li>Remove restrictions to the account type field.</li>
+</ul></li>
 <li>1.5.0
 
 <ul>
