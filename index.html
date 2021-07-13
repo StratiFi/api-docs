@@ -441,6 +441,9 @@
             <a href="#risk-and-tolerance" class="toc-h1 toc-link" data-title="Risk and Tolerance">Risk and Tolerance</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#risk-statuses" class="toc-h2 toc-link" data-title="Risk statuses">Risk statuses</a>
+                  </li>
+                  <li>
                     <a href="#scores-factors" class="toc-h2 toc-link" data-title="Scores Factors">Scores Factors</a>
                   </li>
                   <li>
@@ -1666,6 +1669,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td><a href="#scores-media">Scores Images</a></td>
 <td>Risk score factors images</td>
 </tr>
+<tr>
+<td>status</td>
+<td><a href="#scores-status">Scores Status</a></td>
+<td>Risk score status</td>
+</tr>
 </tbody></table>
 <h1 id='households'>Households</h1><h2 id='household-object-definition'>Household Object Definition</h2>
 <blockquote>
@@ -1976,6 +1984,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>media</td>
 <td><a href="#scores-media">Scores Images</a></td>
 <td>Risk score factors images</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#scores-status">Scores Status</a></td>
+<td>Risk score status</td>
 </tr>
 </tbody></table>
 <h1 id='investors'>Investors</h1><h2 id='investor-object-definition'>Investor Object Definition</h2>
@@ -2379,8 +2392,44 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td><a href="#scores-media">Scores Images</a></td>
 <td>Risk score factors images</td>
 </tr>
+<tr>
+<td>status</td>
+<td><a href="#scores-status">Scores Status</a></td>
+<td>Risk score status</td>
+</tr>
 </tbody></table>
-<h1 id='risk-and-tolerance'>Risk and Tolerance</h1><h2 id='scores-factors'>Scores Factors</h2>
+<h1 id='risk-and-tolerance'>Risk and Tolerance</h1><h2 id='risk-statuses'>Risk statuses</h2>
+<p>Calculating scores for a portfolio might take some time (from a few seconds to a few minutes). In order to make our system more responsive, we calculate the scores in asynchronously. That means that when an account is created or updated, we will be able to provide an immediate answer to the request and, at the same time, queue the score calculation. In the response, we provide a readable status that indicates what is happening in background. The available statuses are:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pending (Default)</td>
+<td>string</td>
+<td>The risk score calculation has not started</td>
+</tr>
+<tr>
+<td>processing</td>
+<td>string</td>
+<td>The risk score calculation is in progress or the existing score is outdated</td>
+</tr>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>The last risk score calculation failed</td>
+</tr>
+<tr>
+<td>ready</td>
+<td>string</td>
+<td>The risk score calculation is completed and is up to date</td>
+</tr>
+</tbody></table>
+<h2 id='scores-factors'>Scores Factors</h2>
 <blockquote>
 <p>Scores Factors</p>
 </blockquote>
@@ -2549,6 +2598,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
         <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/80.png"</span>
     <span class="o">}</span>
   <span class="o">}</span>,
+  <span class="s2">"status"</span>: <span class="s2">"processing"</span>,
   <span class="s2">"created"</span>: <span class="s2">"2021-04-21T15:11:37.564188"</span>,
   <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
       <span class="o">{</span>
@@ -2608,6 +2658,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>media</td>
 <td><a href="#scores-media">Scores Images</a></td>
 <td>Risk score factors images</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#scores-status">Scores Status</a></td>
+<td>Risk score status</td>
 </tr>
 <tr>
 <td>created</td>
@@ -3656,6 +3711,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>media</td>
 <td><a href="#scores-media">Scores Images</a></td>
 <td>Risk score factors images</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#scores-status">Scores Status</a></td>
+<td>Risk score status</td>
 </tr>
 </tbody></table>
 <h1 id='securities'>Securities</h1>
