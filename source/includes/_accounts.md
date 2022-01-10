@@ -275,7 +275,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
 | number         | string                                  | Optional |
 | investor       | int                                     | Optional |
 | advisor [3]    | int                                     | Optional |
-| stratehy [4]   | int                                     | Optional |
+| strategy [4]   | int                                     | Optional |
 | external_id    | string                                  | Optional |
 
 ## Account Prism Score
