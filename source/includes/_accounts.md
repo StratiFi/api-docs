@@ -56,8 +56,8 @@
 | Value        | Description           |
 | ------------ | --------------------- |
 | taxable      | Taxable accounts      |
-| tax-exempt   | Tax Exempt accounts   |
-| tax-deferred | Tax Deferred accounts |
+| exempt   | Tax Exempt accounts   |
+| deferred | Tax Deferred accounts |
 
 ## List Accounts
 

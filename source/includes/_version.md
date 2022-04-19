@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.6.1 (2022-03-19)
+  - Fix accepted values for tax status
 - 1.6.0
   - Enhance the risk and tolerance objects with score factors and media.
 - 1.5.1
