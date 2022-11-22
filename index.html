@@ -644,10 +644,6 @@
 <h2 id='authorization-code-flow-pcke'>Authorization Code Flow + PCKE</h2>
 <p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
 
-<ol>
-<li>Generate an authentication code grant with PKCE (Proof Key for Code Exchange)</li>
-</ol>
-
 <blockquote>
 <p>PCKE</p>
 </blockquote>
@@ -667,11 +663,14 @@
     <span class="n">base64</span><span class="p">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">code_challenge</span><span class="p">).</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>1.1. Generate a <code>code_verifier</code> random string between 43 and 128 characters.
-    1.2. Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.
-    1.3. Take note of both codes since we will include them in the next steps.</p>
-
 <ol>
+<li><p>Generate an authentication code grant with PKCE (Proof Key for Code Exchange).</p>
+
+<ul>
+<li>Generate a <code>code_verifier</code> random string between 43 and 128 characters.</li>
+<li>Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.</li>
+<li>Take note of both codes since we will include them in the next steps.</li>
+</ul></li>
 <li><p>Redirect the advisor to the StratiFi authorization page:</p>
 
 <p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;code_challenge={{ code_challenge }}&amp;client_id={{ client_id }}&amp;scope={{ scope }}</code></p>
