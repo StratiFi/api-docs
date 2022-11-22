@@ -645,7 +645,8 @@
 <p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
 
 <ol>
-<li><p>Generate an authentication code grant with PKCE (Proof Key for Code Exchange)</p>
+<li>Generate an authentication code grant with PKCE (Proof Key for Code Exchange)</li>
+</ol>
 
 <blockquote>
 <p>PCKE</p>
@@ -665,9 +666,7 @@
 <span class="n">code_challenge</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">base64</span><span class="p">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">code_challenge</span><span class="p">).</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
 <span class="p">)</span>
-</code></pre></div></li>
-</ol>
-
+</code></pre></div>
 <p>- Generate a <code>code_verifier</code> random string between 43 and 128 characters.
     - Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.
     - Take note of both codes since we will include them in the next steps.</p>
