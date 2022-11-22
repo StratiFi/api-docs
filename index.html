@@ -645,44 +645,86 @@
 <p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
 
 <ol>
-<li><p>Generate an authentication code grant with PKCE (Proof Key for Code Exchange)</p></li>
-<li><p>Redirect the advisor to the StratiFi authorization page:</p></li>
+<li>Generate an authentication code grant with PKCE (Proof Key for Code Exchange)</li>
 </ol>
+
+<blockquote>
+<p>PCKE</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+<span class="n">code_verifier</span> <span class="o">=</span> <span class="s">""</span><span class="p">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">string</span><span class="p">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="p">.</span><span class="n">digits</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">43</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">code_verifier</span> <span class="o">=</span> <span class="n">base64</span><span class="p">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">code_verifier</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+
+<span class="n">code_challenge</span> <span class="o">=</span> <span class="n">hashlib</span><span class="p">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">code_verifier</span><span class="p">).</span><span class="n">digest</span><span class="p">()</span>
+<span class="n">code_challenge</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">base64</span><span class="p">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">code_challenge</span><span class="p">).</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>- Generate a <code>code_verifier</code> random string between 43 and 128 characters.
+    - Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.
+    - Take note of both codes since we will include them in the next steps.</p>
+
+<ol>
+<li><p>Redirect the advisor to the StratiFi authorization page:</p>
 
 <p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;code_challenge={{ code_challenge }}&amp;client_id={{ client_id }}&amp;scope={{ scope }}</code></p>
 
-<p>| Parameter      | Description                                                      |
-   | -------------- | ---------------------------------------------------------------- |
-   | domain         | StratiFi sandbox or production domain                            |
-   | code_challenge | Random string between 43 and 128 characters encoded with SHA-256 |
-   | client_id      | Provided by StratiFi                                             |
-   | scope          | Required scopes. You will want to use &quot;read write&quot;               |</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain</td>
+<td>StratiFi sandbox or production domain</td>
+</tr>
+<tr>
+<td>code_challenge</td>
+<td>Random string between 43 and 128 characters encoded with SHA-256</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>Provided by StratiFi</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Required scopes. You will want to use &quot;read write&quot;</td>
+</tr>
+</tbody></table></li>
+<li><p>The advisor submits the StratiFi credentials.</p>
 
-<ol>
-<li>The advisor submits the StratiFi credentials.</li>
-</ol>
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login" /></p></li>
+<li><p>The advisor allow your application access the resources in StratiFi.</p>
 
-<p><img src="https://s3.amazonaws.com/api.stratifi.com/login.2.png" title="Login" alt="login" /></p>
-
-<ol>
-<li>The advisor allow your application access the resources in StratiFi.</li>
-</ol>
-
-<p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant" /></p>
-
-<ol>
-<li>We redirect the browser to your return url with a single-usage access code.</li>
-</ol>
+<p><img src="https://s3.amazonaws.com/api.stratifi.com/grant.2.png" title="Grant" alt="grant" /></p></li>
+<li><p>We redirect the browser to your return url with a single-usage access code.</p>
 
 <p><code>https://{{ callback-url }}code={{ code }}</code></p>
 
-<p>| Parameter    | Description                                                |
-   | ------------ | ---------------------------------------------------------- |
-   | callback-url | URL provided by you when during the application setup      |
-   | code         | Single-usage code that can be exchanged by an access token |</p>
-
-<ol>
-<li>Your application backend exchange the access code by an access token.</li>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callback-url</td>
+<td>URL provided by you when during the application setup</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Single-usage code that can be exchanged by an access token</td>
+</tr>
+</tbody></table></li>
+<li><p>Your application backend exchange the access code by an access token.</p></li>
 </ol>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>
 curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
