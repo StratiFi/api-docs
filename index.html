@@ -667,9 +667,11 @@
     <span class="n">base64</span><span class="p">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">code_challenge</span><span class="p">).</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>- Generate a <code>code_verifier</code> random string between 43 and 128 characters.
-    - Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.
-    - Take note of both codes since we will include them in the next steps.</p>
+<p>- Generate a <code>code_verifier</code> random string between 43 and 128 characters.</p>
+
+<p>- Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.</p>
+
+<p>- Take note of both codes since we will include them in the next steps.</p>
 
 <ol>
 <li><p>Redirect the advisor to the StratiFi authorization page:</p>
