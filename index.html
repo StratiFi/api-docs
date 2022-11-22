@@ -647,14 +647,6 @@
 <ol>
 <li>Generate an authentication code grant with PKCE (Proof Key for Code Exchange)</li>
 </ol>
-
-<ul>
-<li>Generate a <code>code_verifier</code> random string between 43 and 128 characters.</li>
-<li>Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.</li>
-<li>Take note of code_challenge since we will include it in the code flow URL.</li>
-</ul>
-
-<p>For instance:</p>
 <div class="highlight"><pre class="highlight python tab-python"><code>  <span class="kn">import</span> <span class="nn">random</span>
   <span class="kn">import</span> <span class="nn">string</span>
   <span class="kn">import</span> <span class="nn">base64</span>
@@ -666,6 +658,12 @@
   <span class="n">code_challenge</span> <span class="o">=</span> <span class="n">hashlib</span><span class="p">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">code_verifier</span><span class="p">).</span><span class="n">digest</span><span class="p">()</span>
   <span class="n">code_challenge</span> <span class="o">=</span> <span class="n">base64</span><span class="p">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">code_challenge</span><span class="p">).</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">'='</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
 </code></pre></div>
+<ul>
+<li>Generate a <code>code_verifier</code> random string between 43 and 128 characters.</li>
+<li>Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.</li>
+<li>Take note of code_challenge since we will include it in the code flow URL.</li>
+</ul>
+
 <ol>
 <li>Redirect the advisor to the StratiFi authorization page:</li>
 </ol>
