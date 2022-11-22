@@ -664,16 +664,19 @@
 <span class="p">)</span>
 </code></pre></div>
 <ol>
-<li><p>Generate an authentication code grant with PKCE (Proof Key for Code Exchange).</p>
+<li>Generate an authentication code grant with PKCE (Proof Key for Code Exchange).</li>
+</ol>
 
 <ul>
 <li>Generate a <code>code_verifier</code> random string between 43 and 128 characters.</li>
 <li>Encode the <code>code_verifier</code> with SHA-256 to produce a <code>code_challenge</code>.</li>
 <li>Take note of both codes since we will include them in the next steps.</li>
-</ul></li>
+</ul>
+
+<ol>
 <li><p>Redirect the advisor to the StratiFi authorization page:</p>
 
-<p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;code_challenge={{ code_challenge }}&amp;client_id={{ client_id }}&amp;scope={{ scope }}</code></p>
+<p><code>https://{{ domain }}/o/authorize/?response_type=code&amp;code_challenge={{ code_challenge }}&amp;code_challenge_method=S256&amp;client_id={{ client_id }}&amp;scope={{ scope }}</code></p>
 
 <table><thead>
 <tr>
