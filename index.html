@@ -3449,6 +3449,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Model Portfolio type</td>
 </tr>
 <tr>
+<td>is_strategy</td>
+<td>bool</td>
+<td>Is this model a strategy?</td>
+</tr>
+<tr>
 <td>company</td>
 <td>int</td>
 <td>Company ID</td>
@@ -3481,6 +3486,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
       <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
       <span class="s2">"value"</span>: 100.0,
       <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
+      <span class="s2">"is_strategy"</span>: <span class="nb">false</span>,
       <span class="s2">"company"</span>: 1,
       <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
       <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
@@ -3551,6 +3557,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
   <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
+  <span class="s2">"is_strategy"</span>: <span class="nb">false</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
@@ -3571,6 +3578,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     "name": "80% Equities / 20% Fixed Income",
     "value": 100.0,
     "type": "Aggressive",
+    "is_strategy": false,
     "company": 1,
     "positions": [
       {
@@ -3592,6 +3600,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
   <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
+  <span class="s2">"is_strategy"</span>: <span class="nb">false</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
@@ -3631,6 +3640,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 <tr>
+<td>is_strategy</td>
+<td>bool</td>
+<td>Optional</td>
+</tr>
+<tr>
 <td>company</td>
 <td>int</td>
 <td>Optional</td>
@@ -3653,6 +3667,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     "name": "70% Equities / 30% Fixed Income",
     "value": 100.0,
     "type": "Moderate",
+    "is_strategy": true,
     "company": 1,
     "positions": [
       {
@@ -3674,6 +3689,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
   <span class="s2">"type"</span>: <span class="s2">"Moderate"</span>,
+  <span class="s2">"is_strategy"</span>: <span class="nb">true</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
@@ -3710,6 +3726,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <tr>
 <td>type *</td>
 <td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>is_strategy</td>
+<td>bool</td>
 <td>Optional</td>
 </tr>
 <tr>
@@ -3885,6 +3906,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.8.0 (2023-02-28)
+
+<ul>
+<li>Allow setting model portfolios as strategies.</li>
+</ul></li>
 <li>1.7.0 (2022-11-22)
 
 <ul>
