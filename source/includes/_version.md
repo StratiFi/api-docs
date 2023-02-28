@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.8.0 (2023-02-28)
+  - Allow setting model portfolios as strategies.
 - 1.7.0 (2022-11-22)
   - Allow Proof Key for Code Exchange.
 - 1.6.1 (2022-03-19)

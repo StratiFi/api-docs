@@ -28,16 +28,17 @@
 }
 ```
 
-| Name        | Type                                    | Description              |
-| ----------- | --------------------------------------- | ------------------------ |
-| id          | int                                     | Model Portfolio ID       |
-| external_id | string                                  | Your model identifier    |
-| name        | string                                  | Model Portfolio name     |
-| value       | string                                  | Model Portfolio value    |
-| type        | string                                  | Model Portfolio type     |
-| company     | int                                     | Company ID               |
-| positions[] | List of [Positions Objects](#positions) | Model Portfolio holdings |
-| risk        | [Risk Object](#risk-object-definition)  | Model Portfolio risk     |
+| Name        | Type                                    | Description               |
+| ----------- | --------------------------------------- | ------------------------- |
+| id          | int                                     | Model Portfolio ID        |
+| external_id | string                                  | Your model identifier     |
+| name        | string                                  | Model Portfolio name      |
+| value       | string                                  | Model Portfolio value     |
+| type        | string                                  | Model Portfolio type      |
+| is_strategy | bool                                    | Is this model a strategy? |
+| company     | int                                     | Company ID                |
+| positions[] | List of [Positions Objects](#positions) | Model Portfolio holdings  |
+| risk        | [Risk Object](#risk-object-definition)  | Model Portfolio risk      |
 
 ## List Model Portfolios
 
@@ -57,6 +58,7 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
       "name": "80% Equities / 20% Fixed Income",
       "value": 100.0,
       "type": "Aggressive",
+      "is_strategy": false,
       "company": 1,
       "positions": [ … ],
       "risk": { … }
@@ -98,6 +100,7 @@ curl "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: Bearer {
   "name": "80% Equities / 20% Fixed Income",
   "value": 100.0,
   "type": "Aggressive",
+  "is_strategy": false,
   "company": 1,
   "positions": [ … ],
   "risk": { … }
@@ -121,6 +124,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
     "name": "80% Equities / 20% Fixed Income",
     "value": 100.0,
     "type": "Aggressive",
+    "is_strategy": false,
     "company": 1,
     "positions": [
       {
@@ -142,6 +146,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
   "name": "80% Equities / 20% Fixed Income",
   "value": 100.0,
   "type": "Aggressive",
+  "is_strategy": false,
   "company": 1,
   "positions": [ … ],
   "risk": { … }
@@ -160,6 +165,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
 | positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
 | type        | string                                  | Optional |
+| is_strategy | bool                                    | Optional |
 | company     | int                                     | Optional |
 | external_id | int                                     | Optional |
 
@@ -176,6 +182,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
     "name": "70% Equities / 30% Fixed Income",
     "value": 100.0,
     "type": "Moderate",
+    "is_strategy": true,
     "company": 1,
     "positions": [
       {
@@ -197,6 +204,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
   "name": "80% Equities / 20% Fixed Income",
   "value": 100.0,
   "type": "Moderate",
+  "is_strategy": true,
   "company": 1,
   "positions": [ … ],
   "risk": { … }
@@ -215,6 +223,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
 | positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
 | type \*     | string                                  | Optional |
+| is_strategy | bool                                    | Optional |
 | company     | int                                     | Optional |
 | external_id | int                                     | Optional |
 
