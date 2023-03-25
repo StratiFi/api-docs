@@ -16,16 +16,7 @@
      "first_name":"John",
      "last_name":"Wick",
      "email":"john.wick@example.com"
-  },
-  "risk": {
-    "scores": {…},
-    "media": {…}
-  },
-  "tolerance": {
-    "scores": {…},
-    "media": {…}
-  },
-  "drift": 5.1
+  }
 }
 ```
 
@@ -38,11 +29,6 @@
 | phone            | string                                 | Advisor Phone                                 |
 | title            | string                                 | Advisor Job Title                             |
 | user             | [User Object](#user-object-definition) | User info                                     |
-| risk.scores      | [Scores Factors](#scores-factors)      | Advisor aggregated risk scores                |
-| risk.media       | [Scores Media](#scores-media)          | Advisor aggregated risk scores images         |
-| tolerance.scores | [Scores Factors](#scores-factors)      | Advisor aggregated tolerance scores           |
-| tolerance.media  | [Scores Media](#scores-factors)        | Advisor aggregated tolerance scores images    |
-| drift            | float                                  | Advisor drift score                           |
 
 (\*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an investor.
 
@@ -69,10 +55,7 @@ curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {
          "first_name":"John",
          "last_name":"Wick",
          "email":"john.wick@example.com"
-      },
-      "risk": {…},
-      "tolerance": {…},
-      "drift": 5.1
+      }
     },
     …
   ]
@@ -118,9 +101,6 @@ curl "https://backend.stratifi.com/api/v1/advisors/1/" -H "Authorization: Bearer
      "last_name":"Wick",
      "email":"john.wick@example.com"
   },
-  "risk": {…},
-  "tolerance": {…},
-  "drift": 5.1
 }
 ```
 
@@ -159,10 +139,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: 
     "first_name": "Doug",
     "last_name": "Spencer",
     "email": "doug.spencer@example.com"
-  },
-  "risk": {…},
-  "tolerance": {…},
-  "drift": 5.1
+  }
 }
 ```
 
@@ -211,10 +188,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/advisors/150/" -H "Authorizatio
     "first_name": "Doug",
     "last_name": "Spencer",
     "email": "dspencer@example.com"
-  },
-  "risk": {…},
-  "tolerance": {…},
-  "drift": 5.1
+  }
 }
 ```
 
@@ -256,3 +230,73 @@ curl "https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/" -H "Au
 | scores | [Scores Factors](#scores-factors) | Risk score factors        |
 | media  | [Scores Images](#scores-media)    | Risk score factors images |
 | status | [Scores Status](#scores-status)   | Risk score status         |
+
+## Advisor Stats
+
+> Advisor Stats
+
+```shell
+curl "https://backend.stratifi.com/api/v1/advisors/11/stats/" -H "Authorization: Bearer {{ access-token }}"
+
+{
+    "risk": {
+        "scores": {
+            "overall": …
+        },
+        "media": {
+            "overall": { … }
+        }
+    },
+    "tolerance": {
+        "scores": {
+            "overall": …
+        },
+        "media": {
+            "overall": { … }
+        }
+    },
+    "drift": …
+}
+```
+```shell
+curl "https://backend.stratifi.com/api/v1/advisors/stats/" -H "Authorization: Bearer {{ access-token }}"
+
+{
+  "10": {
+      "risk": {
+          "scores": {
+              "overall": …
+          },
+          "media": {
+              "overall": { … }
+          }
+      },
+      "tolerance": {
+          "scores": {
+              "overall": …
+          },
+          "media": {
+              "overall": { … }
+          }
+      },
+      "drift": …
+  },
+  <advisor_id>: { … },
+  …
+}
+```
+
+-request-type: GET
+
+-request-url: `/advisors/<id>/stats/`
+-request-url: `/advisors/stats/`
+
+**Response Fields**
+
+| Name             | Type                                   | Description                                   |
+| ---------------- | -------------------------------------- | --------------------------------------------- |
+| risk.scores      | [Scores Factors](#scores-factors)      | Advisor aggregated risk scores                |
+| risk.media       | [Scores Media](#scores-media)          | Advisor aggregated risk scores images         |
+| tolerance.scores | [Scores Factors](#scores-factors)      | Advisor aggregated tolerance scores           |
+| tolerance.media  | [Scores Media](#scores-factors)        | Advisor aggregated tolerance scores images    |
+| drift            | float                                  | Advisor drift score                           |
