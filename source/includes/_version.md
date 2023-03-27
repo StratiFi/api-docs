@@ -1,5 +1,9 @@
 # Changelog
 
+- 1.9.0 (2023-03-27)
+  - Remove `risk`, `tolerance` and `drift` attributes from the advisor list and detail.
+  - Remove `/advisors/<id>/prism_aggregation/` endpoint.
+  - Add `/advisors/stats/` and `/advisors/<id>/stats/` endpoints
 - 1.8.0 (2023-02-28)
   - Allow setting model portfolios as strategies.
 - 1.7.0 (2022-11-22)
