@@ -389,6 +389,9 @@
                   <li>
                     <a href="#advisor-prism-aggregation" class="toc-h2 toc-link" data-title="Advisor Prism Aggregation">Advisor Prism Aggregation</a>
                   </li>
+                  <li>
+                    <a href="#advisor-stats" class="toc-h2 toc-link" data-title="Advisor Stats">Advisor Stats</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1336,16 +1339,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
      <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
      <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-  <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>
-    <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
-    <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>
-    <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
-    <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -1390,31 +1384,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td><a href="#user-object-definition">User Object</a></td>
 <td>User info</td>
 </tr>
-<tr>
-<td>risk.scores</td>
-<td><a href="#scores-factors">Scores Factors</a></td>
-<td>Advisor aggregated risk scores</td>
-</tr>
-<tr>
-<td>risk.media</td>
-<td><a href="#scores-media">Scores Media</a></td>
-<td>Advisor aggregated risk scores images</td>
-</tr>
-<tr>
-<td>tolerance.scores</td>
-<td><a href="#scores-factors">Scores Factors</a></td>
-<td>Advisor aggregated tolerance scores</td>
-</tr>
-<tr>
-<td>tolerance.media</td>
-<td><a href="#scores-factors">Scores Media</a></td>
-<td>Advisor aggregated tolerance scores images</td>
-</tr>
-<tr>
-<td>drift</td>
-<td>float</td>
-<td>Advisor drift score</td>
-</tr>
 </tbody></table>
 
 <p>(*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an investor.</p>
@@ -1440,10 +1409,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
          <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
          <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
          <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
-      <span class="o">}</span>,
-      <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
-      <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-      <span class="s2">"drift"</span>: 5.1
+      <span class="o">}</span>
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -1522,9 +1488,6 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
      <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
   <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -1560,10 +1523,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"first_name"</span>: <span class="s2">"Doug"</span>,
     <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
     <span class="s2">"email"</span>: <span class="s2">"doug.spencer@example.com"</span>
-  <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -1635,10 +1595,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"first_name"</span>: <span class="s2">"Doug"</span>,
     <span class="s2">"last_name"</span>: <span class="s2">"Spencer"</span>,
     <span class="s2">"email"</span>: <span class="s2">"dspencer@example.com"</span>
-  <span class="o">}</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: PUT/PATCH</p>
@@ -1718,6 +1675,97 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>status</td>
 <td><a href="#scores-status">Scores Status</a></td>
 <td>Risk score status</td>
+</tr>
+</tbody></table>
+<h2 id='advisor-stats'>Advisor Stats</h2>
+<blockquote>
+<p>Advisor Stats</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/stats/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+
+<span class="o">{</span>
+    <span class="s2">"risk"</span>: <span class="o">{</span>
+        <span class="s2">"scores"</span>: <span class="o">{</span>
+            <span class="s2">"overall"</span>: …
+        <span class="o">}</span>,
+        <span class="s2">"media"</span>: <span class="o">{</span>
+            <span class="s2">"overall"</span>: <span class="o">{</span> … <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">"tolerance"</span>: <span class="o">{</span>
+        <span class="s2">"scores"</span>: <span class="o">{</span>
+            <span class="s2">"overall"</span>: …
+        <span class="o">}</span>,
+        <span class="s2">"media"</span>: <span class="o">{</span>
+            <span class="s2">"overall"</span>: <span class="o">{</span> … <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">"drift"</span>: …
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/stats/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+
+<span class="o">{</span>
+  <span class="s2">"10"</span>: <span class="o">{</span>
+      <span class="s2">"risk"</span>: <span class="o">{</span>
+          <span class="s2">"scores"</span>: <span class="o">{</span>
+              <span class="s2">"overall"</span>: …
+          <span class="o">}</span>,
+          <span class="s2">"media"</span>: <span class="o">{</span>
+              <span class="s2">"overall"</span>: <span class="o">{</span> … <span class="o">}</span>
+          <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"tolerance"</span>: <span class="o">{</span>
+          <span class="s2">"scores"</span>: <span class="o">{</span>
+              <span class="s2">"overall"</span>: …
+          <span class="o">}</span>,
+          <span class="s2">"media"</span>: <span class="o">{</span>
+              <span class="s2">"overall"</span>: <span class="o">{</span> … <span class="o">}</span>
+          <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"drift"</span>: …
+  <span class="o">}</span>,
+  &lt;advisor_id&gt;: <span class="o">{</span> … <span class="o">}</span>,
+  …
+<span class="o">}</span>
+</code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/advisors/&lt;id&gt;/stats/</code>
+-request-url: <code>/advisors/stats/</code></p>
+
+<p><strong>Response Fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>risk.scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Advisor aggregated risk scores</td>
+</tr>
+<tr>
+<td>risk.media</td>
+<td><a href="#scores-media">Scores Media</a></td>
+<td>Advisor aggregated risk scores images</td>
+</tr>
+<tr>
+<td>tolerance.scores</td>
+<td><a href="#scores-factors">Scores Factors</a></td>
+<td>Advisor aggregated tolerance scores</td>
+</tr>
+<tr>
+<td>tolerance.media</td>
+<td><a href="#scores-factors">Scores Media</a></td>
+<td>Advisor aggregated tolerance scores images</td>
+</tr>
+<tr>
+<td>drift</td>
+<td>float</td>
+<td>Advisor drift score</td>
 </tr>
 </tbody></table>
 <h1 id='households'>Households</h1><h2 id='household-object-definition'>Household Object Definition</h2>
