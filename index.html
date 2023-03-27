@@ -387,10 +387,7 @@
                     <a href="#update-advisor" class="toc-h2 toc-link" data-title="Update Advisor">Update Advisor</a>
                   </li>
                   <li>
-                    <a href="#advisor-prism-aggregation" class="toc-h2 toc-link" data-title="Advisor Prism Aggregation">Advisor Prism Aggregation</a>
-                  </li>
-                  <li>
-                    <a href="#advisor-stats" class="toc-h2 toc-link" data-title="Advisor Stats">Advisor Stats</a>
+                    <a href="#individual-advisor-stats" class="toc-h2 toc-link" data-title="Individual Advisor Stats">Individual Advisor Stats</a>
                   </li>
               </ul>
           </li>
@@ -1637,49 +1634,9 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>Optional</td>
 </tr>
 </tbody></table>
-<h2 id='advisor-prism-aggregation'>Advisor Prism Aggregation</h2>
+<h2 id='individual-advisor-stats'>Individual Advisor Stats</h2>
 <blockquote>
-<p>Advisor Prism Aggregation</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/prism_aggregation/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
-
-<span class="o">{</span>
-  <span class="s2">"scores"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"media"</span>: <span class="o">{</span>…<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>-request-type: GET</p>
-
-<p>-request-url: <code>/advisors/&lt;id&gt;/prism_aggregation/</code></p>
-
-<p><strong>Response Fields</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>scores</td>
-<td><a href="#scores-factors">Scores Factors</a></td>
-<td>Risk score factors</td>
-</tr>
-<tr>
-<td>media</td>
-<td><a href="#scores-media">Scores Images</a></td>
-<td>Risk score factors images</td>
-</tr>
-<tr>
-<td>status</td>
-<td><a href="#scores-status">Scores Status</a></td>
-<td>Risk score status</td>
-</tr>
-</tbody></table>
-<h2 id='advisor-stats'>Advisor Stats</h2>
-<blockquote>
-<p>Advisor Stats</p>
+<p>Individual Advisor Stats</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/11/stats/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
@@ -1702,7 +1659,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="o">}</span>,
     <span class="s2">"drift"</span>: …
 <span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/stats/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+</code></pre></div>
+<blockquote>
+<p>All Advisors Stats</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/advisors/stats/"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 
 <span class="o">{</span>
   <span class="s2">"10"</span>: <span class="o">{</span>
@@ -1730,8 +1691,9 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </code></pre></div>
 <p>-request-type: GET</p>
 
-<p>-request-url: <code>/advisors/&lt;id&gt;/stats/</code>
--request-url: <code>/advisors/stats/</code></p>
+<p>-request-url: <code>/advisors/stats/</code></p>
+
+<p>-request-url: <code>/advisors/&lt;id&gt;/stats/</code></p>
 
 <p><strong>Response Fields</strong></p>
 
@@ -1743,24 +1705,24 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </thead><tbody>
 <tr>
-<td>risk.scores</td>
-<td><a href="#scores-factors">Scores Factors</a></td>
-<td>Advisor aggregated risk scores</td>
+<td>risk.scores.overall</td>
+<td>float</td>
+<td>Advisor risk score overall</td>
 </tr>
 <tr>
-<td>risk.media</td>
+<td>risk.media.overall</td>
 <td><a href="#scores-media">Scores Media</a></td>
-<td>Advisor aggregated risk scores images</td>
+<td>Advisor risk score images</td>
 </tr>
 <tr>
-<td>tolerance.scores</td>
-<td><a href="#scores-factors">Scores Factors</a></td>
-<td>Advisor aggregated tolerance scores</td>
+<td>tolerance.scores.overall</td>
+<td>float</td>
+<td>Advisor tolerance score overall</td>
 </tr>
 <tr>
-<td>tolerance.media</td>
+<td>tolerance.media.overall</td>
 <td><a href="#scores-factors">Scores Media</a></td>
-<td>Advisor aggregated tolerance scores images</td>
+<td>Advisor tolerance score images</td>
 </tr>
 <tr>
 <td>drift</td>
@@ -3954,6 +3916,13 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.9.0 (2023-03-27)
+
+<ul>
+<li>Remove <code>risk</code>, <code>tolerance</code> and <code>drift</code> attributes from the advisor list and detail.</li>
+<li>Remove <code>/advisors/&lt;id&gt;/prism_aggregation/</code></li>
+<li>Add <code>/advisors//stats/</code> and <code>/advisors/&lt;id&gt;/stats/</code> endpoints</li>
+</ul></li>
 <li>1.8.0 (2023-02-28)
 
 <ul>
