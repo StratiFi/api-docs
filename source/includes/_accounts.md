@@ -16,18 +16,7 @@
   "investor": 1,
   "advisor": 1,
   "strategy": 1,
-  "positions": [
-    {
-        "ticker": "OPPI",
-        "ticker_name": "VANGUARD TARGET 2045",
-        "value": 368673.6
-    },
-    {
-        "ticker": "UNTB",
-        "ticker_name": "Fha Non Int Bearing",
-        "value": 875.0
-    }
-  ],
+  "positions": […],
   "risk": {…},
   "tolerance": {…},
   "drift": 1.7
