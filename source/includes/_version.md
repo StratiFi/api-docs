@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.10.0 (2023-03-27)
+  - Add `quantity`, `price`, `units` and `cost_basis` fields to the account positions.
 - 1.9.0 (2023-03-27)
   - Remove `risk`, `tolerance` and `drift` attributes from the advisor list and detail.
   - Remove `/advisors/<id>/prism_aggregation/` endpoint.
