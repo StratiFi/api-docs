@@ -39,7 +39,7 @@
 ```
 
 | Name             | Type                                   | Description                                         |
-| ---------------- | -------------------------------------- | --------------------------------------------------- |
+|------------------|----------------------------------------|-----------------------------------------------------|
 | id               | int                                    | Investor ID                                         |
 | external_id      | string                                 | Your investor identifier                            |
 | advisor          | int                                    | Advisor ID                                          |
@@ -92,7 +92,7 @@ curl "https://backend.stratifi.com/api/v1/investors/" -H "Authorization: Bearer 
 **Response Fields**
 
 | Name     | Type   | Description                                             |
-| -------- | ------ | ------------------------------------------------------- |
+|----------|--------|---------------------------------------------------------|
 | count    | int    | Total number of investors                               |
 | next     | string | Link to next page of investors                          |
 | previous | string | Link to previous page of investors                      |
@@ -101,7 +101,7 @@ curl "https://backend.stratifi.com/api/v1/investors/" -H "Authorization: Bearer 
 **Filtering Fields**
 
 | Name        | Type   | Description              |
-| ----------- | ------ | ------------------------ |
+|-------------|--------|--------------------------|
 | advisor     | int    | Advisor ID               |
 | household   | int    | Household ID             |
 | external_id | string | Your investor identifier |
@@ -178,7 +178,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/investors/" -H "Authorization:
 **Request Parameters**
 
 | Parameter   | Type                                   |          |
-| ----------- | -------------------------------------- | -------- |
+|-------------|----------------------------------------|----------|
 | user        | [User Object](#user-object-definition) | Required |
 | advisor     | int                                    | Required |
 | household   | int                                    | Optional |
@@ -229,7 +229,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/investors/150/" -H "Authorizati
 **Request Parameters**
 
 | Parameter   | Type                                   |          |
-| ----------- | -------------------------------------- | -------- |
+|-------------|----------------------------------------|----------|
 | user        | [User Object](#user-object-definition) | Required |
 | advisor     | int                                    | Required |
 | household   | int                                    | Optional |
@@ -256,7 +256,7 @@ curl "https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/" -H "A
 **Response Fields**
 
 | Name   | Type                              | Description               |
-| ------ | --------------------------------- | ------------------------- |
+|--------|-----------------------------------|---------------------------|
 | scores | [Scores Factors](#scores-factors) | Risk score factors        |
 | media  | [Scores Images](#scores-media)    | Risk score factors images |
 | status | [Scores Status](#scores-status)   | Risk score status         |

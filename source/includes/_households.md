@@ -33,7 +33,7 @@
 ```
 
 | Name             | Type                              | Description                                  |
-| ---------------- | --------------------------------- | -------------------------------------------- |
+|------------------|-----------------------------------|----------------------------------------------|
 | id               | int                               | Household ID                                 |
 | external_id      | string                            | Your household identifier                    |
 | name             | string                            | Household Name                               |
@@ -77,7 +77,7 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
 **Response Fields**
 
 | Name     | Type   | Description                                               |
-| -------- | ------ | --------------------------------------------------------- |
+|----------|--------|-----------------------------------------------------------|
 | count    | int    | Total number of households                                |
 | next     | string | Link to next page of households                           |
 | previous | string | Link to previous page of households                       |
@@ -86,7 +86,7 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
 **Filtering Fields**
 
 | Name        | Type   | Description               |
-| ----------- | ------ | ------------------------- |
+|-------------|--------|---------------------------|
 | advisor     | int    | Advisor ID                |
 | external_id | string | Your household identifier |
 
@@ -144,7 +144,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
 **Request Parameters**
 
 | Parameter   | Type   |          |
-| ----------- | ------ | -------- |
+|-------------|--------|----------|
 | name        | string | Required |
 | external_id | string | Optional |
 
@@ -181,7 +181,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/households/2/"
 **Request Parameters**
 
 | Parameter   | Type   |          |
-| ----------- | ------ | -------- |
+|-------------|--------|----------|
 | name        | string | Required |
 | external_id | string | Optional |
 
@@ -205,7 +205,7 @@ curl "https://backend.stratifi.com/api/v1/households/11/prism_aggregation/" -H "
 **Response Fields**
 
 | Name   | Type                              | Description               |
-| ------ | --------------------------------- | ------------------------- |
+|--------|-----------------------------------|---------------------------|
 | scores | [Scores Factors](#scores-factors) | Risk score factors        |
 | media  | [Scores Images](#scores-media)    | Risk score factors images |
 | status | [Scores Status](#scores-status)   | Risk score status         |

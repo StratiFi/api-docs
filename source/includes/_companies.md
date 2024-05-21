@@ -13,7 +13,7 @@
 ```
 
 | Name        | Type   | Description             |
-| ----------- | ------ | ----------------------- |
+|-------------|--------|-------------------------|
 | id          | int    | ID of the company       |
 | external_id | string | Your company identifier |
 | name        | string | Name of the company     |
@@ -47,7 +47,7 @@ curl "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer 
 **Response Fields**
 
 | Name     | Type   | Description                                           |
-| -------- | ------ | ----------------------------------------------------- |
+|----------|--------|-------------------------------------------------------|
 | count    | int    | Total number of companies                             |
 | next     | string | Link to next page of companies                        |
 | previous | string | Link to previous page of companies                    |
@@ -56,7 +56,7 @@ curl "https://backend.stratifi.com/api/v1/companies/" -H "Authorization: Bearer 
 **Filtering Fields**
 
 | Name        | Type   | Description             |
-| ----------- | ------ | ----------------------- |
+|-------------|--------|-------------------------|
 | external_id | string | Your company identifier |
 
 ## Get Company
@@ -101,7 +101,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/companies/" -H "Authorization:
 **Request Parameters**
 
 | Parameter   | Type   |          |
-| ----------- | ------ | -------- |
+|-------------|--------|----------|
 | name        | string | Required |
 | external_id | string | Optional |
 
@@ -130,7 +130,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/companies/11/"
 **Request Parameters**
 
 | Parameter   | Type   |          |
-| ----------- | ------ | -------- |
+|-------------|--------|----------|
 | name        | string | Required |
 | external_id | string | Optional |
 
@@ -154,6 +154,6 @@ curl "https://backend.stratifi.com/api/v1/companies/11/prism_aggregation/" -H "A
 **Response Fields**
 
 | Name   | Type                              | Description               |
-| ------ | --------------------------------- | ------------------------- |
+|--------|-----------------------------------|---------------------------|
 | scores | [Scores Factors](#scores-factors) | Risk score factors        |
 | media  | [Scores Images](#scores-media)    | Risk score factors images |

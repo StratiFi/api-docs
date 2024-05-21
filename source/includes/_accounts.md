@@ -24,7 +24,7 @@
 ```
 
 | Name        | Type                                             | Description                                                                                                                                                                                                                                                                |
-| ----------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id          | int                                              | Account ID                                                                                                                                                                                                                                                                 |
 | external_id | string                                           | Your account identifier                                                                                                                                                                                                                                                    |
 | name        | string                                           | Account name                                                                                                                                                                                                                                                               |
@@ -42,9 +42,9 @@
 
 ### Account Tax Statuses
 
-| Value        | Description           |
-| ------------ | --------------------- |
-| taxable      | Taxable accounts      |
+| Value    | Description           |
+|----------|-----------------------|
+| taxable  | Taxable accounts      |
 | exempt   | Tax Exempt accounts   |
 | deferred | Tax Deferred accounts |
 
@@ -88,7 +88,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {
 **Response Fields**
 
 | Name     | Type   | Description                                           |
-| -------- | ------ | ----------------------------------------------------- |
+|----------|--------|-------------------------------------------------------|
 | count    | int    | Total number of accounts                              |
 | next     | string | Link to next page of accounts                         |
 | previous | string | Link to previous page of accounts                     |
@@ -97,7 +97,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {
 **Filtering Fields**
 
 | Name        | Type   | Description             |
-| ----------- | ------ | ----------------------- |
+|-------------|--------|-------------------------|
 | external_id | string | Your account identifier |
 | investor    | int    | Investor ID             |
 | household   | int    | Household ID            |
@@ -186,7 +186,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 **Request Parameters**
 
 | Parameter   | Type                                    |          |
-| ----------- | --------------------------------------- | -------- |
+|-------------|-----------------------------------------|----------|
 | name        | string                                  | Required |
 | positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
@@ -255,7 +255,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
 **Request Parameters**
 
 | Parameter      | Type                                    |          |
-| -------------- | --------------------------------------- | -------- |
+|----------------|-----------------------------------------|----------|
 | name           | string                                  | Required |
 | positions[]    | List of [Positions Objects](#positions) | Required |
 | value          | string                                  | Optional |
@@ -287,6 +287,6 @@ curl "https://backend.stratifi.com/api/v1/accounts/11/prism_score/" -H "Authoriz
 **Response Fields**
 
 | Name   | Type                              | Description               |
-| ------ | --------------------------------- | ------------------------- |
+|--------|-----------------------------------|---------------------------|
 | scores | [Scores Factors](#scores-factors) | Risk score factors        |
 | media  | [Scores Images](#scores-media)    | Risk score factors images |

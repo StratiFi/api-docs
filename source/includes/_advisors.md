@@ -21,7 +21,7 @@
 ```
 
 | Name             | Type                                   | Description                                   |
-| ---------------- | -------------------------------------- | --------------------------------------------- |
+|------------------|----------------------------------------|-----------------------------------------------|
 | id               | int                                    | Advisor ID                                    |
 | external_id      | string                                 | Your advisor identifier                       |
 | company          | int                                    | Company ID                                    |
@@ -30,7 +30,9 @@
 | title            | string                                 | Advisor Job Title                             |
 | user             | [User Object](#user-object-definition) | User info                                     |
 
-(\*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an investor.
+(\*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not
+available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an
+investor.
 
 ## List Advisors
 
@@ -69,7 +71,7 @@ curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {
 **Response Fields**
 
 | Name     | Type   | Description                                           |
-| -------- | ------ | ----------------------------------------------------- |
+|----------|--------|-------------------------------------------------------|
 | count    | int    | Total number of advisors                              |
 | next     | string | Link to next page of advisors                         |
 | previous | string | Link to previous page of advisors                     |
@@ -78,7 +80,7 @@ curl "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: Bearer {
 **Filtering Fields**
 
 | Name        | Type   | Description             |
-| ----------- | ------ | ----------------------- |
+|-------------|--------|-------------------------|
 | company     | int    | Company ID              |
 | external_id | string | Your advisor identifier |
 
@@ -150,7 +152,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/advisors/" -H "Authorization: 
 **Request Parameters**
 
 | Parameter   | Type                                   |          |
-| ----------- | -------------------------------------- | -------- |
+|-------------|----------------------------------------|----------|
 | user        | [User Object](#user-object-definition) | Required |
 | company     | int                                    | Required |
 | phone       | string                                 | Optional |
@@ -199,7 +201,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/advisors/150/" -H "Authorizatio
 **Request Parameters**
 
 | Parameter   | Type                                   |          |
-| ----------- | -------------------------------------- | -------- |
+|-------------|----------------------------------------|----------|
 | user        | [User Object](#user-object-definition) | Required |
 | company     | int                                    | Required |
 | phone       | string                                 | Optional |
@@ -273,7 +275,7 @@ curl "https://backend.stratifi.com/api/v1/advisors/stats/" -H "Authorization: Be
 **Response Fields**
 
 | Name                     | Type                            | Description                     |
-| ------------------------ | ------------------------------- | ------------------------------- |
+|--------------------------|---------------------------------|---------------------------------|
 | risk.scores.overall      | float                           | Advisor risk score overall      |
 | risk.media.overall       | [Scores Media](#scores-media)   | Advisor risk score images       |
 | tolerance.scores.overall | float                           | Advisor tolerance score overall |

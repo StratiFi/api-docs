@@ -1,9 +1,10 @@
 # Overview
 
-Our API follows a REST pattern, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope.
+Our API follows a REST pattern, where HTTP methods define the action to perform and the endpoint URL determines the
+object(s) scope.
 
 | HTTP method | Usage                                                                          |
-| ----------- | ------------------------------------------------------------------------------ |
+|-------------|--------------------------------------------------------------------------------|
 | GET         | List objects or Retrieve a particular object if the ID is provided in the URL. |
 | POST        | Create object.                                                                 |
 | PUT         | Update entire object.                                                          |
@@ -13,7 +14,7 @@ Our API follows a REST pattern, where HTTP methods define the action to perform 
 The result of the operations is well described by standard HTTP response codes.
 
 | HTTP response code | Description                                                                                                                  |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------|
 | 20x                | Success                                                                                                                      |
 | 30x                | Resource moved                                                                                                               |
 | 400                | Bad Request -- Your request is invalid.                                                                                      |
@@ -35,11 +36,13 @@ Once you are ready, you will get access to the production domain `https://backen
 
 ## About StratiFi
 
-You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts at the bottom level.
+You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts
+at the bottom level.
 
 ![Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account](https://s3.amazonaws.com/api.stratifi.com/data2.2.png "StratiFi Data")
 
-Each object is linked to another in the upper level, for instance, an account has an `investor_id` attribute that contains the ID of the investor that owns that account.
+Each object is linked to another in the upper level, for instance, an account has an `investor_id` attribute that
+contains the ID of the investor that owns that account.
 
 (\*) Households are optional. An investor can be linked directly to the advisor.
 
@@ -50,5 +53,7 @@ You can search and filter objects returned by an endpoint using URL parameters.
 For searching, you need to include the `search` parameter in the URL. e.g.
 `/api/v1/households/?search=Smith`
 
-For filtering, you need to include the desired attribute in the URL parameters. Each section describes the allowed **Filtering Fields** for that endpoint. For instance, if you want to list the accounts of the investor with ID 31 you can use
+For filtering, you need to include the desired attribute in the URL parameters. Each section describes the allowed 
+**Filtering Fields** for that endpoint. For instance, if you want to list the accounts of the investor with ID 31 you can
+use
 `/api/v1/accounts/?investor=31`
