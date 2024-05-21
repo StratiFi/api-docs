@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.11.0 (2024-05-21)
+  - Add `/teams/` endpoint
 - 1.10.0 (2023-03-27)
   - Add `quantity`, `price`, `units` and `cost_basis` fields to the account positions.
 - 1.9.0 (2023-03-27)
