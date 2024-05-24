@@ -249,8 +249,11 @@
 .highlight .kd {
   color: #cb4b16;
 }
-.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
   color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
 }
 .highlight .sr {
   color: #2aa198;
@@ -388,6 +391,32 @@
                   </li>
                   <li>
                     <a href="#advisor-stats" class="toc-h2 toc-link" data-title="Advisor Stats">Advisor Stats</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#teams" class="toc-h1 toc-link" data-title="Teams">Teams</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#teammembership-object-definition" class="toc-h2 toc-link" data-title="TeamMembership object definition">TeamMembership object definition</a>
+                  </li>
+                  <li>
+                    <a href="#team-object-definition" class="toc-h2 toc-link" data-title="Team object definition">Team object definition</a>
+                  </li>
+                  <li>
+                    <a href="#list-teams" class="toc-h2 toc-link" data-title="List Teams">List Teams</a>
+                  </li>
+                  <li>
+                    <a href="#get-team-by-id" class="toc-h2 toc-link" data-title="Get team by id">Get team by id</a>
+                  </li>
+                  <li>
+                    <a href="#create-team" class="toc-h2 toc-link" data-title="Create team">Create team</a>
+                  </li>
+                  <li>
+                    <a href="#update-team" class="toc-h2 toc-link" data-title="Update team">Update team</a>
+                  </li>
+                  <li>
+                    <a href="#delete-team" class="toc-h2 toc-link" data-title="Delete team">Delete team</a>
                   </li>
               </ul>
           </li>
@@ -1748,6 +1777,362 @@ investor.</p>
 <td>Advisor drift score</td>
 </tr>
 </tbody></table>
+<h1 id='teams'>Teams</h1><h2 id='teammembership-object-definition'>TeamMembership object definition</h2>
+<blockquote>
+<p>Request TeamMembership</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"advisor"</span>: 1,
+    <span class="s2">"is_primary"</span>: <span class="nb">true</span>|false
+<span class="o">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>Advisor id</td>
+</tr>
+<tr>
+<td>is_primary</td>
+<td>bool</td>
+<td>Boolean value indicating if the advisor is the primary advisor for the team</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response TeamMembership</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"advisor"</span>: <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"user"</span>: <span class="o">{</span>
+            <span class="s2">"id"</span>: 1,
+            <span class="s2">"first_name"</span>: <span class="s2">"First"</span>,
+            <span class="s2">"last_name"</span>: <span class="s2">"Last"</span>,
+            <span class="s2">"email"</span>: <span class="s2">"first_last@stratifi.com"</span>
+        <span class="o">}</span>,
+        <span class="s2">"company"</span>: 1,
+        <span class="s2">"title"</span>: <span class="s2">""</span>,
+        <span class="s2">"phone"</span>: <span class="s2">"+11111111111"</span>,
+        <span class="s2">"default_investor"</span>: 2,
+        <span class="s2">"external_id"</span>: <span class="s2">""</span>
+    <span class="o">}</span>,
+    <span class="s2">"is_primary"</span>: <span class="nb">true</span>|false
+<span class="o">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>advisor</td>
+<td>object</td>
+<td><a href="#advisor-object-definition">Advisor object</a></td>
+</tr>
+<tr>
+<td>is_primary</td>
+<td>bool</td>
+<td>Boolean value indicating if the advisor is the primary advisor for the team</td>
+</tr>
+</tbody></table>
+<h2 id='team-object-definition'>Team object definition</h2>
+<blockquote>
+<p>Team Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1,
+    <span class="s2">"name"</span>: <span class="s2">"Some Team"</span>,
+    <span class="s2">"external_id"</span>: <span class="s2">"45912d"</span>,
+    <span class="s2">"description"</span>: <span class="s2">"Team description"</span>,
+    <span class="s2">"company"</span>: 1,
+    <span class="s2">"rep_codes"</span>: <span class="o">[</span><span class="s2">"rep_code1"</span>, <span class="s2">"rep_code2"</span><span class="o">]</span>,
+    <span class="s2">"team_memberships"</span>: <span class="o">[</span>
+        <span class="o">{</span>...TeamMembership Object<span class="o">}</span>,
+        <span class="o">{</span>...TeamMembership Object<span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Team id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Team name</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>External id</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Team description</td>
+</tr>
+<tr>
+<td>company</td>
+<td>int</td>
+<td>Company id</td>
+</tr>
+<tr>
+<td>rep_codes</td>
+<td>string list</td>
+<td>List of rep codes</td>
+</tr>
+<tr>
+<td>team_memberships</td>
+<td>object list</td>
+<td>List of <a href="#teammembership-object-definition">team memberships</a></td>
+</tr>
+</tbody></table>
+<h2 id='list-teams'>List Teams</h2>
+<blockquote>
+<p>List Teams</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/teams/"</span> <span class="nt">-H</span> <span class="s2">"Authorization
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"count"</span>: 1,
+    <span class="s2">"next"</span>: null,
+    <span class="s2">"previous"</span>: null,
+    <span class="s2">"results"</span>: <span class="o">[</span>
+      <span class="o">{</span>...Team Object<span class="o">}</span>,
+      <span class="o">{</span>...Team Object<span class="o">}</span>,
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/teams/</code></p>
+
+<p><strong>Response Fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>Total number of advisors</td>
+</tr>
+<tr>
+<td>next</td>
+<td>string</td>
+<td>Link to next page of advisors</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>string</td>
+<td>Link to previous page of advisors</td>
+</tr>
+<tr>
+<td>results</td>
+<td>object list</td>
+<td>List of <a href="#team-object-definition">team objects</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>Filtering Fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company</td>
+<td>int</td>
+<td>Company ID</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Your advisor identifier</td>
+</tr>
+</tbody></table>
+<h2 id='get-team-by-id'>Get team by id</h2>
+<blockquote>
+<p>Get team by id</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/teams/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>...Team Object<span class="o">}</span>
+</code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/teams/&lt;team_id&gt;</code></p>
+
+<p><strong>Response:</strong> The requested <a href="#team-object-definition">team object</a>.</p>
+<h2 id='create-team'>Create team</h2>
+<blockquote>
+<p>Create team</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/api/v1/teams/"</span> <span class="nt">-H</span> <span class="s2">"Authorization
+  -d '{
+    "</span>name<span class="s2">": "</span>Some Team<span class="s2">",
+    "</span>company<span class="s2">": 1,
+    "</span>team_memberships<span class="s2">": [
+      {
+        "</span>advisor<span class="s2">": 1,
+        "</span>is_primary<span class="s2">": true
+      }
+    ],
+    "</span>external_id<span class="s2">": "</span>45912d<span class="s2">",
+    "</span>description<span class="s2">": "</span>Team description<span class="s2">",
+    "</span>rep_codes<span class="s2">": ["</span>rep_code1<span class="s2">", "</span>rep_code2<span class="s2">"]
+  }'
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>...New Team Object<span class="o">}</span>
+</code></pre></div>
+<p>-request-type: POST</p>
+
+<p>-request-url: <code>/teams/</code></p>
+
+<p><strong>Request Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>company</td>
+<td>int</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>team_memberships</td>
+<td><a href="#teammembership-object-definition">team-memberships list</a></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>rep_codes</td>
+<td>string list</td>
+<td>Optional</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response:</strong> The new <a href="#team-object-definition">team object</a>.</p>
+<h2 id='update-team'>Update team</h2>
+<blockquote>
+<p>Update team</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s2">"https://backend.stratifi.com/api/v1/teams/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization
+  -d '{
+    "</span>name<span class="s2">": "</span>Some Team<span class="s2">",
+    "</span>company<span class="s2">": 1,
+    "</span>team_memberships<span class="s2">": [
+      {
+        "</span>advisor<span class="s2">": 1,
+        "</span>is_primary<span class="s2">": true
+      }
+    ]
+  }'
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>...Updated Team Object<span class="o">}</span>
+</code></pre></div>
+<p>-request-type: PUT/PATCH</p>
+
+<p>-request-url: <code>/teams/&lt;id&gt;/</code></p>
+
+<p><strong>Request Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>PUT</th>
+<th>PATCH</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Required</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>company</td>
+<td>int</td>
+<td>Required</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>team_memberships</td>
+<td><a href="#teammembership-object-definition">team-memberships list</a></td>
+<td>Optional</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>external_id</td>
+<td>string</td>
+<td>Optional</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Optional</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>rep_codes</td>
+<td>string list</td>
+<td>Optional</td>
+<td>Optional</td>
+</tr>
+</tbody></table>
+
+<p>The provided <code>team_memberships</code> list replaces the existing list. If not provided, no changes are made.</p>
+
+<p><strong>Response:</strong> The updated <a href="#team-object-definition">team object</a>.</p>
+<h2 id='delete-team'>Delete team</h2>
+<blockquote>
+<p>Delete team</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://backend.stratifi.com/api/v1/teams/1/"</span> <span class="nt">-H</span> <span class="s2">"Authorization
+</span></code></pre></div>
+<p>-request-type: DELETE</p>
+
+<p>-request-url: <code>/teams/&lt;id&gt;/</code></p>
 <h1 id='households'>Households</h1><h2 id='household-object-definition'>Household Object Definition</h2>
 <blockquote>
 <p>Household Object</p>
