@@ -14,6 +14,7 @@ includes:
   - companies
   - users
   - advisors
+  - teams
   - households
   - investors
   - risks
