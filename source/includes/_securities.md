@@ -25,7 +25,7 @@
 ```
 
 | Name                               | Type   | Description                          |
-| ---------------------------------- | ------ | ------------------------------------ |
+|------------------------------------|--------|--------------------------------------|
 | ticker                             | string | Asset symbol                         |
 | cusip                              | string | Asset cusip                          |
 | isin                               | string | ISIN identifier                      |

@@ -29,7 +29,7 @@
 ```
 
 | Name        | Type                                    | Description               |
-| ----------- | --------------------------------------- | ------------------------- |
+|-------------|-----------------------------------------|---------------------------|
 | id          | int                                     | Model Portfolio ID        |
 | external_id | string                                  | Your model identifier     |
 | name        | string                                  | Model Portfolio name      |
@@ -75,7 +75,7 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
 **Response Fields**
 
 | Name     | Type   | Description                                       |
-| -------- | ------ | ------------------------------------------------- |
+|----------|--------|---------------------------------------------------|
 | count    | int    | Total number of models                            |
 | next     | string | Link to next page of models                       |
 | previous | string | Link to previous page of models                   |
@@ -84,7 +84,7 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
 **Filtering Fields**
 
 | Name        | Type   | Description           |
-| ----------- | ------ | --------------------- |
+|-------------|--------|-----------------------|
 | external_id | string | Your model identifier |
 
 ## Get Model Portfolio
@@ -160,7 +160,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
 **Request Parameters**
 
 | Parameter   | Type                                    |          |
-| ----------- | --------------------------------------- | -------- |
+|-------------|-----------------------------------------|----------|
 | name        | string                                  | Required |
 | positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
@@ -218,7 +218,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
 **Request Parameters**
 
 | Parameter   | Type                                    |          |
-| ----------- | --------------------------------------- | -------- |
+|-------------|-----------------------------------------|----------|
 | name        | string                                  | Required |
 | positions[] | List of [Positions Objects](#positions) | Required |
 | value       | string                                  | Optional |
@@ -247,7 +247,7 @@ curl "https://backend.stratifi.com/api/v1/models/11/prism_score/" -H "Authorizat
 **Response Fields**
 
 | Name   | Type                              | Description               |
-| ------ | --------------------------------- | ------------------------- |
+|--------|-----------------------------------|---------------------------|
 | scores | [Scores Factors](#scores-factors) | Risk score factors        |
 | media  | [Scores Images](#scores-media)    | Risk score factors images |
 | status | [Scores Status](#scores-status)   | Risk score status         |

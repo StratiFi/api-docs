@@ -3,7 +3,7 @@
 ## User Object Definition
 
 | Name       | Type   | Description        |
-| ---------- | ------ | ------------------ |
+|------------|--------|--------------------|
 | first_name | string | User first name    |
 | last_name  | string | User last name     |
 | email      | string | User email address |

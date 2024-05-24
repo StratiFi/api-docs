@@ -2,10 +2,14 @@
 
 ## Risk statuses
 
-Calculating scores for a portfolio might take some time (from a few seconds to a few minutes). In order to make our system more responsive, we calculate the scores in asynchronously. That means that when an account is created or updated, we will be able to provide an immediate answer to the request and, at the same time, queue the score calculation. In the response, we provide a readable status that indicates what is happening in background. The available statuses are:
+Calculating scores for a portfolio might take some time (from a few seconds to a few minutes). In order to make our
+system more responsive, we calculate the scores in asynchronously. That means that when an account is created or
+updated, we will be able to provide an immediate answer to the request and, at the same time, queue the score
+calculation. In the response, we provide a readable status that indicates what is happening in background. The available
+statuses are:
 
 | Name              | Type   | Description                                                                 |
-| ----------------- | ------ | --------------------------------------------------------------------------- |
+|-------------------|--------|-----------------------------------------------------------------------------|
 | pending (Default) | string | The risk score calculation has not started                                  |
 | processing        | string | The risk score calculation is in progress or the existing score is outdated |
 | error             | string | The last risk score calculation failed                                      |
@@ -26,7 +30,7 @@ Calculating scores for a portfolio might take some time (from a few seconds to a
 ```
 
 | Name         | Type  | Description        |
-| ------------ | ----- | ------------------ |
+|--------------|-------|--------------------|
 | overall      | float | Overall score      |
 | concentrated | float | Concentrated score |
 | correlation  | float | Correlation score  |
@@ -68,14 +72,15 @@ Calculating scores for a portfolio might take some time (from a few seconds to a
 ```
 
 | Name         | Type   | Description                   |
-| ------------ | ------ | ----------------------------- |
+|--------------|--------|-------------------------------|
 | overall      | string | Overall score image URLs      |
 | concentrated | string | Concentrated score image URLs |
 | correlation  | string | Correlation score image URLs  |
 | tail         | string | Tail score image URLs         |
 | volatility   | string | Volatility score image URLs   |
 
-Notice that we provide 3 image versions for each one of the score factors. You can use the version that better adjust to your site layout.
+Notice that we provide 3 image versions for each one of the score factors. You can use the version that better adjust to
+your site layout.
 
 - large:
 
@@ -175,7 +180,7 @@ Notice that we provide 3 image versions for each one of the score factors. You c
 ```
 
 | Name                                | Type                              | Description                         |
-| ----------------------------------- | --------------------------------- | ----------------------------------- |
+|-------------------------------------|-----------------------------------|-------------------------------------|
 | scores                              | [Scores Factors](#scores-factors) | Risk score factors                  |
 | media                               | [Scores Images](#scores-media)    | Risk score factors images           |
 | status                              | [Risk Status](#risk-statuses)     | Risk score status                   |
@@ -233,6 +238,6 @@ Notice that we provide 3 image versions for each one of the score factors. You c
 ```
 
 | Name   | Type                              | Description                    |
-| ------ | --------------------------------- | ------------------------------ |
+|--------|-----------------------------------|--------------------------------|
 | scores | [Scores Factors](#scores-factors) | Tolerance score factors        |
 | media  | [Scores Images](#scores-media)    | Tolerance score factors images |
