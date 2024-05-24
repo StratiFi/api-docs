@@ -249,8 +249,11 @@
 .highlight .kd {
   color: #cb4b16;
 }
-.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
   color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
 }
 .highlight .sr {
   color: #2aa198;
@@ -530,13 +533,21 @@
 
 <p>With our API you can manage your portfolios in StratiFi and get information on various risks and scores.</p>
 
-<p>This page describe the available API endpoints. You will find some code examples in the dark area to the right. Also, if you are familiar with Postman, you can consult and import <a href="https://documenter.getpostman.com/view/8311154/TWDRseqG" target="_blank">this collection</a> and play with the API.</p>
+<p>This page describe the available API endpoints. You will find some code examples in the dark area to the right. Also, if
+you are familiar with Postman, you can consult and
+import <a href="https://documenter.getpostman.com/view/8311154/TWDRseqG" target="_blank">this collection</a> and play
+with the API.</p>
 
-<p>Before start using the API you need contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a> and request API access. We will provide you a <em>CLIENT ID</em> an a <em>SECRET KEY</em> required to complete the authorization process.</p>
+<p>Before start using the API you need contact us at <a class="link-primary" href="mailto:info@stratifi.com">
+support@stratifi.com</a> and request API access. We will provide you a <em>CLIENT ID</em> an a <em>SECRET KEY</em> required to
+complete the authorization process.</p>
 
-<p>If you want to know more about how the information is organized in StratiFi or want to familiarize with the API structure go to the <a href="https://api.stratifi.com/docs/v1/#about-stratifi">About</a> section. If you are ready to start, go to the <a href="https://api.stratifi.com/docs/v1/#authorization">Authorization</a> section.</p>
+<p>If you want to know more about how the information is organized in StratiFi or want to familiarize with the API
+structure go to the <a href="https://api.stratifi.com/docs/v1/#about-stratifi">About</a> section. If you are ready to
+start, go to the <a href="https://api.stratifi.com/docs/v1/#authorization">Authorization</a> section.</p>
 <h1 id='overview'>Overview</h1>
-<p>Our API follows a REST pattern, where HTTP methods define the action to perform and the endpoint URL determines the object(s) scope.</p>
+<p>Our API follows a REST pattern, where HTTP methods define the action to perform and the endpoint URL determines the
+object(s) scope.</p>
 
 <table><thead>
 <tr>
@@ -622,11 +633,13 @@
 
 <p>Once you are ready, you will get access to the production domain <code>https://backend.stratifi.com</code></p>
 <h2 id='about-stratifi'>About StratiFi</h2>
-<p>You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts at the bottom level.</p>
+<p>You can think about data in StratiFi as a hierarchical structure where a companies are at the higher level and accounts
+at the bottom level.</p>
 
 <p><img src="https://s3.amazonaws.com/api.stratifi.com/data2.2.png" title="StratiFi Data" alt="Company ⟶ Advisor ⟶ Household * ⟶ Investor ⟶ Account" /></p>
 
-<p>Each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that contains the ID of the investor that owns that account.</p>
+<p>Each object is linked to another in the upper level, for instance, an account has an <code>investor_id</code> attribute that
+contains the ID of the investor that owns that account.</p>
 
 <p>(*) Households are optional. An investor can be linked directly to the advisor.</p>
 <h2 id='search-amp-filtering'>Search &amp; Filtering</h2>
@@ -635,12 +648,15 @@
 <p>For searching, you need to include the <code>search</code> parameter in the URL. e.g.
 <code>/api/v1/households/?search=Smith</code></p>
 
-<p>For filtering, you need to include the desired attribute in the URL parameters. Each section describes the allowed <strong>Filtering Fields</strong> for that endpoint. For instance, if you want to list the accounts of the investor with ID 31 you can use
+<p>For filtering, you need to include the desired attribute in the URL parameters. Each section describes the allowed 
+<strong>Filtering Fields</strong> for that endpoint. For instance, if you want to list the accounts of the investor with ID 31 you can
+use
 <code>/api/v1/accounts/?investor=31</code></p>
 <h1 id='authorization'>Authorization</h1>
 <p>We use the OAuth 2.0 protocol with PKCE, an industry standard for authorization management.</p>
 
-<p>Make sure you have the <em>CLIENT ID</em> an a <em>SECRET KEY</em> provided by our support team. If you don&#39;t have them contact us at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a>.</p>
+<p>Make sure you have the <em>CLIENT ID</em> an a <em>SECRET KEY</em> provided by our support team. If you don&#39;t have them contact us
+at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a>.</p>
 <h2 id='authorization-code-flow-pcke'>Authorization Code Flow + PCKE</h2>
 <p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
 
@@ -952,7 +968,8 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.
 </tbody></table>
 <h2 id='starting-a-session-in-stratifi-com'>Starting a session in stratifi.com</h2>
 <p>The authorization responses described above contain a <strong>session_token</strong> property. This token automatically
-authenticates advisors in stratifi.com, meaning that the advisor won&#39;t be required to fill the credentials when visiting Stratifi.</p>
+authenticates advisors in stratifi.com, meaning that the advisor won&#39;t be required to fill the credentials when visiting
+Stratifi.</p>
 
 <p>To build an authenticated URL you need 3 parts:</p>
 
@@ -1007,7 +1024,9 @@ authenticates advisors in stratifi.com, meaning that the advisor won&#39;t be re
 <p>For instance, <code>https://advisors-sandbox.stratifi.com/advisor/investors/1/?session=abc123</code> will lead the user
 to the details page of the client with id 1 in the sandbox environment.</p>
 
-<p><small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in Stratifi.</small></p>
+<p><small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to
+get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in
+Stratifi.</small></p>
 <h2 id='retrieving-logged-user-information'>Retrieving logged user information</h2>
 <p>You can get basic information about the user related to a token by consulting the <code>/userinfo</code> endpoint.
 The response includes the advisor ID and the <strong>session_token</strong> described above.</p>
@@ -1018,9 +1037,9 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
     <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
     <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>,
     <span class="s2">"advisor_id"</span>: 1,
-    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}
-}
-</span></code></pre></div>
+    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}"</span>
+<span class="o">}</span>
+</code></pre></div>
 <p><strong>Response</strong></p>
 
 <table><thead>
@@ -1383,7 +1402,9 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 
-<p>(*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an investor.</p>
+<p>(*) Sometimes the advisor owns accounts that are not attached to an investor or the investor information is not
+available. In these cases, you can use the advisor default investor to create link accounts to the advisor without an
+investor.</p>
 <h2 id='list-advisors'>List Advisors</h2>
 <blockquote>
 <p>List Advisors</p>
@@ -2454,7 +2475,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 <h1 id='risk-and-tolerance'>Risk and Tolerance</h1><h2 id='risk-statuses'>Risk statuses</h2>
-<p>Calculating scores for a portfolio might take some time (from a few seconds to a few minutes). In order to make our system more responsive, we calculate the scores in asynchronously. That means that when an account is created or updated, we will be able to provide an immediate answer to the request and, at the same time, queue the score calculation. In the response, we provide a readable status that indicates what is happening in background. The available statuses are:</p>
+<p>Calculating scores for a portfolio might take some time (from a few seconds to a few minutes). In order to make our
+system more responsive, we calculate the scores in asynchronously. That means that when an account is created or
+updated, we will be able to provide an immediate answer to the request and, at the same time, queue the score
+calculation. In the response, we provide a readable status that indicates what is happening in background. The available
+statuses are:</p>
 
 <table><thead>
 <tr>
@@ -2595,7 +2620,8 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 </tr>
 </tbody></table>
 
-<p>Notice that we provide 3 image versions for each one of the score factors. You can use the version that better adjust to your site layout.</p>
+<p>Notice that we provide 3 image versions for each one of the score factors. You can use the version that better adjust to
+your site layout.</p>
 
 <ul>
 <li>large:</li>
@@ -3933,6 +3959,11 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.11.0 (2024-05-21)
+
+<ul>
+<li>Add <code>/teams/</code> endpoint</li>
+</ul></li>
 <li>1.10.0 (2023-03-27)
 
 <ul>
