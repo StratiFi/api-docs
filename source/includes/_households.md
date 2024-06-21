@@ -9,6 +9,7 @@
   "id": 1,
   "external_id": "hou-1",
   "name": "Smith Family",
+  "advisor": 1,
   "risk": {
     "scores": {
       "overall": 8.1,
@@ -27,22 +28,25 @@
       "volatility": 4.0
     }
   },
-  "drift": 5.1
+  "drift": 5.1,
+  "sources": ["source_id_1", "source_id_2"]
 }
 
 ```
 
-| Name             | Type                              | Description                                  |
-|------------------|-----------------------------------|----------------------------------------------|
-| id               | int                               | Household ID                                 |
-| external_id      | string                            | Your household identifier                    |
-| name             | string                            | Household Name                               |
-| advisor          | int                               | Advisor ID                                   |
-| risk.scores      | [Scores Factors](#scores-factors) | Household aggregated risk scores             |
-| risk.media       | [Scores Media](#scores-media)     | Household aggregated risk scores images      |
-| tolerance.scores | [Scores Factors](#scores-factors) | Household aggregated tolerance scores        |
-| tolerance.media  | [Scores Media](#scores-factors)   | Household aggregated tolerance scores images |
-| drift            | float                             | Household drift score                        |
+| Name             | Type                              | Description                                            |
+|------------------|-----------------------------------|--------------------------------------------------------|
+| id               | int                               | Household ID                                           |
+| external_id      | string                            | Your household identifier                              |
+| name             | string                            | Household Name                                         |
+| advisor          | int                               | Advisor ID                                             |
+| risk.scores      | [Scores Factors](#scores-factors) | Household aggregated risk scores                       |
+| risk.media       | [Scores Media](#scores-media)     | Household aggregated risk scores images                |
+| tolerance.scores | [Scores Factors](#scores-factors) | Household aggregated tolerance scores                  |
+| tolerance.media  | [Scores Media](#scores-factors)   | Household aggregated tolerance scores images           |
+| drift            | float                             | Household drift score                                  |
+| sources          | List of source_ids                | List of sources that are associated with the household |
+
 
 ## List Households
 
@@ -63,7 +67,8 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
         "advisor": 1,
         "risk": {…},
         "tolerance": {…},
-        "drift": 5.1
+        "drift": 5.1,
+        "sources": ["source_id_1", "source_id_2"]
     },
     …
   ]
@@ -104,7 +109,8 @@ curl "https://backend.stratifi.com/api/v1/households/1/" -H "Authorization: Bear
   "advisor": 1,
   "risk": {…},
   "tolerance": {…},
-  "drift": 5.1
+  "drift": 5.1,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
@@ -133,7 +139,8 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
   "advisor": 2,
   "risk": {…},
   "tolerance": {…},
-  "drift": 5.1
+  "drift": 5.1,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
@@ -170,7 +177,8 @@ curl -X PUT "https://backend.stratifi.com/api/v1/households/2/"
   "advisor": 2,
   "risk": {…},
   "tolerance": {…},
-  "drift": 5.1
+  "drift": 5.1,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 

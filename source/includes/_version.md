@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.12.0 (2024-06-20)
+  - Add sources field to `household`, `investor`, `account` and `model_portfolio`
 - 1.11.0 (2024-05-21)
   - Add `/teams/` endpoint
 - 1.10.0 (2023-03-27)

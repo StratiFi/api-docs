@@ -34,24 +34,26 @@
       "volatility": 4.0
     }
   },
-  "drift": 5.1
+  "drift": 5.1,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
-| Name             | Type                                   | Description                                         |
-|------------------|----------------------------------------|-----------------------------------------------------|
-| id               | int                                    | Investor ID                                         |
-| external_id      | string                                 | Your investor identifier                            |
-| advisor          | int                                    | Advisor ID                                          |
-| household        | int                                    | Household ID                                        |
-| is_prospect      | bool                                   | Indicates if the investor is a client or a prospect |
-| phone            | string                                 | Phone of the investor                               |
-| user             | [User Object](#user-object-definition) | User info                                           |
-| risk.scores      | [Scores Factors](#scores-factors)      | Investor aggregated risk scores                     |
-| risk.media       | [Scores Media](#scores-media)          | Investor aggregated risk scores images              |
-| tolerance.scores | [Scores Factors](#scores-factors)      | Investor aggregated tolerance scores                |
-| tolerance.media  | [Scores Media](#scores-factors)        | Investor aggregated tolerance scores images         |
-| drift            | float                                  | Investor drift score                                |
+| Name             | Type                                   | Description                                             |
+|------------------|----------------------------------------|---------------------------------------------------------|
+| id               | int                                    | Investor ID                                             |
+| external_id      | string                                 | Your investor identifier                                |
+| advisor          | int                                    | Advisor ID                                              |
+| household        | int                                    | Household ID                                            |
+| is_prospect      | bool                                   | Indicates if the investor is a client or a prospect     |
+| phone            | string                                 | Phone of the investor                                   |
+| user             | [User Object](#user-object-definition) | User info                                               |
+| risk.scores      | [Scores Factors](#scores-factors)      | Investor aggregated risk scores                         |
+| risk.media       | [Scores Media](#scores-media)          | Investor aggregated risk scores images                  |
+| tolerance.scores | [Scores Factors](#scores-factors)      | Investor aggregated tolerance scores                    |
+| tolerance.media  | [Scores Media](#scores-factors)        | Investor aggregated tolerance scores images             |
+| drift            | float                                  | Investor drift score                                    |
+| sources          | List of source_ids                     | List of sources that are associated with the investor   |
 
 ## List Investors
 
@@ -78,7 +80,8 @@ curl "https://backend.stratifi.com/api/v1/investors/" -H "Authorization: Bearer 
       },
       "risk": {…},
       "tolerance": {…},
-      "drift": 5.1
+      "drift": 5.1,
+      "sources": ["source_id_1", "source_id_2"]
     },
     …
   ]
@@ -126,7 +129,8 @@ curl "https://backend.stratifi.com/api/v1/investors/1/" -H "Authorization: Beare
   },
   "risk": {…},
   "tolerance": {…},
-  "drift": 5.1
+  "drift": 5.1,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
@@ -167,7 +171,8 @@ curl -X POST "https://backend.stratifi.com/api/v1/investors/" -H "Authorization:
   },
   "risk": {…},
   "tolerance": {…},
-  "drift": 5.1
+  "drift": 5.1,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
@@ -217,7 +222,8 @@ curl -X PUT "https://backend.stratifi.com/api/v1/investors/150/" -H "Authorizati
   },
   "risk": {…},
   "tolerance": {…},
-  "drift": 5.1
+  "drift": 5.1,
+  "sources": ["source_id_1", "source_id_2"]
 }
 
 ```

@@ -24,21 +24,23 @@
         "value": 80.0
     }
   ],
-  "risk": {…}
+  "risk": {…},
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
-| Name        | Type                                    | Description               |
-|-------------|-----------------------------------------|---------------------------|
-| id          | int                                     | Model Portfolio ID        |
-| external_id | string                                  | Your model identifier     |
-| name        | string                                  | Model Portfolio name      |
-| value       | string                                  | Model Portfolio value     |
-| type        | string                                  | Model Portfolio type      |
-| is_strategy | bool                                    | Is this model a strategy? |
-| company     | int                                     | Company ID                |
-| positions[] | List of [Positions Objects](#positions) | Model Portfolio holdings  |
-| risk        | [Risk Object](#risk-object-definition)  | Model Portfolio risk      |
+| Name        | Type                                    | Description                                                  |
+|-------------|-----------------------------------------|--------------------------------------------------------------|
+| id          | int                                     | Model Portfolio ID                                           |
+| external_id | string                                  | Your model identifier                                        |
+| name        | string                                  | Model Portfolio name                                         |
+| value       | string                                  | Model Portfolio value                                        |
+| type        | string                                  | Model Portfolio type                                         |
+| is_strategy | bool                                    | Is this model a strategy?                                    |
+| company     | int                                     | Company ID                                                   |
+| positions[] | List of [Positions Objects](#positions) | Model Portfolio holdings                                     |
+| risk        | [Risk Object](#risk-object-definition)  | Model Portfolio risk                                         |
+| sources     | List of source_ids                      | List of sources that are associated with the Model Portfolio |
 
 ## List Model Portfolios
 
@@ -61,7 +63,8 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
       "is_strategy": false,
       "company": 1,
       "positions": [ … ],
-      "risk": { … }
+      "risk": { … },
+      "sources": ["source_id_1", "source_id_2"]
     },
     …
   ]
@@ -103,7 +106,8 @@ curl "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: Bearer {
   "is_strategy": false,
   "company": 1,
   "positions": [ … ],
-  "risk": { … }
+  "risk": { … },
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
@@ -149,7 +153,8 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
   "is_strategy": false,
   "company": 1,
   "positions": [ … ],
-  "risk": { … }
+  "risk": { … },
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
@@ -207,7 +212,8 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
   "is_strategy": true,
   "company": 1,
   "positions": [ … ],
-  "risk": { … }
+  "risk": { … },
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 

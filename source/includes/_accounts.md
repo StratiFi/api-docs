@@ -19,26 +19,28 @@
   "positions": […],
   "risk": {…},
   "tolerance": {…},
-  "drift": 1.7
+  "drift": 1.7,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
-| Name        | Type                                             | Description                                                                                                                                                                                                                                                                |
-|-------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id          | int                                              | Account ID                                                                                                                                                                                                                                                                 |
-| external_id | string                                           | Your account identifier                                                                                                                                                                                                                                                    |
-| name        | string                                           | Account name                                                                                                                                                                                                                                                               |
-| value       | string                                           | Account value                                                                                                                                                                                                                                                              |
-| type        | string                                           | Account type .                                                                                                                                                                                                                                                             |
-| tax_status  | string                                           | Account tax status. One of [these values](http://api.stratifi.com/docs/v1/#account-tax-statuses).                                                                                                                                                                          |
-| number      | string                                           | Account number                                                                                                                                                                                                                                                             |
-| strategy    | int                                              | Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the [list or get endpoint](http://api.stratifi.com/docs/v1/#list-model-portfolios).                                                                                     |
-| investor    | int                                              | Investor ID                                                                                                                                                                                                                                                                |
-| advisor     | int                                              | Advisor ID. Ideally, you would provide the investor ID. However, if you don't have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the `default_investor` of the selected advisor. |
-| positions[] | List of [Positions Objects](#positions)          | Account holdings                                                                                                                                                                                                                                                           |
-| risk        | [Risk Object](#risk-object-definition)           | Account risk                                                                                                                                                                                                                                                               |
-| tolerance   | [Tolerance Object](#tolerance-object-definition) | Account tolerance                                                                                                                                                                                                                                                          |
-| drift       | float                                            | Drift between the risk and the tolerance overall scores                                                                                                                                                                                                                    |
+| Name        | Type                                             | Description                                                                                                                                                                                                                                                                 |
+|-------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| id          | int                                              | Account ID                                                                                                                                                                                                                                                                  |
+| external_id | string                                           | Your account identifier                                                                                                                                                                                                                                                     |
+| name        | string                                           | Account name                                                                                                                                                                                                                                                                |
+| value       | string                                           | Account value                                                                                                                                                                                                                                                               |
+| type        | string                                           | Account type .                                                                                                                                                                                                                                                              |
+| tax_status  | string                                           | Account tax status. One of [these values](http://api.stratifi.com/docs/v1/#account-tax-statuses).                                                                                                                                                                           |                                                 |
+| number      | string                                           | Account number                                                                                                                                                                                                                                                              |
+| strategy    | int                                              | Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the [list or get endpoint](http://api.stratifi.com/docs/v1/#list-model-portfolios).                                                                                      |
+| investor    | int                                              | Investor ID                                                                                                                                                                                                                                                                 |
+| advisor     | int                                              | Advisor ID. Ideally, you would provide the investor ID. However, if you don't have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the `default_investor` of the selected advisor.  |
+| positions[] | List of [Positions Objects](#positions)          | Account holdings                                                                                                                                                                                                                                                            |
+| risk        | [Risk Object](#risk-object-definition)           | Account risk                                                                                                                                                                                                                                                                |
+| tolerance   | [Tolerance Object](#tolerance-object-definition) | Account tolerance                                                                                                                                                                                                                                                           |
+| drift       | float                                            | Drift between the risk and the tolerance overall scores                                                                                                                                                                                                                     |
+| sources     | List of source_ids                               | List of sources that are associated with the account                                                                                                                                                                                                                        |
 
 ### Account Tax Statuses
 
@@ -79,6 +81,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {
       "risk": { … },
       "tolerance": { … },
       "drift": 1.0,
+      "sources": ["source_id_1", "source_id_2"]
     },
     …
   ]
@@ -123,6 +126,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer
   "risk": { … },
   "tolerance": { … },
   "drift": 1.0,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
@@ -176,6 +180,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
   "risk": { … },
   "tolerance": { … },
   "drift": 1.0,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
@@ -245,6 +250,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
   "risk": { … },
   "tolerance": { … },
   "drift": 1.0,
+  "sources": ["source_id_1", "source_id_2"]
 }
 ```
 
