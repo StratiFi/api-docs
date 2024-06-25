@@ -2141,6 +2141,7 @@ investor.</p>
   <span class="s2">"id"</span>: 1,
   <span class="s2">"external_id"</span>: <span class="s2">"hou-1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"Smith Family"</span>,
+  <span class="s2">"advisor"</span>: 1,
   <span class="s2">"risk"</span>: <span class="o">{</span>
     <span class="s2">"scores"</span>: <span class="o">{</span>
       <span class="s2">"overall"</span>: 8.1,
@@ -2159,7 +2160,8 @@ investor.</p>
       <span class="s2">"volatility"</span>: 4.0
     <span class="o">}</span>
   <span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="s2">"drift"</span>: 5.1,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 
 </code></pre></div>
@@ -2215,6 +2217,11 @@ investor.</p>
 <td>float</td>
 <td>Household drift score</td>
 </tr>
+<tr>
+<td>sources</td>
+<td>List of source_ids</td>
+<td>List of sources that are associated with the household</td>
+</tr>
 </tbody></table>
 <h2 id='list-households'>List Households</h2>
 <blockquote>
@@ -2234,7 +2241,8 @@ investor.</p>
         <span class="s2">"advisor"</span>: 1,
         <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
         <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-        <span class="s2">"drift"</span>: 5.1
+        <span class="s2">"drift"</span>: 5.1,
+        <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -2308,7 +2316,8 @@ investor.</p>
   <span class="s2">"advisor"</span>: 1,
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="s2">"drift"</span>: 5.1,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -2334,7 +2343,8 @@ investor.</p>
   <span class="s2">"advisor"</span>: 2,
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="s2">"drift"</span>: 5.1,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -2382,7 +2392,8 @@ investor.</p>
   <span class="s2">"advisor"</span>: 2,
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="s2">"drift"</span>: 5.1,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: PUT/PATCH</p>
@@ -2482,7 +2493,8 @@ investor.</p>
       <span class="s2">"volatility"</span>: 4.0
     <span class="o">}</span>
   <span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="s2">"drift"</span>: 5.1,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -2552,6 +2564,11 @@ investor.</p>
 <td>float</td>
 <td>Investor drift score</td>
 </tr>
+<tr>
+<td>sources</td>
+<td>List of source_ids</td>
+<td>List of sources that are associated with the investor</td>
+</tr>
 </tbody></table>
 <h2 id='list-investors'>List Investors</h2>
 <blockquote>
@@ -2577,7 +2594,8 @@ investor.</p>
       <span class="o">}</span>,
       <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
       <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-      <span class="s2">"drift"</span>: 5.1
+      <span class="s2">"drift"</span>: 5.1,
+      <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -2662,7 +2680,8 @@ investor.</p>
   <span class="o">}</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="s2">"drift"</span>: 5.1,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -2700,7 +2719,8 @@ investor.</p>
   <span class="o">}</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="s2">"drift"</span>: 5.1,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -2773,7 +2793,8 @@ investor.</p>
   <span class="o">}</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 5.1
+  <span class="s2">"drift"</span>: 5.1,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 
 </code></pre></div>
@@ -3350,7 +3371,8 @@ your site layout.</p>
   <span class="s2">"positions"</span>: <span class="o">[</span>…],
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"drift"</span>: 1.7
+  <span class="s2">"drift"</span>: 1.7,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -3430,6 +3452,11 @@ your site layout.</p>
 <td>float</td>
 <td>Drift between the risk and the tolerance overall scores</td>
 </tr>
+<tr>
+<td>sources</td>
+<td>List of source_ids</td>
+<td>List of sources that are associated with the account</td>
+</tr>
 </tbody></table>
 <h3 id='account-tax-statuses'>Account Tax Statuses</h3>
 <table><thead>
@@ -3481,6 +3508,7 @@ your site layout.</p>
       <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
       <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
       <span class="s2">"drift"</span>: 1.0,
+      <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -3562,6 +3590,7 @@ your site layout.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -3612,6 +3641,7 @@ your site layout.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -3724,6 +3754,7 @@ your site layout.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: PUT/PATCH</p>
@@ -3848,7 +3879,8 @@ your site layout.</p>
         <span class="s2">"value"</span>: 80.0
     <span class="o">}</span>
   <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>
+  <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -3903,6 +3935,11 @@ your site layout.</p>
 <td><a href="#risk-object-definition">Risk Object</a></td>
 <td>Model Portfolio risk</td>
 </tr>
+<tr>
+<td>sources</td>
+<td>List of source_ids</td>
+<td>List of sources that are associated with the Model Portfolio</td>
+</tr>
 </tbody></table>
 <h2 id='list-model-portfolios'>List Model Portfolios</h2>
 <blockquote>
@@ -3924,7 +3961,8 @@ your site layout.</p>
       <span class="s2">"is_strategy"</span>: <span class="nb">false</span>,
       <span class="s2">"company"</span>: 1,
       <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
-      <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
+      <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
+      <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -3995,7 +4033,8 @@ your site layout.</p>
   <span class="s2">"is_strategy"</span>: <span class="nb">false</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
+  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -4038,7 +4077,8 @@ your site layout.</p>
   <span class="s2">"is_strategy"</span>: <span class="nb">false</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
+  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -4127,7 +4167,8 @@ your site layout.</p>
   <span class="s2">"is_strategy"</span>: <span class="nb">true</span>,
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>
+  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
+  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: PUT/PATCH</p>
@@ -4341,6 +4382,11 @@ your site layout.</p>
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.12.0 (2024-06-20)
+
+<ul>
+<li>Add sources field to <code>household</code>, <code>investor</code>, <code>account</code> and <code>model_portfolio</code></li>
+</ul></li>
 <li>1.11.0 (2024-05-21)
 
 <ul>
