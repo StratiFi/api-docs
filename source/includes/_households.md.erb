@@ -29,24 +29,27 @@
     }
   },
   "drift": 5.1,
-  "sources": ["source_id_1", "source_id_2"]
+  "sources": […]
 }
 
 ```
 
-| Name             | Type                              | Description                                            |
-|------------------|-----------------------------------|--------------------------------------------------------|
-| id               | int                               | Household ID                                           |
-| external_id      | string                            | Your household identifier                              |
-| name             | string                            | Household Name                                         |
-| advisor          | int                               | Advisor ID                                             |
-| risk.scores      | [Scores Factors](#scores-factors) | Household aggregated risk scores                       |
-| risk.media       | [Scores Media](#scores-media)     | Household aggregated risk scores images                |
-| tolerance.scores | [Scores Factors](#scores-factors) | Household aggregated tolerance scores                  |
-| tolerance.media  | [Scores Media](#scores-factors)   | Household aggregated tolerance scores images           |
-| drift            | float                             | Household drift score                                  |
-| sources          | List of source_ids                | List of sources that are associated with the household |
+| Name             | Type                                                            | Description                                             |
+|------------------|-----------------------------------------------------------------|---------------------------------------------------------|
+| id               | int                                                             | Household ID                                            |
+| external_id      | string                                                          | Your household identifier                               |
+| name             | string                                                          | Household Name                                          |
+| advisor          | int                                                             | Advisor ID                                              |
+| risk.scores      | [Scores Factors](#scores-factors)                               | Household aggregated risk scores                        |
+| risk.media       | [Scores Media](#scores-media)                                   | Household aggregated risk scores images                 |
+| tolerance.scores | [Scores Factors](#scores-factors)                               | Household aggregated tolerance scores                   |
+| tolerance.media  | [Scores Media](#scores-factors)                                 | Household aggregated tolerance scores images            |
+| drift            | float                                                           | Household drift score                                   |
+| sources          | List of [Sources Objects](#households-source-object-definition) | List of sources that are associated with the household  |                                                                                                                                                                                                                        |
 
+### Households Source Object Definition
+
+<%= partial "includes/partials/_sources.md.erb" %>
 
 ## List Households
 
@@ -68,7 +71,7 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
         "risk": {…},
         "tolerance": {…},
         "drift": 5.1,
-        "sources": ["source_id_1", "source_id_2"]
+        "sources": […]
     },
     …
   ]
@@ -90,10 +93,12 @@ curl "https://backend.stratifi.com/api/v1/households/" -H "Authorization: Bearer
 
 **Filtering Fields**
 
-| Name        | Type   | Description               |
-|-------------|--------|---------------------------|
-| advisor     | int    | Advisor ID                |
-| external_id | string | Your household identifier |
+| Name            | Type   | Description               |
+|-----------------|--------|---------------------------|
+| advisor         | int    | Advisor ID                |
+| external_id     | string | Your household identifier |
+| source_id       | int    | Source ID                 |
+| source_provider | int    | Source provider ID        |
 
 ## Get Household
 
@@ -110,7 +115,7 @@ curl "https://backend.stratifi.com/api/v1/households/1/" -H "Authorization: Bear
   "risk": {…},
   "tolerance": {…},
   "drift": 5.1,
-  "sources": ["source_id_1", "source_id_2"]
+  "sources": […]
 }
 ```
 
@@ -140,7 +145,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
   "risk": {…},
   "tolerance": {…},
   "drift": 5.1,
-  "sources": ["source_id_1", "source_id_2"]
+  "sources": […]
 }
 ```
 
@@ -178,7 +183,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/households/2/"
   "risk": {…},
   "tolerance": {…},
   "drift": 5.1,
-  "sources": ["source_id_1", "source_id_2"]
+  "sources": […]
 }
 ```
 
