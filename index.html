@@ -2161,7 +2161,7 @@ investor.</p>
     <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 
 </code></pre></div>
@@ -2219,8 +2219,57 @@ investor.</p>
 </tr>
 <tr>
 <td>sources</td>
-<td>List of source_ids</td>
+<td>List of <a href="#households-source-object-definition">Sources Objects</a></td>
 <td>List of sources that are associated with the household</td>
+</tr>
+</tbody></table>
+<h3 id='households-source-object-definition'>Households Source Object Definition</h3>
+<blockquote>
+<p>Source Object</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">""</span>,
+        <span class="s2">"provider"</span>: <span class="s2">"Stratifi API"</span>,
+        <span class="s2">"provider_id"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"created"</span>: <span class="s2">"2024-07-08T09:39:07.103365Z"</span>,
+        <span class="s2">"modified"</span>: <span class="s2">"2024-07-08T09:44:35.463377Z"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID of the source</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>string</td>
+<td>Source provider</td>
+</tr>
+<tr>
+<td>provider_id</td>
+<td>string</td>
+<td>Source provider ID</td>
+</tr>
+<tr>
+<td>created</td>
+<td>string</td>
+<td>Source created date</td>
+</tr>
+<tr>
+<td>modified</td>
+<td>string</td>
+<td>Source modified date</td>
 </tr>
 </tbody></table>
 <h2 id='list-households'>List Households</h2>
@@ -2242,7 +2291,7 @@ investor.</p>
         <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
         <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
         <span class="s2">"drift"</span>: 5.1,
-        <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+        <span class="s2">"sources"</span>: <span class="o">[</span>…]
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -2302,6 +2351,16 @@ investor.</p>
 <td>string</td>
 <td>Your household identifier</td>
 </tr>
+<tr>
+<td>source_id</td>
+<td>int</td>
+<td>Source ID</td>
+</tr>
+<tr>
+<td>source_provider</td>
+<td>int</td>
+<td>Source provider ID</td>
+</tr>
 </tbody></table>
 <h2 id='get-household'>Get Household</h2>
 <blockquote>
@@ -2317,7 +2376,7 @@ investor.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -2344,7 +2403,7 @@ investor.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -2393,7 +2452,7 @@ investor.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: PUT/PATCH</p>
@@ -2494,7 +2553,7 @@ investor.</p>
     <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -2566,8 +2625,57 @@ investor.</p>
 </tr>
 <tr>
 <td>sources</td>
-<td>List of source_ids</td>
+<td>List of <a href="#investor-source-object-definition">Sources Objects</a></td>
 <td>List of sources that are associated with the investor</td>
+</tr>
+</tbody></table>
+<h3 id='investor-source-object-definition'>Investor Source Object Definition</h3>
+<blockquote>
+<p>Source Object</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">""</span>,
+        <span class="s2">"provider"</span>: <span class="s2">"Stratifi API"</span>,
+        <span class="s2">"provider_id"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"created"</span>: <span class="s2">"2024-07-08T09:39:07.103365Z"</span>,
+        <span class="s2">"modified"</span>: <span class="s2">"2024-07-08T09:44:35.463377Z"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID of the source</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>string</td>
+<td>Source provider</td>
+</tr>
+<tr>
+<td>provider_id</td>
+<td>string</td>
+<td>Source provider ID</td>
+</tr>
+<tr>
+<td>created</td>
+<td>string</td>
+<td>Source created date</td>
+</tr>
+<tr>
+<td>modified</td>
+<td>string</td>
+<td>Source modified date</td>
 </tr>
 </tbody></table>
 <h2 id='list-investors'>List Investors</h2>
@@ -2595,7 +2703,7 @@ investor.</p>
       <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
       <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
       <span class="s2">"drift"</span>: 5.1,
-      <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+      <span class="s2">"sources"</span>: <span class="o">[</span>…]
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -2660,6 +2768,16 @@ investor.</p>
 <td>string</td>
 <td>Your investor identifier</td>
 </tr>
+<tr>
+<td>source_id</td>
+<td>int</td>
+<td>Source ID</td>
+</tr>
+<tr>
+<td>source_provider</td>
+<td>int</td>
+<td>Source provider ID</td>
+</tr>
 </tbody></table>
 <h2 id='get-investor'>Get Investor</h2>
 <blockquote>
@@ -2681,7 +2799,7 @@ investor.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -2720,7 +2838,7 @@ investor.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -2794,7 +2912,7 @@ investor.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 5.1,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 
 </code></pre></div>
@@ -3372,7 +3490,8 @@ your site layout.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.7,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…],
+  <span class="s2">"teams"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -3454,8 +3573,62 @@ your site layout.</p>
 </tr>
 <tr>
 <td>sources</td>
-<td>List of source_ids</td>
+<td>List of <a href="#account-source-object-definition">Sources Objects</a></td>
 <td>List of sources that are associated with the account</td>
+</tr>
+<tr>
+<td>teams</td>
+<td>List of Teams Ids</td>
+<td>List of teams ids that are associated with the account</td>
+</tr>
+</tbody></table>
+<h3 id='account-source-object-definition'>Account Source Object Definition</h3>
+<blockquote>
+<p>Source Object</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">""</span>,
+        <span class="s2">"provider"</span>: <span class="s2">"Stratifi API"</span>,
+        <span class="s2">"provider_id"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"created"</span>: <span class="s2">"2024-07-08T09:39:07.103365Z"</span>,
+        <span class="s2">"modified"</span>: <span class="s2">"2024-07-08T09:44:35.463377Z"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID of the source</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>string</td>
+<td>Source provider</td>
+</tr>
+<tr>
+<td>provider_id</td>
+<td>string</td>
+<td>Source provider ID</td>
+</tr>
+<tr>
+<td>created</td>
+<td>string</td>
+<td>Source created date</td>
+</tr>
+<tr>
+<td>modified</td>
+<td>string</td>
+<td>Source modified date</td>
 </tr>
 </tbody></table>
 <h3 id='account-tax-statuses'>Account Tax Statuses</h3>
@@ -3508,7 +3681,8 @@ your site layout.</p>
       <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
       <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
       <span class="s2">"drift"</span>: 1.0,
-      <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+      <span class="s2">"sources"</span>: <span class="o">[</span>…],
+      <span class="s2">"teams"</span>: <span class="o">[</span>…]
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -3569,6 +3743,16 @@ your site layout.</p>
 <td>int</td>
 <td>Household ID</td>
 </tr>
+<tr>
+<td>source_id</td>
+<td>int</td>
+<td>Source ID</td>
+</tr>
+<tr>
+<td>source_provider</td>
+<td>int</td>
+<td>Source provider ID</td>
+</tr>
 </tbody></table>
 <h2 id='get-account'>Get Account</h2>
 <blockquote>
@@ -3590,7 +3774,8 @@ your site layout.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…],
+  <span class="s2">"teams"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -3623,7 +3808,8 @@ your site layout.</p>
         "value": "411522.63"
       },
       …
-    ]
+    ],
+    "teams": [1]
   }'</span>
 
 <span class="o">{</span>
@@ -3641,7 +3827,8 @@ your site layout.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…],
+  <span class="s2">"teams"</span>: <span class="o">[</span>1]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -3736,7 +3923,8 @@ your site layout.</p>
         "value": "411522.63"
       },
       …
-    ]
+    ],
+    "teams": [1]
   }'</span>
 
 <span class="o">{</span>
@@ -3754,7 +3942,8 @@ your site layout.</p>
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"drift"</span>: 1.0,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…],
+  <span class="s2">"teams"</span>: <span class="o">[</span>1]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: PUT/PATCH</p>
@@ -3880,7 +4069,8 @@ your site layout.</p>
     <span class="o">}</span>
   <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…],
+  <span class="s2">"teams"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -3937,8 +4127,62 @@ your site layout.</p>
 </tr>
 <tr>
 <td>sources</td>
-<td>List of source_ids</td>
+<td>List of <a href="#model-portfolios-source-object-definition">Sources Objects</a></td>
 <td>List of sources that are associated with the Model Portfolio</td>
+</tr>
+<tr>
+<td>teams</td>
+<td>List of Teams Ids</td>
+<td>List of teams ids that are associated with the Model Portfolio</td>
+</tr>
+</tbody></table>
+<h3 id='model-portfolios-source-object-definition'>Model Portfolios Source Object Definition</h3>
+<blockquote>
+<p>Source Object</p>
+</blockquote>
+
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">""</span>,
+        <span class="s2">"provider"</span>: <span class="s2">"Stratifi API"</span>,
+        <span class="s2">"provider_id"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"created"</span>: <span class="s2">"2024-07-08T09:39:07.103365Z"</span>,
+        <span class="s2">"modified"</span>: <span class="s2">"2024-07-08T09:44:35.463377Z"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID of the source</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>string</td>
+<td>Source provider</td>
+</tr>
+<tr>
+<td>provider_id</td>
+<td>string</td>
+<td>Source provider ID</td>
+</tr>
+<tr>
+<td>created</td>
+<td>string</td>
+<td>Source created date</td>
+</tr>
+<tr>
+<td>modified</td>
+<td>string</td>
+<td>Source modified date</td>
 </tr>
 </tbody></table>
 <h2 id='list-model-portfolios'>List Model Portfolios</h2>
@@ -3962,7 +4206,8 @@ your site layout.</p>
       <span class="s2">"company"</span>: 1,
       <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
       <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
-      <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+      <span class="s2">"sources"</span>: <span class="o">[</span>…],
+      <span class="s2">"teams"</span>: <span class="o">[</span>…]
     <span class="o">}</span>,
     …
   <span class="o">]</span>
@@ -4017,6 +4262,16 @@ your site layout.</p>
 <td>string</td>
 <td>Your model identifier</td>
 </tr>
+<tr>
+<td>source_id</td>
+<td>int</td>
+<td>Source ID</td>
+</tr>
+<tr>
+<td>source_provider</td>
+<td>int</td>
+<td>Source provider ID</td>
+</tr>
 </tbody></table>
 <h2 id='get-model-portfolio'>Get Model Portfolio</h2>
 <blockquote>
@@ -4034,7 +4289,8 @@ your site layout.</p>
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…],
+  <span class="s2">"teams"</span>: <span class="o">[</span>…]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: GET</p>
@@ -4065,7 +4321,8 @@ your site layout.</p>
           "ticker_name": "SPDR S&amp;P500 ETF Trust",
           "value": 80.0
       }
-    ]
+    ],
+    "teams": [1],
   }'</span>
 
 <span class="o">{</span>
@@ -4078,7 +4335,8 @@ your site layout.</p>
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…],
+  <span class="s2">"teams"</span>: <span class="o">[</span>1]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: POST</p>
@@ -4155,7 +4413,8 @@ your site layout.</p>
           "ticker_name": "SPDR S&amp;P500 ETF Trust",
           "value": 70.0
       }
-    ]
+    ],
+    "teams": [1],
   }'</span>
 
 <span class="o">{</span>
@@ -4168,7 +4427,8 @@ your site layout.</p>
   <span class="s2">"company"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
-  <span class="s2">"sources"</span>: <span class="o">[</span><span class="s2">"source_id_1"</span>, <span class="s2">"source_id_2"</span><span class="o">]</span>
+  <span class="s2">"sources"</span>: <span class="o">[</span>…],
+  <span class="s2">"teams"</span>: <span class="o">[</span>1]
 <span class="o">}</span>
 </code></pre></div>
 <p>-request-type: PUT/PATCH</p>
@@ -4382,6 +4642,13 @@ your site layout.</p>
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.13.0 (2024-07-08)
+
+<ul>
+<li>Modify <code>sources</code> field in <code>household</code>, <code>investor</code>, <code>account</code> and <code>model_portfolio</code>, now returns an object with the fields <code>id</code>, <code>provider</code>, <code>provider_id</code>, <code>created</code> and <code>modified</code>.</li>
+<li>Add <code>source_id</code> and <code>source_provider</code> filters to <code>household</code>, <code>investor</code>, <code>account</code> and <code>model_portfolio</code>.</li>
+<li>Adds <code>teams</code> field to <code>model_portfolio</code> and <code>account</code>.</li>
+</ul></li>
 <li>1.12.0 (2024-06-20)
 
 <ul>
