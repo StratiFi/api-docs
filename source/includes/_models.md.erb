@@ -25,23 +25,28 @@
     }
   ],
   "risk": {…},
-  "sources": ["source_id_1", "source_id_2"]
+  "sources": […],
+  "teams": […]
 }
 ```
 
-| Name        | Type                                    | Description                                                  |
-|-------------|-----------------------------------------|--------------------------------------------------------------|
-| id          | int                                     | Model Portfolio ID                                           |
-| external_id | string                                  | Your model identifier                                        |
-| name        | string                                  | Model Portfolio name                                         |
-| value       | string                                  | Model Portfolio value                                        |
-| type        | string                                  | Model Portfolio type                                         |
-| is_strategy | bool                                    | Is this model a strategy?                                    |
-| company     | int                                     | Company ID                                                   |
-| positions[] | List of [Positions Objects](#positions) | Model Portfolio holdings                                     |
-| risk        | [Risk Object](#risk-object-definition)  | Model Portfolio risk                                         |
-| sources     | List of source_ids                      | List of sources that are associated with the Model Portfolio |
+| Name        | Type                                                                  | Description                                                    |
+|-------------|-----------------------------------------------------------------------|----------------------------------------------------------------|
+| id          | int                                                                   | Model Portfolio ID                                             |
+| external_id | string                                                                | Your model identifier                                          |
+| name        | string                                                                | Model Portfolio name                                           |
+| value       | string                                                                | Model Portfolio value                                          |
+| type        | string                                                                | Model Portfolio type                                           |
+| is_strategy | bool                                                                  | Is this model a strategy?                                      |
+| company     | int                                                                   | Company ID                                                     |
+| positions[] | List of [Positions Objects](#positions)                               | Model Portfolio holdings                                       |
+| risk        | [Risk Object](#risk-object-definition)                                | Model Portfolio risk                                           |
+| sources     | List of [Sources Objects](#model-portfolios-source-object-definition) | List of sources that are associated with the Model Portfolio   |                                                                                                                                                                                                                        |
+| teams       | List of Teams Ids                                                     | List of teams ids that are associated with the Model Portfolio |
 
+### Model Portfolios Source Object Definition
+
+<%= partial "includes/partials/_sources.md.erb" %>
 ## List Model Portfolios
 
 > List Model Portfolios
@@ -64,7 +69,8 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
       "company": 1,
       "positions": [ … ],
       "risk": { … },
-      "sources": ["source_id_1", "source_id_2"]
+      "sources": […],
+      "teams": […]
     },
     …
   ]
@@ -86,9 +92,11 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
 
 **Filtering Fields**
 
-| Name        | Type   | Description           |
-|-------------|--------|-----------------------|
-| external_id | string | Your model identifier |
+| Name            | Type   | Description             |
+|-----------------|--------|-------------------------|
+| external_id     | string | Your model identifier   |
+| source_id       | int    | Source ID               |
+| source_provider | int    | Source provider ID      |
 
 ## Get Model Portfolio
 
@@ -107,7 +115,8 @@ curl "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: Bearer {
   "company": 1,
   "positions": [ … ],
   "risk": { … },
-  "sources": ["source_id_1", "source_id_2"]
+  "sources": […],
+  "teams": […]
 }
 ```
 
@@ -141,7 +150,8 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
           "ticker_name": "SPDR S&P500 ETF Trust",
           "value": 80.0
       }
-    ]
+    ],
+    "teams": [1],
   }'
 
 {
@@ -154,7 +164,8 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
   "company": 1,
   "positions": [ … ],
   "risk": { … },
-  "sources": ["source_id_1", "source_id_2"]
+  "sources": […],
+  "teams": [1]
 }
 ```
 
@@ -200,7 +211,8 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
           "ticker_name": "SPDR S&P500 ETF Trust",
           "value": 70.0
       }
-    ]
+    ],
+    "teams": [1],
   }'
 
 {
@@ -213,7 +225,8 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
   "company": 1,
   "positions": [ … ],
   "risk": { … },
-  "sources": ["source_id_1", "source_id_2"]
+  "sources": […],
+  "teams": [1]
 }
 ```
 

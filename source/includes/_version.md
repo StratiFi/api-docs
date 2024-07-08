@@ -1,5 +1,9 @@
 # Changelog
 
+- 1.13.0 (2024-07-08)
+  - Modify `sources` field in `household`, `investor`, `account` and `model_portfolio`, now returns an object with the fields `id`, `provider`, `provider_id`, `created` and `modified`.
+  - Add `source_id` and `source_provider` filters to `household`, `investor`, `account` and `model_portfolio`.
+  - Adds `teams` field to `model_portfolio` and `account`.
 - 1.12.0 (2024-06-20)
   - Add sources field to `household`, `investor`, `account` and `model_portfolio`
 - 1.11.0 (2024-05-21)
