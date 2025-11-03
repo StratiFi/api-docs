@@ -83,12 +83,12 @@ curl "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Bearer {{ 
 
 **Response Fields**
 
-| Name     | Type   | Description                                       |
-|----------|--------|---------------------------------------------------|
-| count    | int    | Total number of models                            |
-| next     | string | Link to next page of models                       |
-| previous | string | Link to previous page of models                   |
-| results  | Object | List of [model objects](#model-object-definition) |
+| Name     | Type   | Description                                                 |
+|----------|--------|-------------------------------------------------------------|
+| count    | int    | Total number of models                                      |
+| next     | string | Link to next page of models                                 |
+| previous | string | Link to previous page of models                             |
+| results  | Object | List of [model objects](#model-portfolio-object-definition) |
 
 **Filtering Fields**
 
@@ -124,7 +124,7 @@ curl "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: Bearer {
 
 -request-url: `/models/<id>/`
 
-**Response:** The requested [model object](#model-object-definition).
+**Response:** The requested [model object](#model-portfolio-object-definition).
 
 ## Create Model Portfolio
 
@@ -185,7 +185,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/models/" -H "Authorization: Be
 | company     | int                                     | Optional |
 | external_id | int                                     | Optional |
 
-**Response:** The new [model object](#model-object-definition).
+**Response:** The new [model object](#model-portfolio-object-definition).
 
 ## Update Model Portfolio
 
@@ -269,4 +269,4 @@ curl "https://backend.stratifi.com/api/v1/models/11/prism_score/" -H "Authorizat
 |--------|-----------------------------------|---------------------------|
 | scores | [Scores Factors](#scores-factors) | Risk score factors        |
 | media  | [Scores Images](#scores-media)    | Risk score factors images |
-| status | [Scores Status](#scores-status)   | Risk score status         |
+| status | [Scores Status](#risk-statuses)   | Risk score status         |

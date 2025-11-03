@@ -3,7 +3,7 @@
 We use the OAuth 2.0 protocol with PKCE, an industry standard for authorization management.
 
 Make sure you have the _CLIENT ID_ an a _SECRET KEY_ provided by our support team. If you don't have them contact us
-at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a>.
+at <a class="link-primary" href="mailto:support@stratifi.com">support@stratifi.com</a>.
 
 ## Authorization Code Flow + PCKE
 
@@ -85,9 +85,10 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
     "token_type": "Bearer",
     "expires_in": 3600,
     "refresh_token": "{{ refresh_token }}",
-    "scope": "read write",
+    "scope": "openid read write",
     "advisor_id": 1,
-    "session_token": "{{ session_token }}
+    "session_token": "{{ session_token }}",
+    "id_token": "{{ id_token }}"
 }
 ```
 
@@ -104,15 +105,16 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
 
 **Response**
 
-| Parameter     | Type   |                                                                                                                                                               |
-|---------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| token_type    | string | Always "Bearer"                                                                                                                                               |
-| access_token  | string | An access token valid to consult other endpoints on behalf of the user                                                                                        |
-| expires_in    | string | Expiration time of the access token in seconds                                                                                                                |
-| refresh_token | string | An refresh token valid to renew the access token. It does not expires.                                                                                        |
-| scope         | string | The scopes with granted access for this token                                                                                                                 |
-| advisor_id    | int    | The ID of the advisor associated to this user                                                                                                                 |
-| session_token | string | A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>) |
+| Parameter     | Type   |                                                                                                      |
+|---------------|--------|------------------------------------------------------------------------------------------------------|
+| token_type    | string | Always "Bearer"                                                                                      |
+| access_token  | string | An access token valid to consult other endpoints on behalf of the user                               |
+| expires_in    | string | Expiration time of the access token in seconds                                                       |
+| refresh_token | string | An refresh token valid to renew the access token. It does not expires.                               |
+| scope         | string | The scopes with granted access for this token                                                        |
+| advisor_id    | int    | The ID of the advisor associated to this user                                                        |
+| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com)   |
+| id_token      | string | An OpenID Connect ID token used to start a session in stratifi.com                                   |
 
 &#54;. Include the _Authorization_ header in your requests as follows:
 
@@ -137,9 +139,10 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
     "token_type": "Bearer",
     "expires_in": 3600,
     "refresh_token": "{{ refresh_token }}",
-    "scope": "read write",
+    "scope": "openid read write",
     "advisor_id": 1,
-    "session_token": "{{ session_token }}
+    "session_token": "{{ session_token }}",
+    "id_token": "{{ id_token }}"
 
 }
 ```
@@ -155,17 +158,37 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
 
 **Response**
 
-| Parameter     | Type   |                                                                                                                                                               |
-|---------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| token_type    | string | Always "Bearer"                                                                                                                                               |
-| access_token  | string | An access token valid to consult other endpoints on behalf of the user                                                                                        |
-| expires_in    | string | Expiration time of the access token in seconds                                                                                                                |
-| refresh_token | string | An refresh token valid to renew the access token                                                                                                              |
-| scope         | string | The scopes with granted access for this token                                                                                                                 |
-| advisor_id    | int    | The ID of the advisor associated to this user                                                                                                                 |
-| session_token | string | A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>) |
+| Parameter     | Type   |                                                                                                    |
+|---------------|--------|----------------------------------------------------------------------------------------------------|
+| token_type    | string | Always "Bearer"                                                                                    |
+| access_token  | string | An access token valid to consult other endpoints on behalf of the user                             |
+| expires_in    | string | Expiration time of the access token in seconds                                                     |
+| refresh_token | string | An refresh token valid to renew the access token                                                   |
+| scope         | string | The scopes with granted access for this token                                                      |
+| advisor_id    | int    | The ID of the advisor associated to this user                                                      |
+| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com) |
+| id_token      | string | An OpenID Connect ID token used to start a session in stratifi.com                                 |
 
 ## Starting a session in stratifi.com
+
+### OIDC Flow (Recommended)
+You can start a session in stratifi.com using the OpenID Connect protocol. To do so, you need to include the `openid` scope
+when requesting the authorization code. The response will include an `id_token` property that you can use to start a session in stratifi.com.
+
+```shell
+curl -X POST "https://backend.stratifi.com/o/sso/" \
+  -H "Authorization: Bearer {{ access-token }}" \
+  -d "{'starting_url': '/advisor/investors'}"
+  
+redirection to "https://advisors.stratifi.com/advisor/investors/"
+```
+
+Making an authenticated request to the `/o/sso/` endpoint will redirect the user to stratifi.com and start a session. 
+You can include an optional `starting_url` property to specify the path where the user will be redirected after starting the session. 
+If not provided, the user will be redirected to the default dashboard.
+
+
+### Session Token Flow(Deprecated)
 
 The authorization responses described above contain a **session_token** property. This token automatically
 authenticates advisors in stratifi.com, meaning that the advisor won't be required to fill the credentials when visiting
@@ -188,10 +211,10 @@ To build an authenticated URL you need 3 parts:
 | Model Portfolios list     | `/advisor/models/`          |
 | Model Portfolios overview | `/advisor/models/<id>/`     |
 
-Having these 3 elements, the full URL is: `https://{{ base_domain}}{{ path }}?session={{ sesison_token }}`
+Having these 3 elements, the full URL is: `https://{{ base_domain }}{{ path }}?session={{ sesison_token }}`
 
-For instance, `https://advisors-sandbox.stratifi.com/advisor/investors/1/?session=abc123` will lead the user
-to the details page of the client with id 1 in the sandbox environment.
+For instance, `https://advisors.stratifi.com/advisor/investors/1/?session=abc123` will lead the user
+to the details page of the client with id 1.
 
 <small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to
 get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in
@@ -216,10 +239,10 @@ curl -X GET "https://backend.stratifi.com/api/v1/userinfo/"
 
 **Response**
 
-| Name          | Type   | Description                                                                                                                                                   |
-|---------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| first_name    | string | User first name                                                                                                                                               |
-| last_name     | string | User last name                                                                                                                                                |
-| email         | string | User email address                                                                                                                                            |
-| advisor_id    | int    | The ID of the advisor associated to this user                                                                                                                 |
-| session_token | string | A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>) |
+| Name          | Type   | Description                                                                                        |
+|---------------|--------|----------------------------------------------------------------------------------------------------|
+| first_name    | string | User first name                                                                                    |
+| last_name     | string | User last name                                                                                     |
+| email         | string | User email address                                                                                 |
+| advisor_id    | int    | The ID of the advisor associated to this user                                                      |
+| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com) |
