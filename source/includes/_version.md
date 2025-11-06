@@ -1,9 +1,10 @@
 # Changelog
 
-- 1.14.0 (2025-11-03)
+- 1.14.0 (2025-11-06)
   - session token deprecation notice
   - adds OIDC support
   - adds '/o/sso/' for starting a session on stratifi.com
+  - adds filtering for provider_name on sources field for household, investor, account and model_portfolio endpoints
 - 1.13.0 (2024-07-08)
   - Modify `sources` field in `household`, `investor`, `account` and `model_portfolio`, now returns an object with the fields `id`, `provider`, `provider_id`, `created` and `modified`.
   - Add `source_id` and `source_provider` filters to `household`, `investor`, `account` and `model_portfolio`.
