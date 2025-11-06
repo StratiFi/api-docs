@@ -564,13 +564,13 @@ you are familiar with Postman, you can consult and
 import <a href="https://documenter.getpostman.com/view/8311154/TWDRseqG" target="_blank">this collection</a> and play
 with the API.</p>
 
-<p>Before start using the API you need contact us at <a class="link-primary" href="mailto:info@stratifi.com">
+<p>Before start using the API you need contact us at <a class="link-primary" href="mailto:support@stratifi.com">
 support@stratifi.com</a> and request API access. We will provide you a <em>CLIENT ID</em> an a <em>SECRET KEY</em> required to
 complete the authorization process.</p>
 
 <p>If you want to know more about how the information is organized in StratiFi or want to familiarize with the API
-structure go to the <a href="https://api.stratifi.com/docs/v1/#about-stratifi">About</a> section. If you are ready to
-start, go to the <a href="https://api.stratifi.com/docs/v1/#authorization">Authorization</a> section.</p>
+structure go to the <a href="#about-stratifi">About</a> section. If you are ready to
+start, go to the <a href="#authorization">Authorization</a> section.</p>
 <h1 id='overview'>Overview</h1>
 <p>Our API follows a REST pattern, where HTTP methods define the action to perform and the endpoint URL determines the
 object(s) scope.</p>
@@ -682,7 +682,7 @@ use
 <p>We use the OAuth 2.0 protocol with PKCE, an industry standard for authorization management.</p>
 
 <p>Make sure you have the <em>CLIENT ID</em> an a <em>SECRET KEY</em> provided by our support team. If you don&#39;t have them contact us
-at <a class="link-primary" href="mailto:info@stratifi.com">support@stratifi.com</a>.</p>
+at <a class="link-primary" href="mailto:support@stratifi.com">support@stratifi.com</a>.</p>
 <h2 id='authorization-code-flow-pcke'>Authorization Code Flow + PCKE</h2>
 <p>Following the steps below you will get an access token that can be used to access StratiFi on behalf of the advisor.</p>
 
@@ -799,11 +799,12 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.
     <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
     <span class="s2">"expires_in"</span>: 3600,
     <span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
-    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>,
+    <span class="s2">"scope"</span>: <span class="s2">"openid read write"</span>,
     <span class="s2">"advisor_id"</span>: 1,
-    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}
-}
-</span></code></pre></div>
+    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}"</span>,
+    <span class="s2">"id_token"</span>: <span class="s2">"{{ id_token }}"</span>
+<span class="o">}</span>
+</code></pre></div>
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -887,7 +888,12 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.
 <tr>
 <td>session_token</td>
 <td>string</td>
-<td>A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>)</td>
+<td>A short-lived token used to <a href="#starting-a-session-in-stratifi-com">start a session in stratifi.com</a></td>
+</tr>
+<tr>
+<td>id_token</td>
+<td>string</td>
+<td>An OpenID Connect ID token used to start a session in stratifi.com</td>
 </tr>
 </tbody></table>
 
@@ -910,12 +916,13 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.
     <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
     <span class="s2">"expires_in"</span>: 3600,
     <span class="s2">"refresh_token"</span>: <span class="s2">"{{ refresh_token }}"</span>,
-    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>,
+    <span class="s2">"scope"</span>: <span class="s2">"openid read write"</span>,
     <span class="s2">"advisor_id"</span>: 1,
-    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}
+    <span class="s2">"session_token"</span>: <span class="s2">"{{ session_token }}"</span>,
+    <span class="s2">"id_token"</span>: <span class="s2">"{{ id_token }}"</span>
 
-}
-</span></code></pre></div>
+<span class="o">}</span>
+</code></pre></div>
 <p><strong>Request Parameters</strong></p>
 
 <table><thead>
@@ -989,10 +996,27 @@ curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.
 <tr>
 <td>session_token</td>
 <td>string</td>
-<td>A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>)</td>
+<td>A short-lived token used to <a href="#starting-a-session-in-stratifi-com">start a session in stratifi.com</a></td>
+</tr>
+<tr>
+<td>id_token</td>
+<td>string</td>
+<td>An OpenID Connect ID token used to start a session in stratifi.com</td>
 </tr>
 </tbody></table>
-<h2 id='starting-a-session-in-stratifi-com'>Starting a session in stratifi.com</h2>
+<h2 id='starting-a-session-in-stratifi-com'>Starting a session in stratifi.com</h2><h3 id='oidc-flow-recommended'>OIDC Flow (Recommended)</h3>
+<p>You can start a session in stratifi.com using the OpenID Connect protocol. To do so, you need to include the <code>openid</code> scope
+when requesting the authorization code. The response will include an <code>id_token</code> property that you can use to start a session in stratifi.com.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/sso/"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"{'starting_url': '/advisor/investors'}"</span>
+
+redirection to <span class="s2">"https://advisors.stratifi.com/advisor/investors/"</span>
+</code></pre></div>
+<p>Making an authenticated request to the <code>/o/sso/</code> endpoint will redirect the user to stratifi.com and start a session. 
+You can include an optional <code>starting_url</code> property to specify the path where the user will be redirected after starting the session. 
+If not provided, the user will be redirected to the default dashboard.</p>
+<h3 id='session-token-flow-deprecated'>Session Token Flow(Deprecated)</h3>
 <p>The authorization responses described above contain a <strong>session_token</strong> property. This token automatically
 authenticates advisors in stratifi.com, meaning that the advisor won&#39;t be required to fill the credentials when visiting
 Stratifi.</p>
@@ -1045,10 +1069,10 @@ Stratifi.</p>
 </tr>
 </tbody></table>
 
-<p>Having these 3 elements, the full URL is: <code>https://{{ base_domain}}{{ path }}?session={{ sesison_token }}</code></p>
+<p>Having these 3 elements, the full URL is: <code>https://{{ base_domain }}{{ path }}?session={{ sesison_token }}</code></p>
 
-<p>For instance, <code>https://advisors-sandbox.stratifi.com/advisor/investors/1/?session=abc123</code> will lead the user
-to the details page of the client with id 1 in the sandbox environment.</p>
+<p>For instance, <code>https://advisors.stratifi.com/advisor/investors/1/?session=abc123</code> will lead the user
+to the details page of the client with id 1.</p>
 
 <p><small>Note: The session token has a life of 5 minutes. After that, you will need to follow the refresh token flow to
 get a new one. If you use an expired token in an URL, the user will be redirected to the signin page in
@@ -1098,7 +1122,7 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <tr>
 <td>session_token</td>
 <td>string</td>
-<td>A short-lived token used to start a session in stratifi.com (<a href="https://api.stratifi.com/docs/v1/#starting-a-session-in-stratifi-com">more details</a>)</td>
+<td>A short-lived token used to <a href="#starting-a-session-in-stratifi-com">start a session in stratifi.com</a></td>
 </tr>
 </tbody></table>
 <h1 id='companies'>Companies</h1><h2 id='company-object-definition'>Company Object Definition</h2>
@@ -2361,6 +2385,11 @@ investor.</p>
 <td>int</td>
 <td>Source provider ID</td>
 </tr>
+<tr>
+<td>source_provider_name</td>
+<td>str</td>
+<td>Source provider Name</td>
+</tr>
 </tbody></table>
 <h2 id='get-household'>Get Household</h2>
 <blockquote>
@@ -2515,7 +2544,7 @@ investor.</p>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="#scores-status">Scores Status</a></td>
+<td><a href="#risk-statuses">Scores Status</a></td>
 <td>Risk score status</td>
 </tr>
 </tbody></table>
@@ -2778,6 +2807,11 @@ investor.</p>
 <td>int</td>
 <td>Source provider ID</td>
 </tr>
+<tr>
+<td>source_provider_name</td>
+<td>str</td>
+<td>Source provider Name</td>
+</tr>
 </tbody></table>
 <h2 id='get-investor'>Get Investor</h2>
 <blockquote>
@@ -2991,7 +3025,7 @@ investor.</p>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="#scores-status">Scores Status</a></td>
+<td><a href="#risk-statuses">Scores Status</a></td>
 <td>Risk score status</td>
 </tr>
 </tbody></table>
@@ -3529,7 +3563,7 @@ your site layout.</p>
 <tr>
 <td>tax_status</td>
 <td>string</td>
-<td>Account tax status. One of <a href="http://api.stratifi.com/docs/v1/#account-tax-statuses">these values</a>.</td>
+<td>Account tax status. One of <a href="#account-tax-statuses">these values</a>.</td>
 </tr>
 <tr>
 <td>number</td>
@@ -3539,7 +3573,7 @@ your site layout.</p>
 <tr>
 <td>strategy</td>
 <td>int</td>
-<td>Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the <a href="http://api.stratifi.com/docs/v1/#list-model-portfolios">list or get endpoint</a>.</td>
+<td>Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the <a href="#list-model-portfolios">list or get endpoint</a>.</td>
 </tr>
 <tr>
 <td>investor</td>
@@ -3752,6 +3786,11 @@ your site layout.</p>
 <td>source_provider</td>
 <td>int</td>
 <td>Source provider ID</td>
+</tr>
+<tr>
+<td>source_provider_name</td>
+<td>str</td>
+<td>Source provider Name</td>
 </tr>
 </tbody></table>
 <h2 id='get-account'>Get Account</h2>
@@ -4244,7 +4283,7 @@ your site layout.</p>
 <tr>
 <td>results</td>
 <td>Object</td>
-<td>List of <a href="#model-object-definition">model objects</a></td>
+<td>List of <a href="#model-portfolio-object-definition">model objects</a></td>
 </tr>
 </tbody></table>
 
@@ -4272,6 +4311,11 @@ your site layout.</p>
 <td>int</td>
 <td>Source provider ID</td>
 </tr>
+<tr>
+<td>source_provider_name</td>
+<td>str</td>
+<td>Source provider Name</td>
+</tr>
 </tbody></table>
 <h2 id='get-model-portfolio'>Get Model Portfolio</h2>
 <blockquote>
@@ -4297,7 +4341,7 @@ your site layout.</p>
 
 <p>-request-url: <code>/models/&lt;id&gt;/</code></p>
 
-<p><strong>Response:</strong> The requested <a href="#model-object-definition">model object</a>.</p>
+<p><strong>Response:</strong> The requested <a href="#model-portfolio-object-definition">model object</a>.</p>
 <h2 id='create-model-portfolio'>Create Model Portfolio</h2>
 <blockquote>
 <p>Create Model Portfolio</p>
@@ -4389,7 +4433,7 @@ your site layout.</p>
 </tr>
 </tbody></table>
 
-<p><strong>Response:</strong> The new <a href="#model-object-definition">model object</a>.</p>
+<p><strong>Response:</strong> The new <a href="#model-portfolio-object-definition">model object</a>.</p>
 <h2 id='update-model-portfolio'>Update Model Portfolio</h2>
 <blockquote>
 <p>Update Model Portfolio</p>
@@ -4516,7 +4560,7 @@ your site layout.</p>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="#scores-status">Scores Status</a></td>
+<td><a href="#risk-statuses">Scores Status</a></td>
 <td>Risk score status</td>
 </tr>
 </tbody></table>
@@ -4626,7 +4670,8 @@ your site layout.</p>
 <blockquote>
 <p>Get security by ticker</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/ticker/GOOGL"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/ticker/GOOGL"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 </code></pre></div>
 <p>-request-type: GET</p>
 
@@ -4635,13 +4680,22 @@ your site layout.</p>
 <blockquote>
 <p>Get security by cusip</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/cusip/02079K305"</span> <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/securities/cusip/02079K305"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
 </code></pre></div>
 <p>-request-type: GET</p>
 
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.14.0 (2025-11-06)
+
+<ul>
+<li>session token deprecation notice</li>
+<li>adds OIDC support</li>
+<li>adds &#39;/o/sso/&#39; for starting a session on stratifi.com</li>
+<li>adds filtering for provider_name on sources field for household, investor, account and model_portfolio endpoints</li>
+</ul></li>
 <li>1.13.0 (2024-07-08)
 
 <ul>
