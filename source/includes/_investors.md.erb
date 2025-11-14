@@ -107,13 +107,14 @@ curl "https://backend.stratifi.com/api/v1/investors/" -H "Authorization: Bearer 
 
 **Filtering Fields**
 
-| Name            | Type   | Description              |
-|-----------------|--------|--------------------------|
-| advisor         | int    | Advisor ID               |
-| household       | int    | Household ID             |
-| external_id     | string | Your investor identifier |
-| source_id       | int    | Source ID                |
-| source_provider | int    | Source provider ID       |
+| Name                 | Type   | Description              |
+|----------------------|--------|--------------------------|
+| advisor              | int    | Advisor ID               |
+| household            | int    | Household ID             |
+| external_id          | string | Your investor identifier |
+| source_id            | int    | Source ID                |
+| source_provider      | int    | Source provider ID       |
+| source_provider_name | str    | Source provider Name     |
 
 ## Get Investor
 
@@ -271,4 +272,4 @@ curl "https://backend.stratifi.com/api/v1/investors/11/prism_aggregation/" -H "A
 |--------|-----------------------------------|---------------------------|
 | scores | [Scores Factors](#scores-factors) | Risk score factors        |
 | media  | [Scores Images](#scores-media)    | Risk score factors images |
-| status | [Scores Status](#scores-status)   | Risk score status         |
+| status | [Scores Status](#risk-statuses)   | Risk score status         |

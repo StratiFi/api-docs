@@ -46,7 +46,8 @@
 > Get security by ticker
 
 ```shell
-curl "https://backend.stratifi.com/api/v1/securities/ticker/GOOGL" -H "Authorization: Bearer {{ access-token }}"
+curl "https://backend.stratifi.com/api/v1/securities/ticker/GOOGL" \
+  -H "Authorization: Bearer {{ access-token }}"
 ```
 
 -request-type: GET
@@ -58,7 +59,8 @@ curl "https://backend.stratifi.com/api/v1/securities/ticker/GOOGL" -H "Authoriza
 > Get security by cusip
 
 ```shell
-curl "https://backend.stratifi.com/api/v1/securities/cusip/02079K305" -H "Authorization: Bearer {{ access-token }}"
+curl "https://backend.stratifi.com/api/v1/securities/cusip/02079K305" \
+  -H "Authorization: Bearer {{ access-token }}"
 ```
 
 -request-type: GET
