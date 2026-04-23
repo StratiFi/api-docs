@@ -51,11 +51,11 @@ code_challenge = (
 
 1.  The advisor submits the StratiFi credentials.
 
-    ![login](https://s3.amazonaws.com/api.stratifi.com/login.2.png "Login")
+    ![login](/images/login.2.png "Login")
 
 1.  The advisor allow your application access the resources in StratiFi.
 
-    ![grant](https://s3.amazonaws.com/api.stratifi.com/grant.2.png "Grant")
+    ![grant](/images/grant.2.png "Grant")
 
 1.  We redirect the browser to your return url with a single-usage access code.
 
