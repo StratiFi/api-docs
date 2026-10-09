@@ -3519,6 +3519,7 @@ your site layout.</p>
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
   <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"matching_model"</span>: 1,
   <span class="s2">"strategy"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span>…],
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
@@ -3571,9 +3572,14 @@ your site layout.</p>
 <td>Account number</td>
 </tr>
 <tr>
+<td>matching_model</td>
+<td>int</td>
+<td>Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the <a href="#list-model-portfolios">list or get endpoint</a>. <code>null</code> when the account has no strategy.</td>
+</tr>
+<tr>
 <td>strategy</td>
 <td>int</td>
-<td>Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the <a href="#list-model-portfolios">list or get endpoint</a>.</td>
+<td>Alias of <code>matching_model</code>, kept for integrations built on the original field name. It is returned with the same value and accepted on create and update. If both names are sent they must carry the same value, otherwise the request is rejected with a <code>400</code>.</td>
 </tr>
 <tr>
 <td>investor</td>
@@ -3710,6 +3716,7 @@ your site layout.</p>
       <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
       <span class="s2">"investor"</span>: 1,
       <span class="s2">"advisor"</span>: 1,
+      <span class="s2">"matching_model"</span>: 1,
       <span class="s2">"strategy"</span>: 1,
       <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
       <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
@@ -3809,6 +3816,8 @@ your site layout.</p>
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
   <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"matching_model"</span>: 1,
+  <span class="s2">"strategy"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
@@ -3861,6 +3870,7 @@ your site layout.</p>
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
   <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"matching_model"</span>: 1,
   <span class="s2">"strategy"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
@@ -3924,9 +3934,14 @@ your site layout.</p>
 <td>Optional</td>
 </tr>
 <tr>
-<td>strategy</td>
+<td>matching_model</td>
 <td>int</td>
 <td>Optional</td>
+</tr>
+<tr>
+<td>strategy</td>
+<td>int</td>
+<td>Optional, alias of <code>matching_model</code></td>
 </tr>
 <tr>
 <td>external_id</td>
@@ -3949,7 +3964,7 @@ your site layout.</p>
     "tax_status": "tax-deferred",
     "number": "987654321",
     "investor": 1,
-    "strategy": 1,
+    "matching_model": 1,
     "positions": [
       {
         "ticker": "SPY",
@@ -3976,6 +3991,7 @@ your site layout.</p>
   <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
   <span class="s2">"investor"</span>: 1,
   <span class="s2">"advisor"</span>: 1,
+  <span class="s2">"matching_model"</span>: 1,
   <span class="s2">"strategy"</span>: 1,
   <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
   <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
@@ -4039,9 +4055,14 @@ your site layout.</p>
 <td>Optional</td>
 </tr>
 <tr>
-<td>strategy [4]</td>
+<td>matching_model [4]</td>
 <td>int</td>
 <td>Optional</td>
+</tr>
+<tr>
+<td>strategy [4]</td>
+<td>int</td>
+<td>Optional, alias of <code>matching_model</code></td>
 </tr>
 <tr>
 <td>external_id</td>
@@ -4688,6 +4709,12 @@ your site layout.</p>
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.15.0 (2026-10-09)
+
+<ul>
+<li>Document <code>matching_model</code> as the account field that holds the strategy (Model Portfolio id). The field was renamed from <code>strategy</code> in the API but the docs kept the old name.</li>
+<li><code>strategy</code> stays accepted on create and update and is returned alongside <code>matching_model</code> as an alias; sending both with different values returns a <code>400</code>.</li>
+</ul></li>
 <li>1.14.0 (2025-11-06)
 
 <ul>
