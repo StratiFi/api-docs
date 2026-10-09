@@ -15,6 +15,7 @@
   "number": "987654321",
   "investor": 1,
   "advisor": 1,
+  "matching_model": 1,
   "strategy": 1,
   "positions": […],
   "risk": {…},
@@ -34,7 +35,8 @@
 | type        | string                                                       | Account type .                                                                                                                                                                                                                                                     |
 | tax_status  | string                                                       | Account tax status. One of [these values](#account-tax-statuses).                                                                                                                                                                          |                                                 |
 | number      | string                                                       | Account number                                                                                                                                                                                                                                                     |
-| strategy    | int                                                          | Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the [list or get endpoint](#list-model-portfolios).                                                                             |
+| matching_model | int                                                       | Account strategy represented as Model Portfolio Id. You can find the desired model portfolio using the [list or get endpoint](#list-model-portfolios). `null` when the account has no strategy.                                      |
+| strategy    | int                                                          | Alias of `matching_model`, kept for integrations built on the original field name. It is returned with the same value and accepted on create and update. If both names are sent they must carry the same value, otherwise the request is rejected with a `400`. |
 | investor    | int                                                          | Investor ID                                                                                                                                                                                                                                                        |
 | advisor     | int                                                          | Advisor ID. Ideally, you would provide the investor ID. However, if you don't have that information but you know who is the advisor that owns this account then you can pass the advisor ID. We will assign the account to the `default_investor` of the selected advisor. |
 | positions[] | List of [Positions Objects](#positions)                      | Account holdings                                                                                                                                                                                                                                                   |
@@ -82,6 +84,7 @@ curl "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: Bearer {
       "number": "987654321",
       "investor": 1,
       "advisor": 1,
+      "matching_model": 1,
       "strategy": 1,
       "positions": [ … ],
       "risk": { … },
@@ -132,6 +135,8 @@ curl "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization: Bearer
   "number": "987654321",
   "investor": 1,
   "advisor": 1,
+  "matching_model": 1,
+  "strategy": 1,
   "positions": [ … ],
   "risk": { … },
   "tolerance": { … },
@@ -187,6 +192,7 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
   "number": "987654321",
   "investor": 1,
   "advisor": 1,
+  "matching_model": 1,
   "strategy": 1,
   "positions": [ … ],
   "risk": { … },
@@ -213,7 +219,8 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 | number      | string                                  | Optional |
 | investor    | int                                     | Optional |
 | advisor     | int                                     | Optional |
-| strategy    | int                                     | Optional |
+| matching_model | int                                  | Optional |
+| strategy    | int                                     | Optional, alias of `matching_model` |
 | external_id | string                                  | Optional |
 
 **Response:** The new [account object](#account-object-definition).
@@ -232,7 +239,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
     "tax_status": "tax-deferred",
     "number": "987654321",
     "investor": 1,
-    "strategy": 1,
+    "matching_model": 1,
     "positions": [
       {
         "ticker": "SPY",
@@ -259,6 +266,7 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
   "number": "987654321",
   "investor": 1,
   "advisor": 1,
+  "matching_model": 1,
   "strategy": 1,
   "positions": [ … ],
   "risk": { … },
@@ -285,7 +293,8 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
 | number         | string                                  | Optional |
 | investor       | int                                     | Optional |
 | advisor [3]    | int                                     | Optional |
-| strategy [4]   | int                                     | Optional |
+| matching_model [4] | int                                 | Optional |
+| strategy [4]   | int                                     | Optional, alias of `matching_model` |
 | external_id    | string                                  | Optional |
 
 ## Account Prism Score
