@@ -1,5 +1,8 @@
 # Changelog
 
+- 1.15.0 (2026-10-09)
+  - Document `matching_model` as the account field that holds the strategy (Model Portfolio id). The field was renamed from `strategy` in the API but the docs kept the old name.
+  - `strategy` stays accepted on create and update and is returned alongside `matching_model` as an alias; sending both with different values returns a `400`.
 - 1.14.0 (2025-11-06)
   - session token deprecation notice
   - adds OIDC support
