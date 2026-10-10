@@ -1,5 +1,8 @@
 # Changelog
 
+- 1.17.0 (2026-10-10)
+  - Add account details to `/accounts/`: `nickname`, `inception_date`, `close_date`, `relationship_type`, `retirement_category`, `held_away`, `excluded`, `custodian` (by name), `investment_objective`, `investment_objective_custom`, `exceptions_enabled` and `clients_review_enabled`, all writable on create and update.
+  - Add read-only `created_at`, `updated_at`, `provider`, `integration_link_updated_at`, `sync_status`, `sync_status_changed`, `next_review_date`, `display_name` and `display_number` to the account object.
 - 1.16.0 (2026-10-10)
   - Add the investor suitability profile to `/investors/`: personal details (`date_of_birth`, `marital_status`, `dependants`, `employment_status`, `occupation`, mailing address and countries), investment profile (`investment_objective`, `investment_objective_custom`, `investment_experience`, `investment_experience_level`, `time_horizon`, `time_horizon_bucket`, `liquidity_needs`), financials (`annual_income`, `annual_expenses`, `special_expenses`, `net_worth`, `liquid_net_worth`, `investable_assets`, `advisory_fee`, `tax_rate`, `tax_bracket`) and the `exceptions_enabled`, `clients_review_enabled`, `checkins_enabled` toggles, all writable on create and update.
   - Add read-only `created_at`, `updated_at`, `next_review_date`, `data_points` and `integration_link_updated_at` to the investor object.
