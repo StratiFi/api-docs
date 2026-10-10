@@ -1,5 +1,10 @@
 # Changelog
 
+- 1.17.0 (2026-10-23)
+  - Add the investor suitability profile to `/investors/`: personal details (`date_of_birth`, `marital_status`, `dependants`, `employment_status`, `occupation`, mailing address and countries), investment profile (`investment_objective`, `investment_objective_custom`, `investment_experience`, `investment_experience_level`, `time_horizon`, `time_horizon_bucket`, `liquidity_needs`) and financials (`annual_income`, `annual_expenses`, `special_expenses`, `net_worth`, `liquid_net_worth`, `investable_assets`, `advisory_fee`, `tax_rate`, `tax_bracket`), writable on create and update.
+  - Add read-only `created_at`, `updated_at`, `next_review_date`, `integration_link_updated_at` and the `exceptions_enabled`, `clients_review_enabled`, `checkins_enabled` toggles to the investor object.
+  - Country codes must be upper-case ISO 3166-1 alpha-2, and the date of birth cannot be in the future. Fields set from the client's paperwork cannot be changed through the API.
+  - Prospects: reachable by id, listed with `is_prospect=true`; adding one requires the firm's permission, and turning a prospect into a client excludes its accounts.
 - 1.16.0 (2026-10-16)
   - Document the OAuth2 client-credentials grant for server-to-server integrations. These tokens are API-only and cannot start a web session.
   - Add [Single Sign-On](#single-sign-on): SAML service-provider endpoints per org slug, IdP-initiated sign-in, `RelayState` deep-linking and the setup requirements.
