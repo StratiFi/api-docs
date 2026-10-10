@@ -1,5 +1,9 @@
 # Changelog
 
+- 1.20.0 (2026-10-10)
+  - Account positions now include excluded holdings, returned with `excluded: true`; `excluded` is writable, and a position sent without it keeps its current state. See [excluded positions](#excluded-positions).
+  - Updating a holding the account already has now applies `purchase_date` and `unrealized_gains` too.
+  - Add read-only `id`, `created_at` and `updated_at` to account and model portfolio positions.
 - 1.19.0 (2026-10-10)
   - Add `is_benchmark` and `visibility` (`public` or `private`) to `/models/`, writable on create and update, plus read-only `created_at`, `updated_at`, `display_name`, `sync_status`, `sync_status_changed`, `integration_link_updated_at`, `is_security_origin`, `security_origin` (ticker) and `source` (account id). Advisors who are not managers can change `visibility` or `is_benchmark` only on their own models, and only when the firm allows it.
 - 1.18.0 (2026-10-10)
