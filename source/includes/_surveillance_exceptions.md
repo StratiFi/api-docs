@@ -39,10 +39,10 @@ You see the same exceptions as in the StratiFi app: an advisor token sees the ex
 | status          | string   | One of [these statuses](#surveillance-exception-statuses)                                                                           |
 | status_changed  | datetime | When the status last changed                                                                                                        |
 | target_type     | string   | Kind of object the exception is on: `account`, `investor` or `household`                                                            |
-| target_type_id  | int      | Numeric id of that kind of object                                                                                                   |
+| target_type_id  | int      | Numeric id of that kind of object. It differs between environments; use `target_type` in your logic                                 |
 | target_id       | int      | ID of the [account](#accounts), [investor](#investors) or [household](#households)                                                  |
 | trigger_type    | string   | Kind of object that triggered it: `position` for share class exceptions (see [positions](#positions)), otherwise the target itself |
-| trigger_type_id | int      | Numeric id of that kind of object                                                                                                   |
+| trigger_type_id | int      | Numeric id of that kind of object. It differs between environments; use `trigger_type` in your logic                                |
 | trigger_id      | int      | ID of the triggering object                                                                                                         |
 | extra_data      | object   | Cause-specific metrics recorded when the exception was raised                                                                       |
 | created         | datetime | When the exception was created                                                                                                      |
