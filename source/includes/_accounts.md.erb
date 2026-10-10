@@ -17,6 +17,27 @@
   "advisor": 1,
   "matching_model": 1,
   "strategy": 1,
+  "nickname": "Mom's brokerage",
+  "inception_date": "2019-03-01",
+  "close_date": null,
+  "relationship_type": "advisory",
+  "retirement_category": "non_retirement",
+  "held_away": false,
+  "excluded": false,
+  "custodian": "Charles Schwab",
+  "investment_objective": "Growth",
+  "investment_objective_custom": "",
+  "exceptions_enabled": true,
+  "clients_review_enabled": true,
+  "created_at": "2026-01-15T14:02:11.482000Z",
+  "updated_at": "2026-10-09T18:30:45.120000Z",
+  "provider": "Charles Schwab",
+  "integration_link_updated_at": "2026-10-09T18:30:45.120000Z",
+  "sync_status": "ready",
+  "sync_status_changed": "2026-10-09T18:30:45.120000Z",
+  "next_review_date": "2027-01-15",
+  "display_name": "Mom's brokerage",
+  "display_number": "******4321",
   "positions": […],
   "risk": {…},
   "tolerance": {…},
@@ -45,6 +66,27 @@
 | drift       | float                                                        | Drift between the risk and the tolerance overall scores                                                                                                                                                                                                            |
 | sources     | List of [Sources Objects](#account-source-object-definition) | List of sources that are associated with the account                                                                                                                                                                                                               |
 | teams       | List of Teams Ids                                            | List of teams ids that are associated with the account                                                                                                                                                                                                             |
+| nickname    | string                                                       | Advisor-facing display name. `name` is fed by the custodian and may be overwritten on sync; use `nickname` to rename. |
+| inception_date | date                                                      | Date the account was opened (`YYYY-MM-DD`) |
+| close_date  | date                                                         | Date the account was closed; `null` while open |
+| relationship_type | string                                                 | One of `brokerage`, `advisory` |
+| retirement_category | string                                               | One of `non_retirement`, `ira`, `qualified`, `education`, `retirement_other`. Derived from `type` when not sent (on create and whenever `type` changes); an explicit value wins. |
+| held_away   | bool                                                         | The account is not managed by the firm |
+| excluded    | bool                                                         | Left out of aggregations and PRISM rollups. Defaults to the value of `held_away` on create. |
+| custodian   | string                                                       | Custodian name from the StratiFi catalogue, matched case-insensitively (alternative names accepted); the canonical name is returned. `""` or `null` clears it; an unknown name is a `400`. |
+| investment_objective | string                                              | Name of one of your firm's standardized investment objectives; `""` when unset. Exclusive with `investment_objective_custom`: sending both is a `400`, and writing one clears the other. |
+| investment_objective_custom | string                                       | Free-text investment objective for firms without standardized objectives |
+| exceptions_enabled | bool                                                  | Surveillance exceptions are raised for this account (default `true`) |
+| clients_review_enabled | bool                                              | The account is included in client reviews (default `true`) |
+| created_at  | datetime                                                     | Read only. When the account was created |
+| updated_at  | datetime                                                     | Read only. Last change to the account |
+| provider    | string                                                       | Read only. Integration that created the account (for example `Stratifi API`, `Orion`, `Charles Schwab`); `null` for accounts created in the app |
+| integration_link_updated_at | datetime                                     | Read only. Last time an integration updated the account |
+| sync_status | string                                                       | Read only. Synchronisation state: `ready`, `syncing` or `error` (`status` is the PRISM score status) |
+| sync_status_changed | datetime                                             | Read only. When `sync_status` last changed |
+| next_review_date | date                                                    | Read only. Next client review date for the account |
+| display_name | string                                                      | Read only. `nickname` when set, otherwise the name with the number |
+| display_number | string                                                    | Read only. Account number, masked when the firm masks numbers |
 
 ### Account Source Object Definition
 
@@ -166,6 +208,10 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
     "tax_status": "tax-exempt",
     "number": "987654321",
     "investor": 1,
+    "nickname": "Mom's brokerage",
+    "custodian": "Schwab",
+    "relationship_type": "advisory",
+    "investment_objective": "Growth",
     "positions": [
       {
         "ticker": "SPY",
@@ -222,6 +268,10 @@ curl -X POST "https://backend.stratifi.com/api/v1/accounts/" -H "Authorization: 
 | matching_model | int                                  | Optional |
 | strategy    | int                                     | Optional, alias of `matching_model` |
 | external_id | string                                  | Optional |
+| nickname, inception_date, close_date, relationship_type, retirement_category, held_away, excluded | see [Account Object](#account-object-definition) | Optional |
+| custodian   | string                                  | Optional, custodian name |
+| investment_objective, investment_objective_custom | string        | Optional. Sending both is a `400` |
+| exceptions_enabled, clients_review_enabled | bool                 | Optional |
 
 **Response:** The new [account object](#account-object-definition).
 
@@ -296,6 +346,10 @@ curl -X PUT "https://backend.stratifi.com/api/v1/accounts/1/" -H "Authorization:
 | matching_model [4] | int                                 | Optional |
 | strategy [4]   | int                                     | Optional, alias of `matching_model` |
 | external_id    | string                                  | Optional |
+| nickname, inception_date, close_date, relationship_type, retirement_category, held_away, excluded | see [Account Object](#account-object-definition) | Optional |
+| custodian      | string                                  | Optional, custodian name |
+| investment_objective, investment_objective_custom | string     | Optional. Sending both is a `400` |
+| exceptions_enabled, clients_review_enabled | bool              | Optional |
 
 ## Account Prism Score
 
