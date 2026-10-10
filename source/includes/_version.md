@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.18.0 (2026-10-10)
+  - Add `investment_objective`, `investment_objective_custom`, `advisory_fee` and `exceptions_enabled` to `/households/`, writable on create and update, plus read-only `created_at`, `updated_at`, `integration_link_updated_at` and `display_name`.
 - 1.17.0 (2026-10-10)
   - Add account details to `/accounts/`: `nickname`, `inception_date`, `close_date`, `relationship_type`, `retirement_category`, `held_away`, `excluded`, `custodian` (by name), `investment_objective`, `investment_objective_custom`, `exceptions_enabled` and `clients_review_enabled`, all writable on create and update.
   - Add read-only `created_at`, `updated_at`, `provider`, `integration_link_updated_at`, `sync_status`, `sync_status_changed`, `next_review_date`, `display_name` and `display_number` to the account object.
