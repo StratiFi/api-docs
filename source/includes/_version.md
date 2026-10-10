@@ -1,7 +1,7 @@
 # Changelog
 
 - 1.19.0 (2026-10-10)
-  - Add `is_benchmark` and `visibility` (`public` or `private`) to `/models/`, writable on create and update, plus read-only `created_at`, `updated_at`, `display_name`, `sync_status`, `sync_status_changed`, `integration_link_updated_at`, `is_security_origin`, `security_origin` (ticker) and `source` (account id).
+  - Add `is_benchmark` and `visibility` (`public` or `private`) to `/models/`, writable on create and update, plus read-only `created_at`, `updated_at`, `display_name`, `sync_status`, `sync_status_changed`, `integration_link_updated_at`, `is_security_origin`, `security_origin` (ticker) and `source` (account id). Advisors who are not managers can change `visibility` or `is_benchmark` only on their own models, and only when the firm allows it.
 - 1.18.0 (2026-10-10)
   - Add `investment_objective`, `investment_objective_custom`, `advisory_fee` and `exceptions_enabled` to `/households/`, writable on create and update, plus read-only `created_at`, `updated_at`, `integration_link_updated_at` and `display_name`.
 - 1.17.0 (2026-10-10)
