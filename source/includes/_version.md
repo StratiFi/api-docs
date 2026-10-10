@@ -1,5 +1,9 @@
 # Changelog
 
+- 1.21.0 (2026-10-23)
+  - Account positions now include excluded holdings, returned with `excluded: true`; `excluded` is writable, and a position sent without it keeps its current state. See [excluded positions](#excluded-positions).
+  - Updating a holding the account already has now applies `purchase_date` and `unrealized_gains` when they are sent, and keeps them when they are not.
+  - Add read-only `id` (stable while the holding keeps its identifier), `created_at` and `updated_at` (moves only when a value changes) to account and model portfolio positions.
 - 1.20.0 (2026-10-23)
   - Add `is_benchmark` and `visibility` (`public` or `private`) to `/models/`, writable on create and update, plus read-only `created_at`, `updated_at`, `display_name`, `sync_status`, `sync_status_changed`, `integration_link_updated_at`, `is_security_origin`, `security_origin` (ticker) and `source_account` (account id).
   - Advisors who are not managers follow the StratiFi app's rules: they update and delete only their own models, see private models only when they own them or share a team, and share models, or manage benchmarks and strategies, only when the firm allows it.
