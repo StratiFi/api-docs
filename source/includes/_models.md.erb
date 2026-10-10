@@ -278,6 +278,10 @@ curl -X PUT "https://backend.stratifi.com/api/v1/models/1/" -H "Authorization: B
 | company     | int                                     | Optional |
 | external_id | int                                     | Optional |
 
+<aside class="notice">
+An advisor who is not a manager can change <code>visibility</code> or <code>is_benchmark</code> only on a model they own, and only when the firm allows advisors to share models or manage benchmarks. Otherwise the request fails with 400 and names the field. Sending the current value is always accepted.
+</aside>
+
 ## Model Portfolio Prism Score
 
 > Model Portfolio Prism Score
