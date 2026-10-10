@@ -1,5 +1,8 @@
 # Changelog
 
+- 1.21.0 (2026-10-10)
+  - Security lookups only find the securities visible to the caller: market securities plus the custom securities their firm shares with them (and public ones). Other firms' private custom securities now answer `404`.
+  - Add read-only `id`, `description`, `figi`, `share_class`, `is_retirement`, `fund_family`, `is_custom`, `is_sma`, `expense_ratio`, `expense_ratio_updated_at`, `distribution_yield`, `distribution_yield_updated_at`, `management_fee`, `minimum_purchase_amount`, `beta`, `marketcap`, `price_to_book`, `created` and `modified` to the security object.
 - 1.20.0 (2026-10-10)
   - Account positions now include excluded holdings, returned with `excluded: true`; `excluded` is writable, and a position sent without it keeps its current state. See [excluded positions](#excluded-positions).
   - Updating a holding the account already has now applies `purchase_date` and `unrealized_gains` too.
