@@ -1,5 +1,8 @@
 # Changelog
 
+- 1.16.0 (2026-10-10)
+  - Add the investor suitability profile to `/investors/`: personal details (`date_of_birth`, `marital_status`, `dependants`, `employment_status`, `occupation`, mailing address and countries), investment profile (`investment_objective`, `investment_objective_custom`, `investment_experience`, `investment_experience_level`, `time_horizon`, `time_horizon_bucket`, `liquidity_needs`), financials (`annual_income`, `annual_expenses`, `special_expenses`, `net_worth`, `liquid_net_worth`, `investable_assets`, `advisory_fee`, `tax_rate`, `tax_bracket`) and the `exceptions_enabled`, `clients_review_enabled`, `checkins_enabled` toggles, all writable on create and update.
+  - Add read-only `created_at`, `updated_at`, `next_review_date`, `data_points` and `integration_link_updated_at` to the investor object.
 - 1.15.1 (2026-10-11)
   - The authorization callback includes the `iss` parameter (RFC 9207).
   - Refresh tokens rotate on every refresh. Reusing a spent refresh token revokes the chain, and a refresh token not used within 30 days of its access token expiring expires.

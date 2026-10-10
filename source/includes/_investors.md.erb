@@ -11,11 +11,47 @@
   "advisor": 1,
   "household": 1,
   "phone": "5555555555",
+  "is_prospect": false,
   "user": {
      "first_name":"John",
      "last_name":"Wick",
      "email":"john.wick@example.com"
   },
+  "date_of_birth": "1980-05-17",
+  "marital_status": "married",
+  "dependants": 2,
+  "employment_status": "employed",
+  "occupation": "Architect",
+  "mailing_address": "1 Main St",
+  "city": "Austin",
+  "state": "TX",
+  "zip": "78701",
+  "country_of_citizenship": "US",
+  "country_of_residence": "US",
+  "investment_objective": "Growth",
+  "investment_objective_custom": "",
+  "investment_experience": 12,
+  "investment_experience_level": "moderate",
+  "time_horizon": null,
+  "time_horizon_bucket": "10_to_20",
+  "liquidity_needs": 25000.00,
+  "annual_income": 185000.00,
+  "annual_expenses": 90000.00,
+  "special_expenses": 15000.00,
+  "net_worth": 1250000.00,
+  "liquid_net_worth": 400000.00,
+  "investable_assets": 650000.00,
+  "advisory_fee": 1.250,
+  "tax_rate": 32.500,
+  "tax_bracket": "high",
+  "exceptions_enabled": true,
+  "clients_review_enabled": true,
+  "checkins_enabled": true,
+  "created_at": "2026-01-15T14:02:11.482000Z",
+  "updated_at": "2026-10-09T18:30:45.120000Z",
+  "next_review_date": "2027-01-15",
+  "data_points": null,
+  "integration_link_updated_at": null,
   "risk": {
     "scores": {
       "overall": 8.1,
@@ -48,6 +84,41 @@
 | is_prospect      | bool                                                          | Indicates if the investor is a client or a prospect   |
 | phone            | string                                                        | Phone of the investor                                 |
 | user             | [User Object](#user-object-definition)                        | User info                                             |
+| date_of_birth    | date                                                          | Date of birth (`YYYY-MM-DD`)                          |
+| marital_status   | string                                                        | One of `single`, `married`, `divorced`, `widowed`, `domestic_partner` |
+| dependants       | int                                                           | Number of dependants                                  |
+| employment_status | string                                                       | One of `employed`, `self_employed`, `retired`, `unemployed`, `student`, `homemaker` |
+| occupation       | string                                                        | Occupation                                            |
+| mailing_address  | string                                                        | Street address                                        |
+| city             | string                                                        | City                                                  |
+| state            | string                                                        | State or region                                       |
+| zip              | string                                                        | Postal code                                           |
+| country_of_citizenship | string                                                  | ISO 3166-1 alpha-2 country code                       |
+| country_of_residence | string                                                    | ISO 3166-1 alpha-2 country code                       |
+| investment_objective | string                                                    | Name of one of your firm's standardized investment objectives; `""` when unset. Exclusive with `investment_objective_custom` |
+| investment_objective_custom | string                                             | Free-text investment objective for firms without standardized objectives. Exclusive with `investment_objective` |
+| investment_experience | int                                                      | Years of investing experience                         |
+| investment_experience_level | string                                             | One of `none`, `limited`, `moderate`, `extensive`     |
+| time_horizon     | int                                                           | Investment time horizon in exact years. Exclusive with `time_horizon_bucket` |
+| time_horizon_bucket | string                                                     | One of `under_5`, `5_to_10`, `10_to_20`, `over_20`. Exclusive with `time_horizon` |
+| liquidity_needs  | decimal                                                       | Dollar amount the investor needs to keep liquid       |
+| annual_income    | decimal                                                       | Annual income                                         |
+| annual_expenses  | decimal                                                       | Annual expenses                                       |
+| special_expenses | decimal                                                       | Planned special expenses                              |
+| net_worth        | decimal                                                       | Total net worth                                       |
+| liquid_net_worth | decimal                                                       | Liquid net worth                                      |
+| investable_assets | decimal                                                      | Investable assets                                     |
+| advisory_fee     | decimal                                                       | Advisory fee, percent (for example `1.250`)           |
+| tax_rate         | decimal                                                       | Income tax rate, percent                              |
+| tax_bracket      | string                                                        | One of `low`, `medium`, `high`, `top`                 |
+| exceptions_enabled | bool                                                        | Surveillance exceptions are raised for this investor (default `true`) |
+| clients_review_enabled | bool                                                    | The investor is included in client reviews (default `true`) |
+| checkins_enabled | bool                                                          | Check-ins are sent to the investor (default `true`)   |
+| created_at       | datetime                                                      | Read only. When the investor was created              |
+| updated_at       | datetime                                                      | Read only. Last change to the investor                |
+| next_review_date | date                                                          | Read only. Earliest next review date across the investor's accounts |
+| data_points      | object                                                        | Read only. Answers collected by questionnaires        |
+| integration_link_updated_at | datetime                                           | Read only. Last time an integration updated the investor |
 | risk.scores      | [Scores Factors](#scores-factors)                             | Investor aggregated risk scores                       |
 | risk.media       | [Scores Media](#scores-media)                                 | Investor aggregated risk scores images                |
 | tolerance.scores | [Scores Factors](#scores-factors)                             | Investor aggregated tolerance scores                  |
@@ -162,7 +233,13 @@ curl -X POST "https://backend.stratifi.com/api/v1/investors/" -H "Authorization:
       "first_name": "Brian",
       "last_name": "May",
       "email": "brian.may@example.com"
-    }
+    },
+    "date_of_birth": "1947-07-19",
+    "employment_status": "self_employed",
+    "investment_objective": "Growth",
+    "time_horizon_bucket": "over_20",
+    "net_worth": 1250000,
+    "tax_bracket": "high"
   }'
 
 {
@@ -196,6 +273,11 @@ curl -X POST "https://backend.stratifi.com/api/v1/investors/" -H "Authorization:
 | household   | int                                    | Optional |
 | phone       | string                                 | Optional |
 | external_id | string                                 | Optional |
+| is_prospect | bool                                   | Optional |
+| date_of_birth, marital_status, dependants, employment_status, occupation, mailing_address, city, state, zip, country_of_citizenship, country_of_residence | see [Investor Object](#investor-object-definition) | Optional |
+| investment_objective, investment_objective_custom, investment_experience, investment_experience_level, time_horizon, time_horizon_bucket, liquidity_needs | see [Investor Object](#investor-object-definition) | Optional. Sending both halves of an exclusive pair returns a `400` |
+| annual_income, annual_expenses, special_expenses, net_worth, liquid_net_worth, investable_assets, advisory_fee, tax_rate, tax_bracket | see [Investor Object](#investor-object-definition) | Optional |
+| exceptions_enabled, clients_review_enabled, checkins_enabled | bool | Optional |
 
 **Response:** The new [investor object](#investor-object-definition).
 
@@ -248,6 +330,11 @@ curl -X PUT "https://backend.stratifi.com/api/v1/investors/150/" -H "Authorizati
 | household   | int                                    | Optional |
 | phone       | string                                 | Optional |
 | external_id | string                                 | Optional |
+| is_prospect | bool                                   | Optional |
+| date_of_birth, marital_status, dependants, employment_status, occupation, mailing_address, city, state, zip, country_of_citizenship, country_of_residence | see [Investor Object](#investor-object-definition) | Optional |
+| investment_objective, investment_objective_custom, investment_experience, investment_experience_level, time_horizon, time_horizon_bucket, liquidity_needs | see [Investor Object](#investor-object-definition) | Optional. Sending both halves of an exclusive pair returns a `400` |
+| annual_income, annual_expenses, special_expenses, net_worth, liquid_net_worth, investable_assets, advisory_fee, tax_rate, tax_bracket | see [Investor Object](#investor-object-definition) | Optional |
+| exceptions_enabled, clients_review_enabled, checkins_enabled | bool | Optional |
 
 ## Investor Prism Aggregation
 
