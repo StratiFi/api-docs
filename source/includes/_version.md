@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.22.0 (2026-10-10)
+  - Add read-only `/surveillance-exceptions/` (list and get by id) with cause, status, target, trigger, `extra_data`, timestamps and age; filters by status, target, trigger and date ranges; at most 100 per page.
 - 1.21.0 (2026-10-10)
   - Security lookups only find the securities visible to the caller: market securities plus the custom securities their firm shares with them (and public ones). Other firms' private custom securities now answer `404`.
   - Add read-only `id`, `description`, `figi`, `share_class`, `is_retirement`, `fund_family`, `is_custom`, `is_sma`, `expense_ratio`, `expense_ratio_updated_at`, `distribution_yield`, `distribution_yield_updated_at`, `management_fee`, `minimum_purchase_amount`, `beta`, `marketcap`, `price_to_book`, `created` and `modified` to the security object.
