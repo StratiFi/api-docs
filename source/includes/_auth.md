@@ -111,7 +111,7 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
 | token_type    | string | Always "Bearer"                                                                                      |
 | access_token  | string | An access token valid to consult other endpoints on behalf of the user                               |
 | expires_in    | string | Expiration time of the access token in seconds                                                       |
-| refresh_token | string | An refresh token valid to renew the access token. It does not expires.                               |
+| refresh_token | string | A refresh token valid to renew the access token. See [Refresh Token Flow](#refresh-token-flow).        |
 | scope         | string | The scopes with granted access for this token                                                        |
 | advisor_id    | int    | The ID of the advisor associated to this user                                                        |
 | session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com)   |
@@ -128,7 +128,7 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
 If your access token expired you can renew it using a valid refresh token.
 
 <aside class="notice">
-Every refresh returns a new refresh token and invalidates the one you sent: store the new one. Sending an already used refresh token again revokes the whole chain issued from it, and the advisor has to authorize your application again. A refresh token that is not used for 30 days expires.
+Every refresh returns a new refresh token and invalidates the one you sent: store the new one. Sending an already used refresh token again revokes the whole chain issued from it, and the advisor has to authorize your application again. A refresh token expires 30 days after its access token expires if it has not been used by then.
 </aside>
 
 ```shell
