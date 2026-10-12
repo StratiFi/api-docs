@@ -1,5 +1,8 @@
 # Changelog
 
+- 1.15.1 (2026-10-11)
+  - The authorization callback includes the `iss` parameter (RFC 9207).
+  - Refresh tokens rotate on every refresh. Reusing a spent refresh token revokes the chain, and a refresh token not used within 30 days of its access token expiring expires.
 - 1.15.0 (2026-10-09)
   - Document `matching_model` as the account field that holds the strategy (Model Portfolio id). The field was renamed from `strategy` in the API but the docs kept the old name.
   - `strategy` stays accepted on create and update and is returned alongside `matching_model` as an alias; sending both with different values returns a `400`.
