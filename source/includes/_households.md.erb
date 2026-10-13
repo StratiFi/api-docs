@@ -10,6 +10,14 @@
   "external_id": "hou-1",
   "name": "Smith Family",
   "advisor": 1,
+  "investment_objective": "Growth",
+  "investment_objective_custom": "",
+  "advisory_fee": 1.250,
+  "exceptions_enabled": true,
+  "created_at": "2026-01-15T14:02:11.482000Z",
+  "updated_at": "2026-10-09T18:30:45.120000Z",
+  "integration_link_updated_at": null,
+  "display_name": "Smith Family",
   "risk": {
     "scores": {
       "overall": 8.1,
@@ -40,6 +48,14 @@
 | external_id      | string                                                          | Your household identifier                               |
 | name             | string                                                          | Household Name                                          |
 | advisor          | int                                                             | Advisor ID                                              |
+| investment_objective | string                                                      | Name of one of your firm's standardized investment objectives; `""` when unset. Exclusive with `investment_objective_custom`: sending both is a `400`, and writing one clears the other. |
+| investment_objective_custom | string                                               | Free-text investment objective for firms without standardized objectives |
+| advisory_fee     | decimal                                                         | Advisory fee, percent (for example `1.250`)             |
+| exceptions_enabled | bool                                                          | Surveillance exceptions are raised for this household (default `true`) |
+| created_at       | datetime                                                        | Read only. When the household was created               |
+| updated_at       | datetime                                                        | Read only. Last change to the household                 |
+| integration_link_updated_at | datetime                                             | Read only. Last time an integration updated the household |
+| display_name     | string                                                          | Read only. Name shown in the app                        |
 | risk.scores      | [Scores Factors](#scores-factors)                               | Household aggregated risk scores                        |
 | risk.media       | [Scores Media](#scores-media)                                   | Household aggregated risk scores images                 |
 | tolerance.scores | [Scores Factors](#scores-factors)                               | Household aggregated tolerance scores                   |
@@ -135,7 +151,9 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
   -d '{
     "external_id": "hou-1",
     "name": "Smith-Pinkett Family",
-    "advisor": 2
+    "advisor": 2,
+    "investment_objective": "Growth",
+    "advisory_fee": 1.25
   }'
 
 {
@@ -159,7 +177,11 @@ curl -X POST "https://backend.stratifi.com/api/v1/households/" -H "Authorization
 | Parameter   | Type   |          |
 |-------------|--------|----------|
 | name        | string | Required |
+| advisor     | int    | Required |
 | external_id | string | Optional |
+| investment_objective, investment_objective_custom | string | Optional. Sending both is a `400` |
+| advisory_fee | decimal | Optional |
+| exceptions_enabled | bool | Optional |
 
 **Response:** The new [household object](#household-object-definition).
 
@@ -197,7 +219,11 @@ curl -X PUT "https://backend.stratifi.com/api/v1/households/2/"
 | Parameter   | Type   |          |
 |-------------|--------|----------|
 | name        | string | Required |
+| advisor     | int    | Required |
 | external_id | string | Optional |
+| investment_objective, investment_objective_custom | string | Optional. Sending both is a `400` |
+| advisory_fee | decimal | Optional |
+| exceptions_enabled | bool | Optional |
 
 ## Household Prism Aggregation
 
