@@ -333,10 +333,30 @@
                     <a href="#refresh-token-flow" class="toc-h2 toc-link" data-title="Refresh Token Flow">Refresh Token Flow</a>
                   </li>
                   <li>
+                    <a href="#client-credentials-flow" class="toc-h2 toc-link" data-title="Client Credentials Flow">Client Credentials Flow</a>
+                  </li>
+                  <li>
                     <a href="#starting-a-session-in-stratifi-com" class="toc-h2 toc-link" data-title="Starting a session in stratifi.com">Starting a session in stratifi.com</a>
                   </li>
                   <li>
                     <a href="#retrieving-logged-user-information" class="toc-h2 toc-link" data-title="Retrieving logged user information">Retrieving logged user information</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#single-sign-on" class="toc-h1 toc-link" data-title="Single Sign-On">Single Sign-On</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#service-provider-endpoints" class="toc-h2 toc-link" data-title="Service Provider endpoints">Service Provider endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#idp-initiated-sign-in" class="toc-h2 toc-link" data-title="IdP-initiated sign-in">IdP-initiated sign-in</a>
+                  </li>
+                  <li>
+                    <a href="#relaystate-deep-link" class="toc-h2 toc-link" data-title="RelayState deep-link">RelayState deep-link</a>
+                  </li>
+                  <li>
+                    <a href="#requirements" class="toc-h2 toc-link" data-title="Requirements">Requirements</a>
                   </li>
               </ul>
           </li>
@@ -1012,6 +1032,96 @@ Every refresh returns a new refresh token and invalidates the one you sent: stor
 <td>An OpenID Connect ID token used to start a session in stratifi.com</td>
 </tr>
 </tbody></table>
+<h2 id='client-credentials-flow'>Client Credentials Flow</h2>
+<p>Server-to-server integrations that act on their own behalf (not on behalf of a specific advisor) authenticate with the
+OAuth 2.0 <strong>client credentials</strong> grant. There is no user, no browser redirect and no PKCE: your backend exchanges its
+<code>client_id</code> and <code>client_secret</code> directly for an access token. Contact support@stratifi.com to be issued a service-account
+<code>client_id</code> / <code>client_secret</code> for this grant.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://backend.stratifi.com/o/token/"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'grant_type=client_credentials'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'client_id={{ client_id }}'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'client_secret={{ secret_key }}'</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s1">'scope=read write'</span>
+
+<span class="o">{</span>
+    <span class="s2">"access_token"</span>: <span class="s2">"{{ access_token }}"</span>,
+    <span class="s2">"token_type"</span>: <span class="s2">"Bearer"</span>,
+    <span class="s2">"expires_in"</span>: 36000,
+    <span class="s2">"scope"</span>: <span class="s2">"read write"</span>
+<span class="o">}</span>
+</code></pre></div>
+<p><strong>Request Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>grant_type</td>
+<td>string</td>
+<td>Always &quot;client_credentials&quot;</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>string</td>
+<td>Your service-account client id</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>string</td>
+<td>Your service-account secret key</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>string</td>
+<td>Required scopes. Use &quot;read write&quot;.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token_type</td>
+<td>string</td>
+<td>Always &quot;Bearer&quot;</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>string</td>
+<td>An access token valid to consult the API as the service account</td>
+</tr>
+<tr>
+<td>expires_in</td>
+<td>int</td>
+<td>Expiration time of the access token in seconds. Honor this value rather than hard-coding it.</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>string</td>
+<td>The scopes granted for this token</td>
+</tr>
+</tbody></table>
+
+<p>Use the token the same way as any other, in the <em>Authorization</em> header:</p>
+
+<p><code>Authorization: Bearer {{ access-token }}</code></p>
+
+<aside class="notice">
+Client-credentials tokens are for API access only. They are not tied to an advisor and cannot start a web session: the
+<code>/o/sso/</code> and session-token flows reject them. To send an advisor into the StratiFi web app, use
+<a href="#single-sign-on">SAML Single Sign-On</a> instead.
+</aside>
 <h2 id='starting-a-session-in-stratifi-com'>Starting a session in stratifi.com</h2><h3 id='oidc-flow-recommended'>OIDC Flow (Recommended)</h3>
 <p>You can start a session in stratifi.com using the OpenID Connect protocol. To do so, you need to include the <code>openid</code> scope
 when requesting the authorization code. The response will include an <code>id_token</code> property that you can use to start a session in stratifi.com.</p>
@@ -1133,6 +1243,92 @@ The response includes the advisor ID and the <strong>session_token</strong> desc
 <td>A short-lived token used to <a href="#starting-a-session-in-stratifi-com">start a session in stratifi.com</a></td>
 </tr>
 </tbody></table>
+<h1 id='single-sign-on'>Single Sign-On</h1>
+<p>StratiFi supports SAML 2.0 Single Sign-On so your platform can send an advisor straight into the StratiFi web app
+without a StratiFi login screen. StratiFi acts as the SAML <strong>Service Provider (SP)</strong>; your platform is the
+<strong>Identity Provider (IdP)</strong>. SSO is provisioned per firm — contact support@stratifi.com to set it up.</p>
+<h2 id='service-provider-endpoints'>Service Provider endpoints</h2>
+<p>Your SP endpoints are templated by a short <strong>org slug</strong> assigned to your firm. Download the metadata document from the
+metadata URL to configure your IdP; the SP Entity ID is that same metadata URL.</p>
+
+<table><thead>
+<tr>
+<th>Endpoint</th>
+<th>URL</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Metadata (SP Entity ID)</td>
+<td><code>https://backend.stratifi.com/sso/saml/{{ org_slug }}/metadata/</code></td>
+</tr>
+<tr>
+<td>ACS (assertion consumer)</td>
+<td><code>https://backend.stratifi.com/sso/saml/{{ org_slug }}/acs/</code></td>
+</tr>
+<tr>
+<td>SLS (single logout)</td>
+<td><code>https://backend.stratifi.com/sso/saml/{{ org_slug }}/sls/</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Replace <code>backend.stratifi.com</code> with <code>sandbox.stratifi.com</code> for the sandbox environment.
+</aside>
+<h2 id='idp-initiated-sign-in'>IdP-initiated sign-in</h2>
+<p>Your IdP issues a signed SAML assertion for the advisor and your application POSTs it to the ACS, optionally with a
+<code>RelayState</code> that deep-links the advisor to a specific page:</p>
+<div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span> <span class="na">action=</span><span class="s">"https://backend.stratifi.com/sso/saml/{{ org_slug }}/acs/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"SAMLResponse"</span> <span class="na">value=</span><span class="s">"{{ base64_signed_saml_response }}"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"RelayState"</span>  <span class="na">value=</span><span class="s">"/advisor/investors/{{ investor_id }}"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div><h2 id='relaystate-deep-link'>RelayState deep-link</h2>
+<p><code>RelayState</code> opens StratiFi on a specific page after sign-in. It must be a <strong>bare, same-origin path</strong>: it starts with
+<code>/</code> and has no scheme, host, query string or fragment (for example <code>/advisor/investors/42</code>). StratiFi prepends its own
+app origin, so the advisor lands at <code>https://advisors.stratifi.com/advisor/investors/42</code>. A value that is not a bare
+same-origin path is ignored and the advisor lands on the StratiFi home page; omit <code>RelayState</code> for a plain sign-in.</p>
+
+<p>The id in the path is the StratiFi <strong>investor id</strong>, not your external id — resolve it first with
+<code>GET /investors/?external_id={{ your_id }}</code>.</p>
+
+<table><thead>
+<tr>
+<th>Description</th>
+<th>RelayState path</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Clients list</td>
+<td><code>/advisor/investors/</code></td>
+</tr>
+<tr>
+<td>Client overview</td>
+<td><code>/advisor/investors/&lt;id&gt;</code></td>
+</tr>
+<tr>
+<td>Prospects list</td>
+<td><code>/advisor/prospects/</code></td>
+</tr>
+<tr>
+<td>Prospect overview</td>
+<td><code>/advisor/prospects/&lt;id&gt;</code></td>
+</tr>
+<tr>
+<td>Households list</td>
+<td><code>/advisor/households/</code></td>
+</tr>
+<tr>
+<td>Model Portfolios list</td>
+<td><code>/advisor/models/</code></td>
+</tr>
+</tbody></table>
+<h2 id='requirements'>Requirements</h2>
+<ul>
+<li>IdP-initiated SSO must be enabled for your firm (StratiFi configures this during setup).</li>
+<li>The SAML assertion must be <strong>signed</strong>.</li>
+<li>The <strong>NameID carries the advisor&#39;s email</strong> (format <code>emailAddress</code> or <code>unspecified</code>); StratiFi matches it to an advisor.</li>
+<li>The advisor must already exist as an active advisor in StratiFi with a matching email — there is <strong>no</strong> just-in-time
+provisioning.</li>
+</ul>
 <h1 id='companies'>Companies</h1><h2 id='company-object-definition'>Company Object Definition</h2>
 <blockquote>
 <p>Company Object</p>
@@ -4717,6 +4913,12 @@ your site layout.</p>
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.16.0 (2026-10-16)
+
+<ul>
+<li>Document the OAuth2 client-credentials grant for server-to-server integrations. These tokens are API-only and cannot start a web session.</li>
+<li>Add <a href="#single-sign-on">Single Sign-On</a>: SAML service-provider endpoints per org slug, IdP-initiated sign-in, <code>RelayState</code> deep-linking and the setup requirements.</li>
+</ul></li>
 <li>1.15.1 (2026-10-11)
 
 <ul>
