@@ -174,6 +174,57 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
 | session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com) |
 | id_token      | string | An OpenID Connect ID token used to start a session in stratifi.com                                 |
 
+## Client Credentials Flow
+
+Server-to-server integrations that act on their own behalf (not on behalf of a specific advisor) authenticate with the
+OAuth 2.0 **client credentials** grant. There is no user, no browser redirect and no PKCE: your backend exchanges its
+`client_id` and `client_secret` directly for an access token. Contact support@stratifi.com to be issued a service-account
+`client_id` / `client_secret` for this grant.
+
+```shell
+curl -X POST "https://backend.stratifi.com/o/token/" \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'grant_type=client_credentials' \
+  --data-urlencode 'client_id={{ client_id }}' \
+  --data-urlencode 'client_secret={{ secret_key }}' \
+  --data-urlencode 'scope=read write'
+
+{
+    "access_token": "{{ access_token }}",
+    "token_type": "Bearer",
+    "expires_in": 36000,
+    "scope": "read write"
+}
+```
+
+**Request Parameters**
+
+| Parameter     | Type   |                                 |
+|---------------|--------|---------------------------------|
+| grant_type    | string | Always "client_credentials"     |
+| client_id     | string | Your service-account client id  |
+| client_secret | string | Your service-account secret key |
+| scope         | string | Required scopes. Use "read write". |
+
+**Response**
+
+| Parameter    | Type   |                                                                  |
+|--------------|--------|------------------------------------------------------------------|
+| token_type   | string | Always "Bearer"                                                  |
+| access_token | string | An access token valid to consult the API as the service account |
+| expires_in   | int    | Expiration time of the access token in seconds. Honor this value rather than hard-coding it. |
+| scope        | string | The scopes granted for this token                               |
+
+Use the token the same way as any other, in the _Authorization_ header:
+
+    `Authorization: Bearer {{ access-token }}`
+
+<aside class="notice">
+Client-credentials tokens are for API access only. They are not tied to an advisor and cannot start a web session: the
+<code>/o/sso/</code> and session-token flows reject them. To send an advisor into the StratiFi web app, use
+<a href="#single-sign-on">SAML Single Sign-On</a> instead.
+</aside>
+
 ## Starting a session in stratifi.com
 
 ### OIDC Flow (Recommended)
