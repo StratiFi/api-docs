@@ -2,6 +2,7 @@
 
 - 1.16.0 (2026-10-16)
   - Document the OAuth2 client-credentials grant for server-to-server integrations. These tokens are API-only and cannot start a web session.
+  - Add [Single Sign-On](#single-sign-on): SAML service-provider endpoints per org slug, IdP-initiated sign-in, `RelayState` deep-linking and the setup requirements.
 - 1.15.1 (2026-10-11)
   - The authorization callback includes the `iss` parameter (RFC 9207).
   - Refresh tokens rotate on every refresh. Reusing a spent refresh token revokes the chain, and a refresh token not used within 30 days of its access token expiring expires.
