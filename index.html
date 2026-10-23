@@ -575,6 +575,20 @@
               </ul>
           </li>
           <li>
+            <a href="#surveillance-exceptions" class="toc-h1 toc-link" data-title="Surveillance Exceptions">Surveillance Exceptions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#surveillance-exception-object-definition" class="toc-h2 toc-link" data-title="Surveillance Exception object definition">Surveillance Exception object definition</a>
+                  </li>
+                  <li>
+                    <a href="#list-surveillance-exceptions" class="toc-h2 toc-link" data-title="List surveillance exceptions">List surveillance exceptions</a>
+                  </li>
+                  <li>
+                    <a href="#get-surveillance-exception-by-id" class="toc-h2 toc-link" data-title="Get surveillance exception by id">Get surveillance exception by id</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
           </li>
       </ul>
@@ -5763,8 +5777,333 @@ An advisor who is not a manager follows the same rules as in the StratiFi app:
 <p>-request-type: GET</p>
 
 <p>-request-url: <code>/securities/cusip/&lt;cusip&gt;</code></p>
+<h1 id='surveillance-exceptions'>Surveillance Exceptions</h1>
+<p>Surveillance exceptions are the monitoring alerts StratiFi raises on accounts, investors and households: drift, share class, cash concentration, portfolio concentration, trading activity and IPS drift. They are <strong>read-only</strong> through the API.</p>
+
+<p>You see the same exceptions as in the StratiFi app: an advisor token sees the exceptions on the accounts, investors and households visible to that advisor; an API-user token sees the exceptions on the objects it owns.</p>
+<h2 id='surveillance-exception-object-definition'>Surveillance Exception object definition</h2>
+<blockquote>
+<p>Surveillance Exception Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 81234,
+    <span class="s2">"cause"</span>: <span class="s2">"share_class"</span>,
+    <span class="s2">"cause_id"</span>: 2,
+    <span class="s2">"status"</span>: <span class="s2">"to_do"</span>,
+    <span class="s2">"status_changed"</span>: <span class="s2">"2026-10-01T06:00:00Z"</span>,
+    <span class="s2">"target_type"</span>: <span class="s2">"account"</span>,
+    <span class="s2">"target_type_id"</span>: 38,
+    <span class="s2">"target_id"</span>: 51234,
+    <span class="s2">"trigger_type"</span>: <span class="s2">"position"</span>,
+    <span class="s2">"trigger_type_id"</span>: 41,
+    <span class="s2">"trigger_id"</span>: 98213,
+    <span class="s2">"extra_data"</span>: <span class="o">{</span><span class="s2">"newest_position_data"</span>: <span class="o">{</span>…<span class="o">}}</span>,
+    <span class="s2">"created"</span>: <span class="s2">"2026-10-01T06:00:00Z"</span>,
+    <span class="s2">"modified"</span>: <span class="s2">"2026-10-01T06:00:00Z"</span>,
+    <span class="s2">"start"</span>: <span class="s2">"2026-10-01T06:00:00Z"</span>,
+    <span class="s2">"end"</span>: null,
+    <span class="s2">"age"</span>: 9,
+    <span class="s2">"snoozed_until"</span>: null
+<span class="o">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Surveillance exception ID</td>
+</tr>
+<tr>
+<td>cause</td>
+<td>string</td>
+<td>One of <a href="#surveillance-exception-causes">these causes</a></td>
+</tr>
+<tr>
+<td>cause_id</td>
+<td>int</td>
+<td>Numeric id of the cause</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>One of <a href="#surveillance-exception-statuses">these statuses</a></td>
+</tr>
+<tr>
+<td>status_changed</td>
+<td>datetime</td>
+<td>When the status last changed</td>
+</tr>
+<tr>
+<td>target_type</td>
+<td>string</td>
+<td>Kind of object the exception is on: <code>account</code>, <code>investor</code> or <code>household</code></td>
+</tr>
+<tr>
+<td>target_type_id</td>
+<td>int</td>
+<td>Numeric id of that kind of object. It differs between environments; use <code>target_type</code> in your logic</td>
+</tr>
+<tr>
+<td>target_id</td>
+<td>int</td>
+<td>ID of the <a href="#accounts">account</a>, <a href="#investors">investor</a> or <a href="#households">household</a></td>
+</tr>
+<tr>
+<td>trigger_type</td>
+<td>string</td>
+<td>Kind of object that triggered it: <code>position</code> for share class exceptions (see <a href="#positions">positions</a>), otherwise the target itself</td>
+</tr>
+<tr>
+<td>trigger_type_id</td>
+<td>int</td>
+<td>Numeric id of that kind of object. It differs between environments; use <code>trigger_type</code> in your logic</td>
+</tr>
+<tr>
+<td>trigger_id</td>
+<td>int</td>
+<td>ID of the triggering object</td>
+</tr>
+<tr>
+<td>extra_data</td>
+<td>object</td>
+<td>Cause-specific metrics recorded when the exception was raised</td>
+</tr>
+<tr>
+<td>created</td>
+<td>datetime</td>
+<td>When the exception was created</td>
+</tr>
+<tr>
+<td>modified</td>
+<td>datetime</td>
+<td>When the exception was last changed</td>
+</tr>
+<tr>
+<td>start</td>
+<td>datetime</td>
+<td>When the exception opened</td>
+</tr>
+<tr>
+<td>end</td>
+<td>datetime</td>
+<td>When it was snoozed, resolved or closed; <code>null</code> while open</td>
+</tr>
+<tr>
+<td>age</td>
+<td>int</td>
+<td>Days open (from <code>start</code> to <code>end</code>, or to now while open)</td>
+</tr>
+<tr>
+<td>snoozed_until</td>
+<td>datetime</td>
+<td>When a snoozed exception returns to <code>to_do</code>; <code>null</code> otherwise</td>
+</tr>
+</tbody></table>
+<h3 id='surveillance-exception-causes'>Surveillance Exception causes</h3>
+<table><thead>
+<tr>
+<th>cause</th>
+<th>cause_id</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>drift</td>
+<td>1</td>
+</tr>
+<tr>
+<td>share_class</td>
+<td>2</td>
+</tr>
+<tr>
+<td>cash_concentration</td>
+<td>3</td>
+</tr>
+<tr>
+<td>portfolio_concentration</td>
+<td>4</td>
+</tr>
+<tr>
+<td>trading_activity</td>
+<td>5</td>
+</tr>
+<tr>
+<td>ips_drift</td>
+<td>6</td>
+</tr>
+</tbody></table>
+<h3 id='surveillance-exception-statuses'>Surveillance Exception statuses</h3>
+<table><thead>
+<tr>
+<th>status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>to_do</td>
+<td>Open, not yet worked on</td>
+</tr>
+<tr>
+<td>in_progress</td>
+<td>Open, an advisor is working on it</td>
+</tr>
+<tr>
+<td>snoozed</td>
+<td>Open, hidden until <code>snoozed_until</code></td>
+</tr>
+<tr>
+<td>resolved</td>
+<td>Finished by StratiFi: the object is healthy again</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>Finished by an advisor, who dismissed it</td>
+</tr>
+</tbody></table>
+<h2 id='list-surveillance-exceptions'>List surveillance exceptions</h2>
+<blockquote>
+<p>List Surveillance Exceptions</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/surveillance-exceptions/?status=to_do,in_progress&amp;target_type=account"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"count"</span>: 42,
+    <span class="s2">"next"</span>: <span class="s2">"https://backend.stratifi.com/api/v1/surveillance-exceptions/?page=2&amp;status=to_do,in_progress&amp;target_type=account"</span>,
+    <span class="s2">"previous"</span>: null,
+    <span class="s2">"total_pages"</span>: 3,
+    <span class="s2">"results"</span>: <span class="o">[</span>
+        <span class="o">{</span>...Surveillance Exception Object<span class="o">}</span>,
+        <span class="o">{</span>...Surveillance Exception Object<span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/surveillance-exceptions/</code></p>
+
+<p>Results are paginated: <code>page</code> and <code>page_size</code> (default 20, at most 100). There is no option to return every result at once.</p>
+
+<p><strong>Response Fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>Total number of exceptions</td>
+</tr>
+<tr>
+<td>next</td>
+<td>string</td>
+<td>Link to the next page</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>string</td>
+<td>Link to the previous page</td>
+</tr>
+<tr>
+<td>total_pages</td>
+<td>int</td>
+<td>Number of pages</td>
+</tr>
+<tr>
+<td>results</td>
+<td>object list</td>
+<td>List of <a href="#surveillance-exception-object-definition">surveillance exception objects</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>Filtering Fields</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>One or more statuses, comma separated (<code>to_do,in_progress,snoozed</code> are the open ones)</td>
+</tr>
+<tr>
+<td>target_type</td>
+<td>string</td>
+<td><code>account</code>, <code>investor</code> or <code>household</code></td>
+</tr>
+<tr>
+<td>target_id</td>
+<td>int</td>
+<td>ID of the target (use with <code>target_type</code>)</td>
+</tr>
+<tr>
+<td>trigger_type</td>
+<td>string</td>
+<td><code>account</code>, <code>investor</code>, <code>household</code> or <code>position</code></td>
+</tr>
+<tr>
+<td>trigger_id</td>
+<td>int</td>
+<td>ID of the trigger (use with <code>trigger_type</code>)</td>
+</tr>
+<tr>
+<td>created_after, created_before</td>
+<td>datetime</td>
+<td>Created at or after / at or before (ISO 8601)</td>
+</tr>
+<tr>
+<td>start_after, start_before</td>
+<td>datetime</td>
+<td>Opened at or after / at or before</td>
+</tr>
+<tr>
+<td>end_after, end_before</td>
+<td>datetime</td>
+<td>Finished at or after / at or before</td>
+</tr>
+<tr>
+<td>status_changed_after, status_changed_before</td>
+<td>datetime</td>
+<td>Status changed at or after / at or before</td>
+</tr>
+<tr>
+<td>ordering</td>
+<td>string</td>
+<td><code>id</code>, <code>created</code>, <code>modified</code>, <code>status_changed</code>, <code>start</code>, <code>end</code> or <code>age</code>; prefix <code>-</code> for descending. Default <code>-id</code> (newest first)</td>
+</tr>
+</tbody></table>
+
+<p>An unknown <code>status</code>, <code>target_type</code> or <code>trigger_type</code> value is rejected with a <code>400</code>.</p>
+<h2 id='get-surveillance-exception-by-id'>Get surveillance exception by id</h2>
+<blockquote>
+<p>Get Surveillance Exception by id</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://backend.stratifi.com/api/v1/surveillance-exceptions/81234/"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {{ access-token }}"</span>
+</code></pre></div>
+<p>-request-type: GET</p>
+
+<p>-request-url: <code>/surveillance-exceptions/&lt;exception_id&gt;/</code></p>
+
+<p>Returns a <a href="#surveillance-exception-object-definition">surveillance exception object</a>, or <code>404</code> when it does not exist or is not visible to you.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.23.0 (2026-10-23)
+
+<ul>
+<li>Add read-only <code>/surveillance-exceptions/</code> (list and get by id) with cause, status, target, trigger, <code>extra_data</code>, timestamps and age; filters by status, target, trigger and date ranges; at most 100 per page. Advisors see the exceptions on the accounts, investors and households the app shows them; integration tokens see those on the objects they own.</li>
+</ul></li>
 <li>1.22.0 (2026-10-23)
 
 <ul>
