@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.24.0 (2026-10-23)
+  - Add [MCP Server](#mcp-server): the Model Context Protocol endpoint for AI assistants, how clients discover and register with the authorization server (RFC 9728, RFC 8414, RFC 7591), resource-bound tokens (RFC 8707), the scopes, the tool catalogue and the tool error codes.
 - 1.23.0 (2026-10-23)
   - Add read-only `/surveillance-exceptions/` (list and get by id) with cause, status, target, trigger, `extra_data`, timestamps and age; filters by status, target, trigger and date ranges; at most 100 per page. Advisors see the exceptions on the accounts, investors and households the app shows them; integration tokens see those on the objects they own.
 - 1.22.0 (2026-10-23)
