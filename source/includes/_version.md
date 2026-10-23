@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.23.0 (2026-10-23)
+  - Add read-only `/surveillance-exceptions/` (list and get by id) with cause, status, target, trigger, `extra_data`, timestamps and age; filters by status, target, trigger and date ranges; at most 100 per page. Advisors see the exceptions on the accounts, investors and households the app shows them; integration tokens see those on the objects they own.
 - 1.22.0 (2026-10-23)
   - Security lookups only find the securities visible to the caller: market securities and public custom securities, the custom securities an advisor's firm shares with them, and for integration tokens the custom securities of the firms they serve. Other firms' private custom securities now answer `404`.
   - Add read-only `id`, `description`, `figi`, `share_class`, `is_retirement`, `fund_family`, `is_custom`, `is_sma`, `expense_ratio`, `expense_ratio_updated_at`, `distribution_yield`, `distribution_yield_updated_at`, `management_fee`, `minimum_purchase_amount`, `beta`, `marketcap`, `price_to_book`, `created` and `modified` to the security object.
