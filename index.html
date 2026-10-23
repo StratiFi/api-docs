@@ -4833,7 +4833,19 @@ your site layout.</p>
   <span class="s2">"name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
   <span class="s2">"value"</span>: 100.0,
   <span class="s2">"type"</span>: <span class="s2">"Aggressive"</span>,
+  <span class="s2">"is_strategy"</span>: <span class="nb">false</span>,
+  <span class="s2">"is_benchmark"</span>: <span class="nb">false</span>,
+  <span class="s2">"visibility"</span>: <span class="s2">"private"</span>,
   <span class="s2">"company"</span>: 1,
+  <span class="s2">"created_at"</span>: <span class="s2">"2026-01-15T14:02:11.482000Z"</span>,
+  <span class="s2">"updated_at"</span>: <span class="s2">"2026-10-09T18:30:45.120000Z"</span>,
+  <span class="s2">"display_name"</span>: <span class="s2">"80% Equities / 20% Fixed Income"</span>,
+  <span class="s2">"sync_status"</span>: <span class="s2">"ready"</span>,
+  <span class="s2">"sync_status_changed"</span>: <span class="s2">"2026-01-15T14:02:11.482000Z"</span>,
+  <span class="s2">"integration_link_updated_at"</span>: null,
+  <span class="s2">"is_security_origin"</span>: <span class="nb">false</span>,
+  <span class="s2">"security_origin"</span>: null,
+  <span class="s2">"source_account"</span>: null,
   <span class="s2">"positions"</span>: <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"ticker"</span>: <span class="s2">"AGG"</span>,
@@ -4889,9 +4901,64 @@ your site layout.</p>
 <td>Is this model a strategy?</td>
 </tr>
 <tr>
+<td>is_benchmark</td>
+<td>bool</td>
+<td>The model is used as a benchmark (default <code>false</code>)</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>string</td>
+<td><code>public</code> shares the model with the whole firm; <code>private</code> (default) limits it to its owner and <code>teams</code>. Managers see every model of the firm</td>
+</tr>
+<tr>
 <td>company</td>
 <td>int</td>
-<td>Company ID</td>
+<td>Company ID. An advisor can use their own company when they may add models</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>Read only. When the model was created</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>Read only. Last change to the model</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td>string</td>
+<td>Read only. Name shown in the app</td>
+</tr>
+<tr>
+<td>sync_status</td>
+<td>string</td>
+<td>Read only. Integration sync state: <code>ready</code>, <code>syncing</code> or <code>error</code></td>
+</tr>
+<tr>
+<td>sync_status_changed</td>
+<td>datetime</td>
+<td>Read only. When <code>sync_status</code> last changed</td>
+</tr>
+<tr>
+<td>integration_link_updated_at</td>
+<td>datetime</td>
+<td>Read only. Last change to any of the model&#39;s integration links; <code>null</code> without links</td>
+</tr>
+<tr>
+<td>is_security_origin</td>
+<td>bool</td>
+<td>Read only. The model was generated from a security (for example an ETF or mutual fund)</td>
+</tr>
+<tr>
+<td>security_origin</td>
+<td>string</td>
+<td>Read only. Ticker of the security the model was generated from; <code>null</code> otherwise</td>
+</tr>
+<tr>
+<td>source_account</td>
+<td>int</td>
+<td>Read only. ID of the account the model was replicated from; <code>null</code> otherwise</td>
 </tr>
 <tr>
 <td>positions[]</td>
@@ -4911,7 +4978,7 @@ your site layout.</p>
 <tr>
 <td>teams</td>
 <td>List of Teams Ids</td>
-<td>List of teams ids that are associated with the Model Portfolio</td>
+<td>Team the model is shared with while private (at most one id)</td>
 </tr>
 </tbody></table>
 <h3 id='model-portfolios-source-object-definition'>Model Portfolios Source Object Definition</h3>
@@ -5105,7 +5172,8 @@ your site layout.</p>
           "value": 80.0
       }
     ],
-    "teams": [1],
+    "visibility": "private",
+    "teams": [1]
   }'</span>
 
 <span class="o">{</span>
@@ -5161,9 +5229,29 @@ your site layout.</p>
 <td>Optional</td>
 </tr>
 <tr>
+<td>is_benchmark</td>
+<td>bool</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>string (<code>public</code> or <code>private</code>)</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>teams</td>
+<td>List of Teams Ids (at most one)</td>
+<td>Optional</td>
+</tr>
+<tr>
 <td>company</td>
 <td>int</td>
-<td>Optional</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>advisor</td>
+<td>int</td>
+<td>Optional. Defaults to the caller for advisor tokens; a manager can name a colleague</td>
 </tr>
 <tr>
 <td>external_id</td>
@@ -5197,7 +5285,8 @@ your site layout.</p>
           "value": 70.0
       }
     ],
-    "teams": [1],
+    "visibility": "private",
+    "teams": [1]
   }'</span>
 
 <span class="o">{</span>
@@ -5253,6 +5342,21 @@ your site layout.</p>
 <td>Optional</td>
 </tr>
 <tr>
+<td>is_benchmark</td>
+<td>bool</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>string (<code>public</code> or <code>private</code>)</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>teams</td>
+<td>List of Teams Ids (at most one)</td>
+<td>Optional</td>
+</tr>
+<tr>
 <td>company</td>
 <td>int</td>
 <td>Optional</td>
@@ -5263,6 +5367,15 @@ your site layout.</p>
 <td>Optional</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+An advisor who is not a manager follows the same rules as in the StratiFi app:
+<ul>
+<li>They can update or delete only the models they own or created with their token; another model answers <code>403</code>, and a private model they cannot see answers <code>404</code>.</li>
+<li>They cannot give a model to another advisor.</li>
+<li>Making a model public, sharing it with a new team, and turning <code>is_benchmark</code> or <code>is_strategy</code> on or off need the firm to allow advisors to share models, manage benchmarks or create strategies. Otherwise the request fails with <code>400</code> and names the field; sending the current value is always accepted. A benchmark or strategy model can be edited only while the firm allows that.</li>
+</ul>
+</aside>
 <h2 id='model-portfolio-prism-score'>Model Portfolio Prism Score</h2>
 <blockquote>
 <p>Model Portfolio Prism Score</p>
@@ -5427,6 +5540,13 @@ your site layout.</p>
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.20.0 (2026-10-23)
+
+<ul>
+<li>Add <code>is_benchmark</code> and <code>visibility</code> (<code>public</code> or <code>private</code>) to <code>/models/</code>, writable on create and update, plus read-only <code>created_at</code>, <code>updated_at</code>, <code>display_name</code>, <code>sync_status</code>, <code>sync_status_changed</code>, <code>integration_link_updated_at</code>, <code>is_security_origin</code>, <code>security_origin</code> (ticker) and <code>source_account</code> (account id).</li>
+<li>Advisors who are not managers follow the StratiFi app&#39;s rules: they update and delete only their own models, see private models only when they own them or share a team, and share models, or manage benchmarks and strategies, only when the firm allows it.</li>
+<li><code>company</code> is required on create; <code>advisor</code> can be sent by a manager.</li>
+</ul></li>
 <li>1.19.0 (2026-10-23)
 
 <ul>
