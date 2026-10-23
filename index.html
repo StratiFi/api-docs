@@ -2762,11 +2762,46 @@ investor.</p>
   <span class="s2">"advisor"</span>: 1,
   <span class="s2">"household"</span>: 1,
   <span class="s2">"phone"</span>: <span class="s2">"5555555555"</span>,
+  <span class="s2">"is_prospect"</span>: <span class="nb">false</span>,
   <span class="s2">"user"</span>: <span class="o">{</span>
      <span class="s2">"first_name"</span>:<span class="s2">"John"</span>,
      <span class="s2">"last_name"</span>:<span class="s2">"Wick"</span>,
      <span class="s2">"email"</span>:<span class="s2">"john.wick@example.com"</span>
   <span class="o">}</span>,
+  <span class="s2">"date_of_birth"</span>: <span class="s2">"1980-05-17"</span>,
+  <span class="s2">"marital_status"</span>: <span class="s2">"married"</span>,
+  <span class="s2">"dependants"</span>: 2,
+  <span class="s2">"employment_status"</span>: <span class="s2">"employed"</span>,
+  <span class="s2">"occupation"</span>: <span class="s2">"Architect"</span>,
+  <span class="s2">"mailing_address"</span>: <span class="s2">"1 Main St"</span>,
+  <span class="s2">"city"</span>: <span class="s2">"Austin"</span>,
+  <span class="s2">"state"</span>: <span class="s2">"TX"</span>,
+  <span class="s2">"zip"</span>: <span class="s2">"78701"</span>,
+  <span class="s2">"country_of_citizenship"</span>: <span class="s2">"US"</span>,
+  <span class="s2">"country_of_residence"</span>: <span class="s2">"US"</span>,
+  <span class="s2">"investment_objective"</span>: <span class="s2">"Growth"</span>,
+  <span class="s2">"investment_objective_custom"</span>: <span class="s2">""</span>,
+  <span class="s2">"investment_experience"</span>: 12,
+  <span class="s2">"investment_experience_level"</span>: <span class="s2">"moderate"</span>,
+  <span class="s2">"time_horizon"</span>: null,
+  <span class="s2">"time_horizon_bucket"</span>: <span class="s2">"10_to_20"</span>,
+  <span class="s2">"liquidity_needs"</span>: 25000.00,
+  <span class="s2">"annual_income"</span>: 185000.00,
+  <span class="s2">"annual_expenses"</span>: 90000.00,
+  <span class="s2">"special_expenses"</span>: 15000.00,
+  <span class="s2">"net_worth"</span>: 1250000.00,
+  <span class="s2">"liquid_net_worth"</span>: 400000.00,
+  <span class="s2">"investable_assets"</span>: 650000.00,
+  <span class="s2">"advisory_fee"</span>: 1.250,
+  <span class="s2">"tax_rate"</span>: 32.500,
+  <span class="s2">"tax_bracket"</span>: <span class="s2">"high"</span>,
+  <span class="s2">"exceptions_enabled"</span>: <span class="nb">true</span>,
+  <span class="s2">"clients_review_enabled"</span>: <span class="nb">true</span>,
+  <span class="s2">"checkins_enabled"</span>: <span class="nb">true</span>,
+  <span class="s2">"created_at"</span>: <span class="s2">"2026-01-15T14:02:11.482000Z"</span>,
+  <span class="s2">"updated_at"</span>: <span class="s2">"2026-10-09T18:30:45.120000Z"</span>,
+  <span class="s2">"next_review_date"</span>: <span class="s2">"2027-01-15"</span>,
+  <span class="s2">"integration_link_updated_at"</span>: null,
   <span class="s2">"risk"</span>: <span class="o">{</span>
     <span class="s2">"scores"</span>: <span class="o">{</span>
       <span class="s2">"overall"</span>: 8.1,
@@ -2819,7 +2854,7 @@ investor.</p>
 <tr>
 <td>is_prospect</td>
 <td>bool</td>
-<td>Indicates if the investor is a client or a prospect</td>
+<td><code>true</code> for a prospect, <code>false</code> (default) for a client. Adding a prospect requires your firm&#39;s permission to add prospects; turning a prospect into a client excludes its accounts, as in the StratiFi app</td>
 </tr>
 <tr>
 <td>phone</td>
@@ -2830,6 +2865,176 @@ investor.</p>
 <td>user</td>
 <td><a href="#user-object-definition">User Object</a></td>
 <td>User info</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>date</td>
+<td>Date of birth (<code>YYYY-MM-DD</code>), not in the future</td>
+</tr>
+<tr>
+<td>marital_status</td>
+<td>string</td>
+<td>One of <code>single</code>, <code>married</code>, <code>divorced</code>, <code>widowed</code>, <code>domestic_partner</code></td>
+</tr>
+<tr>
+<td>dependants</td>
+<td>int</td>
+<td>Number of dependants</td>
+</tr>
+<tr>
+<td>employment_status</td>
+<td>string</td>
+<td>One of <code>employed</code>, <code>self_employed</code>, <code>retired</code>, <code>unemployed</code>, <code>student</code>, <code>homemaker</code></td>
+</tr>
+<tr>
+<td>occupation</td>
+<td>string</td>
+<td>Occupation</td>
+</tr>
+<tr>
+<td>mailing_address</td>
+<td>string</td>
+<td>Street address</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>City</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>State or region</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>Postal code</td>
+</tr>
+<tr>
+<td>country_of_citizenship</td>
+<td>string</td>
+<td>ISO 3166-1 alpha-2 country code, upper case (for example <code>US</code>)</td>
+</tr>
+<tr>
+<td>country_of_residence</td>
+<td>string</td>
+<td>ISO 3166-1 alpha-2 country code, upper case (for example <code>US</code>)</td>
+</tr>
+<tr>
+<td>investment_objective</td>
+<td>string</td>
+<td>Name of one of your firm&#39;s standardized investment objectives (the firm of the investor&#39;s advisor), exact match; <code>&quot;&quot;</code> when unset. Exclusive with <code>investment_objective_custom</code></td>
+</tr>
+<tr>
+<td>investment_objective_custom</td>
+<td>string</td>
+<td>Free-text investment objective for firms without standardized objectives. Exclusive with <code>investment_objective</code></td>
+</tr>
+<tr>
+<td>investment_experience</td>
+<td>int</td>
+<td>Years of investing experience</td>
+</tr>
+<tr>
+<td>investment_experience_level</td>
+<td>string</td>
+<td>One of <code>none</code>, <code>limited</code>, <code>moderate</code>, <code>extensive</code></td>
+</tr>
+<tr>
+<td>time_horizon</td>
+<td>int</td>
+<td>Investment time horizon in exact years. Exclusive with <code>time_horizon_bucket</code></td>
+</tr>
+<tr>
+<td>time_horizon_bucket</td>
+<td>string</td>
+<td>One of <code>under_5</code>, <code>5_to_10</code>, <code>10_to_20</code>, <code>over_20</code>. Exclusive with <code>time_horizon</code></td>
+</tr>
+<tr>
+<td>liquidity_needs</td>
+<td>decimal</td>
+<td>Dollar amount the investor needs to keep liquid</td>
+</tr>
+<tr>
+<td>annual_income</td>
+<td>decimal</td>
+<td>Annual income</td>
+</tr>
+<tr>
+<td>annual_expenses</td>
+<td>decimal</td>
+<td>Annual expenses</td>
+</tr>
+<tr>
+<td>special_expenses</td>
+<td>decimal</td>
+<td>Planned special expenses</td>
+</tr>
+<tr>
+<td>net_worth</td>
+<td>decimal</td>
+<td>Total net worth</td>
+</tr>
+<tr>
+<td>liquid_net_worth</td>
+<td>decimal</td>
+<td>Liquid net worth</td>
+</tr>
+<tr>
+<td>investable_assets</td>
+<td>decimal</td>
+<td>Investable assets</td>
+</tr>
+<tr>
+<td>advisory_fee</td>
+<td>decimal</td>
+<td>Advisory fee, percent (for example <code>1.250</code>)</td>
+</tr>
+<tr>
+<td>tax_rate</td>
+<td>decimal</td>
+<td>Income tax rate, percent</td>
+</tr>
+<tr>
+<td>tax_bracket</td>
+<td>string</td>
+<td>One of <code>low</code>, <code>medium</code>, <code>high</code>, <code>top</code></td>
+</tr>
+<tr>
+<td>exceptions_enabled</td>
+<td>bool</td>
+<td>Read only. Surveillance exceptions are raised for this investor; switched in the StratiFi app</td>
+</tr>
+<tr>
+<td>clients_review_enabled</td>
+<td>bool</td>
+<td>Read only. The investor is included in client reviews; switched in the StratiFi app</td>
+</tr>
+<tr>
+<td>checkins_enabled</td>
+<td>bool</td>
+<td>Read only. Check-ins are sent to the investor; switched in the StratiFi app</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>Read only. When the investor was created</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>Read only. Last change to the investor</td>
+</tr>
+<tr>
+<td>next_review_date</td>
+<td>date</td>
+<td>Read only. Earliest next review date across the investor&#39;s accounts</td>
+</tr>
+<tr>
+<td>integration_link_updated_at</td>
+<td>datetime</td>
+<td>Read only. Last time an integration updated the investor</td>
 </tr>
 <tr>
 <td>risk.scores</td>
@@ -3002,6 +3207,11 @@ investor.</p>
 <td>Your investor identifier</td>
 </tr>
 <tr>
+<td>is_prospect</td>
+<td>bool</td>
+<td><code>true</code> lists prospects, <code>false</code> lists clients (<code>1</code>/<code>0</code> also accepted). Without it the list returns clients only, as before</td>
+</tr>
+<tr>
 <td>source_id</td>
 <td>int</td>
 <td>Source ID</td>
@@ -3059,7 +3269,13 @@ investor.</p>
       "first_name": "Brian",
       "last_name": "May",
       "email": "brian.may@example.com"
-    }
+    },
+    "date_of_birth": "1947-07-19",
+    "employment_status": "self_employed",
+    "investment_objective": "Growth",
+    "time_horizon_bucket": "over_20",
+    "net_worth": 1250000,
+    "tax_bracket": "high"
   }'</span>
 
 <span class="o">{</span>
@@ -3117,7 +3333,29 @@ investor.</p>
 <td>string</td>
 <td>Optional</td>
 </tr>
+<tr>
+<td>is_prospect</td>
+<td>bool</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>date_of_birth, marital_status, dependants, employment_status, occupation, mailing_address, city, state, zip, country_of_citizenship, country_of_residence</td>
+<td>see <a href="#investor-object-definition">Investor Object</a></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>investment_objective, investment_objective_custom, investment_experience, investment_experience_level, time_horizon, time_horizon_bucket, liquidity_needs</td>
+<td>see <a href="#investor-object-definition">Investor Object</a></td>
+<td>Optional. Sending both halves of an exclusive pair returns a <code>400</code></td>
+</tr>
+<tr>
+<td>annual_income, annual_expenses, special_expenses, net_worth, liquid_net_worth, investable_assets, advisory_fee, tax_rate, tax_bracket</td>
+<td>see <a href="#investor-object-definition">Investor Object</a></td>
+<td>Optional</td>
+</tr>
 </tbody></table>
+
+<p>The objective and the time horizon are exclusive pairs: sending both halves in one request returns a <code>400</code>, and setting one clears the other.</p>
 
 <p><strong>Response:</strong> The new <a href="#investor-object-definition">investor object</a>.</p>
 <h2 id='update-investor'>Update Investor</h2>
@@ -3192,7 +3430,29 @@ investor.</p>
 <td>string</td>
 <td>Optional</td>
 </tr>
+<tr>
+<td>is_prospect</td>
+<td>bool</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>date_of_birth, marital_status, dependants, employment_status, occupation, mailing_address, city, state, zip, country_of_citizenship, country_of_residence</td>
+<td>see <a href="#investor-object-definition">Investor Object</a></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>investment_objective, investment_objective_custom, investment_experience, investment_experience_level, time_horizon, time_horizon_bucket, liquidity_needs</td>
+<td>see <a href="#investor-object-definition">Investor Object</a></td>
+<td>Optional. Sending both halves of an exclusive pair returns a <code>400</code></td>
+</tr>
+<tr>
+<td>annual_income, annual_expenses, special_expenses, net_worth, liquid_net_worth, investable_assets, advisory_fee, tax_rate, tax_bracket</td>
+<td>see <a href="#investor-object-definition">Investor Object</a></td>
+<td>Optional</td>
+</tr>
 </tbody></table>
+
+<p>A prospect is reachable by id like a client, so it can be read, updated and deleted. Fields set from the client&#39;s paperwork by OperationsIQ cannot be changed through the API: sending a different value, or the other half of its exclusive pair, returns a <code>400</code> naming the field. Sending the stored value back is accepted.</p>
 <h2 id='investor-prism-aggregation'>Investor Prism Aggregation</h2>
 <blockquote>
 <p>Investor Prism Aggregation</p>
@@ -4913,6 +5173,14 @@ your site layout.</p>
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.17.0 (2026-10-23)
+
+<ul>
+<li>Add the investor suitability profile to <code>/investors/</code>: personal details (<code>date_of_birth</code>, <code>marital_status</code>, <code>dependants</code>, <code>employment_status</code>, <code>occupation</code>, mailing address and countries), investment profile (<code>investment_objective</code>, <code>investment_objective_custom</code>, <code>investment_experience</code>, <code>investment_experience_level</code>, <code>time_horizon</code>, <code>time_horizon_bucket</code>, <code>liquidity_needs</code>) and financials (<code>annual_income</code>, <code>annual_expenses</code>, <code>special_expenses</code>, <code>net_worth</code>, <code>liquid_net_worth</code>, <code>investable_assets</code>, <code>advisory_fee</code>, <code>tax_rate</code>, <code>tax_bracket</code>), writable on create and update.</li>
+<li>Add read-only <code>created_at</code>, <code>updated_at</code>, <code>next_review_date</code>, <code>integration_link_updated_at</code> and the <code>exceptions_enabled</code>, <code>clients_review_enabled</code>, <code>checkins_enabled</code> toggles to the investor object.</li>
+<li>Country codes must be upper-case ISO 3166-1 alpha-2, and the date of birth cannot be in the future. Fields set from the client&#39;s paperwork cannot be changed through the API.</li>
+<li>Prospects: reachable by id, listed with <code>is_prospect=true</code>; adding one requires the firm&#39;s permission, and turning a prospect into a client excludes its accounts.</li>
+</ul></li>
 <li>1.16.0 (2026-10-16)
 
 <ul>
