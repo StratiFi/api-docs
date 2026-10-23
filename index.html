@@ -508,6 +508,14 @@
           </li>
           <li>
             <a href="#positions" class="toc-h1 toc-link" data-title="Positions">Positions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#excluded-positions" class="toc-h2 toc-link" data-title="Excluded positions">Excluded positions</a>
+                  </li>
+                  <li>
+                    <a href="#model-portfolio-positions" class="toc-h2 toc-link" data-title="Model portfolio positions">Model portfolio positions</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#accounts" class="toc-h1 toc-link" data-title="Accounts">Accounts</a>
@@ -3954,10 +3962,15 @@ your site layout.</p>
 </tr>
 </tbody></table>
 <h1 id='positions'>Positions</h1>
+<p>Positions are the holdings of an <a href="#accounts">account</a> and the target allocation of a <a href="#model-portfolios">model portfolio</a>. They are sent and returned inside the <code>positions</code> list of their parent; there is no positions endpoint.</p>
+
+<p>Sending <code>positions</code> on create or update <strong>replaces the whole list</strong>: holdings that are not sent are removed. A position is matched to the one it replaces by <code>ticker</code>, then by <code>cusip</code>.</p>
+
 <blockquote>
-<p>Position Object Description:</p>
+<p>Account Position Object Description:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 98213,
     <span class="s2">"ticker"</span>: <span class="s2">"GOOGL"</span>,
     <span class="s2">"ticker_name"</span>: <span class="s2">"ALPHABET INC CLASS A"</span>,
     <span class="s2">"cusip"</span>: <span class="s2">"02079K305"</span>,
@@ -3965,11 +3978,17 @@ your site layout.</p>
     <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
     <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
     <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
-    <span class="s2">"value"</span>: 36275.50
+    <span class="s2">"security_type"</span>: <span class="s2">"Common Stock"</span>,
+    <span class="s2">"value"</span>: 36275.50,
     <span class="s2">"quantity"</span>: 780,
     <span class="s2">"price"</span>: 46.5070,
     <span class="s2">"unit"</span>: <span class="s2">"shares"</span>,
-    <span class="s2">"cost_basis"</span>: 57.0179,
+    <span class="s2">"cost_basis"</span>: 44473.96,
+    <span class="s2">"unrealized_gains"</span>: <span class="nt">-8198</span>.46,
+    <span class="s2">"purchase_date"</span>: <span class="s2">"2021-03-15"</span>,
+    <span class="s2">"excluded"</span>: <span class="nb">false</span>,
+    <span class="s2">"created_at"</span>: <span class="s2">"2026-01-05T14:12:09.120000Z"</span>,
+    <span class="s2">"updated_at"</span>: <span class="s2">"2026-10-10T09:30:00.000000Z"</span>
 <span class="o">}</span>
 </code></pre></div>
 <table><thead>
@@ -3980,6 +3999,12 @@ your site layout.</p>
 <th>-</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>Position ID. Stable while the holding keeps its ticker or cusip; a holding sent under a new identifier gets a new id</td>
+<td>Read-only</td>
+</tr>
 <tr>
 <td>ticker</td>
 <td>string</td>
@@ -4023,6 +4048,12 @@ your site layout.</p>
 <td>Read-only</td>
 </tr>
 <tr>
+<td>security_type</td>
+<td>string</td>
+<td>Security type</td>
+<td>Read-only</td>
+</tr>
+<tr>
 <td>value</td>
 <td>number</td>
 <td>Value</td>
@@ -4037,7 +4068,7 @@ your site layout.</p>
 <tr>
 <td>price</td>
 <td>number</td>
-<td>Price per unit of the security</td>
+<td>Price per unit of the security (<code>value / quantity</code>)</td>
 <td>Read-only</td>
 </tr>
 <tr>
@@ -4052,7 +4083,67 @@ your site layout.</p>
 <td>The total cost of the position</td>
 <td>Optional</td>
 </tr>
+<tr>
+<td>unrealized_gains</td>
+<td>number</td>
+<td>Unrealized gains of the position. Kept when an update leaves it out</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>purchase_date</td>
+<td>date</td>
+<td>Purchase date (<code>YYYY-MM-DD</code>). Kept when an update leaves it out</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>excluded</td>
+<td>bool</td>
+<td>Left out of risk monitoring and PRISM. See <a href="#excluded-positions">excluded positions</a>.</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>When the position was created</td>
+<td>Read-only</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>When one of the position&#39;s values last changed; sending the same values again does not move it</td>
+<td>Read-only</td>
+</tr>
 </tbody></table>
+<h2 id='excluded-positions'>Excluded positions</h2>
+<p>Excluded positions are returned with the rest of the holdings, with <code>excluded: true</code>. Since sending <code>positions</code> replaces the whole list, send them back when you update an account, or they are removed.</p>
+
+<ul>
+<li>A position sent <strong>without</strong> <code>excluded</code> keeps the state of the holding it replaces (<code>false</code> for a new holding).</li>
+<li>Changing <code>excluded</code> on an existing holding, or sending a new holding with <code>excluded: true</code>, follows the same rule as the StratiFi app: managers and above can always do it, advisors only when their company allows advisors to exclude positions. Otherwise the request is rejected with a <code>400</code> that lists the holdings.</li>
+<li>When the same holding appears in more than one row, the rows are merged and the last row that states <code>excluded</code> decides.</li>
+</ul>
+
+<p><code>id</code>, <code>created_at</code> and <code>updated_at</code> are ignored when sent, so positions can be sent back as they were read.</p>
+<h2 id='model-portfolio-positions'>Model portfolio positions</h2>
+<blockquote>
+<p>Model Position Object Description:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 5521,
+    <span class="s2">"ticker"</span>: <span class="s2">"VTI"</span>,
+    <span class="s2">"ticker_name"</span>: <span class="s2">"VANGUARD TOTAL STOCK MARKET ETF"</span>,
+    <span class="s2">"cusip"</span>: <span class="s2">"922908769"</span>,
+    <span class="s2">"isin"</span>: <span class="s2">"US9229087690"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"Equity"</span>,
+    <span class="s2">"subtype"</span>: <span class="s2">"US"</span>,
+    <span class="s2">"sector"</span>: <span class="s2">"Large Cap"</span>,
+    <span class="s2">"security_type"</span>: <span class="s2">"ETF"</span>,
+    <span class="s2">"value"</span>: 60.0,
+    <span class="s2">"created_at"</span>: <span class="s2">"2026-01-05T14:12:09.120000Z"</span>,
+    <span class="s2">"updated_at"</span>: <span class="s2">"2026-10-10T09:30:00.000000Z"</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Model positions carry <code>id</code>, <code>ticker</code>, <code>ticker_name</code>, <code>cusip</code>, <code>isin</code>, <code>type</code>, <code>subtype</code>, <code>sector</code>, <code>security_type</code>, <code>value</code> (the weight, a percentage), <code>created_at</code> and <code>updated_at</code>, with the same rules as account positions. They have no quantity, price, cost basis or exclusion.</p>
 <h1 id='accounts'>Accounts</h1><h2 id='account-object-definition'>Account Object Definition</h2>
 <blockquote>
 <p>Account Object</p>
@@ -5540,6 +5631,13 @@ An advisor who is not a manager follows the same rules as in the StratiFi app:
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.21.0 (2026-10-23)
+
+<ul>
+<li>Account positions now include excluded holdings, returned with <code>excluded: true</code>; <code>excluded</code> is writable, and a position sent without it keeps its current state. See <a href="#excluded-positions">excluded positions</a>.</li>
+<li>Updating a holding the account already has now applies <code>purchase_date</code> and <code>unrealized_gains</code> when they are sent, and keeps them when they are not.</li>
+<li>Add read-only <code>id</code> (stable while the holding keeps its identifier), <code>created_at</code> and <code>updated_at</code> (moves only when a value changes) to account and model portfolio positions.</li>
+</ul></li>
 <li>1.20.0 (2026-10-23)
 
 <ul>
