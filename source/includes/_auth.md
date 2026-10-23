@@ -114,7 +114,7 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
 | refresh_token | string | A refresh token valid to renew the access token. See [Refresh Token Flow](#refresh-token-flow).        |
 | scope         | string | The scopes with granted access for this token                                                        |
 | advisor_id    | int    | The ID of the advisor associated to this user                                                        |
-| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com)   |
+| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com). Not returned to [self-registered or resource-bound clients](#clients-without-session-credentials). |
 | id_token      | string | An OpenID Connect ID token used to start a session in stratifi.com                                   |
 
 &#54;. Include the _Authorization_ header in your requests as follows:
@@ -171,7 +171,7 @@ curl -X POST "https://backend.stratifi.com/o/token/" \
 | refresh_token | string | An refresh token valid to renew the access token                                                   |
 | scope         | string | The scopes with granted access for this token                                                      |
 | advisor_id    | int    | The ID of the advisor associated to this user                                                      |
-| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com) |
+| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com). Not returned to [self-registered or resource-bound clients](#clients-without-session-credentials). |
 | id_token      | string | An OpenID Connect ID token used to start a session in stratifi.com                                 |
 
 ## Client Credentials Flow
@@ -244,6 +244,10 @@ You can include an optional `starting_url` property to specify the path where th
 If not provided, the user will be redirected to the default dashboard.
 
 
+### Clients without session credentials
+
+Applications that registered themselves (dynamic client registration or a client metadata document), and tokens bound to a resource with the `resource` parameter (such as MCP clients), receive only their OAuth access token. Their token responses carry no `session_token`, `/userinfo` answers `session_token: null`, and account objects carry no `target_score_url`. Applications registered by StratiFi are unaffected.
+
 ### Session Token Flow(Deprecated)
 
 The authorization responses described above contain a **session_token** property. This token automatically
@@ -301,4 +305,4 @@ curl -X GET "https://backend.stratifi.com/api/v1/userinfo/"
 | last_name     | string | User last name                                                                                     |
 | email         | string | User email address                                                                                 |
 | advisor_id    | int    | The ID of the advisor associated to this user                                                      |
-| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com) |
+| session_token | string | A short-lived token used to [start a session in stratifi.com](#starting-a-session-in-stratifi-com). `null` for [self-registered or resource-bound clients](#clients-without-session-credentials). |
