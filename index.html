@@ -3985,6 +3985,27 @@ your site layout.</p>
   <span class="s2">"advisor"</span>: 1,
   <span class="s2">"matching_model"</span>: 1,
   <span class="s2">"strategy"</span>: 1,
+  <span class="s2">"nickname"</span>: <span class="s2">"Mom's brokerage"</span>,
+  <span class="s2">"inception_date"</span>: <span class="s2">"2019-03-01"</span>,
+  <span class="s2">"close_date"</span>: null,
+  <span class="s2">"relationship_type"</span>: <span class="s2">"advisory"</span>,
+  <span class="s2">"retirement_category"</span>: <span class="s2">"non_retirement"</span>,
+  <span class="s2">"held_away"</span>: <span class="nb">false</span>,
+  <span class="s2">"excluded"</span>: <span class="nb">false</span>,
+  <span class="s2">"custodian"</span>: <span class="s2">"Charles Schwab"</span>,
+  <span class="s2">"investment_objective"</span>: <span class="s2">"Growth"</span>,
+  <span class="s2">"investment_objective_custom"</span>: <span class="s2">""</span>,
+  <span class="s2">"exceptions_enabled"</span>: <span class="nb">true</span>,
+  <span class="s2">"clients_review_enabled"</span>: <span class="nb">true</span>,
+  <span class="s2">"created_at"</span>: <span class="s2">"2026-01-15T14:02:11.482000Z"</span>,
+  <span class="s2">"updated_at"</span>: <span class="s2">"2026-10-09T18:30:45.120000Z"</span>,
+  <span class="s2">"provider"</span>: <span class="s2">"Charles Schwab"</span>,
+  <span class="s2">"integration_link_updated_at"</span>: <span class="s2">"2026-10-09T18:30:45.120000Z"</span>,
+  <span class="s2">"sync_status"</span>: <span class="s2">"ready"</span>,
+  <span class="s2">"sync_status_changed"</span>: <span class="s2">"2026-10-09T18:30:45.120000Z"</span>,
+  <span class="s2">"next_review_date"</span>: <span class="s2">"2027-01-15"</span>,
+  <span class="s2">"display_name"</span>: <span class="s2">"Mom's brokerage"</span>,
+  <span class="s2">"display_number"</span>: <span class="s2">"******4321"</span>,
   <span class="s2">"positions"</span>: <span class="o">[</span>…],
   <span class="s2">"risk"</span>: <span class="o">{</span>…<span class="o">}</span>,
   <span class="s2">"tolerance"</span>: <span class="o">{</span>…<span class="o">}</span>,
@@ -4048,7 +4069,7 @@ your site layout.</p>
 <tr>
 <td>investor</td>
 <td>int</td>
-<td>Investor ID</td>
+<td>Investor ID. A new account needs an <code>investor</code> or an <code>advisor</code>; an update cannot clear it.</td>
 </tr>
 <tr>
 <td>advisor</td>
@@ -4084,6 +4105,111 @@ your site layout.</p>
 <td>teams</td>
 <td>List of Teams Ids</td>
 <td>List of teams ids that are associated with the account</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>string</td>
+<td>Advisor-facing display name. <code>name</code> is fed by the custodian and may be overwritten on sync; use <code>nickname</code> to rename.</td>
+</tr>
+<tr>
+<td>inception_date</td>
+<td>date</td>
+<td>Date the account was opened (<code>YYYY-MM-DD</code>)</td>
+</tr>
+<tr>
+<td>close_date</td>
+<td>date</td>
+<td>Date the account was closed; <code>null</code> while open</td>
+</tr>
+<tr>
+<td>relationship_type</td>
+<td>string</td>
+<td>One of <code>brokerage</code>, <code>advisory</code>; <code>&quot;&quot;</code> or <code>null</code> clears it</td>
+</tr>
+<tr>
+<td>retirement_category</td>
+<td>string</td>
+<td>Read only. One of <code>non_retirement</code>, <code>ira</code>, <code>qualified</code>, <code>education</code>, <code>retirement_other</code>, derived from <code>type</code> on create and whenever <code>type</code> changes.</td>
+</tr>
+<tr>
+<td>held_away</td>
+<td>bool</td>
+<td>The account is not managed by the firm</td>
+</tr>
+<tr>
+<td>excluded</td>
+<td>bool</td>
+<td>Left out of aggregations and PRISM rollups. Defaults to the value of <code>held_away</code> on create.</td>
+</tr>
+<tr>
+<td>custodian</td>
+<td>string</td>
+<td>Custodian name from the StratiFi catalogue. The whole name or one of its alternative names must match, ignoring case (a fragment does not match); the canonical name is returned. <code>&quot;&quot;</code> or <code>null</code> clears it; an unknown name is a <code>400</code>.</td>
+</tr>
+<tr>
+<td>investment_objective</td>
+<td>string</td>
+<td>Name of one of your firm&#39;s standardized investment objectives; <code>&quot;&quot;</code> when unset. Exclusive with <code>investment_objective_custom</code>: sending both is a <code>400</code>, and writing one clears the other.</td>
+</tr>
+<tr>
+<td>investment_objective_custom</td>
+<td>string</td>
+<td>Free-text investment objective for firms without standardized objectives</td>
+</tr>
+<tr>
+<td>exceptions_enabled</td>
+<td>bool</td>
+<td>Surveillance exceptions are raised for this account (default <code>true</code>)</td>
+</tr>
+<tr>
+<td>clients_review_enabled</td>
+<td>bool</td>
+<td>The account is included in client reviews (default <code>true</code>)</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>Read only. When the account was created</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>Read only. Last change to the account</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>string</td>
+<td>Read only. Integration that created the account (for example <code>Stratifi API</code>, <code>Orion</code>, <code>Charles Schwab</code>); <code>null</code> for accounts created in the app</td>
+</tr>
+<tr>
+<td>integration_link_updated_at</td>
+<td>datetime</td>
+<td>Read only. Last time an integration updated the account</td>
+</tr>
+<tr>
+<td>sync_status</td>
+<td>string</td>
+<td>Read only. Synchronisation state: <code>ready</code>, <code>syncing</code> or <code>error</code> (<code>status</code> is the PRISM score status)</td>
+</tr>
+<tr>
+<td>sync_status_changed</td>
+<td>datetime</td>
+<td>Read only. When <code>sync_status</code> last changed</td>
+</tr>
+<tr>
+<td>next_review_date</td>
+<td>date</td>
+<td>Read only. Next client review date for the account</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td>string</td>
+<td>Read only. <code>nickname</code> when set, otherwise the name with the number</td>
+</tr>
+<tr>
+<td>display_number</td>
+<td>string</td>
+<td>Read only. Account number, masked when the firm masks numbers</td>
 </tr>
 </tbody></table>
 <h3 id='account-source-object-definition'>Account Source Object Definition</h3>
@@ -4308,42 +4434,46 @@ your site layout.</p>
     "tax_status": "tax-exempt",
     "number": "987654321",
     "investor": 1,
-    "positions": [
+    "nickname": "Mom'</span>s brokerage<span class="s2">",
+    "</span>custodian<span class="s2">": "</span>Schwab<span class="s2">",
+    "</span>relationship_type<span class="s2">": "</span>advisory<span class="s2">",
+    "</span>investment_objective<span class="s2">": "</span>Growth<span class="s2">",
+    "</span>positions<span class="s2">": [
       {
-        "ticker": "SPY",
-        "ticker_name": "SPDR S&amp;P 500",
-        "value": "823045.26"
+        "</span>ticker<span class="s2">": "</span>SPY<span class="s2">",
+        "</span>ticker_name<span class="s2">": "</span>SPDR S&amp;P 500<span class="s2">",
+        "</span>value<span class="s2">": "</span>823045.26<span class="s2">"
       },
       {
-        "ticker": "IBM",
-        "ticker_name": "IBM",
-        "value": "411522.63"
+        "</span>ticker<span class="s2">": "</span>IBM<span class="s2">",
+        "</span>ticker_name<span class="s2">": "</span>IBM<span class="s2">",
+        "</span>value<span class="s2">": "</span>411522.63<span class="s2">"
       },
       …
     ],
-    "teams": [1]
-  }'</span>
+    "</span>teams<span class="s2">": [1]
+  }'
 
-<span class="o">{</span>
-  <span class="s2">"id"</span>: 1,
-  <span class="s2">"external_id"</span>: <span class="s2">"act-1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"John Doe Trust"</span>,
-  <span class="s2">"value"</span>: <span class="s2">"1234567.89"</span>,
-  <span class="s2">"type"</span>: <span class="s2">"100"</span>,
-  <span class="s2">"tax_status"</span>: <span class="s2">"tax-exempt"</span>,
-  <span class="s2">"number"</span>: <span class="s2">"987654321"</span>,
-  <span class="s2">"investor"</span>: 1,
-  <span class="s2">"advisor"</span>: 1,
-  <span class="s2">"matching_model"</span>: 1,
-  <span class="s2">"strategy"</span>: 1,
-  <span class="s2">"positions"</span>: <span class="o">[</span> … <span class="o">]</span>,
-  <span class="s2">"risk"</span>: <span class="o">{</span> … <span class="o">}</span>,
-  <span class="s2">"tolerance"</span>: <span class="o">{</span> … <span class="o">}</span>,
-  <span class="s2">"drift"</span>: 1.0,
-  <span class="s2">"sources"</span>: <span class="o">[</span>…],
-  <span class="s2">"teams"</span>: <span class="o">[</span>1]
-<span class="o">}</span>
-</code></pre></div>
+{
+  "</span><span class="nb">id</span><span class="s2">": 1,
+  "</span>external_id<span class="s2">": "</span>act-1<span class="s2">",
+  "</span>name<span class="s2">": "</span>John Doe Trust<span class="s2">",
+  "</span>value<span class="s2">": "</span>1234567.89<span class="s2">",
+  "</span><span class="nb">type</span><span class="s2">": "</span>100<span class="s2">",
+  "</span>tax_status<span class="s2">": "</span>tax-exempt<span class="s2">",
+  "</span>number<span class="s2">": "</span>987654321<span class="s2">",
+  "</span>investor<span class="s2">": 1,
+  "</span>advisor<span class="s2">": 1,
+  "</span>matching_model<span class="s2">": 1,
+  "</span>strategy<span class="s2">": 1,
+  "</span>positions<span class="s2">": [ … ],
+  "</span>risk<span class="s2">": { … },
+  "</span>tolerance<span class="s2">": { … },
+  "</span>drift<span class="s2">": 1.0,
+  "</span>sources<span class="s2">": […],
+  "</span>teams<span class="s2">": [1]
+}
+</span></code></pre></div>
 <p>-request-type: POST</p>
 
 <p>-request-url: <code>/accounts/</code></p>
@@ -4390,12 +4520,12 @@ your site layout.</p>
 <tr>
 <td>investor</td>
 <td>int</td>
-<td>Optional</td>
+<td>Required unless <code>advisor</code> is sent</td>
 </tr>
 <tr>
 <td>advisor</td>
 <td>int</td>
-<td>Optional</td>
+<td>Required unless <code>investor</code> is sent</td>
 </tr>
 <tr>
 <td>matching_model</td>
@@ -4410,6 +4540,26 @@ your site layout.</p>
 <tr>
 <td>external_id</td>
 <td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>nickname, inception_date, close_date, relationship_type, held_away, excluded</td>
+<td>see <a href="#account-object-definition">Account Object</a></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>custodian</td>
+<td>string</td>
+<td>Optional, custodian name</td>
+</tr>
+<tr>
+<td>investment_objective, investment_objective_custom</td>
+<td>string</td>
+<td>Optional. Sending both is a <code>400</code></td>
+</tr>
+<tr>
+<td>exceptions_enabled, clients_review_enabled</td>
+<td>bool</td>
 <td>Optional</td>
 </tr>
 </tbody></table>
@@ -4531,6 +4681,26 @@ your site layout.</p>
 <tr>
 <td>external_id</td>
 <td>string</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>nickname, inception_date, close_date, relationship_type, held_away, excluded</td>
+<td>see <a href="#account-object-definition">Account Object</a></td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>custodian</td>
+<td>string</td>
+<td>Optional, custodian name</td>
+</tr>
+<tr>
+<td>investment_objective, investment_objective_custom</td>
+<td>string</td>
+<td>Optional. Sending both is a <code>400</code></td>
+</tr>
+<tr>
+<td>exceptions_enabled, clients_review_enabled</td>
+<td>bool</td>
 <td>Optional</td>
 </tr>
 </tbody></table>
@@ -5173,6 +5343,13 @@ your site layout.</p>
 <p>-request-url: <code>/securties/cusip/&lt;cusip&gt;</code></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.18.0 (2026-10-23)
+
+<ul>
+<li>Add account details to <code>/accounts/</code>: <code>nickname</code>, <code>inception_date</code>, <code>close_date</code>, <code>relationship_type</code>, <code>held_away</code>, <code>excluded</code>, <code>custodian</code> (by name), <code>investment_objective</code>, <code>investment_objective_custom</code>, <code>exceptions_enabled</code> and <code>clients_review_enabled</code>, writable on create and update.</li>
+<li>Add read-only <code>retirement_category</code> (derived from <code>type</code>), <code>created_at</code>, <code>updated_at</code>, <code>provider</code>, <code>integration_link_updated_at</code>, <code>sync_status</code>, <code>sync_status_changed</code>, <code>next_review_date</code>, <code>display_name</code> and <code>display_number</code> to the account object.</li>
+<li>Creating an account without an <code>investor</code> or an <code>advisor</code> returns a <code>400</code>. A custodian must match its whole name or an alternative name.</li>
+</ul></li>
 <li>1.17.0 (2026-10-23)
 
 <ul>
