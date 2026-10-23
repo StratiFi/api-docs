@@ -1,5 +1,9 @@
 # Changelog
 
+- 1.20.0 (2026-10-23)
+  - Add `is_benchmark` and `visibility` (`public` or `private`) to `/models/`, writable on create and update, plus read-only `created_at`, `updated_at`, `display_name`, `sync_status`, `sync_status_changed`, `integration_link_updated_at`, `is_security_origin`, `security_origin` (ticker) and `source_account` (account id).
+  - Advisors who are not managers follow the StratiFi app's rules: they update and delete only their own models, see private models only when they own them or share a team, and share models, or manage benchmarks and strategies, only when the firm allows it.
+  - `company` is required on create; `advisor` can be sent by a manager.
 - 1.19.0 (2026-10-23)
   - Add `investment_objective`, `investment_objective_custom`, `advisory_fee` and `exceptions_enabled` to `/households/`, writable on create and update, plus read-only `created_at`, `updated_at` and `integration_link_updated_at`.
 - 1.18.0 (2026-10-23)
