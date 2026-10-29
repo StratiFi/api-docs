@@ -1,0 +1,4 @@
+remotes:
+  - git_url: git@github.com:StratiFi/stratifi-git-hooks
+    ref: v1.0.1
+    configs: [lefthook-remote.yml]

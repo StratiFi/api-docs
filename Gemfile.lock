@@ -34,6 +34,7 @@ GEM
       concurrent-ruby (~> 1.0)
     kramdown (2.4.0)
       rexml
+    lefthook (2.2.2)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -128,6 +129,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  lefthook (~> 2.2)
   middleman (~> 4.4)
   middleman-autoprefixer (~> 3.0)
   middleman-sprockets (~> 4.1)
