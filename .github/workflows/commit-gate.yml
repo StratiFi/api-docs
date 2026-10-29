@@ -1,0 +1,10 @@
+name: commit-gate
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+jobs:
+  commit-gate:
+    uses: StratiFi/stratifi-git-hooks/.github/workflows/commit-gate.yml@v1
+    with:
+      app-id: ${{ vars.STRATIFI_READER_APP_ID }}
+    secrets: inherit
