@@ -2,6 +2,12 @@
 This is a quick guide on how to update the documentation.
 Feel free to run it in your local environment. 
 For simplicity, we will use Docker to run the site.
+
+Once per clone, install the git hooks. They check every commit against the StratiFi Commit and
+Release Standard and append `Refs: SD-XXXX` from the branch name:
+   - With Ruby: `bundle install && bundle exec lefthook install`
+   - Without Ruby: `npx lefthook install` (or `brew install lefthook && lefthook install`)
+
 1. Add the changes in `source/`
 2. If new section is added, add it to `source/index.html.md`
 3. Add to `source/includes/_version.md` the changelog.
