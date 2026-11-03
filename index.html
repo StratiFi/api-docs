@@ -3619,9 +3619,19 @@ statuses are:</p>
 <td>The risk score calculation has not started</td>
 </tr>
 <tr>
-<td>processing</td>
+<td>ready</td>
 <td>string</td>
-<td>The risk score calculation is in progress or the existing score is outdated</td>
+<td>The risk score is up to date with the portfolio&#39;s holdings</td>
+</tr>
+<tr>
+<td>changed</td>
+<td>string</td>
+<td>The holdings changed slightly since the score was calculated, for example after a price update. The score is refreshed in the weekly update</td>
+</tr>
+<tr>
+<td>outdated</td>
+<td>string</td>
+<td>The holdings changed materially since the score was calculated. A new score is calculated within minutes; until then the previous one is returned</td>
 </tr>
 <tr>
 <td>error</td>
@@ -3629,11 +3639,14 @@ statuses are:</p>
 <td>The last risk score calculation failed</td>
 </tr>
 <tr>
-<td>ready</td>
+<td>processing</td>
 <td>string</td>
-<td>The risk score calculation is completed and is up to date</td>
+<td>Deprecated: no longer returned. Changes in the holdings are reported as <code>changed</code> or <code>outdated</code></td>
 </tr>
 </tbody></table>
+
+<p>A holding change is material when a single holding&#39;s weight in the portfolio moves by 5 percentage points or more:
+a holding added or removed, a large trade, or a holding replaced by another security.</p>
 <h2 id='scores-factors'>Scores Factors</h2>
 <blockquote>
 <p>Scores Factors</p>
@@ -3804,7 +3817,7 @@ your site layout.</p>
         <span class="s2">"compact"</span>: <span class="s2">"https://scores-media.stratifi.com/10/compact/80.png"</span>
     <span class="o">}</span>
   <span class="o">}</span>,
-  <span class="s2">"status"</span>: <span class="s2">"processing"</span>,
+  <span class="s2">"status"</span>: <span class="s2">"ready"</span>,
   <span class="s2">"created"</span>: <span class="s2">"2021-04-21T15:11:37.564188"</span>,
   <span class="s2">"top_risk_attributions"</span>: <span class="o">[</span>
       <span class="o">{</span>
