@@ -8,12 +8,17 @@ updated, we will be able to provide an immediate answer to the request and, at t
 calculation. In the response, we provide a readable status that indicates what is happening in background. The available
 statuses are:
 
-| Name              | Type   | Description                                                                 |
-|-------------------|--------|-----------------------------------------------------------------------------|
-| pending (Default) | string | The risk score calculation has not started                                  |
-| processing        | string | The risk score calculation is in progress or the existing score is outdated |
-| error             | string | The last risk score calculation failed                                      |
-| ready             | string | The risk score calculation is completed and is up to date                   |
+| Name              | Type   | Description                                                                                                                                   |
+|-------------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| pending (Default) | string | The risk score calculation has not started                                                                                                    |
+| ready             | string | The risk score is up to date with the portfolio's holdings                                                                                    |
+| changed           | string | The holdings changed slightly since the score was calculated, for example after a price update. The score is refreshed in the weekly update   |
+| outdated          | string | The holdings changed materially since the score was calculated. A new score is calculated within minutes; until then the previous one is returned |
+| error             | string | The last risk score calculation failed                                                                                                        |
+| processing        | string | Deprecated: no longer returned. Changes in the holdings are reported as `changed` or `outdated`                                               |
+
+A holding change is material when a single holding's weight in the portfolio moves by 5 percentage points or more:
+a holding added or removed, a large trade, or a holding replaced by another security.
 
 ## Scores Factors
 
@@ -134,7 +139,7 @@ your site layout.
         "compact": "https://scores-media.stratifi.com/10/compact/80.png"
     }
   },
-  "status": "processing",
+  "status": "ready",
   "created": "2021-04-21T15:11:37.564188",
   "top_risk_attributions": [
       {
