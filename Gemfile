@@ -11,3 +11,8 @@ gem 'redcarpet', '~> 3.6.0'
 gem 'nokogiri', '~> 1.13.3'
 gem 'sass'
 gem 'webrick'
+
+group :development do
+  # Git hooks, including the shared StratiFi commit hooks (lefthook.yml)
+  gem 'lefthook', '~> 2.2'
+end
