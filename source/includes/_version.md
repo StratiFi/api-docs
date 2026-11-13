@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.23.1 (2026-10-23)
+  - Self-registered applications and resource-bound tokens (such as MCP clients) no longer receive session credentials: no `session_token` in token responses, `session_token: null` from `/userinfo`, and no `target_score_url` on accounts. See [clients without session credentials](#clients-without-session-credentials).
 - 1.23.0 (2026-10-23)
   - Add read-only `/surveillance-exceptions/` (list and get by id) with cause, status, target, trigger, `extra_data`, timestamps and age; filters by status, target, trigger and date ranges; at most 100 per page. Advisors see the exceptions on the accounts, investors and households the app shows them; integration tokens see those on the objects they own.
 - 1.22.0 (2026-10-23)
