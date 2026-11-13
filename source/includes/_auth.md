@@ -246,7 +246,7 @@ If not provided, the user will be redirected to the default dashboard.
 
 ### Clients without session credentials
 
-Applications that registered themselves (dynamic client registration or a client metadata document), and tokens bound to a resource with the `resource` parameter (such as MCP clients), receive only their OAuth access token. Their token responses carry no `session_token`, `/userinfo` answers `session_token: null`, and account objects carry no `target_score_url`. Applications registered by StratiFi are unaffected.
+Applications that registered themselves (dynamic client registration or a client metadata document), and tokens bound to a resource with the `resource` parameter (such as MCP clients), receive only their OAuth access token. Their token responses carry no `session_token`, `/userinfo` answers `session_token: null`, and account objects carry no `target_score_url`. A resource-bound token is also refused by `/o/sso/`, as by every endpoint other than its resource; a self-registered application whose token is not bound to a resource can still start a session with the [OIDC flow](#oidc-flow-recommended). Applications registered by StratiFi are unaffected.
 
 ### Session Token Flow(Deprecated)
 
