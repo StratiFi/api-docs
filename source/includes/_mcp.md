@@ -85,6 +85,8 @@ from the same serializers as this API, so the fields, types, enums and descripti
 | Investors                | `list_investors`, `get_investor`, `create_investor`, `update_investor`, `delete_investor`, `get_investor_prism_aggregation` |
 | Accounts                 | `list_accounts`, `get_account`, `create_account`, `update_account`, `delete_account`, `get_account_prism_score` |
 | Model portfolios         | `list_model_portfolios`, `get_model_portfolio`, `create_model_portfolio`, `update_model_portfolio`, `delete_model_portfolio`, `get_model_portfolio_prism_score` |
+| Advisors                 | `list_advisors`, `get_advisor` (read only)                                                                      |
+| Teams                    | `list_teams`, `get_team` (read only)                                                                            |
 | Securities               | `get_security` (by `ticker` or `cusip`, exactly one)                                                            |
 | Surveillance exceptions  | `list_surveillance_exceptions`, `get_surveillance_exception` (read only)                                        |
 | Identity                 | `whoami`: the user behind the token, with `advisor_id` and `company_id` (`null` for API-only users)             |
