@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.24.0 (2026-11-26)
+  - Document `sync_status` and `sync_status_changed` on accounts, and [Holdings processing](#holdings-processing): a write with securities StratiFi does not know yet returns right away with the account `syncing` while they are identified in the background.
 - 1.23.1 (2026-11-23)
   - [Single Sign-On](#single-sign-on): document SP-initiated sign-in ("Sign in with SSO" and sign-in links), multiple IdPs and email domains per firm, how the assertion's email is matched, two-factor authentication, and the customizations available on demand.
 - 1.23.0 (2026-10-23)
