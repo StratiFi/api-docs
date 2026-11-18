@@ -78,13 +78,11 @@
 | investment_objective_custom | string                                       | Free-text investment objective for firms without standardized objectives |
 | exceptions_enabled | bool                                                  | Surveillance exceptions are raised for this account (default `true`) |
 | clients_review_enabled | bool                                              | The account is included in client reviews (default `true`) |
-| sync_status | string                                                       | Read only. `ready` once the holdings are processed, `syncing` while they are, `error` when a sync failed. See [Holdings processing](#holdings-processing). |
-| sync_status_changed | datetime                                             | Read only. When `sync_status` last changed |
 | created_at  | datetime                                                     | Read only. When the account was created |
 | updated_at  | datetime                                                     | Read only. Last change to the account |
 | provider    | string                                                       | Read only. Integration that created the account (for example `Stratifi API`, `Orion`, `Charles Schwab`); `null` for accounts created in the app |
 | integration_link_updated_at | datetime                                     | Read only. Last time an integration updated the account |
-| sync_status | string                                                       | Read only. Synchronisation state: `ready`, `syncing` or `error` (`status` is the PRISM score status) |
+| sync_status | string                                                       | Read only. Synchronisation state: `ready`, `syncing` or `error` (`status` is the PRISM score status). See [Holdings processing](#holdings-processing). |
 | sync_status_changed | datetime                                             | Read only. When `sync_status` last changed |
 | next_review_date | date                                                    | Read only. Next client review date for the account |
 | display_name | string                                                      | Read only. `nickname` when set, otherwise the name with the number |
