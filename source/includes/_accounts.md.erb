@@ -82,7 +82,7 @@
 | updated_at  | datetime                                                     | Read only. Last change to the account |
 | provider    | string                                                       | Read only. Integration that created the account (for example `Stratifi API`, `Orion`, `Charles Schwab`); `null` for accounts created in the app |
 | integration_link_updated_at | datetime                                     | Read only. Last time an integration updated the account |
-| sync_status | string                                                       | Read only. Synchronisation state: `ready`, `syncing` or `error` (`status` is the PRISM score status) |
+| sync_status | string                                                       | Read only. Synchronisation state: `ready`, `syncing` or `error` (`status` is the PRISM score status). See [Holdings processing](#holdings-processing). |
 | sync_status_changed | datetime                                             | Read only. When `sync_status` last changed |
 | next_review_date | date                                                    | Read only. Next client review date for the account |
 | display_name | string                                                      | Read only. `nickname` when set, otherwise the name with the number |
@@ -91,6 +91,14 @@
 ### Account Source Object Definition
 
 <%= partial "includes/partials/_sources.md.erb" %>
+
+### Holdings processing
+
+Writing `positions` on create or update returns as soon as the holdings are saved. A position whose security StratiFi already knows is linked and classified right away. A security StratiFi does not know yet is identified and classified in the background: the account is returned with `sync_status: "syncing"`, those positions without a classification, and no risk score until they are done.
+
+When the background work finishes, usually within a minute, `sync_status` turns `ready` and the risk score is calculated. A position whose security cannot be identified stays unclassified.
+
+To act on a fully processed account, poll [Get an Account](#get-account) until `sync_status` is `ready`. Do not send the same create again while an account is `syncing`: it is already saved, and a second create makes a duplicate.
 
 ### Account Tax Statuses
 
