@@ -14,12 +14,22 @@ metadata URL to configure your IdP; the SP Entity ID is that same metadata URL.
 | Metadata (SP Entity ID)   | `https://backend.stratifi.com/sso/saml/{{ org_slug }}/metadata/` |
 | ACS (assertion consumer)  | `https://backend.stratifi.com/sso/saml/{{ org_slug }}/acs/`      |
 | SLS (single logout)       | `https://backend.stratifi.com/sso/saml/{{ org_slug }}/sls/`      |
+| Login (SP-initiated)      | `https://backend.stratifi.com/sso/saml/{{ org_slug }}/login/`    |
 
 <aside class="notice">
 Replace <code>backend.stratifi.com</code> with <code>sandbox.stratifi.com</code> for the sandbox environment.
 </aside>
 
-## IdP-initiated sign-in
+## Starting sign-in
+
+An advisor can start SSO from either side:
+
+| Trigger       | Where the advisor starts                              | What happens                                                    |
+|---------------|-------------------------------------------------------|-----------------------------------------------------------------|
+| IdP-initiated | Your IdP or your own application                      | Your IdP POSTs a signed assertion to the StratiFi ACS.          |
+| SP-initiated  | The StratiFi sign-in page ("Sign in with SSO")        | StratiFi sends the advisor to your IdP, which returns to the ACS. |
+
+### IdP-initiated sign-in
 
 Your IdP issues a signed SAML assertion for the advisor and your application POSTs it to the ACS, optionally with a
 `RelayState` that deep-links the advisor to a specific page:
@@ -30,6 +40,25 @@ Your IdP issues a signed SAML assertion for the advisor and your application POS
   <input type="hidden" name="RelayState"  value="/advisor/investors/{{ investor_id }}"/>
 </form>
 ```
+
+### SP-initiated sign-in ("Sign in with SSO")
+
+The advisor enters their email on the StratiFi sign-in page (`https://advisors.stratifi.com/signin`) and clicks
+**Sign in with SSO**. StratiFi finds your IdP from the email's domain and redirects the advisor there with a SAML
+AuthnRequest. The email is passed as the requested subject, so your IdP can pre-fill the username. Once your IdP posts
+the assertion back to the ACS, the advisor lands in StratiFi signed in.
+
+Your application can also start SP-initiated sign-in with a link:
+
+| Link                                                                                                 | Use                                                                                     |
+|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| `https://backend.stratifi.com/sso/login/?login_hint={{ base64url_email }}&next={{ path }}`           | Routes by the email's domain, like the sign-in page.                                    |
+| `https://advisors.stratifi.com/sso/{{ org_slug }}/`                                                  | Goes straight to your firm's IdP, without asking for an email.                          |
+
+`login_hint` is the advisor's email, base64url-encoded without padding. `next` is optional and follows the same rules
+as [RelayState](#relaystate-deep-link). Routing by email needs the email's domain registered for your firm (see
+[Multiple IdPs and email domains](#multiple-idps-and-email-domains)). An unregistered domain sends the advisor back to
+the sign-in page with an SSO error.
 
 ## RelayState deep-link
 
@@ -50,10 +79,34 @@ The id in the path is the StratiFi **investor id**, not your external id — res
 | Households list           | `/advisor/households/`      |
 | Model Portfolios list     | `/advisor/models/`          |
 
-## Requirements
+## Multiple IdPs and email domains
+
+A firm can register several IdPs, for example one per office or acquired entity. Each IdP gets its own org slug and
+its own set of [SP endpoints](#service-provider-endpoints). Each IdP can have many email domains, so advisors who use
+their own domains can sign in through the same IdP. Contact support@stratifi.com to have additional IdPs or email
+domains configured.
+
+Email domains are only needed for SP-initiated sign-in that routes by email. IdP-initiated sign-in works without them.
+An email domain can belong to only one IdP.
+
+## Advisor matching
 
 - IdP-initiated SSO must be enabled for your firm (StratiFi configures this during setup).
 - The SAML assertion must be **signed**.
-- The **NameID carries the advisor's email** (format `emailAddress` or `unspecified`); StratiFi matches it to an advisor.
-- The advisor must already exist as an active advisor in StratiFi with a matching email — there is **no** just-in-time
-  provisioning.
+- The assertion carries the advisor's email, either in the **NameID** (format `emailAddress` or `unspecified`) or in
+  an `email` or `emailAddress` attribute.
+- StratiFi matches that email to an active advisor, ignoring case. The match only looks at advisors of the firm the IdP
+  belongs to, and must find exactly one.
+- The advisor must already exist in StratiFi with a matching email.
+- If an advisor's email changes, update it in StratiFi first. Until it matches, sign-in fails.
+
+## Two-factor authentication
+
+SSO does not bypass StratiFi two-factor authentication. If your firm enforces 2FA, an advisor with an enrolled device
+completes the StratiFi 2FA challenge after your IdP signs them in. An advisor with no enrolled device is refused.
+StratiFi does not read MFA information from the SAML assertion.
+
+## Customizations
+
+Just-in-time provisioning, SCIM, mapping roles or names from the assertion, and SSO-only enforcement are available as
+customizations on demand. Contact support@stratifi.com to know more.
