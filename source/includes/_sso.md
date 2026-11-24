@@ -46,7 +46,8 @@ Your IdP issues a signed SAML assertion for the advisor and your application POS
 The advisor enters their email on the StratiFi sign-in page (`https://advisors.stratifi.com/signin`) and clicks
 **Sign in with SSO**. StratiFi finds your IdP from the email's domain and redirects the advisor there with a SAML
 AuthnRequest. The email is passed as the requested subject, so your IdP can pre-fill the username. Once your IdP posts
-the assertion back to the ACS, the advisor lands in StratiFi signed in.
+the assertion back to the ACS, the advisor lands in StratiFi signed in. StratiFi turns on the **Sign in with SSO**
+button during setup; the sign-in links below work either way.
 
 Your application can also start SP-initiated sign-in with a link:
 
@@ -93,8 +94,9 @@ An email domain can belong to only one IdP.
 
 - IdP-initiated SSO must be enabled for your firm (StratiFi configures this during setup).
 - The SAML assertion must be **signed**.
-- The assertion carries the advisor's email, either in the **NameID** (format `emailAddress` or `unspecified`) or in
-  an `email` or `emailAddress` attribute.
+- The assertion carries the advisor's email, either in an `emailAddress`-format **NameID** or in an `email` or
+  `emailAddress` attribute. An `unspecified`-format NameID is read as the email only if StratiFi turns that on for
+  your IdP during setup; otherwise send one of the other two.
 - StratiFi matches that email to an active advisor, ignoring case. The match only looks at advisors of the firm the IdP
   belongs to, and must find exactly one.
 - The advisor must already exist in StratiFi with a matching email.
