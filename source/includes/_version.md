@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.23.2 (2026-11-26)
+  - Self-registered applications and resource-bound tokens (such as MCP clients) no longer receive session credentials: no `session_token` in token responses, `session_token: null` from `/userinfo`, and no `target_score_url` on accounts. See [clients without session credentials](#clients-without-session-credentials).
 - 1.23.1 (2026-11-23)
   - [Single Sign-On](#single-sign-on): document SP-initiated sign-in ("Sign in with SSO" and sign-in links), multiple IdPs and email domains per firm, how the assertion's email is matched, two-factor authentication, and the customizations available on demand.
 - 1.23.0 (2026-10-23)
