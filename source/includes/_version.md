@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.24.0 (2026-11-26)
+  - Add [MCP Server](#mcp-server): the Model Context Protocol endpoint for AI assistants, how clients discover and register with the authorization server (RFC 9728, RFC 8414, RFC 7591), resource-bound tokens (RFC 8707), the scopes, the tool catalogue (read-only advisor and team tools included) and the tool error codes.
 - 1.23.1 (2026-11-23)
   - [Single Sign-On](#single-sign-on): document SP-initiated sign-in ("Sign in with SSO" and sign-in links), multiple IdPs and email domains per firm, how the assertion's email is matched, two-factor authentication, and the customizations available on demand.
 - 1.23.0 (2026-10-23)
