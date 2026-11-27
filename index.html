@@ -4473,7 +4473,7 @@ your site layout.</p>
 <tr>
 <td>sync_status</td>
 <td>string</td>
-<td>Read only. Synchronisation state: <code>ready</code>, <code>syncing</code> or <code>error</code> (<code>status</code> is the PRISM score status)</td>
+<td>Read only. Synchronisation state: <code>ready</code>, <code>syncing</code> or <code>error</code> (<code>status</code> is the PRISM score status). See <a href="#holdings-processing">Holdings processing</a>.</td>
 </tr>
 <tr>
 <td>sync_status_changed</td>
@@ -4545,6 +4545,12 @@ your site layout.</p>
 <td>Source modified date</td>
 </tr>
 </tbody></table>
+<h3 id='holdings-processing'>Holdings processing</h3>
+<p>Writing <code>positions</code> on create or update returns as soon as the holdings are saved. A position whose security StratiFi already knows is linked and classified right away. A security StratiFi does not know yet is identified and classified in the background: the account is returned with <code>sync_status: &quot;syncing&quot;</code>, those positions without a classification, and no risk score until they are done.</p>
+
+<p>When the background work finishes, usually within a minute, <code>sync_status</code> turns <code>ready</code> and the risk score is calculated. A position whose security cannot be identified stays unclassified.</p>
+
+<p>To act on a fully processed account, poll <a href="#get-account">Get an Account</a> until <code>sync_status</code> is <code>ready</code>. Do not send the same create again while an account is <code>syncing</code>: it is already saved, and a second create makes a duplicate.</p>
 <h3 id='account-tax-statuses'>Account Tax Statuses</h3>
 <table><thead>
 <tr>
@@ -6194,6 +6200,11 @@ An advisor who is not a manager follows the same rules as in the StratiFi app:
 <p>Returns a <a href="#surveillance-exception-object-definition">surveillance exception object</a>, or <code>404</code> when it does not exist or is not visible to you.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>1.24.0 (2026-11-26)
+
+<ul>
+<li>Document <code>sync_status</code> and <code>sync_status_changed</code> on accounts, and <a href="#holdings-processing">Holdings processing</a>: a write with securities StratiFi does not know yet returns right away with the account <code>syncing</code> while they are identified in the background.</li>
+</ul></li>
 <li>1.23.1 (2026-11-23)
 
 <ul>
