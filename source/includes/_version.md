@@ -1,5 +1,7 @@
 # Changelog
 
+- 1.25.0 (2026-11-27)
+  - Add [Returns](#returns): `GET .../returns/` on securities (by ticker or cusip), accounts, models, households and investors, with `start`, `end`, `frequency` and, for portfolios, `management_fee`. Households and investors combine their accounts into one portfolio.
 - 1.24.0 (2026-11-26)
   - Document `sync_status` and `sync_status_changed` on accounts, and [Holdings processing](#holdings-processing): a write with securities StratiFi does not know yet returns right away with the account `syncing` while they are identified in the background.
 - 1.23.1 (2026-11-23)
