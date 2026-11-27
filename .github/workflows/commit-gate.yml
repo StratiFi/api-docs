@@ -7,4 +7,5 @@ jobs:
     uses: StratiFi/stratifi-git-hooks/.github/workflows/commit-gate.yml@v1
     with:
       app-id: ${{ vars.STRATIFI_READER_APP_ID }}
-    secrets: inherit
+    secrets:
+      STRATIFI_READER_APP_PRIVATE_KEY: ${{ secrets.STRATIFI_READER_APP_PRIVATE_KEY }}
